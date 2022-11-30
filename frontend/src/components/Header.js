@@ -15,14 +15,30 @@ const Header = () => {
   }
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Container className='top-container'>
+        <div>
+          <h1 className='header-name'>Prúd života</h1>
+          {/* <img
+            src='/images/prud-zivota-logo.png'
+            className='header-image'
+            alt='prud-zivota'
+          ></img> */}
+          <h2 className='header-publisher'>
+            Prinášať bohatstvo Božieho slova celému Božiemu ľudu
+          </h2>
+        </div>
+        <div className='header-search-box'>
+          <SearchBox />
+        </div>
+      </Container>
+      <Navbar variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>E-Shop</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse className='mob-my' id='basic-navbar-nav'>
-            <SearchBox />
+            {/* <SearchBox /> */}
 
             <Nav className='mob-my ml-auto'>
               <LinkContainer to='/cart'>

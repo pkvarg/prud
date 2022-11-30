@@ -21,11 +21,11 @@ const SearchBox = () => {
         type='text'
         name='q'
         onChange={(e) => setKeyword(e.target.value)}
-        placeholder='Search Products...'
+        placeholder='Zadajte text...'
         className='mr-sm-2 ml-sm-5'
       ></Form.Control>
-      <Button type='submit' variant='outline-success' className='mx-1'>
-        Search
+      <Button type='submit' className='mx-1 header-search-btn'>
+        Hľadať
       </Button>
     </Form>
   )

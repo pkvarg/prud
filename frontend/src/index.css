@@ -58,3 +58,59 @@ h2 {
 .password-group {
   display: none;
 }
+
+/* HEADER*/
+
+.top-container {
+  background-color: #fefefe;
+
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.header-search-box {
+  transform: translateY(-26%);
+}
+
+.header-search-btn {
+  background-color: #1b6217;
+}
+
+img.header-image {
+  margin-top: 30px;
+  width: 35%;
+}
+
+@font-face {
+  font-family: headerFont;
+  src: url('../public/fonts/NotoSerif-BoldItalic.ttf');
+  font-family: headerName;
+  src: url('../public/fonts/Cinzel-VariableFont_wght.ttf');
+}
+
+.header-name {
+  font-family: headerName;
+  color: #006828;
+  font-size: 50px;
+  font-weight: 400;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.header-publisher {
+  font-family: headerFont;
+  font-size: 30px;
+  font-weight: 400;
+  font-style: italic;
+  color: #907355;
+  text-transform: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+nav.navbar {
+  background-color: #1c6117;
+}
