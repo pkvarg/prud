@@ -4,8 +4,6 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
-import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -14,19 +12,13 @@ const Header = () => {
 
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
-  console.log('qty:', cartItems.length)
-  // useEffect(() => {
-  //   if (cartItems) {
-  //     //document.location.href = '/'
-  //   }
-  // }, [cartItems])
 
   const logoutHandler = () => {
     dispatch(logout())
   }
   return (
     <header>
-      <Container className='top-container'>
+      <Container className='top-container no-mobile'>
         <div>
           {/* <h1 className='header-name'>Prúd života</h1> */}
           <img
@@ -43,7 +35,7 @@ const Header = () => {
           <div className='header-two-links'>
             <LinkContainer to='/cart' className='header-cart'>
               <Nav.Link>
-                <p className='number-in-cart'>
+                <p className='number-in-cart '>
                   <span>{cartItems.length}</span>
                 </p>
                 <i className='fas fa-shopping-cart'></i> Košík
@@ -81,11 +73,54 @@ const Header = () => {
           </div>
         </div>
       </Container>
+      {/* Navbar */}
       <Navbar variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
-              <i className='fas fa-home'></i>
+              <i className='fas fa-home no-mobile'></i>
+              <div className='mobile-navbar mobile-only'>
+                <h1 className='header-name'>Prúd života</h1>
+                <LinkContainer to='/cart' className='header-cart mobile-only'>
+                  <Nav.Link>
+                    <p className='number-in-cart'>
+                      <span>{cartItems.length}</span>
+                    </p>
+                    <i className='fas fa-shopping-cart'></i> Košík
+                  </Nav.Link>
+                </LinkContainer>
+              </div>
+              <div className='mobile-sign-in mobile-only'>
+                {userInfo ? (
+                  <NavDropdown title={userInfo.name} id='username'>
+                    <LinkContainer to='profile'>
+                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                ) : (
+                  <LinkContainer to='/login'>
+                    <Nav.Link className='mobile-sign-in'>
+                      <i className='fas fa-user'></i> Prihlásenie
+                    </Nav.Link>
+                  </LinkContainer>
+                )}
+                {userInfo && userInfo.isAdmin && (
+                  <NavDropdown title='Admin' id='adminmenu'>
+                    <LinkContainer to='/admin/userlist'>
+                      <NavDropdown.Item>Users</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to='/admin/productlist'>
+                      <NavDropdown.Item>Products</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to='/admin/orderlist'>
+                      <NavDropdown.Item>Orders</NavDropdown.Item>
+                    </LinkContainer>
+                  </NavDropdown>
+                )}
+              </div>
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -145,6 +180,9 @@ const Header = () => {
             <LinkContainer to='/contact'>
               <Nav.Link className='video-link'>Kontakt</Nav.Link>
             </LinkContainer>
+            <div className='search-navbar-mobile mobile-only'>
+              <SearchBox />
+            </div>
           </Navbar.Collapse>
           {/* <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse className='mob-my' id='basic-navbar-nav'>

@@ -80,9 +80,6 @@ h2 {
   justify-content: space-between;
 }
 
-.header-search-box {
-  /* transform: translateY(-26%); */
-}
 .header-search-box input {
   font-size: 20px;
 }
@@ -129,14 +126,15 @@ img.header-image {
 .header-two-links {
   position: relative;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   margin-top: 20px;
   font-size: 20px;
+  gap: 17.5px;
 }
 
 p.number-in-cart {
   position: absolute;
-  left: 50px;
+  left: 12px;
   top: -7.5px;
   display: inline-block;
   border-radius: 50%;
@@ -220,7 +218,11 @@ a.dropdown-item:hover {
   color: #fefefe;
 }
 
-/* dropdown on hover */
+.mobile-only {
+  display: none;
+}
+
+/* dropdown on hover NOT on MOBILE */
 
 @media all and (min-width: 992px) {
   .navbar .nav-item .dropdown-menu {
@@ -232,5 +234,109 @@ a.dropdown-item:hover {
   }
   .navbar .nav-item .dropdown-menu {
     margin-top: 0;
+  }
+}
+
+/* MOBILE */
+/* Tablets and smaller */
+@media (min-width: 100px) and (max-width: 1180px) {
+  .no-mobile {
+    display: none;
+  }
+
+  .mobile-navbar.mobile-only {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+  }
+  .header-name {
+    color: #fefefe;
+    font-size: 30px;
+    margin-top: -25px;
+    margin-left: 72px;
+    margin-bottom: 15px;
+  }
+
+  button.navbar-toggler {
+    position: absolute;
+    top: 15px;
+  }
+
+  .navbar-toggler-icon {
+    text-decoration: red !important;
+  }
+  .search-navbar-mobile {
+    display: block;
+    margin-top: 15px;
+  }
+  .header-search-btn {
+    border: 1px solid #fefefe;
+  }
+
+  .header-cart.mobile-only {
+    display: block;
+  }
+  a.header-cart.mobile-only.nav-link {
+    color: #fefefe;
+    font-weight: 100;
+  }
+
+  a.header-cart.mobile-only.nav-link:hover {
+    background-color: #1c6117;
+  }
+
+  p.number-in-cart {
+    top: 65px;
+    left: 20px;
+  }
+
+  .mobile-sign-in.mobile-only {
+    display: block;
+  }
+
+  .mobile-sign-in a.nav-link {
+    font-weight: 100;
+    font-size: 25px;
+  }
+  .mobile-sign-in.active.nav-link:hover {
+    background-color: #1c6117;
+  }
+
+  a#username.dropdown-toggle.nav-link {
+    color: #fefefe;
+  }
+  a#username.dropdown-toggle.nav-link:hover {
+    background-color: #1c6117;
+    color: #fefefe;
+  }
+
+  a#adminmenu.dropdown-toggle.nav-link {
+    color: #fefefe;
+  }
+  a#adminmenu.dropdown-toggle.nav-link:hover {
+    background-color: #1c6117;
+    color: #fefefe;
+  }
+
+  a.active.dropdown-item {
+    background-color: #fefefe;
+    color: #000;
+  }
+
+  a.active.dropdown-item:hover {
+    background-color: #907355;
+    color: #fefefe;
+  }
+
+  a.dropdown-item {
+    font-size: 30px;
+  }
+  a.dropdown-toggle.nav-link,
+  a.video-link.nav-link {
+    font-size: 25px;
+  }
+
+  a.nav-link:hover {
+    background-color: #1c6117;
   }
 }
