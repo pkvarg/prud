@@ -20,12 +20,12 @@ const Header = () => {
     <header>
       <Container className='top-container no-mobile'>
         <div>
-          {/* <h1 className='header-name'>Prúd života</h1> */}
-          <img
+          <h1 className='header-name'>Prúd života</h1>
+          {/* <img
             src='/images/prud-zivota-logo.png'
             className='header-image'
             alt='prud-zivota'
-          ></img>
+          ></img> */}
           <h2 className='header-publisher'>
             Prinášať bohatstvo Božieho slova celému Božiemu ľudu
           </h2>

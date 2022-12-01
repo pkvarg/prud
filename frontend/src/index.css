@@ -132,6 +132,10 @@ img.header-image {
   gap: 17.5px;
 }
 
+.header-cart {
+  position: relative;
+}
+
 p.number-in-cart {
   position: absolute;
   left: 12px;
@@ -286,8 +290,8 @@ a.dropdown-item:hover {
   }
 
   p.number-in-cart {
-    top: 65px;
-    left: 20px;
+    top: -9px;
+    left: 13px;
   }
 
   .mobile-sign-in.mobile-only {
