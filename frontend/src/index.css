@@ -1,3 +1,14 @@
+@font-face {
+  font-family: headerPublisher;
+  src: url('../public/fonts/NotoSerif-BoldItalic.ttf');
+  font-family: headerName;
+  src: url('../public/fonts/Cinzel-VariableFont_wght.ttf');
+}
+
+body {
+  font-family: headerPublisher;
+}
+
 main {
   min-height: 80vh;
 }
@@ -63,7 +74,6 @@ h2 {
 
 .top-container {
   background-color: #fefefe;
-
   margin-bottom: 10px;
   display: flex;
   align-items: flex-end;
@@ -71,23 +81,28 @@ h2 {
 }
 
 .header-search-box {
-  transform: translateY(-26%);
+  /* transform: translateY(-26%); */
+}
+.header-search-box input {
+  font-size: 20px;
 }
 
 .header-search-btn {
   background-color: #1b6217;
+  text-transform: none;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.header-search-btn:hover {
+  background-color: #fefefe;
+  color: #1c6117;
+  border: 2px solid #1c6117;
 }
 
 img.header-image {
   margin-top: 30px;
   width: 35%;
-}
-
-@font-face {
-  font-family: headerFont;
-  src: url('../public/fonts/NotoSerif-BoldItalic.ttf');
-  font-family: headerName;
-  src: url('../public/fonts/Cinzel-VariableFont_wght.ttf');
 }
 
 .header-name {
@@ -100,7 +115,7 @@ img.header-image {
 }
 
 .header-publisher {
-  font-family: headerFont;
+  font-family: headerPublisher;
   font-size: 30px;
   font-weight: 400;
   font-style: italic;
@@ -111,6 +126,72 @@ img.header-image {
   padding-top: 0;
 }
 
+.header-two-links {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+a.header-cart.nav-link {
+  color: #907355;
+  font-size: 25px;
+}
+
+a.header-sign-in.nav-link {
+  color: #907355;
+  font-size: 25px;
+}
+
+a#username.dropdown-toggle.nav-link {
+  color: #907355;
+  font-size: 25px;
+}
+
+a.header-cart.nav-link:hover,
+a.header-sign-in.nav-link:hover,
+a#username.dropdown-toggle.nav-link:hover {
+  color: #1c6117;
+  background-color: #fefefe;
+}
+
 nav.navbar {
   background-color: #1c6117;
+}
+
+a.nav-link {
+  color: #fefefe;
+  font-size: 20px;
+}
+
+a.nav-link:hover {
+  color: #fefefe;
+  background-color: #907355;
+}
+
+a.video-link.active.nav-link {
+  color: #fefefe;
+}
+
+.video-link {
+  margin-right: 25px;
+}
+
+a.dropdown-toggle.nav-link {
+  color: #fefefe;
+  font-size: 20px;
+}
+
+a.dropdown-toggle.nav-link:hover {
+  color: #fefefe;
+  font-size: 20px;
+}
+
+a.dropdown-item {
+  font-size: 20px;
+}
+
+a.dropdown-item:hover {
+  background-color: #907355;
+  color: #fefefe;
 }
