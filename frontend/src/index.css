@@ -127,10 +127,30 @@ img.header-image {
 }
 
 .header-two-links {
+  position: relative;
   display: flex;
   justify-content: space-evenly;
   margin-top: 20px;
   font-size: 20px;
+}
+
+p.number-in-cart {
+  position: absolute;
+  left: 50px;
+  top: -7.5px;
+  display: inline-block;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  line-height: 23px !important;
+  background-color: red;
+  color: #fefefe;
+}
+
+p.number-in-cart span {
+  font-size: 20px;
+  margin-left: 30%;
+  padding-bottom: 30px !important;
 }
 
 a.header-cart.nav-link {
