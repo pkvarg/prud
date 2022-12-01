@@ -21,16 +21,17 @@ const ForgotPasswordScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     if (!email) {
-      setMessage('You must enter an email address')
+      setMessage('Musíte zadať existujúci email')
     } else {
       dispatch(forgotPasswordAction(email, origURL))
-      setMessageSuccess('Reset link sent to your email')
+      console.log(email, origURL)
+      setMessageSuccess('Linka bola odoslaná na Váš email')
     }
   }
 
   return (
     <FormContainer>
-      <h1>Enter your email here</h1>
+      <h1>Zadajte svoj email</h1>
       {message && <Message variant='danger'>{message}</Message>}
       {messageSuccess && <Message variant='success'>{messageSuccess}</Message>}
 
@@ -38,17 +39,17 @@ const ForgotPasswordScreen = () => {
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='email'>
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             type='email'
-            placeholder='Enter email'
+            placeholder='Váš email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary' className='my-3'>
-          Send password reset link
+        <Button type='submit' variant='primary' className='my-3 btn-green'>
+          Poslať
         </Button>
       </Form>
     </FormContainer>

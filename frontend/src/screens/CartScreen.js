@@ -30,13 +30,18 @@ const CartScreen = () => {
   const checkoutHandler = () => {
     navigate('/login?redirect=/shipping')
   }
+
+  const continueShopping = () => {
+    navigate('/')
+  }
+
   return (
     <Row>
       <Col md={8}>
-        <h1>Shopping Cart</h1>
+        <h1>Nákupný košík</h1>
         {cartItems.length === 0 ? (
           <Message>
-            Your cart is empty <Link to='/'>Go Back</Link>
+            Váš košík je prázdny <Link to='/'>Naspäť</Link>
           </Message>
         ) : (
           <ListGroup variant='flush'>
@@ -49,7 +54,7 @@ const CartScreen = () => {
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>${item.price}</Col>
+                  <Col md={2}>&euro;{item.price}</Col>
                   <Col md={2}>
                     <Form.Control
                       as='select'
@@ -87,9 +92,8 @@ const CartScreen = () => {
           <ListGroup variant='flush'>
             <ListGroup.Item>
               <h2>
-                Subtotal (
-                {cartItems.reduce((acc, item) => acc + Number(item.qty), 0)}
-                )items
+                Položiek (
+                {cartItems.reduce((acc, item) => acc + Number(item.qty), 0)})
               </h2>
               $
               {cartItems
@@ -99,11 +103,20 @@ const CartScreen = () => {
             <ListGroup.Item>
               <Button
                 type='button'
-                className='w-100'
+                className='w-100 btn-brown'
                 disabled={cartItems.lenght === 0}
                 onClick={checkoutHandler}
               >
-                Proceed to Checkout
+                Do pokladne
+              </Button>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Button
+                onClick={continueShopping}
+                className='w-100 btn-green'
+                type='button'
+              >
+                Pokračovať v nákupe
               </Button>
             </ListGroup.Item>
           </ListGroup>

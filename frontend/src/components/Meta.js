@@ -12,9 +12,10 @@ const Meta = ({ title, description, keywords }) => {
 }
 
 Meta.defaultProps = {
-  title: 'Welcome To ProShop',
-  description: 'We sell the best products for cheap',
-  keywords: 'electronics, buy electronics, cheap electronics',
+  title: 'Prúd',
+  description: 'Prinášať bohatstvo Božieho slova celému Božiemu ľudu',
+  keywords:
+    'kresťanské knihy, kresťanská literatúra, duchovné knihy, duchovná literatúra, Boh, Trojjediný Boh, Kristus, Ježiš Kristus, Duch, Duch Svätý, Život, Štúdium života, Biblia, Svätá Biblia, Štúdium Biblie, Písmo, Sväté Písmo, kresťanstvo, kresťania, cirkev, Cirkev, miestna cirkev, miestne cirkvy',
 }
 
 export default Meta

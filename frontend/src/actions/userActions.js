@@ -121,6 +121,9 @@ export const forgotPasswordAction = (email, origURL) => async (dispatch) => {
       config
     )
 
+    console.log(email, origURL)
+    console.log(data)
+
     dispatch({
       type: FORGOT_PASSWORD_SUCCESS,
       payload: data,

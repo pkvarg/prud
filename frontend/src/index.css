@@ -78,6 +78,7 @@ h2 {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  margin-top: 15px;
 }
 
 .header-search-box input {
@@ -239,6 +240,55 @@ a.dropdown-item:hover {
   .navbar .nav-item .dropdown-menu {
     margin-top: 0;
   }
+}
+
+/* PRODUCT */
+.btn-back {
+  background-color: #1c6117;
+  border: 1px solid #1c6117;
+  color: #fefefe;
+}
+.btn-back:hover {
+  background-color: #fefefe;
+  color: #1c6117;
+  border: 1px solid #1c6117;
+}
+
+.btn-green {
+  background-color: #1c6117;
+}
+.btn-green:hover {
+  background-color: #fefefe;
+  color: #1c6117;
+  border: 1px solid #1c6117;
+}
+
+.btn-brown {
+  background-color: #907355;
+}
+
+.btn-brown:hover {
+  background-color: #fefefe;
+  color: #907355;
+  border: 1px solid #907355;
+}
+
+/* LOGIN */
+label.form-label {
+  font-size: 20px;
+}
+
+input#email.form-control {
+  font-size: 23px !important;
+}
+
+.sign-in-forgot {
+  font-size: 23px;
+}
+/* FOOTER */
+.footer-link {
+  text-decoration: none;
+  margin-left: 25px;
 }
 
 /* MOBILE */

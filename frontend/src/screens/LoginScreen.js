@@ -71,34 +71,34 @@ const LoginScreen = () => {
 
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h1>Prihlásenie</h1>
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='email'>
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             type='email'
-            placeholder='Enter email'
+            placeholder='Váš email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId='password'>
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Heslo</Form.Label>
           <Form.Control
             type='password'
-            placeholder='Enter password'
+            placeholder='Vaše heslo'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Button type='submit' variant='primary' className='my-3'>
-          Sign In
+        <Button type='submit' variant='primary' className='my-3 btn-green'>
+          Prihlásiť sa
         </Button>
 
-        <Row className='py-3'>
+        <Row className='py-3 sign-in-forgot'>
           <Col>
             <Link
               to={
@@ -107,19 +107,19 @@ const LoginScreen = () => {
                   : '/forgot-password'
               }
             >
-              Forgot password?
+              Zabudli ste heslo?
             </Link>
           </Col>
         </Row>
-
+        <h2 className='my-3'>Prihlásenie účtom Google</h2>
         <div id='signInDiv'></div>
 
-        {user && (
-          <div className='my-3'>
+        {/* {user && (
+          <div className=''>
             <img src={user.picture} alt={user.picture}></img>
             <h3>{user.name}</h3>
           </div>
-        )}
+        )} */}
 
         {Object.keys(user).length !== 0 && (
           <Button
@@ -132,11 +132,11 @@ const LoginScreen = () => {
         )}
       </Form>
 
-      <Row className='py-3'>
+      <Row className='my-5 sign-in-forgot'>
         <Col>
-          New Customer?{' '}
+          Nový zákazník?{' '}
           <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
-            Register
+            Zaregistrujte sa
           </Link>
         </Col>
       </Row>

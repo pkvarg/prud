@@ -36,10 +36,10 @@ const ResetPasswordScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     if (password !== confirmPassword) {
-      setMessage('Passwords do not match')
+      setMessage('Heslá sa nezhodujú')
     } else {
       dispatch(resetPasswordAction(user, genToken))
-      setMessageSuccess('Password is successfully reset')
+      setMessageSuccess('Heslo bolo úspešne zmenené')
       setTimeout(() => {
         navigate('/')
       }, 2000)
@@ -48,33 +48,33 @@ const ResetPasswordScreen = () => {
 
   return (
     <FormContainer>
-      <h1>Enter your new password here</h1>
+      <h1>Zadajte Vaše nové heslo</h1>
       {message && <Message variant='danger'>{message}</Message>}
       {messageSuccess && <Message variant='success'>{messageSuccess}</Message>}
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='password'>
-          <Form.Label>New Password</Form.Label>
+          <Form.Label>Nové heslo</Form.Label>
           <Form.Control
             type='password'
-            placeholder='Enter password'
+            placeholder='Zadajte heslo'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='confirmPassword'>
-          <Form.Label>Confirm Password</Form.Label>
+          <Form.Label>Potvrďte nové heslo</Form.Label>
           <Form.Control
             type='password'
-            placeholder='Confirm password'
+            placeholder='Potvrďte nové heslo'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary' className='my-3'>
-          Change Password
+        <Button type='submit' variant='primary' className='my-3 btn-green'>
+          Zmeniť heslo
         </Button>
       </Form>
     </FormContainer>

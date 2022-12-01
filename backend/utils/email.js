@@ -9,7 +9,7 @@ class Email {
     this.to = user.email
     this.firstName = user.name
     this.url = url
-    this.from = `G-Shop <${process.env.EMAIL_FROM}>`
+    this.from = `Prúd Eshop <${process.env.EMAIL_FROM}>`
     // order
     this.products = []
     this.productsCount = user.productsCount
@@ -134,6 +134,14 @@ class Email {
 
   async sendPaymentSuccessfullToEmail() {
     await this.send('paymentSuccessfull', `Your order is now paid`)
+  }
+
+  async sendPasswordReset() {
+    await this.send('passwordReset', 'Zmeňte si Vaše heslo')
+  }
+
+  async sendWelcome() {
+    await this.send('welcome', 'Úspešná registrácia')
   }
 
   // contact Form

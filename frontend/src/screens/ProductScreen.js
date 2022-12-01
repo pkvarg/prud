@@ -55,10 +55,14 @@ const ProductScreen = () => {
     )
   }
 
+  const continueShopping = () => {
+    navigate('/')
+  }
+
   return (
     <>
-      <Link className='btn btn-light my-3' to='/'>
-        Go Back
+      <Link className='btn btn-back my-3' to='/'>
+        Naspäť
       </Link>
       {loading ? (
         <Loader />
@@ -83,10 +87,8 @@ const ProductScreen = () => {
                   />
                 </ListGroup.Item>
 
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
-                <ListGroup.Item>
-                  Description: {product.description}
-                </ListGroup.Item>
+                <ListGroup.Item>Cena: &euro;{product.price}</ListGroup.Item>
+                <ListGroup.Item>Popis: {product.description}</ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={3}>
@@ -94,9 +96,9 @@ const ProductScreen = () => {
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Price</Col>
+                      <Col>Cena</Col>
                       <Col>
-                        <strong>{product.price}</strong>
+                        <strong> &euro;{product.price}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -104,7 +106,7 @@ const ProductScreen = () => {
                     <Row>
                       <Col>Status</Col>
                       <Col>
-                        {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+                        {product.countInStock > 0 ? 'Na sklade' : 'Vypredané'}
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -112,7 +114,7 @@ const ProductScreen = () => {
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
-                        <Col>Qty</Col>
+                        <Col>Počet</Col>
                         <Col>
                           <Form.Control
                             as='select'
@@ -135,11 +137,20 @@ const ProductScreen = () => {
                   <ListGroup.Item>
                     <Button
                       onClick={addToCartHandler}
-                      className='w-100'
+                      className='w-100 btn-brown'
                       type='button'
                       disabled={product.countInStock === 0}
                     >
-                      Add to Cart
+                      Pridať do košíka
+                    </Button>
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <Button
+                      onClick={continueShopping}
+                      className='w-100 btn-green'
+                      type='button'
+                    >
+                      Pokračovať v nákupe
                     </Button>
                   </ListGroup.Item>
                 </ListGroup>
@@ -148,42 +159,44 @@ const ProductScreen = () => {
           </Row>
           <Row>
             <Col md={6}>
-              <h2>Reviews</h2>
-              {product.reviews.length === 0 && <Message>No Reviews</Message>}
+              <h2>Recenzie</h2>
+              {product.reviews.length === 0 && (
+                <Message>Žiaden recenzie</Message>
+              )}
               <ListGroup variant='flush'>
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
                     <strong>{review.name}</strong>
                     <Rating value={review.rating} />
-                    <p>{review.createdAt.substring(0, 10)}</p>
+                    {/* <p>{review.createdAt.substring(0, 10)}</p> */}
                     <p>{review.comment}</p>
                   </ListGroup.Item>
                 ))}
                 <ListGroup.Item>
-                  <h2>Write a Customer Review</h2>
+                  <h2>Napíšte recenziu</h2>
                   {errorProductReview && (
                     <Message variant='danger'>{errorProductReview}</Message>
                   )}
                   {userInfo ? (
                     <Form onSubmit={submitHandler}>
                       <Form.Group controlId='rating'>
-                        <Form.Label>Rating</Form.Label>
+                        <Form.Label>Hodnotenie</Form.Label>
                         <Form.Control
                           as='select'
                           value={rating}
                           onChange={(e) => setRating(e.target.value)}
                         >
-                          <option value=''>Select...</option>
-                          <option value='1'>1 - Poor</option>
-                          <option value='2'>2 - Fair</option>
-                          <option value='3'>3 - Good</option>
-                          <option value='4'>4 - Very Good</option>
-                          <option value='5'>5 - Excellent</option>
+                          <option value=''>Zvoľte...</option>
+                          <option value='1'>1 - Slabá</option>
+                          <option value='2'>2 - Priemerná</option>
+                          <option value='3'>3 - Dobrá</option>
+                          <option value='4'>4 - Veľmi dobrá</option>
+                          <option value='5'>5 - Výborná</option>
                         </Form.Control>
                       </Form.Group>
 
                       <Form.Group controlId='comment'>
-                        <Form.Label>Comment</Form.Label>
+                        <Form.Label>Komentár</Form.Label>
                         <Form.Control
                           as='textarea'
                           row='3'
@@ -192,12 +205,13 @@ const ProductScreen = () => {
                         ></Form.Control>
                       </Form.Group>
                       <Button type='submit' variant='primary' className='my-3'>
-                        Submit
+                        Odoslať
                       </Button>
                     </Form>
                   ) : (
                     <Message>
-                      Please <Link to='/login'>Sign In</Link> to write a review
+                      Prosím <Link to='/login'>Prihláste sa</Link> pre napísanie
+                      recenzie
                     </Message>
                   )}
                 </ListGroup.Item>

@@ -7,7 +7,6 @@ import generateToken from '../utils/generateToken.js'
 const forgotPassword = asyncHandler(async (req, res, next) => {
   // 1) Get user based on POSTed email
   const user = await User.findOne({ email: req.body.email })
-
   const id = user._id
   const name = user.name
   const email = user.email
