@@ -290,7 +290,17 @@ input#address.form-control,
 input#city.form-control,
 input#postalCode.form-control,
 input#city.form-control,
-input#country.form-control {
+input#country.form-control,
+input#subject.form-control,
+textarea#message.form-control,
+input#billingName.form-control,
+input#billingEmail.form-control,
+input#billingAddress.form-control,
+input#billingCity.form-control,
+input#billingPostalCode.form-control,
+input#billingCountry.form-control,
+input#billingICO.form-control,
+input#billingDIC.form-control {
   font-size: 23px !important;
 }
 

@@ -147,7 +147,7 @@ class Email {
 
   // contact Form
   async sendContactForm() {
-    await this.send('emailForm', 'Contact from Eshop')
+    await this.send('emailForm', 'Kontakt Eshop')
   }
 }
 

@@ -21,14 +21,16 @@ const Header = () => {
     <header>
       <Container className='top-container no-mobile'>
         <div>
-          <Link to='/' className='no-underline'>
+          {/* <Link to='/' className='no-underline'>
             <h1 className='header-name'>Prúd života</h1>
+          </Link> */}
+          <Link to='/' className='no-underline'>
+            <img
+              src='/images/prud-zivota-logo.png'
+              className='header-image'
+              alt='prud-zivota'
+            ></img>
           </Link>
-          {/* <img
-            src='/images/prud-zivota-logo.png'
-            className='header-image'
-            alt='prud-zivota'
-          ></img> */}
           <h2 className='header-publisher'>
             Prinášať bohatstvo Božieho slova celému Božiemu ľudu
           </h2>

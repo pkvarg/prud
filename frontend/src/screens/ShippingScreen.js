@@ -16,6 +16,24 @@ const ShippingScreen = () => {
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
   const [country, setCountry] = useState(shippingAddress.country)
 
+  // Billing Address
+  const [billingName, setBillingName] = useState(shippingAddress.billingName)
+
+  const [billingAdress, setBillingAddress] = useState(
+    shippingAddress.billingAddress
+  )
+  const [billingCity, setBillingCity] = useState(shippingAddress.billingCity)
+  const [billingPostalCode, setBillingPostalCode] = useState(
+    shippingAddress.billingPostalCode
+  )
+  const [billingCountry, setBillingCountry] = useState(
+    shippingAddress.billingCountry
+  )
+
+  const [billingICO, setBillingICO] = useState(shippingAddress.billingICO)
+
+  const [billingDIC, setBillingDIC] = useState(shippingAddress.billingDIC)
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -29,6 +47,7 @@ const ShippingScreen = () => {
     <FormContainer>
       <CheckoutSteps step1 step2 />
       <h1>Doručenie</h1>
+      <h2>Doručovacia adresa:</h2>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='name'>
           <Form.Label>Meno a priezvisko</Form.Label>
@@ -80,6 +99,72 @@ const ShippingScreen = () => {
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
         </Form.Group>
+        <h2 className='my-5'>Fakturačná adresa je iná ako doručovacia</h2>
+        <Form.Group controlId='billingName'>
+          <Form.Label>Meno a priezvisko / Firma</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Meno a priezvisko / Firma'
+            value={billingName}
+            onChange={(e) => setBillingName(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId='billingAddress'>
+          <Form.Label>Fakturačná adresa</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Fakturačná adresa'
+            value={billingAdress}
+            onChange={(e) => setBillingAddress(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId='billingCity'>
+          <Form.Label>Mesto</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Mesto'
+            value={billingCity}
+            onChange={(e) => setBillingCity(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId='billingPostalCode'>
+          <Form.Label>PSČ</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='PSČ'
+            value={billingPostalCode}
+            onChange={(e) => setBillingPostalCode(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId='billingCountry'>
+          <Form.Label>Štát</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Štát'
+            value={billingCountry}
+            onChange={(e) => setBillingCountry(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <h2 className='my-5'>IČO a DIČ</h2>
+        <Form.Group controlId='billingICO'>
+          <Form.Label>IČO</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='IČO'
+            value={billingICO}
+            onChange={(e) => setBillingICO(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId='billingDIC'>
+          <Form.Label>DIČ</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='DIČ'
+            value={billingDIC}
+            onChange={(e) => setBillingDIC(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+
         <Button type='submit' className='my-3 btn-green'>
           Pokračovať
         </Button>

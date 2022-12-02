@@ -4,11 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FC'
-import {
-  sendContactFormAction,
-  sendCounter,
-  ccc,
-} from '../actions/contactActions'
+import { sendContactFormAction } from '../actions/contactActions'
 
 const ContactScreen = () => {
   const x = process.env.REACT_APP_PASSWORD_GROUP_ONE
@@ -38,14 +34,16 @@ const ContactScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     if (passwordGroupOne !== x || passwordGroupTwo !== y) {
-      setMessage('Not sent! Try to contact us via email or phone, please')
+      setMessage(
+        'Neodoslané! Kontaktujte nás telefonicky alebo emailom, prosím'
+      )
       setName('')
       setEmail('')
       setSubject('')
       setEmailMessage('')
     } else {
       dispatch(sendContactFormAction(contactForm))
-      setMessageSuccess('Your message was successfully sent')
+      setMessageSuccess('Správa úspešne odoslaná')
       setName('')
       setEmail('')
       setSubject('')
@@ -56,7 +54,7 @@ const ContactScreen = () => {
   return (
     <>
       <FormContainer>
-        <h1>Send us a message</h1>
+        <h1>Napíšte nám správu</h1>
         {message && <Message variant='danger'>{message}</Message>}
         {messageSuccess && (
           <Message variant='success'>{messageSuccess}</Message>
@@ -66,43 +64,43 @@ const ContactScreen = () => {
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId='name'>
-            <Form.Label>Name and Surname</Form.Label>
+            <Form.Label>Meno a priezvisko</Form.Label>
             <Form.Control
               required
               type='name'
-              placeholder='Enter name and surname'
+              placeholder='Meno a priezvisko'
               value={name}
               onChange={(e) => setName(e.target.value)}
             ></Form.Control>
           </Form.Group>
           <Form.Group controlId='email'>
-            <Form.Label>Email Address</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               required
               type='email'
-              placeholder='Enter email'
+              placeholder='Email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></Form.Control>
           </Form.Group>
           <Form.Group controlId='subject'>
-            <Form.Label>Subject</Form.Label>
+            <Form.Label>Predmet</Form.Label>
             <Form.Control
               required
               type='subject'
-              placeholder='Enter subject'
+              placeholder='Predmet'
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
             ></Form.Control>
           </Form.Group>
           <Form.Group controlId='message'>
-            <Form.Label>Message</Form.Label>
+            <Form.Label>Správa</Form.Label>
             <Form.Control
               required
               as='textarea'
               rows={10}
               type='textarea'
-              placeholder='Enter message'
+              placeholder='Vaša správa'
               value={emailMessage}
               onChange={(e) => setEmailMessage(e.target.value)}
             />
@@ -127,8 +125,8 @@ const ContactScreen = () => {
             ></Form.Control>
           </Form.Group>
 
-          <Button type='submit' variant='primary' className='my-3'>
-            Send
+          <Button type='submit' variant='primary' className='my-3 btn-green'>
+            Odoslať{' '}
           </Button>
         </Form>
       </FormContainer>
