@@ -201,7 +201,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     let updatedOrderProductsObject = {}
     updatedOrderLoop.map((item, i) => {
       updatedOrderProductsObject[i] =
-        item.qty + ' x ' + item.name + ' price €' + item.price
+        item.qty + ' x ' + item.name + ' €' + item.price
     })
 
     // object with address info
@@ -233,11 +233,11 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
       updatedOrderAdditional.paymentMethod
     updatedOrderProductsObject.addressinfo =
       updatedOrderAddressInfo.address +
-      ' ,' +
+      ', ' +
       updatedOrderAddressInfo.city +
-      ' ' +
+      ', ' +
       updatedOrderAddressInfo.postalCode +
-      ' ' +
+      ', ' +
       updatedOrderAddressInfo.country
 
     await new Email(updatedOrderProductsObject).sendPaymentSuccessfullToEmail()
