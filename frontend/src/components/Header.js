@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -20,7 +21,9 @@ const Header = () => {
     <header>
       <Container className='top-container no-mobile'>
         <div>
-          <h1 className='header-name'>Prúd života</h1>
+          <Link to='/' className='no-underline'>
+            <h1 className='header-name'>Prúd života</h1>
+          </Link>
           {/* <img
             src='/images/prud-zivota-logo.png'
             className='header-image'
@@ -44,10 +47,10 @@ const Header = () => {
             {userInfo ? (
               <NavDropdown title={userInfo.name} id='username'>
                 <LinkContainer to='profile'>
-                  <NavDropdown.Item>Profile</NavDropdown.Item>
+                  <NavDropdown.Item>Môj profil</NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown.Item onClick={logoutHandler}>
-                  Logout
+                  Odhlásiť sa
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
@@ -60,13 +63,13 @@ const Header = () => {
             {userInfo && userInfo.isAdmin && (
               <NavDropdown title='Admin' id='adminmenu'>
                 <LinkContainer to='/admin/userlist'>
-                  <NavDropdown.Item>Users</NavDropdown.Item>
+                  <NavDropdown.Item>Používatelia</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/admin/productlist'>
-                  <NavDropdown.Item>Products</NavDropdown.Item>
+                  <NavDropdown.Item>Produkty</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/admin/orderlist'>
-                  <NavDropdown.Item>Orders</NavDropdown.Item>
+                  <NavDropdown.Item>Objednávky</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
             )}

@@ -2,23 +2,24 @@ extends baseEmail
 
 block content 
                             
-  h3 Hi #{firstName},
+    h3 Dobrý deň #{user},
   
-  h1 Your order is now paid. 
+  h1 Vaša objednávka je zaplatená!
 
   h2 #{products}
-  h2 Paid by: #{paidByWhom}
+  h2 Platca: #{paidByWhom}
+
   h2 #{firstName}
   h2 #{address}
-  h2 Payment Method: #{paymentMethod}
-  h2 Payment status: Successfully Paid
-  h2 Shipping: $#{shippingPrice}
-  h2 Tax: $#{taxPrice}
-  h2 Total: $#{totalPrice}
-  p Order number: #{orderId}
+  h2 Spôsob platby: #{paymentMethod}
+  h2 Status: #{paid}
+  h2 Poštovné: €#{shippingPrice}
+  //- h2 Tax: €#{taxPrice}
+  h2 Celkom: €#{totalPrice}
+  p Číslo objednávky: #{orderId}
  
 
-  h3 Thank you for shopping with us!
+  h3 Ďakujeme za Váš nákup!
 
   //- table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
   //-   tbody

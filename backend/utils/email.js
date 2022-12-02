@@ -5,6 +5,7 @@ import path from 'path'
 
 class Email {
   constructor(user, url, file) {
+    console.log('user:', user)
     this.user = user.user
     this.to = user.email
     this.firstName = user.name
@@ -21,12 +22,12 @@ class Email {
     //this.paymentMethod = user.paymentMethod
     let paymentMethod
     if (user.paymentMethod === 'Cash') {
-      paymentMethod = 'You will pay upon delivery'
+      paymentMethod = 'Zaplatíte pri prevzatí'
     } else {
-      paymentMethod = 'You selected payment by card'
+      paymentMethod = 'Zvolili ste platbu kartou'
     }
     this.paymentMethod = paymentMethod
-    this.isPaid = user.isPaid ? 'Paid by card' : 'Not paid'
+    this.isPaid = user.isPaid ? 'Zaplatené kartou' : 'Nezaplatené'
     this.shippingPrice = user.shippingPrice
     this.taxPrice = user.taxPrice
     this.totalPrice = user.totalPrice
@@ -129,11 +130,11 @@ class Email {
   }
 
   async sendOrderToEmail() {
-    await this.send('orderToEmail', `Your order ${this.orderId}`)
+    await this.send('orderToEmail', `Vaša objednávka ${this.orderId}`)
   }
 
   async sendPaymentSuccessfullToEmail() {
-    await this.send('paymentSuccessfull', `Your order is now paid`)
+    await this.send('paymentSuccessfull', `Objednávka zaplatená`)
   }
 
   async sendPasswordReset() {

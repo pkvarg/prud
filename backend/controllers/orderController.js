@@ -56,7 +56,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     let productsObject = {}
     loop.map((item, i) => {
       productsObject[i] =
-        ' ' + item.qty + ' x ' + item.name + ' $' + item.price + '  '
+        ' ' + item.qty + ' x ' + item.name + ' €' + item.price + '  '
     })
 
     // object with address info
@@ -139,7 +139,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
       footer: {
         text: 'Copyright',
       },
-      currency_symbol: '$',
+      currency_symbol: '€',
       date: {
         billing_date: billingDate,
         due_date: dueDate,
@@ -193,6 +193,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     }
 
     const updatedOrder = await order.save()
+
     // send PaymentSuccessfull Email
     const updatedOrderLoop = updatedOrder.orderItems
     const updatedOrderProductsCount = updatedOrderLoop.length
@@ -200,7 +201,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     let updatedOrderProductsObject = {}
     updatedOrderLoop.map((item, i) => {
       updatedOrderProductsObject[i] =
-        item.qty + ' x ' + item.name + ' price $' + item.price
+        item.qty + ' x ' + item.name + ' price €' + item.price
     })
 
     // object with address info

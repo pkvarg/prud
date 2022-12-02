@@ -15,7 +15,7 @@ const Footer = () => {
               rel='noreferrer'
               className='footer-link'
             >
-              &#60;&#47;&#62; Pictusweb Development
+              &#60;&#47;&#62; PICTUSWEB Development
             </a>
           </Col>
         </Row>

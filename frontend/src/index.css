@@ -81,6 +81,10 @@ h2 {
   margin-top: 15px;
 }
 
+.no-underline {
+  text-decoration: none;
+}
+
 .header-search-box input {
   font-size: 20px;
 }
@@ -166,14 +170,16 @@ a.header-sign-in.nav-link {
   font-size: 25px;
 }
 
-a#username.dropdown-toggle.nav-link {
+a#username.dropdown-toggle.nav-link,
+a#adminmenu.dropdown-toggle.nav-link {
   color: #907355;
   font-size: 25px;
 }
 
 a.header-cart.nav-link:hover,
 a.header-sign-in.nav-link:hover,
-a#username.dropdown-toggle.nav-link:hover {
+a#username.dropdown-toggle.nav-link:hover,
+a#adminmenu.dropdown-toggle.nav-link:hover {
   color: #1c6117;
   background-color: #fefefe;
 }
@@ -278,7 +284,13 @@ label.form-label {
   font-size: 20px;
 }
 
-input#email.form-control {
+input#name.form-control,
+input#email.form-control,
+input#address.form-control,
+input#city.form-control,
+input#postalCode.form-control,
+input#city.form-control,
+input#country.form-control {
   font-size: 23px !important;
 }
 

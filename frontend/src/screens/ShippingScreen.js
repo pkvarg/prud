@@ -28,60 +28,60 @@ const ShippingScreen = () => {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 />
-      <h1>Shipping</h1>
+      <h1>Doručenie</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='name'>
-          <Form.Label>Name and Surname</Form.Label>
+          <Form.Label>Meno a priezvisko</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter name and surname'
+            placeholder='Meno a priezvisko'
             value={name}
             required
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='address'>
-          <Form.Label>Address</Form.Label>
+          <Form.Label>Adresa</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter address'
+            placeholder='Adresa'
             value={address}
             required
             onChange={(e) => setAddress(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='city'>
-          <Form.Label>City</Form.Label>
+          <Form.Label>Mesto</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter city'
+            placeholder='Mesto'
             value={city}
             required
             onChange={(e) => setCity(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='postalCode'>
-          <Form.Label>Postal Code</Form.Label>
+          <Form.Label>PSČ</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter postal code'
+            placeholder='PSČ'
             value={postalCode}
             required
             onChange={(e) => setPostalCode(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='country'>
-          <Form.Label>Country</Form.Label>
+          <Form.Label>Štát</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter country'
+            placeholder='Štát'
             value={country}
             required
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Button type='submit' variant='primary' className='my-3'>
-          Continue
+        <Button type='submit' className='my-3 btn-green'>
+          Pokračovať
         </Button>
       </Form>
     </FormContainer>

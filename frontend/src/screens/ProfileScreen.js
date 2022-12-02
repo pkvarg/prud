@@ -54,71 +54,71 @@ const ProfileScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     if (password !== confirmPassword) {
-      setMessage('Passwords do not match')
+      setMessage('Heslá nesúhlasia')
     } else {
       dispatch(updateUserProfile({ id: user._id, name, email, password }))
-      setMessageSuccess('Password is successfully reset')
+      setMessageSuccess('Heslo úspešne zmenené')
     }
   }
 
   return (
     <Row>
       <Col md={3}>
-        <h2>User Profile</h2>
+        <h2>Môj profil</h2>
         {message && <Message variant='danger'>{message}</Message>}
         {messageSuccess && (
           <Message variant='success'>{messageSuccess}</Message>
         )}
 
         {error && <Message variant='danger'>{error}</Message>}
-        {success && <Message variant='success'>Profile Updated</Message>}
+        {success && <Message variant='success'>Profil upravený</Message>}
 
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId='name'>
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Meno a priezvisko</Form.Label>
             <Form.Control
               type='name'
-              placeholder='Enter name'
+              placeholder='Meno a priezvisko'
               value={name}
               onChange={(e) => setName(e.target.value)}
             ></Form.Control>
           </Form.Group>
           <Form.Group controlId='email'>
-            <Form.Label>Email Address</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               type='email'
-              placeholder='Enter email'
+              placeholder='Email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></Form.Control>
           </Form.Group>
 
           <Form.Group controlId='password'>
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Heslo</Form.Label>
             <Form.Control
               type='password'
-              placeholder='Enter password'
+              placeholder='Heslo'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>
           <Form.Group controlId='confirmPassword'>
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label>Potvrďte heslo</Form.Label>
             <Form.Control
               type='password'
-              placeholder='Confirm password'
+              placeholder='Potvrďte heslo'
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>
-          <Button type='submit' variant='primary' className='my-3'>
-            Update
+          <Button type='submit' className='my-3 btn-green'>
+            Zmeniť heslo
           </Button>
         </Form>
       </Col>
       <Col md={9}>
-        <h2>My Orders</h2>
+        <h2>Moje objednávky</h2>
         {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
@@ -127,11 +127,11 @@ const ProfileScreen = () => {
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
               <tr>
-                <th>ID</th>
-                <th>DATE</th>
-                <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
+                <th>ČÍSLO</th>
+                <th>DÁTUM</th>
+                <th>CELKOM €</th>
+                <th>ZAPLATENÉ</th>
+                <th>ODOSLANÉ</th>
                 <th></th>
               </tr>
             </thead>
@@ -158,7 +158,7 @@ const ProfileScreen = () => {
                   <td>
                     <LinkContainer to={`/order/${order._id}`}>
                       <Button className='btn-sm' variant='light'>
-                        Details
+                        Detaily
                       </Button>
                     </LinkContainer>
                   </td>

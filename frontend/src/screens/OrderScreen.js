@@ -56,7 +56,7 @@ const OrderScreen = () => {
   const { success: successDelete } = orderDelete
 
   const deleteOrderHandler = (id) => {
-    if (window.confirm('Are you sure?')) {
+    if (window.confirm('Ste si istý?')) {
       dispatch(deleteOrder(id))
       navigate('/admin/orderlist')
     }
@@ -136,52 +136,52 @@ const OrderScreen = () => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <>
-      <h1>Order {order._id}</h1>
+      <h1>Objednávka {order._id}</h1>
       <Row>
         <Col md={8}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              <h2>Shipping</h2>
+              <h2>Doručovacia Adresa</h2>
               <p>
-                <strong>Name: </strong> {order.name}
+                <strong>Meno: </strong> {order.name}
               </p>
               <p>
                 <strong>Email: </strong>
                 <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
               </p>
               <p>
-                <strong>Address: </strong>
+                <strong>Adresa: </strong>
                 {order.shippingAddress.address}, {order.shippingAddress.city},{' '}
                 {order.shippingAddress.postalCode},{' '}
                 {order.shippingAddress.country}
               </p>
               {order.isDelivered ? (
                 <Message variant='success'>
-                  Delivered On {order.deliveredAt}
+                  Odoslané {order.deliveredAt}
                 </Message>
               ) : (
-                <Message variant='danger'>Not Delivered</Message>
+                <Message variant='danger'>Neodoslané</Message>
               )}
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Payment Method</h2>
+              <h2>Platba</h2>
               <p>
-                <strong>Method: </strong>
+                <strong>Spôsob: </strong>
                 {order.paymentMethod}
               </p>
               {order.isPaid ? (
-                <Message variant='success'>Paid On {order.paidAt}</Message>
+                <Message variant='success'>Zaplatené {order.paidAt}</Message>
               ) : (
                 <Message variant='danger'>
-                  Not Paid
+                  Nezaplatené
                   {userInfo.isAdmin && (
                     <Button
                       variant='danger'
                       className='w-100'
                       onClick={() => deleteOrderHandler(order._id)}
                     >
-                      Delete order
+                      ADMIN: Zmazať objednávku
                     </Button>
                   )}
                 </Message>
@@ -189,9 +189,9 @@ const OrderScreen = () => {
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Order Items: </h2>
+              <h2>Objednané produkty: </h2>
               {order.orderItems.length === 0 ? (
-                <Message>Order is empty</Message>
+                <Message>Objednávka neobsahuje žiadne produkty</Message>
               ) : (
                 <ListGroup variant='flush'>
                   {order.orderItems.map((item, index) => (
@@ -211,7 +211,7 @@ const OrderScreen = () => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x €{item.price} = €{item.qty * item.price}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -225,30 +225,31 @@ const OrderScreen = () => {
           <Card>
             <ListGroup variant='flush'>
               <ListGroup.Item>
-                <h2>Order Summary</h2>
+                <h2>Súhrn objednávky</h2>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Items</Col>
-                  <Col>${order.itemsPrice}</Col>
+                  <Col>Produkty</Col>
+                  <Col>€ {order.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Shipping</Col>
-                  <Col>${order.shippingPrice}</Col>
+                  <Col>Poštovné</Col>
+                  <Col>€ {order.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
+              {/* Zľava  */}
+              {/* <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
                   <Col>${order.taxPrice}</Col>
                 </Row>
-              </ListGroup.Item>
+              </ListGroup.Item> */}
               <ListGroup.Item>
                 <Row>
-                  <Col>Total</Col>
-                  <Col>${order.totalPrice}</Col>
+                  <Col>Celkom</Col>
+                  <Col>€ {order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
               {!order.isPaid && order.paymentMethod === 'PayPal' && (
@@ -285,20 +286,20 @@ const OrderScreen = () => {
                   <ListGroup.Item>
                     <Button
                       typ='button'
-                      className='btn w-100'
+                      className='btn w-100 btn-brown'
                       onClick={deliverHandler}
                     >
-                      Mark as Delivered
+                      Označiť ako odoslané
                     </Button>
                   </ListGroup.Item>
                 )}
               <ListGroup.Item>
                 <Button
                   variant='success'
-                  className='w-100'
+                  className='w-100 btn-green'
                   onClick={() => newOrderHandler()}
                 >
-                  Create New Order
+                  Vytvoriť novú objednávku
                 </Button>
               </ListGroup.Item>
             </ListGroup>

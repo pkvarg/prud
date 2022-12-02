@@ -88,7 +88,7 @@ let customerInformation = (doc, invoice) => {
 let invoiceTable = (doc, invoice) => {
   let i
   const invoiceTableTop = 330
-  const currencySymbol = '$'
+  const currencySymbol = '€'
 
   doc.font('Cardo-Bold')
   tableRow(doc, invoiceTableTop, 'Item', '', 'Price', 'Quantity', 'Total')
