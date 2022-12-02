@@ -236,7 +236,7 @@ const OrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Poštovné</Col>
-                  <Col>€ {order.shippingPrice}</Col>
+                  <Col>€ {order.shippingPrice.toFixed(2)}</Col>
                 </Row>
               </ListGroup.Item>
               {/* Zľava  */}

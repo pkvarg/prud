@@ -19,14 +19,19 @@ const PlaceOrderScreen = () => {
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   )
 
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100)
-  cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)))
+  // DEFINE SHIPPING PRICE and TAX HERE
+  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : addDecimals(3.5))
+  // cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)))
 
   cart.totalPrice = (
-    Number(cart.itemsPrice) +
-    Number(cart.shippingPrice) +
-    Number(cart.taxPrice)
+    Number(cart.itemsPrice) + Number(cart.shippingPrice)
   ).toFixed(2)
+
+  // cart.totalPrice = (
+  //   Number(cart.itemsPrice) +
+  //   Number(cart.shippingPrice) +
+  //   Number(cart.taxPrice)
+  // ).toFixed(2)
 
   const orderCreate = useSelector((state) => state.orderCreate)
   const { order, success, error } = orderCreate
@@ -80,7 +85,9 @@ const PlaceOrderScreen = () => {
             <ListGroup.Item>
               <h2>Platba</h2>
               <strong>Spôsob platby: </strong>
-              {cart.paymentMethod}
+              {cart.paymentMethod === 'Cash'
+                ? 'Hotovosť'
+                : 'PayPal alebo kartou'}
             </ListGroup.Item>
 
             <ListGroup.Item>
@@ -150,6 +157,7 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 {error && <Message variant='danger'>{error}</Message>}
               </ListGroup.Item>
+
               <ListGroup.Item>
                 <Button
                   type='button'

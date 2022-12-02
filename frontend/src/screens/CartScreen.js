@@ -1,7 +1,16 @@
 import React, { useEffect } from 'react'
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
+import {
+  Row,
+  Col,
+  ListGroup,
+  Image,
+  Form,
+  Button,
+  Card,
+  ListGroupItem,
+} from 'react-bootstrap'
 import Message from '../components/Message'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 
@@ -15,6 +24,10 @@ const CartScreen = () => {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
+
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2)
+  }
 
   useEffect(() => {
     if (productId) {
@@ -95,21 +108,64 @@ const CartScreen = () => {
                 Položiek (
                 {cartItems.reduce((acc, item) => acc + Number(item.qty), 0)})
               </h2>
-              €
+              Produkty: €
               {cartItems
                 .reduce((acc, item) => acc + Number(item.qty * item.price), 0)
                 .toFixed(2)}
             </ListGroup.Item>
+
             <ListGroup.Item>
-              <Button
-                type='button'
-                className='w-100 btn-brown'
-                disabled={cartItems.lenght === 0}
-                onClick={checkoutHandler}
-              >
-                Do pokladne
-              </Button>
+              <Row>
+                <Col>
+                  Poštovné: €
+                  {cartItems
+                    .reduce(
+                      (acc, item) => acc + Number(item.qty * item.price),
+                      0
+                    )
+                    .toFixed(2) > 100
+                    ? 0
+                    : addDecimals(3.5)}
+                </Col>
+              </Row>
             </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col>
+                  Celkom: €
+                  {Number(
+                    cartItems
+                      .reduce(
+                        (acc, item) => acc + Number(item.qty * item.price),
+                        0
+                      )
+                      .toFixed(2)
+                  ) +
+                    Number(
+                      cartItems
+                        .reduce(
+                          (acc, item) => acc + Number(item.qty * item.price),
+                          0
+                        )
+                        .toFixed(2) > 100
+                        ? 0
+                        : addDecimals(3.5)
+                    )}
+                </Col>
+              </Row>
+            </ListGroup.Item>
+            {cartItems.length > 0 && (
+              <ListGroup.Item>
+                <Button
+                  type='button'
+                  className='w-100 btn-brown'
+                  disabled={cartItems.lenght === 0}
+                  onClick={checkoutHandler}
+                >
+                  Do pokladne
+                </Button>
+              </ListGroup.Item>
+            )}
             <ListGroup.Item>
               <Button
                 onClick={continueShopping}

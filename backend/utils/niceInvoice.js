@@ -50,8 +50,12 @@ let header = (doc, invoice) => {
 }
 
 let customerInformation = (doc, invoice) => {
-  doc.fillColor('#444444').fontSize(20).text('Invoice', 50, 160)
-
+  doc
+    .fillColor('#444444')
+    .fontSize(20)
+    .text('Faktúra číslo:', 50, 160)
+    .fontSize(15)
+    .text(invoice.invoiceNo, 175, 165)
   generateHr(doc, 185)
 
   const customerInformationTop = 200
@@ -63,12 +67,12 @@ let customerInformation = (doc, invoice) => {
     .text(invoice.invoiceNo, 160, customerInformationTop)
     .fontSize(14)
     .font('Cardo')
-    .text('Billing Date:', 50, customerInformationTop + 15)
-    .text(invoice.date.billing_date, 276, customerInformationTop + 15)
-    .text('Due Date:', 50, customerInformationTop + 30)
-    .text(invoice.date.due_date, 276, customerInformationTop + 30)
+    .text('Dátum vystavenia:', 50, customerInformationTop + 15)
+    .text(invoice.date.billing_date, 270, customerInformationTop + 15)
+    .text('Dátum splatnosti:', 50, customerInformationTop + 30)
+    .text(invoice.date.due_date, 270, customerInformationTop + 30)
     //
-    .text('Payment Method:', 50, customerInformationTop + 45)
+    .text('Spôsob platby:', 50, customerInformationTop + 45)
     .text(invoice.paymentMethod, 160, customerInformationTop + 45)
 
     .font('Cardo-Bold')
@@ -91,7 +95,7 @@ let invoiceTable = (doc, invoice) => {
   const currencySymbol = '€'
 
   doc.font('Cardo-Bold')
-  tableRow(doc, invoiceTableTop, 'Item', '', 'Price', 'Quantity', 'Total')
+  tableRow(doc, invoiceTableTop, 'Produkty', '', 'Cena/ks', 'Počet', 'Celkom')
   generateHr(doc, invoiceTableTop + 20)
   doc.font('Cardo')
 
@@ -111,6 +115,7 @@ let invoiceTable = (doc, invoice) => {
       generateHr(doc, position + 20)
   }
 
+  let shippingPrice = invoice.shippingPrice
   let tax = invoice.taxPrice
   let totalPrice = invoice.total
   let sumTotal = tax + totalPrice
@@ -120,8 +125,8 @@ let invoiceTable = (doc, invoice) => {
   totalTable(
     doc,
     subtotalPosition,
-    'included tax',
-    formatCurrency(tax, currencySymbol)
+    'Poštovné',
+    formatCurrency(shippingPrice, currencySymbol)
   )
 
   const paidToDatePosition = subtotalPosition + 20
@@ -129,8 +134,8 @@ let invoiceTable = (doc, invoice) => {
   totalTable(
     doc,
     paidToDatePosition,
-    'Total',
-    formatCurrency(sumTotal, currencySymbol)
+    'K úhrade',
+    formatCurrency(totalPrice, currencySymbol)
   )
 }
 
@@ -165,8 +170,12 @@ let generateHr = (doc, y) => {
   doc.strokeColor('#aaaaaa').lineWidth(1).moveTo(50, y).lineTo(560, y).stroke()
 }
 
+// let formatCurrency = (cents, symbol) => {
+//   return symbol + cents.toFixed(2)
+// }
+
 let formatCurrency = (cents, symbol) => {
-  return symbol + cents.toFixed(2)
+  return symbol + cents
 }
 
 let companyAddress = (doc, address) => {

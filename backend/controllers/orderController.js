@@ -76,7 +76,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     productsObject.name = name
     productsObject.taxPrice = additional.taxPrice
     productsObject.totalPrice = additional.totalPrice
-    productsObject.shippingPrice = additional.shippingPrice
+    productsObject.shippingPrice = additional.shippingPrice.toFixed(2)
     productsObject.isPaid = additional.isPaid
     productsObject.productsCount = productsCount
     productsObject.orderId = createdOrder._id
@@ -113,7 +113,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
     // 👇️ Add months to current Date
     const dueDate = addMonths(1, dateFromJson)
-
+    console.log('Pobj:', productsObject)
     const invoiceDetails = {
       shipping: {
         name: name,
@@ -128,6 +128,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
       total: createdOrder.totalPrice,
       taxPrice: createdOrder.taxPrice,
+      shippingPrice: createdOrder.shippingPrice.toFixed(2),
       order_number: 1234222,
       header: {
         company_name: 'Prúd',
@@ -209,7 +210,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     const updatedOrderAdditional = {
       paymentMethod: updatedOrder.paymentMethod,
       taxPrice: updatedOrder.taxPrice,
-      shippingPrice: updatedOrder.shippingPrice,
+      shippingPrice: updatedOrder.shippingPrice.toFixed(2),
       totalPrice: updatedOrder.totalPrice,
       isPaid: updatedOrder.isPaid,
       createdAt: updatedOrder.createdAt,
