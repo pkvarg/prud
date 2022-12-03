@@ -15,7 +15,7 @@ const PaymentScreen = () => {
     navigate('/shipping')
   }
 
-  const [paymentMethod, setPaymentMethod] = useState('PayPal')
+  const [paymentMethod, setPaymentMethod] = useState('PayPal alebo karta')
 
   const dispatch = useDispatch()
 
@@ -38,7 +38,7 @@ const PaymentScreen = () => {
               label='PayPal alebo karta'
               id='PayPal'
               name='paymentMethod'
-              value='PayPal'
+              value='PayPal alebo karta'
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
@@ -47,7 +47,7 @@ const PaymentScreen = () => {
               label='Hotovosť pri prevzatí'
               id='Cash'
               name='paymentMethod'
-              value='Cash'
+              value='Hotovosť'
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
           </Col>

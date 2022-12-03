@@ -161,7 +161,7 @@ const ProductScreen = () => {
             <Col md={6}>
               <h2>Recenzie</h2>
               {product.reviews.length === 0 && (
-                <Message>Žiaden recenzie</Message>
+                <Message>Žiadne recenzie</Message>
               )}
               <ListGroup variant='flush'>
                 {product.reviews.map((review) => (

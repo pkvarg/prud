@@ -21,10 +21,10 @@ class Email {
     this.paidByWhom = user.paidByWhom
     //this.paymentMethod = user.paymentMethod
     let paymentMethod
-    if (user.paymentMethod === 'Cash') {
+    if (user.paymentMethod === 'Hotovosť') {
       paymentMethod = 'Zaplatíte pri prevzatí'
     } else {
-      paymentMethod = 'Zvolili ste platbu kartou'
+      paymentMethod = 'PayPal alebo platba kartou'
     }
     this.paymentMethod = paymentMethod
     this.isPaid = user.isPaid ? 'Zaplatené kartou' : 'Nezaplatené'

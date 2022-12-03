@@ -168,7 +168,9 @@ const OrderScreen = () => {
               <h2>Platba</h2>
               <p>
                 <strong>Spôsob: </strong>
-                {order.paymentMethod}
+                {order.paymentMethod === 'Hotovosť'
+                  ? 'Hotovosť pri prevzatí'
+                  : 'PayPal alebo karta'}
               </p>
               {order.isPaid ? (
                 <Message variant='success'>Zaplatené {order.paidAt}</Message>
@@ -252,32 +254,33 @@ const OrderScreen = () => {
                   <Col>€ {order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              {!order.isPaid && order.paymentMethod === 'PayPal' && (
-                <ListGroup.Item>
-                  {loadingPay && <Loader />}
-                  {isPending && <Loader />}
-                  {isRejected && (
-                    <Message variant='danger'>SDK load error</Message>
-                  )}
-                  {isResolved && (
-                    <PayPalButtons
-                      createOrder={createOrder}
-                      onApprove={successPaymentHandler}
-                    />
-                  )}
-                </ListGroup.Item>
-                // <ListGroup.Item>
-                //   {loadingPay && <Loader />}
-                //   {!sdkReady ? (
-                //     <Loader />
-                //   ) : (
-                //     <PayPalButton
-                //       amount={order.totalPrice}
-                //       onSuccess={successPaymentHandler}
-                //     />
-                //   )}
-                // </ListGroup.Item>
-              )}
+              {!order.isPaid &&
+                order.paymentMethod === 'PayPal alebo karta' && (
+                  <ListGroup.Item>
+                    {loadingPay && <Loader />}
+                    {isPending && <Loader />}
+                    {isRejected && (
+                      <Message variant='danger'>SDK load error</Message>
+                    )}
+                    {isResolved && (
+                      <PayPalButtons
+                        createOrder={createOrder}
+                        onApprove={successPaymentHandler}
+                      />
+                    )}
+                  </ListGroup.Item>
+                  // <ListGroup.Item>
+                  //   {loadingPay && <Loader />}
+                  //   {!sdkReady ? (
+                  //     <Loader />
+                  //   ) : (
+                  //     <PayPalButton
+                  //       amount={order.totalPrice}
+                  //       onSuccess={successPaymentHandler}
+                  //     />
+                  //   )}
+                  // </ListGroup.Item>
+                )}
               {loadingDeliver && <Loader />}
               {userInfo &&
                 userInfo.isAdmin &&
@@ -295,7 +298,6 @@ const OrderScreen = () => {
                 )}
               <ListGroup.Item>
                 <Button
-                  variant='success'
                   className='w-100 btn-green'
                   onClick={() => newOrderHandler()}
                 >

@@ -85,9 +85,9 @@ const PlaceOrderScreen = () => {
             <ListGroup.Item>
               <h2>Platba</h2>
               <strong>Spôsob platby: </strong>
-              {cart.paymentMethod === 'Cash'
-                ? 'Hotovosť'
-                : 'PayPal alebo kartou'}
+              {cart.paymentMethod === 'Hotovosť'
+                ? 'Hotovosť pri prevzatí'
+                : 'PayPal alebo karta'}
             </ListGroup.Item>
 
             <ListGroup.Item>

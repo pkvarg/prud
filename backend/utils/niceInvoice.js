@@ -95,7 +95,7 @@ let invoiceTable = (doc, invoice) => {
   const currencySymbol = '€'
 
   doc.font('Cardo-Bold')
-  tableRow(doc, invoiceTableTop, 'Produkty', '', 'Cena/ks', 'Počet', 'Celkom')
+  tableRow(doc, invoiceTableTop, 'Produkty', '', 'Cena/ks', 'Počet', 'Spolu')
   generateHr(doc, invoiceTableTop + 20)
   doc.font('Cardo')
 
@@ -134,7 +134,7 @@ let invoiceTable = (doc, invoice) => {
   totalTable(
     doc,
     paidToDatePosition,
-    'K úhrade',
+    'Celkom',
     formatCurrency(totalPrice, currencySymbol)
   )
 }
