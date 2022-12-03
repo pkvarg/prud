@@ -308,6 +308,10 @@ input#billingDIC.form-control {
   display: none;
 }
 
+.show {
+  display: block;
+}
+
 .billing-flex {
   display: flex;
   gap: 20px;

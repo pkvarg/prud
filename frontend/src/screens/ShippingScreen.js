@@ -34,8 +34,8 @@ const ShippingScreen = () => {
 
   const [billingDIC, setBillingDIC] = useState(shippingAddress.billingDIC)
 
-  const [showOrnot, setShowOrNot] = useState('hidden')
-  const [showOrnotICO, setShowOrNotICO] = useState('hidden')
+  const [display, setDisplay] = useState('hidden')
+  const [displayICO, setDisplayICO] = useState('hidden')
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -46,11 +46,11 @@ const ShippingScreen = () => {
     navigate('/payment')
   }
 
-  const showBilling1 = (e) => {
-    setShowOrNot('show')
+  const showBillingAddress = (e) => {
+    setDisplay('show')
   }
-  const showBilling2 = (e) => {
-    setShowOrNotICO('show')
+  const showBillingICO = (e) => {
+    setDisplayICO('show')
   }
 
   return (
@@ -111,14 +111,14 @@ const ShippingScreen = () => {
         </Form.Group>
         <Form.Group className='my-5 billing-flex'>
           <Form.Check
-            type='radio'
-            aria-label='radio 1'
+            type='checkbox'
+            // aria-label='radio 1'
             name='billingCheck'
-            onChange={showBilling1}
+            onChange={showBillingAddress}
           />
           <h2>Fakturačná adresa je iná ako doručovacia</h2>
         </Form.Group>
-        <div className={showOrnot}>
+        <div className={display}>
           <Form.Group controlId='billingName'>
             <Form.Label>Meno a priezvisko / Firma</Form.Label>
             <Form.Control
@@ -166,14 +166,14 @@ const ShippingScreen = () => {
           </Form.Group>
           <Form.Group className='billing-flex'>
             <Form.Check
-              type='radio'
-              aria-label='radio 1'
+              type='checkbox'
+              // aria-label='radio 1'
               name='billingCheck'
-              onChange={showBilling2}
+              onChange={showBillingICO}
             />
             <h2 className='my-5'>IČO a DIČ</h2>
           </Form.Group>
-          <div className={showOrnotICO}>
+          <div className={displayICO}>
             <Form.Group controlId='billingICO'>
               <Form.Label>IČO</Form.Label>
               <Form.Control
