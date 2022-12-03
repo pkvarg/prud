@@ -41,6 +41,7 @@ const orderSchema = mongoose.Schema(
       billingCountry: { type: String },
       billingICO: { type: String },
       billingDIC: { type: String },
+      note: { type: String },
     },
     paymentMethod: {
       type: String,

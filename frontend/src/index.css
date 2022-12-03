@@ -300,16 +300,14 @@ input#billingCity.form-control,
 input#billingPostalCode.form-control,
 input#billingCountry.form-control,
 input#billingICO.form-control,
-input#billingDIC.form-control {
+input#billingDIC.form-control,
+input#note.form-control {
   font-size: 23px !important;
 }
 
-.hidden {
-  display: none;
-}
-
-.show {
-  display: block;
+sup {
+  color: red;
+  margin-left: 1.5px;
 }
 
 .billing-flex {

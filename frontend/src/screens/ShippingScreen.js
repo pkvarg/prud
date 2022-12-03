@@ -34,8 +34,7 @@ const ShippingScreen = () => {
 
   const [billingDIC, setBillingDIC] = useState(shippingAddress.billingDIC)
 
-  // const [display, setDisplay] = useState('hidden')
-  // const [displayICO, setDisplayICO] = useState('hidden')
+  const [note, setNote] = useState('')
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -56,6 +55,7 @@ const ShippingScreen = () => {
         billingCountry,
         billingICO,
         billingDIC,
+        note,
       })
     )
     navigate('/payment')
@@ -84,7 +84,9 @@ const ShippingScreen = () => {
       <h2>Doručovacia adresa:</h2>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='name'>
-          <Form.Label>Meno a priezvisko</Form.Label>
+          <Form.Label>
+            Meno a priezvisko<sup>*</sup>
+          </Form.Label>
           <Form.Control
             type='text'
             placeholder='Meno a priezvisko'
@@ -94,7 +96,9 @@ const ShippingScreen = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='address'>
-          <Form.Label>Adresa</Form.Label>
+          <Form.Label>
+            Adresa<sup>*</sup>
+          </Form.Label>
           <Form.Control
             type='text'
             placeholder='Adresa'
@@ -104,7 +108,9 @@ const ShippingScreen = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='city'>
-          <Form.Label>Mesto</Form.Label>
+          <Form.Label>
+            Mesto<sup>*</sup>
+          </Form.Label>
           <Form.Control
             type='text'
             placeholder='Mesto'
@@ -114,7 +120,9 @@ const ShippingScreen = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='postalCode'>
-          <Form.Label>PSČ</Form.Label>
+          <Form.Label>
+            PSČ<sup>*</sup>
+          </Form.Label>
           <Form.Control
             type='text'
             placeholder='PSČ'
@@ -124,7 +132,9 @@ const ShippingScreen = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='country'>
-          <Form.Label>Štát</Form.Label>
+          <Form.Label>
+            Štát<sup>*</sup>
+          </Form.Label>
           <Form.Control
             type='text'
             placeholder='Štát'
@@ -133,6 +143,17 @@ const ShippingScreen = () => {
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
         </Form.Group>
+        <Form.Group controlId='note'>
+          <Form.Label>Poznámka</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Poznámka'
+            value={note}
+            required
+            onChange={(e) => setNote(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+
         <Form.Group className='my-5 billing-flex'>
           <Form.Check
             type='checkbox'

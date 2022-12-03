@@ -102,6 +102,9 @@ const PlaceOrderScreen = () => {
                   </p>
                 </div>
               )}
+              {cart.shippingAddress.note && (
+                <h5>Poznámka: {cart.shippingAddress.note}</h5>
+              )}
             </ListGroup.Item>
 
             <ListGroup.Item>

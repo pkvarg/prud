@@ -176,6 +176,11 @@ const OrderScreen = () => {
                   </p>
                 </div>
               )}
+              {cart.shippingAddress.note && (
+                <h5>Poznámka: {cart.shippingAddress.note}</h5>
+              )}
+
+              <h2>Stav objednávky</h2>
 
               {order.isDelivered ? (
                 <Message variant='success'>

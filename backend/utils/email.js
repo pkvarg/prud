@@ -28,7 +28,7 @@ class Email {
       paymentMethod = 'PayPal alebo platba kartou'
     }
     this.paymentMethod = paymentMethod
-    this.isPaid = user.isPaid ? 'Zaplatené kartou' : 'Nezaplatené'
+    this.isPaid = user.isPaid ? 'Zaplatené' : 'Nezaplatené'
     this.shippingPrice = user.shippingPrice
     this.taxPrice = user.taxPrice
     this.totalPrice = user.totalPrice
@@ -36,6 +36,7 @@ class Email {
     this.file = file
     //this.subject = user.subject
     this.message = user.message
+    this.note = user.note
   }
 
   newTransport() {
@@ -80,6 +81,7 @@ class Email {
         // contactForm
         emailSubject: this.subject,
         message: this.message,
+        note: this.note,
       }
     )
 

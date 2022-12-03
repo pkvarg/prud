@@ -44,8 +44,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
     const createdOrderId = createdOrder._id
     const today = new Date()
     const currentYear = today.getFullYear()
-    const currentMonth = today.getMonth() + 1
-    const currentDay = today.getDate()
+    // const currentMonth = today.getMonth() + 1
+    // const currentDay = today.getDate()
     const invoiceNo = `${currentYear}-${createdOrderId}`
     // array of items
     const loop = createdOrder.orderItems
@@ -94,6 +94,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
       ', ' +
       'DIČ: ' +
       addressInfo.billingDIC
+    productsObject.note = createdOrder.shippingAddress.note
 
     //invoice
     // HandleDate
@@ -209,7 +210,6 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     // send PaymentSuccessfull Email
     const updatedOrderLoop = updatedOrder.orderItems
     const updatedOrderProductsCount = updatedOrderLoop.length
-
     let updatedOrderProductsObject = {}
     updatedOrderLoop.map((item, i) => {
       updatedOrderProductsObject[i] =
@@ -218,14 +218,14 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 
     // object with address info
     const updatedOrderAddressInfo = updatedOrder.shippingAddress
-    const updatedOrderAdditional = {
-      paymentMethod: updatedOrder.paymentMethod,
-      taxPrice: updatedOrder.taxPrice,
-      shippingPrice: updatedOrder.shippingPrice.toFixed(2),
-      totalPrice: updatedOrder.totalPrice,
-      isPaid: updatedOrder.isPaid,
-      createdAt: updatedOrder.createdAt,
-    }
+    // const updatedOrderAdditional = {
+    //   paymentMethod: updatedOrder.paymentMethod,
+    //   taxPrice: updatedOrder.taxPrice,
+    //   shippingPrice: updatedOrder.shippingPrice.toFixed(2),
+    //   totalPrice: updatedOrder.totalPrice,
+    //   isPaid: updatedOrder.isPaid,
+    //   createdAt: updatedOrder.createdAt,
+    // }
 
     // ADD THESE LATER
     updatedOrderProductsObject.email = updatedOrder.email
@@ -234,15 +234,14 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
       updatedOrder.paymentResult.name.given_name +
       ' ' +
       updatedOrder.paymentResult.name.surname
-    updatedOrderProductsObject.taxPrice = updatedOrderAdditional.taxPrice
-    updatedOrderProductsObject.totalPrice = updatedOrderAdditional.totalPrice
+    updatedOrderProductsObject.taxPrice = updatedOrder.taxPrice
+    updatedOrderProductsObject.totalPrice = updatedOrder.totalPrice
     updatedOrderProductsObject.shippingPrice =
-      updatedOrderAdditional.shippingPrice
-    updatedOrderProductsObject.isPaid = updatedOrderAdditional.isPaid
+      updatedOrder.shippingPrice.toFixed(2)
+    updatedOrderProductsObject.isPaid = updatedOrder.isPaid
     updatedOrderProductsObject.productsCount = updatedOrderProductsCount
     updatedOrderProductsObject.orderId = updatedOrder._id
-    updatedOrderProductsObject.paymentMethod =
-      updatedOrderAdditional.paymentMethod
+    updatedOrderProductsObject.paymentMethod = updatedOrder.paymentMethod
     updatedOrderProductsObject.addressinfo =
       updatedOrderAddressInfo.address +
       ', ' +
@@ -251,6 +250,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
       updatedOrderAddressInfo.postalCode +
       ', ' +
       updatedOrderAddressInfo.country
+    updatedOrderProductsObject.note = updatedOrder.shippingAddress.note
 
     await new Email(updatedOrderProductsObject).sendPaymentSuccessfullToEmail()
 

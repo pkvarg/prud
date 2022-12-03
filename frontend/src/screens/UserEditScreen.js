@@ -52,10 +52,10 @@ const UserEditScreen = () => {
   return (
     <>
       <Link to='/admin/userlist' className='btn btn-light my-3'>
-        Go Back
+        Naspäť
       </Link>
       <FormContainer>
-        <h1>Edit User</h1>
+        <h1>Upraviť požívateľa</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
@@ -65,20 +65,20 @@ const UserEditScreen = () => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Meno</Form.Label>
               <Form.Control
                 type='name'
-                placeholder='Enter name'
+                placeholder='Meno'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='email'>
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label>Email</Form.Label>
               <Form.Control
                 type='email'
-                placeholder='Enter email'
+                placeholder='Email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></Form.Control>
@@ -88,14 +88,14 @@ const UserEditScreen = () => {
               <Form.Check
                 className='my-2'
                 type='checkbox'
-                label='Is Admin'
+                label='Admin ?'
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)}
               ></Form.Check>
             </Form.Group>
 
-            <Button className='my-1' type='submit' variant='primary'>
-              Update
+            <Button className='my-1 btn-green' type='submit' variant='primary'>
+              Upraviť
             </Button>
           </Form>
         )}
