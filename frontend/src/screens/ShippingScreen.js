@@ -149,7 +149,6 @@ const ShippingScreen = () => {
             type='text'
             placeholder='Poznámka'
             value={note}
-            required
             onChange={(e) => setNote(e.target.value)}
           ></Form.Control>
         </Form.Group>
