@@ -53,6 +53,15 @@ const ShippingScreen = () => {
     setDisplayICO('show')
   }
 
+  const [checked, setChecked] = useState(false)
+  const handleChange = () => {
+    setChecked(!checked)
+  }
+  const [checkedICO, setCheckedICO] = useState(false)
+  const handleChangeICO = () => {
+    setCheckedICO(!checkedICO)
+  }
+
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 />
@@ -114,86 +123,93 @@ const ShippingScreen = () => {
             type='checkbox'
             // aria-label='radio 1'
             name='billingCheck'
-            onChange={showBillingAddress}
+            onChange={handleChange}
           />
           <h2>Fakturačná adresa je iná ako doručovacia</h2>
         </Form.Group>
-        <div className={display}>
-          <Form.Group controlId='billingName'>
-            <Form.Label>Meno a priezvisko / Firma</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Meno a priezvisko / Firma'
-              value={billingName}
-              onChange={(e) => setBillingName(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId='billingAddress'>
-            <Form.Label>Fakturačná adresa</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Fakturačná adresa'
-              value={billingAdress}
-              onChange={(e) => setBillingAddress(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId='billingCity'>
-            <Form.Label>Mesto</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Mesto'
-              value={billingCity}
-              onChange={(e) => setBillingCity(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId='billingPostalCode'>
-            <Form.Label>PSČ</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='PSČ'
-              value={billingPostalCode}
-              onChange={(e) => setBillingPostalCode(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId='billingCountry'>
-            <Form.Label>Štát</Form.Label>
-            <Form.Control
-              type='text'
-              placeholder='Štát'
-              value={billingCountry}
-              onChange={(e) => setBillingCountry(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group className='billing-flex'>
-            <Form.Check
-              type='checkbox'
-              // aria-label='radio 1'
-              name='billingCheck'
-              onChange={showBillingICO}
-            />
-            <h2 className='my-5'>IČO a DIČ</h2>
-          </Form.Group>
-          <div className={displayICO}>
-            <Form.Group controlId='billingICO'>
-              <Form.Label>IČO</Form.Label>
+        {checked ? (
+          <div>
+            <Form.Group controlId='billingName'>
+              <Form.Label>Meno a priezvisko / Firma</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='IČO'
-                value={billingICO}
-                onChange={(e) => setBillingICO(e.target.value)}
+                placeholder='Meno a priezvisko / Firma'
+                value={billingName}
+                onChange={(e) => setBillingName(e.target.value)}
               ></Form.Control>
             </Form.Group>
-            <Form.Group controlId='billingDIC'>
-              <Form.Label>DIČ</Form.Label>
+            <Form.Group controlId='billingAddress'>
+              <Form.Label>Fakturačná adresa</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='DIČ'
-                value={billingDIC}
-                onChange={(e) => setBillingDIC(e.target.value)}
+                placeholder='Fakturačná adresa'
+                value={billingAdress}
+                onChange={(e) => setBillingAddress(e.target.value)}
               ></Form.Control>
             </Form.Group>
+            <Form.Group controlId='billingCity'>
+              <Form.Label>Mesto</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Mesto'
+                value={billingCity}
+                onChange={(e) => setBillingCity(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='billingPostalCode'>
+              <Form.Label>PSČ</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='PSČ'
+                value={billingPostalCode}
+                onChange={(e) => setBillingPostalCode(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='billingCountry'>
+              <Form.Label>Štát</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Štát'
+                value={billingCountry}
+                onChange={(e) => setBillingCountry(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group className='billing-flex'>
+              <Form.Check
+                type='checkbox'
+                name='billingCheck'
+                onChange={handleChangeICO}
+              />
+              <h2 className='my-5'>IČO a DIČ</h2>
+            </Form.Group>
+            {checkedICO ? (
+              <div>
+                <Form.Group controlId='billingICO'>
+                  <Form.Label>IČO</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='IČO'
+                    value={billingICO}
+                    onChange={(e) => setBillingICO(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+                <Form.Group controlId='billingDIC'>
+                  <Form.Label>DIČ</Form.Label>
+                  <Form.Control
+                    type='text'
+                    placeholder='DIČ'
+                    value={billingDIC}
+                    onChange={(e) => setBillingDIC(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
+              </div>
+            ) : (
+              ''
+            )}
           </div>
-        </div>
+        ) : (
+          ''
+        )}
 
         <Button type='submit' className='my-3 btn-green'>
           Pokračovať
