@@ -61,10 +61,6 @@ let customerInformation = (doc, invoice) => {
   const customerInformationTop = 200
 
   doc
-    // .fontSize(12.5)
-    // .text('Invoice Number:', 50, customerInformationTop)
-    // .font('Cardo-Bold')
-    // .text(invoice.invoiceNo, 160, customerInformationTop)
     .fontSize(14)
     .font('Cardo')
     .text('Dátum vystavenia:', 50, customerInformationTop)
@@ -74,27 +70,48 @@ let customerInformation = (doc, invoice) => {
     //
     .text('Spôsob platby:', 50, customerInformationTop + 30)
     .text(invoice.paymentMethod, 175, customerInformationTop + 30)
+  if (invoice.billing.name !== undefined) {
+    doc
+      .font('Cardo-Bold')
+      .text(invoice.billing.name, 320, customerInformationTop)
+      .font('Cardo')
+      .text(
+        invoice.billing.address + ', ' + invoice.billing.city,
+        320,
+        customerInformationTop + 15
+      )
+      .text(
+        invoice.billing.postalCode + ', ' + invoice.billing.country,
+        320,
+        customerInformationTop + 30
+      )
+      .text('IČO:', 320, customerInformationTop + 45)
+      .text(invoice.billing.ICO, 350, customerInformationTop + 45)
+      .text('DIČ:', 320, customerInformationTop + 60)
+      .text(invoice.billing.DIC, 350, customerInformationTop + 60)
+      .moveDown()
 
-    .font('Cardo-Bold')
-    .text(invoice.billing.name, 320, customerInformationTop)
-    .font('Cardo')
-    .text(
-      invoice.billing.address + ', ' + invoice.billing.city,
-      320,
-      customerInformationTop + 15
-    )
-    .text(
-      invoice.billing.postalCode + ', ' + invoice.billing.country,
-      320,
-      customerInformationTop + 30
-    )
-    .text('IČO:', 320, customerInformationTop + 45)
-    .text(invoice.billing.ICO, 350, customerInformationTop + 45)
-    .text('DIČ:', 320, customerInformationTop + 60)
-    .text(invoice.billing.DIC, 350, customerInformationTop + 60)
-    .moveDown()
+    generateHr(doc, 282)
+  } else {
+    doc
+      .font('Cardo-Bold')
+      .text(invoice.shipping.name, 320, customerInformationTop)
+      .font('Cardo')
+      .text(
+        invoice.shipping.address + ', ' + invoice.shipping.city,
+        320,
+        customerInformationTop + 15
+      )
+      .text(
+        invoice.shipping.postalCode + ', ' + invoice.shipping.country,
+        320,
+        customerInformationTop + 30
+      )
 
-  generateHr(doc, 282)
+      .moveDown()
+
+    generateHr(doc, 272)
+  }
 }
 
 let invoiceTable = (doc, invoice) => {

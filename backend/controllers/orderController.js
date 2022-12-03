@@ -102,7 +102,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
       ', ' +
       addressInfo.billingDIC
 
-    console.log('ProdObj:', productsObject)
     //invoice
     // HandleDate
     const date = createdOrder.createdAt
@@ -124,7 +123,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
     // 👇️ Add months to current Date
     const dueDate = addMonths(1, dateFromJson)
-    console.log('Pobj:', productsObject)
     const invoiceDetails = {
       shipping: {
         name: name,
@@ -166,8 +164,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
         due_date: dueDate,
       },
     }
-
-    console.log('InvDtls:', invoiceDetails)
 
     niceInvoice(invoiceDetails, `${invoiceNo}.pdf`)
     const fileTosend = `${invoiceNo}.pdf`
