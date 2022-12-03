@@ -58,17 +58,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
     // object with address info
     const addressInfo = createdOrder.shippingAddress
-    // const billingInfo = createdOrder.shippingAddress
 
-    // const additional = {
-    //   paymentMethod: createdOrder.paymentMethod,
-    //   taxPrice: createdOrder.taxPrice,
-    //   shippingPrice: createdOrder.shippingPrice,
-    //   totalPrice: createdOrder.totalPrice,
-    //   isPaid: createdOrder.isPaid,
-    //   createdAt: createdOrder.createdAt,
-    // }
-    // ADD THESE LATER
+    // PRODUCTS OBJECT
     productsObject.user = user
     productsObject.email = email
     productsObject.name = name
@@ -87,7 +78,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
       addressInfo.postalCode +
       ', ' +
       addressInfo.country
-    productsObject.billingInfo =
+    productsObject.billinginfo =
       addressInfo.billingName +
       ', ' +
       addressInfo.billingAddress +
@@ -98,8 +89,10 @@ const addOrderItems = asyncHandler(async (req, res) => {
       ', ' +
       addressInfo.billingCountry +
       ', ' +
+      'IČO: ' +
       addressInfo.billingICO +
       ', ' +
+      'DIČ: ' +
       addressInfo.billingDIC
 
     //invoice
