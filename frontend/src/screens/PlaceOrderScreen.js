@@ -69,6 +69,9 @@ const PlaceOrderScreen = () => {
   return (
     <>
       <CheckoutSteps step1 step2 step3 step4 />
+      <Link className='btn btn-back my-3' to='/payment'>
+        Naspäť na Spôsob platby
+      </Link>
       <Row>
         <Col md={8}>
           <ListGroup variant='flush'>
@@ -80,6 +83,25 @@ const PlaceOrderScreen = () => {
                 {cart.shippingAddress.city}, {cart.shippingAddress.postalCode},{' '}
                 {cart.shippingAddress.country}
               </p>
+              {cart.shippingAddress.billingName && (
+                <div>
+                  <h4>Fakturačné údaje</h4>
+                  <p>
+                    {cart.shippingAddress.billingName},{' '}
+                    {cart.shippingAddress.billingAddress},{' '}
+                    {cart.shippingAddress.billingPostalCode},{' '}
+                    {cart.shippingAddress.billingCity},{' '}
+                    {cart.shippingAddress.billingCountry}
+                    {cart.shippingAddress.billingICO && (
+                      <div>
+                        IČO:
+                        {cart.shippingAddress.billingICO}, DIČ:
+                        {cart.shippingAddress.billingDIC}
+                      </div>
+                    )}
+                  </p>
+                </div>
+              )}
             </ListGroup.Item>
 
             <ListGroup.Item>

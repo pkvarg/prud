@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Form, Button, Row, Col, FormCheck } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FC'
 import CheckoutSteps from '../components/CheckoutSteps'
@@ -19,7 +19,7 @@ const ShippingScreen = () => {
   // Billing Address
   const [billingName, setBillingName] = useState(shippingAddress.billingName)
 
-  const [billingAdress, setBillingAddress] = useState(
+  const [billingAddress, setBillingAddress] = useState(
     shippingAddress.billingAddress
   )
   const [billingCity, setBillingCity] = useState(shippingAddress.billingCity)
@@ -34,24 +34,39 @@ const ShippingScreen = () => {
 
   const [billingDIC, setBillingDIC] = useState(shippingAddress.billingDIC)
 
-  const [display, setDisplay] = useState('hidden')
-  const [displayICO, setDisplayICO] = useState('hidden')
+  // const [display, setDisplay] = useState('hidden')
+  // const [displayICO, setDisplayICO] = useState('hidden')
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(saveShippingAddress({ name, address, city, postalCode, country }))
+    dispatch(
+      saveShippingAddress({
+        name,
+        address,
+        city,
+        postalCode,
+        country,
+        billingName,
+        billingAddress,
+        billingCity,
+        billingPostalCode,
+        billingCountry,
+        billingICO,
+        billingDIC,
+      })
+    )
     navigate('/payment')
   }
 
-  const showBillingAddress = (e) => {
-    setDisplay('show')
-  }
-  const showBillingICO = (e) => {
-    setDisplayICO('show')
-  }
+  // const showBillingAddress = (e) => {
+  //   setDisplay('show')
+  // }
+  // const showBillingICO = (e) => {
+  //   setDisplayICO('show')
+  // }
 
   const [checked, setChecked] = useState(false)
   const handleChange = () => {
@@ -143,7 +158,7 @@ const ShippingScreen = () => {
               <Form.Control
                 type='text'
                 placeholder='Fakturačná adresa'
-                value={billingAdress}
+                value={billingAddress}
                 onChange={(e) => setBillingAddress(e.target.value)}
               ></Form.Control>
             </Form.Group>

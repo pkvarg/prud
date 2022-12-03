@@ -29,6 +29,8 @@ import {
 } from '../constants/orderConstants'
 
 const OrderScreen = () => {
+  const cart = useSelector((state) => state.cart)
+
   const dispatch = useDispatch()
   const params = useParams()
   const navigate = useNavigate()
@@ -155,6 +157,26 @@ const OrderScreen = () => {
                 {order.shippingAddress.postalCode},{' '}
                 {order.shippingAddress.country}
               </p>
+              {cart.shippingAddress.billingName && (
+                <div>
+                  <h4>Fakturačné údaje</h4>
+                  <p>
+                    {cart.shippingAddress.billingName},{' '}
+                    {cart.shippingAddress.billingAddress},{' '}
+                    {cart.shippingAddress.billingPostalCode},{' '}
+                    {cart.shippingAddress.billingCity},{' '}
+                    {cart.shippingAddress.billingCountry}
+                    {cart.shippingAddress.billingICO && (
+                      <div>
+                        IČO:
+                        {cart.shippingAddress.billingICO}, DIČ:
+                        {cart.shippingAddress.billingDIC}
+                      </div>
+                    )}
+                  </p>
+                </div>
+              )}
+
               {order.isDelivered ? (
                 <Message variant='success'>
                   Odoslané {order.deliveredAt}
