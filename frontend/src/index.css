@@ -304,6 +304,16 @@ input#billingDIC.form-control {
   font-size: 23px !important;
 }
 
+.hidden {
+  display: none;
+}
+
+.billing-flex {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
 .sign-in-forgot {
   font-size: 23px;
 }
