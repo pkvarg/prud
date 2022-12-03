@@ -61,32 +61,40 @@ let customerInformation = (doc, invoice) => {
   const customerInformationTop = 200
 
   doc
-    .fontSize(12.5)
-    .text('Invoice Number:', 50, customerInformationTop)
-    .font('Cardo-Bold')
-    .text(invoice.invoiceNo, 160, customerInformationTop)
+    // .fontSize(12.5)
+    // .text('Invoice Number:', 50, customerInformationTop)
+    // .font('Cardo-Bold')
+    // .text(invoice.invoiceNo, 160, customerInformationTop)
     .fontSize(14)
     .font('Cardo')
-    .text('Dátum vystavenia:', 50, customerInformationTop + 15)
-    .text(invoice.date.billing_date, 270, customerInformationTop + 15)
-    .text('Dátum splatnosti:', 50, customerInformationTop + 30)
-    .text(invoice.date.due_date, 270, customerInformationTop + 30)
+    .text('Dátum vystavenia:', 50, customerInformationTop)
+    .text(invoice.date.billing_date, 175, customerInformationTop)
+    .text('Dátum splatnosti:', 50, customerInformationTop + 15)
+    .text(invoice.date.due_date, 175, customerInformationTop + 15)
     //
-    .text('Spôsob platby:', 50, customerInformationTop + 45)
-    .text(invoice.paymentMethod, 160, customerInformationTop + 45)
+    .text('Spôsob platby:', 50, customerInformationTop + 30)
+    .text(invoice.paymentMethod, 175, customerInformationTop + 30)
 
     .font('Cardo-Bold')
-    .text(invoice.shipping.name, 360, customerInformationTop)
+    .text(invoice.billing.name, 320, customerInformationTop)
     .font('Cardo')
-    .text(invoice.shipping.address, 360, customerInformationTop + 15)
     .text(
-      invoice.shipping.city + ', ' + invoice.shipping.country,
-      360,
+      invoice.billing.address + ', ' + invoice.billing.city,
+      320,
+      customerInformationTop + 15
+    )
+    .text(
+      invoice.billing.postalCode + ', ' + invoice.billing.country,
+      320,
       customerInformationTop + 30
     )
+    .text('IČO:', 320, customerInformationTop + 45)
+    .text(invoice.billing.ICO, 350, customerInformationTop + 45)
+    .text('DIČ:', 320, customerInformationTop + 60)
+    .text(invoice.billing.DIC, 350, customerInformationTop + 60)
     .moveDown()
 
-  generateHr(doc, 272)
+  generateHr(doc, 282)
 }
 
 let invoiceTable = (doc, invoice) => {

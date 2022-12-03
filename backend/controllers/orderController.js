@@ -21,7 +21,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
     totalPrice,
   } = req.body
   const user = req.body.user
-
   const name = req.body.name
   const email = req.body.email
   if (orderItems && orderItems.length === 0) {
@@ -43,16 +42,14 @@ const addOrderItems = asyncHandler(async (req, res) => {
     })
     const createdOrder = await order.save()
     const createdOrderId = createdOrder._id
-    let today = new Date()
-    let currentYear = today.getFullYear()
-    let currentMonth = today.getMonth() + 1
-    let currentDay = today.getDate()
-    let invoiceNo = `${currentYear}-${createdOrderId}`
-
+    const today = new Date()
+    const currentYear = today.getFullYear()
+    const currentMonth = today.getMonth() + 1
+    const currentDay = today.getDate()
+    const invoiceNo = `${currentYear}-${createdOrderId}`
     // array of items
     const loop = createdOrder.orderItems
     const productsCount = loop.length
-
     let productsObject = {}
     loop.map((item, i) => {
       productsObject[i] =
@@ -61,26 +58,27 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
     // object with address info
     const addressInfo = createdOrder.shippingAddress
+    // const billingInfo = createdOrder.shippingAddress
 
-    const additional = {
-      paymentMethod: createdOrder.paymentMethod,
-      taxPrice: createdOrder.taxPrice,
-      shippingPrice: createdOrder.shippingPrice,
-      totalPrice: createdOrder.totalPrice,
-      isPaid: createdOrder.isPaid,
-      createdAt: createdOrder.createdAt,
-    }
+    // const additional = {
+    //   paymentMethod: createdOrder.paymentMethod,
+    //   taxPrice: createdOrder.taxPrice,
+    //   shippingPrice: createdOrder.shippingPrice,
+    //   totalPrice: createdOrder.totalPrice,
+    //   isPaid: createdOrder.isPaid,
+    //   createdAt: createdOrder.createdAt,
+    // }
     // ADD THESE LATER
     productsObject.user = user
     productsObject.email = email
     productsObject.name = name
-    productsObject.taxPrice = additional.taxPrice
-    productsObject.totalPrice = additional.totalPrice
-    productsObject.shippingPrice = additional.shippingPrice.toFixed(2)
-    productsObject.isPaid = additional.isPaid
+    productsObject.taxPrice = createdOrder.taxPrice
+    productsObject.totalPrice = createdOrder.totalPrice
+    productsObject.shippingPrice = createdOrder.shippingPrice.toFixed(2)
+    productsObject.isPaid = createdOrder.isPaid
     productsObject.productsCount = productsCount
     productsObject.orderId = createdOrder._id
-    productsObject.paymentMethod = additional.paymentMethod
+    productsObject.paymentMethod = createdOrder.paymentMethod
     productsObject.addressinfo =
       addressInfo.address +
       ', ' +
@@ -89,9 +87,22 @@ const addOrderItems = asyncHandler(async (req, res) => {
       addressInfo.postalCode +
       ', ' +
       addressInfo.country
+    productsObject.billingInfo =
+      addressInfo.billingName +
+      ', ' +
+      addressInfo.billingAddress +
+      ', ' +
+      addressInfo.billingCity +
+      ', ' +
+      addressInfo.billingPostalCode +
+      ', ' +
+      addressInfo.billingCountry +
+      ', ' +
+      addressInfo.billingICO +
+      ', ' +
+      addressInfo.billingDIC
 
-    //await new Email(productsObject).sendOrderToEmail()
-
+    console.log('ProdObj:', productsObject)
     //invoice
     // HandleDate
     const date = createdOrder.createdAt
@@ -120,7 +131,16 @@ const addOrderItems = asyncHandler(async (req, res) => {
         address: createdOrder.shippingAddress.address,
         city: createdOrder.shippingAddress.city,
         country: createdOrder.shippingAddress.country,
-        postal_code: 94111,
+        postalCode: createdOrder.shippingAddress.postalCode,
+      },
+      billing: {
+        name: createdOrder.shippingAddress.billingName,
+        address: createdOrder.shippingAddress.billingAddress,
+        city: createdOrder.shippingAddress.billingCity,
+        country: createdOrder.shippingAddress.billingCountry,
+        postalCode: createdOrder.shippingAddress.billingPostalCode,
+        ICO: createdOrder.shippingAddress.billingICO,
+        DIC: createdOrder.shippingAddress.billingDIC,
       },
       items: createdOrder.orderItems,
       invoiceNo: invoiceNo,
@@ -146,6 +166,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
         due_date: dueDate,
       },
     }
+
+    console.log('InvDtls:', invoiceDetails)
 
     niceInvoice(invoiceDetails, `${invoiceNo}.pdf`)
     const fileTosend = `${invoiceNo}.pdf`
