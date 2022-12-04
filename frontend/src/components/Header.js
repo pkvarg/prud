@@ -19,7 +19,56 @@ const Header = () => {
   }
   return (
     <header>
+      <Navbar expand='lg' className='grey-navbar-top no-mobile'>
+        <Container>
+          <div className='grey-navbar-flex'>
+            <LinkContainer to='/contact' className='grey-navbar-top-contact'>
+              <p className='grey-navbar-contact'>Kontakt</p>
+            </LinkContainer>
+          </div>
+          <div className='grey-navbar-two-links'>
+            <LinkContainer to='/cart' className='grey-navbar-cart'>
+              <Nav.Link>
+                <p className='number-in-cart '>
+                  <span>{cartItems.length}</span>
+                </p>
+                <i className='fas fa-shopping-cart'></i> Košík
+              </Nav.Link>
+            </LinkContainer>
+            {userInfo ? (
+              <NavDropdown title={userInfo.name} id='username'>
+                <LinkContainer to='profile'>
+                  <NavDropdown.Item>Môj profil</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Item onClick={logoutHandler}>
+                  Odhlásiť sa
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <LinkContainer to='/login' className='grey-navbar-sign-in'>
+                <Nav.Link>
+                  <i className='fas fa-user'></i> Prihlásenie
+                </Nav.Link>
+              </LinkContainer>
+            )}
+            {userInfo && userInfo.isAdmin && (
+              <NavDropdown title='Admin' id='adminmenu'>
+                <LinkContainer to='/admin/userlist'>
+                  <NavDropdown.Item>Používatelia</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/admin/productlist'>
+                  <NavDropdown.Item>Produkty</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/admin/orderlist'>
+                  <NavDropdown.Item>Objednávky</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+            )}
+          </div>
+        </Container>
+      </Navbar>
       <Container className='top-container no-mobile'>
+        {/* grey navbar no mobile */}
         <div>
           {/* <Link to='/' className='no-underline'>
             <h1 className='header-name'>Prúd života</h1>
@@ -78,7 +127,7 @@ const Header = () => {
           </div>
         </div>
       </Container>
-      {/* Navbar */}
+      {/* Red Navbar, on Mobile is Grey with Toggle */}
       <Navbar variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
