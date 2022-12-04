@@ -87,10 +87,6 @@ h2 {
 }
 
 .grey-navbar-flex {
-  /* display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center; */
   margin: 0 5%;
 }
 
@@ -116,7 +112,6 @@ h2 {
   margin: 0 5%;
   display: flex;
   align-items: center;
-  gap: 25px;
   color: #232323;
 }
 
@@ -145,6 +140,7 @@ a#adminmenu.dropdown-toggle.nav-link:hover {
 
 .grey-navbar-cart {
   position: relative !important;
+  margin-right: 35px;
 }
 
 p.number-in-cart {
@@ -177,9 +173,11 @@ p.number-in-cart span {
   background-color: #fefefe;
   margin-bottom: 10px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   margin-top: 15px;
+  margin-left: 8%;
+  margin-right: 8% !important;
 }
 
 .no-underline {
@@ -191,7 +189,7 @@ p.number-in-cart span {
 }
 
 .header-search-btn {
-  background-color: #1b6217;
+  background-color: #2cb3e6;
   text-transform: none;
   font-weight: 400;
   font-size: 20px;
@@ -199,48 +197,48 @@ p.number-in-cart span {
 
 .header-search-btn:hover {
   background-color: #fefefe;
-  color: #1c6117;
-  border: 2px solid #1c6117;
+  color: #24b9d6;
+  border: 2px solid #24b9d6;
 }
 
 img.header-image {
-  margin-top: 30px;
+  margin-top: 15px;
   width: 35%;
 }
 
-.header-name {
+/* .header-name {
   font-family: headerName;
   color: #006828;
   font-size: 50px;
   font-weight: 400;
   margin-bottom: 0;
   padding-bottom: 0;
-}
+} */
 
 .header-publisher {
   font-family: headerPublisher;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 400;
   font-style: italic;
-  color: #907355;
+  color: #a07c54;
   text-transform: none;
-  margin-bottom: 0;
+  margin-bottom: 15px;
   padding-bottom: 0;
   padding-top: 0;
 }
 
-.header-two-links {
+/* .header-two-links {
   position: relative;
   display: flex;
   justify-content: flex-start;
   margin-top: 20px;
   font-size: 20px;
   gap: 17.5px;
-}
+} */
 
-.header-cart {
+/* .header-cart {
   position: relative;
-}
+} */
 
 /* p.number-in-cart {
   position: absolute;
@@ -285,8 +283,27 @@ a#adminmenu.dropdown-toggle.nav-link:hover {
   background-color: #fefefe;
 } */
 
+/* RED NAVBAR */
+
+.red-navbar-container {
+  margin: 0 auto;
+  transform: translateY(-10px);
+}
+
 nav.navbar {
-  background-color: #1c6117;
+  background-color: #8a1c1f;
+  height: 25px;
+}
+
+a.dropdown-toggle.nav-link {
+  color: #fefefe;
+  font-size: 17px;
+  font-weight: 900 !important;
+}
+
+a.dropdown-toggle.nav-link:hover {
+  color: #fefefe;
+  font-size: 20px;
 }
 
 a.nav-link {
@@ -305,16 +322,6 @@ a.video-link.active.nav-link {
 
 .video-link {
   margin-right: 25px;
-}
-
-a.dropdown-toggle.nav-link {
-  color: #fefefe;
-  font-size: 20px;
-}
-
-a.dropdown-toggle.nav-link:hover {
-  color: #fefefe;
-  font-size: 20px;
 }
 
 a.dropdown-toggle.nav-link:after {
@@ -452,26 +459,60 @@ sup {
     display: none;
   }
 
+  .red-navbar-container {
+    margin: 0 auto;
+  }
+
+  img.header-image-mobile {
+    width: 70vw;
+    margin-left: 20%;
+  }
+
+  nav.navbar {
+    background-color: #ffffff;
+    height: auto;
+  }
+
+  a.dropdown-toggle.nav-link {
+    color: #232323;
+  }
+
+  a.dropdown-toggle.nav-link:hover {
+    color: #232323;
+  }
+
+  a.nav-link {
+    color: #232323;
+  }
+
   .mobile-navbar.mobile-only {
     display: flex;
     flex-direction: column;
     width: 95vw;
   }
-  .header-name {
+  /* .header-name {
     color: #fefefe;
     font-size: 30px;
     margin-top: -25px;
     margin-left: 72px;
     margin-bottom: 15px;
-  }
+  } */
+
+  /* MOBILE Hamburger */
 
   button.navbar-toggler {
     position: absolute;
-    top: 15px;
+    top: 2.5px;
+    left: 2.5px;
   }
 
-  .navbar-toggler-icon {
+  button.navbar-toggler.collapsed {
+    background-color: #232323;
+  }
+
+  span.navbar-toggler-icon {
     text-decoration: red !important;
+    color: #232323 !important;
   }
   .search-navbar-mobile {
     display: block;
@@ -483,10 +524,14 @@ sup {
 
   .header-cart.mobile-only {
     display: block;
+    position: relative;
   }
   a.header-cart.mobile-only.nav-link {
-    color: #fefefe;
+    color: #232323;
+    font-size: 25px;
     font-weight: 100;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   a.header-cart.mobile-only.nav-link:hover {
@@ -494,8 +539,9 @@ sup {
   }
 
   p.number-in-cart {
-    top: -9px;
-    left: 13px;
+    top: -11px;
+    left: 14px;
+    line-height: 15px !important;
   }
 
   .mobile-sign-in.mobile-only {

@@ -19,6 +19,8 @@ const Header = () => {
   }
   return (
     <header>
+      {/* grey navbar no mobile */}
+
       <Navbar expand='lg' className='grey-navbar-top no-mobile'>
         <Container>
           <div className='grey-navbar-flex'>
@@ -67,12 +69,9 @@ const Header = () => {
           </div>
         </Container>
       </Navbar>
-      <Container className='top-container no-mobile'>
-        {/* grey navbar no mobile */}
+      {/* Header with Logo ... */}
+      <div className='top-container no-mobile'>
         <div>
-          {/* <Link to='/' className='no-underline'>
-            <h1 className='header-name'>Prúd života</h1>
-          </Link> */}
           <Link to='/' className='no-underline'>
             <img
               src='/images/prud-zivota-logo.png'
@@ -80,13 +79,13 @@ const Header = () => {
               alt='prud-zivota'
             ></img>
           </Link>
-          <h2 className='header-publisher'>
+          <h3 className='header-publisher'>
             Prinášať bohatstvo Božieho slova celému Božiemu ľudu
-          </h2>
+          </h3>
         </div>
         <div className='header-search-box'>
           <SearchBox />
-          <div className='header-two-links'>
+          {/* <div className='header-two-links'>
             <LinkContainer to='/cart' className='header-cart'>
               <Nav.Link>
                 <p className='number-in-cart '>
@@ -124,17 +123,24 @@ const Header = () => {
                 </LinkContainer>
               </NavDropdown>
             )}
-          </div>
+          </div> */}
         </div>
-      </Container>
+      </div>
       {/* Red Navbar, on Mobile is Grey with Toggle */}
       <Navbar variant='dark' expand='lg' collapseOnSelect>
-        <Container>
+        <div className='red-navbar-container'>
           <LinkContainer to='/'>
             <Navbar.Brand>
-              <i className='fas fa-home no-mobile'></i>
+              {/* <i className='fas fa-home no-mobile'></i> */}
               <div className='mobile-navbar mobile-only'>
-                <h1 className='header-name'>Prúd života</h1>
+                {/* <h1 className='header-name'>Prúd života</h1> */}
+                <Link to='/' className='no-underline'>
+                  <img
+                    src='/images/prud-zivota-logo.png'
+                    className='header-image-mobile'
+                    alt='prud-zivota'
+                  ></img>
+                </Link>
                 <LinkContainer to='/cart' className='header-cart mobile-only'>
                   <Nav.Link>
                     <p className='number-in-cart'>
@@ -282,7 +288,7 @@ const Header = () => {
               </LinkContainer>
             </Nav>
           </Navbar.Collapse> */}
-        </Container>
+        </div>
       </Navbar>
     </header>
   )
