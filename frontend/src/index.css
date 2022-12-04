@@ -319,6 +319,17 @@ sup {
 .sign-in-forgot {
   font-size: 23px;
 }
+
+.agree-gdpr {
+  font-size: 25px;
+  transform: translateY(20%);
+}
+
+.agree-gdpr-order {
+  font-size: 17px;
+  transform: translateY(30%);
+}
+
 /* FOOTER */
 .footer-link {
   text-decoration: none;

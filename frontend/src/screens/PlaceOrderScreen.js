@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { Button, Row, Col, ListGroup, Image, Card, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
@@ -49,21 +49,37 @@ const PlaceOrderScreen = () => {
   //const orderToEmailName = userInfo.name
   const orderEmailToEmail = userInfo.email
 
+  const [message, setMessage] = useState(null)
+
   const placeOrderhandler = () => {
-    dispatch(
-      createOrder({
-        orderItems: cart.cartItems,
-        shippingAddress: cart.shippingAddress,
-        paymentMethod: cart.paymentMethod,
-        itemsPrice: cart.itemsPrice,
-        shippingPrice: cart.shippingPrice,
-        taxPrice: cart.taxPrice,
-        totalPrice: cart.totalPrice,
-        user: userInfo.name,
-        name: cart.shippingAddress.name,
-        email: orderEmailToEmail,
-      })
-    )
+    if (gdrpOrderChecked && tradeRulesOrderChecked) {
+      dispatch(
+        createOrder({
+          orderItems: cart.cartItems,
+          shippingAddress: cart.shippingAddress,
+          paymentMethod: cart.paymentMethod,
+          itemsPrice: cart.itemsPrice,
+          shippingPrice: cart.shippingPrice,
+          taxPrice: cart.taxPrice,
+          totalPrice: cart.totalPrice,
+          user: userInfo.name,
+          name: cart.shippingAddress.name,
+          email: orderEmailToEmail,
+        })
+      )
+    } else {
+      setMessage('Potvrďte súhlas nižšie')
+    }
+  }
+
+  const [gdrpOrderChecked, setGdprOrderChecked] = useState(false)
+  const handleGdprOrder = () => {
+    setGdprOrderChecked(!gdrpOrderChecked)
+  }
+
+  const [tradeRulesOrderChecked, setTradeRulesOrderChecked] = useState(false)
+  const handleTradeRulesOrder = () => {
+    setTradeRulesOrderChecked(!tradeRulesOrderChecked)
   }
 
   return (
@@ -181,6 +197,29 @@ const PlaceOrderScreen = () => {
               </ListGroup.Item>
               <ListGroup.Item>
                 {error && <Message variant='danger'>{error}</Message>}
+                {message && <Message variant='danger'>{message}</Message>}
+                <Form.Group className='billing-flex'>
+                  <Form.Check
+                    type='checkbox'
+                    name='gdprCheck'
+                    required
+                    onChange={handleGdprOrder}
+                  />
+                  <p className='agree-gdpr-order'>
+                    Súhlasím so spracovaním osobných údajov
+                  </p>
+                </Form.Group>
+                <Form.Group className='billing-flex'>
+                  <Form.Check
+                    type='checkbox'
+                    name='tradeRulesCheck'
+                    required
+                    onChange={handleTradeRulesOrder}
+                  />
+                  <p className='agree-gdpr-order'>
+                    Súhlasím s obchodnými podmienkami
+                  </p>
+                </Form.Group>
               </ListGroup.Item>
 
               <ListGroup.Item>
