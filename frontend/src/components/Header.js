@@ -134,57 +134,63 @@ const Header = () => {
               {/* <i className='fas fa-home no-mobile'></i> */}
               <div className='mobile-navbar mobile-only'>
                 {/* <h1 className='header-name'>Prúd života</h1> */}
-                <Link to='/' className='no-underline'>
+                {/* <Link to='/' className='no-underline'>
                   <img
                     src='/images/prud-zivota-logo.png'
                     className='header-image-mobile'
                     alt='prud-zivota'
                   ></img>
-                </Link>
-                <LinkContainer to='/cart' className='header-cart mobile-only'>
-                  <Nav.Link>
-                    <p className='number-in-cart'>
-                      <span>{cartItems.length}</span>
-                    </p>
-                    <i className='fas fa-shopping-cart'></i> Košík
-                  </Nav.Link>
-                </LinkContainer>
-              </div>
-              <div className='mobile-sign-in mobile-only'>
-                {userInfo ? (
-                  <NavDropdown title={userInfo.name} id='username'>
-                    <LinkContainer to='profile'>
-                      <NavDropdown.Item>Môj profil</NavDropdown.Item>
+                </Link> */}
+                <div className='mobile-sign-in mobile-only'>
+                  {userInfo ? (
+                    <NavDropdown title={userInfo.name} id='username'>
+                      <LinkContainer to='profile'>
+                        <NavDropdown.Item>Môj profil</NavDropdown.Item>
+                      </LinkContainer>
+                      <NavDropdown.Item onClick={logoutHandler}>
+                        Odhlásiť sa
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  ) : (
+                    <LinkContainer to='/login'>
+                      <Nav.Link className='mobile-sign-in'>
+                        <i className='fas fa-user'></i>
+                      </Nav.Link>
                     </LinkContainer>
-                    <NavDropdown.Item onClick={logoutHandler}>
-                      Odhlásiť sa
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                ) : (
-                  <LinkContainer to='/login'>
-                    <Nav.Link className='mobile-sign-in'>
-                      <i className='fas fa-user'></i> Prihlásenie
+                  )}
+                  {userInfo && userInfo.isAdmin && (
+                    <NavDropdown title='Admin' id='adminmenu'>
+                      <LinkContainer to='/admin/userlist'>
+                        <NavDropdown.Item>Používatelia</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to='/admin/productlist'>
+                        <NavDropdown.Item>Produkty</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to='/admin/orderlist'>
+                        <NavDropdown.Item>Objednávky</NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
+                  )}
+                </div>
+
+                <div className='mobile-cart mobile-only'>
+                  <LinkContainer to='/cart' className='header-cart mobile-only'>
+                    <Nav.Link>
+                      <p className='number-in-cart'>
+                        <span>{cartItems.length}</span>
+                      </p>
+                      <i className='fas fa-shopping-cart'></i>
                     </Nav.Link>
                   </LinkContainer>
-                )}
-                {userInfo && userInfo.isAdmin && (
-                  <NavDropdown title='Admin' id='adminmenu'>
-                    <LinkContainer to='/admin/userlist'>
-                      <NavDropdown.Item>Používatelia</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to='/admin/productlist'>
-                      <NavDropdown.Item>Produkty</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to='/admin/orderlist'>
-                      <NavDropdown.Item>Objednávky</NavDropdown.Item>
-                    </LinkContainer>
-                  </NavDropdown>
-                )}
+                </div>
               </div>
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Navbar.Collapse className='mob-my' id='basic-navbar-nav'>
+          <Navbar.Collapse
+            className='mobile-navbar-collapse'
+            id='basic-navbar-nav'
+          >
             <NavDropdown title='Darujte 2%' className='red-navbar-item'>
               <LinkContainer to='profile'>
                 <NavDropdown.Item>Fyzické osoby</NavDropdown.Item>
@@ -240,56 +246,33 @@ const Header = () => {
             <LinkContainer to='/contact'>
               <Nav.Link className='red-navbar-item'>Kontakt</Nav.Link>
             </LinkContainer>
-            <div className='search-navbar-mobile mobile-only'>
+            {/* <div className='search-navbar-mobile mobile-only'>
               <SearchBox />
-            </div>
+            </div> */}
           </Navbar.Collapse>
-          {/* <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Navbar.Collapse className='mob-my' id='basic-navbar-nav'>
-            <SearchBox />
-
-            <Nav className='mob-my ml-auto'>
-              <LinkContainer to='/cart'>
-                <Nav.Link>
-                  <i className='fas fa-shopping-cart'></i> Cart
-                </Nav.Link>
-              </LinkContainer>
-              {userInfo ? (
-                <NavDropdown title={userInfo.name} id='username'>
-                  <LinkContainer to='profile'>
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
-                  </LinkContainer>
-                  <NavDropdown.Item onClick={logoutHandler}>
-                    Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
-              ) : (
-                <LinkContainer to='/login'>
-                  <Nav.Link>
-                    <i className='fas fa-user'></i> Sign In
-                  </Nav.Link>
-                </LinkContainer>
-              )}
-              {userInfo && userInfo.isAdmin && (
-                <NavDropdown title='Admin' id='adminmenu'>
-                  <LinkContainer to='/admin/userlist'>
-                    <NavDropdown.Item>Users</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to='/admin/productlist'>
-                    <NavDropdown.Item>Products</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to='/admin/orderlist'>
-                    <NavDropdown.Item>Orders</NavDropdown.Item>
-                  </LinkContainer>
-                </NavDropdown>
-              )}
-              <LinkContainer to='/contact'>
-                <Nav.Link>Contact</Nav.Link>
-              </LinkContainer>
-            </Nav>
-          </Navbar.Collapse> */}
         </div>
       </Navbar>
+      <div className='mobile-logo-under-grey mobile-only'>
+        <img
+          src='/images/prud-zivota-logo.png'
+          className='img-mobile-logo-under-grey'
+          alt='prud-zivota'
+        ></img>
+        <p className='mobile-under-grey-publisher'>
+          Prinášať bohatstvo Božieho slova celému Božiemu ľudu
+        </p>
+        <div className='search-navbar-mobile mobile-only'>
+          <SearchBox />
+        </div>
+      </div>
+
+      {/* <Link to='/' className='no-underline mobile-header-logo mobile-only'>
+        <img
+          src='/images/prud-zivota-logo.png'
+          className=''
+          alt='prud-zivota'
+        ></img>
+      </Link> */}
     </header>
   )
 }

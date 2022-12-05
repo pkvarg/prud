@@ -100,6 +100,10 @@ a#adminmenu.dropdown-toggle.nav-link {
   font-size: 20px;
 }
 
+a#adminmenu.dropdown-toggle.nav-link {
+  margin-left: 35px;
+}
+
 a.grey-navbar-cart.nav-link:hover,
 a.grey-navbar-sign-in.nav-link:hover,
 a#username.dropdown-toggle.nav-link:hover,
@@ -308,9 +312,9 @@ a.dropdown-toggle.nav-link:hover {
   margin-right: 25px;
 } */
 
-/* a.dropdown-toggle.nav-link:after {
+a.dropdown-toggle.nav-link:after {
   display: none;
-} */
+}
 
 .dropdown-item.active {
   background-color: #fefefe !important;
@@ -386,9 +390,9 @@ a.dropdown-item:hover,
   .carousel-caption h2 {
     font-size: 2.5vw;
   }
-  .mob-my {
+  /* .mob-my {
     margin-top: 25px;
-  }
+  } */
 }
 
 /* PRODUCT */
@@ -491,7 +495,23 @@ footer {
   }
 
   .red-navbar-container {
-    margin: 0 auto;
+    margin-top: 0;
+    margin-left: 0px;
+    transform: none;
+    z-index: 9999 !important;
+    opacity: 2;
+    background-color: #f1f1f1;
+    width: 100vw;
+    height: 35px;
+  }
+
+  .red-navbar-item {
+    font-weight: 400;
+    margin: 2px 0;
+  }
+
+  .red-navbar-item:last-child {
+    padding-bottom: 25px;
   }
 
   img.header-image-mobile {
@@ -500,8 +520,8 @@ footer {
   }
 
   nav.navbar {
-    background-color: #ffffff;
-    height: auto;
+    background-color: #f1f1f1;
+    height: 65px;
   }
 
   a.dropdown-toggle.nav-link {
@@ -518,8 +538,11 @@ footer {
 
   .mobile-navbar.mobile-only {
     display: flex;
-    flex-direction: column;
-    width: 95vw;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-left: 30px;
+    transform: translateY(-13px);
   }
   /* .header-name {
     color: #fefefe;
@@ -533,8 +556,8 @@ footer {
 
   button.navbar-toggler {
     position: absolute;
-    top: 2.5px;
-    left: 2.5px;
+    top: 12.5px;
+    left: 14.5px;
   }
 
   button.navbar-toggler.collapsed {
@@ -543,16 +566,55 @@ footer {
   }
 
   .navbar-toggler-icon {
-    background-image: url(data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%28255, 0, 0, 1%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%282, 0, 0, 0.55%29'  stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   }
 
-  .navbar-toggler {
-    color: #907355 !important;
-    background-color: #24b9d6 !important;
+  /* .navbar-toggler {
+  } */
+
+  .mobile-cart.mobile-only {
+    display: flex;
+  }
+
+  /* toggled mobile navbar */
+
+  .mobile-navbar-collapse {
+    margin-top: -30px;
+    background-color: #f1f1f1;
+    padding-top: 50px;
+    padding-left: 15px;
+  }
+
+  div.list-group.list-group-flush,
+  img.img-fluid.rounded {
+    z-index: -2 !important;
+    opacity: 1 !important;
+  }
+
+  .mobile-logo-under-grey.mobile-only {
+    display: flex;
+    flex-direction: column;
+  }
+
+  img.img-mobile-logo-under-grey {
+    margin-top: 25px;
+    margin-left: 15px;
+    width: 65%;
+  }
+
+  .mobile-under-grey-publisher {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    font-family: headerPublisher;
+    font-size: 25px;
+    font-weight: 400;
+    font-style: italic;
+    color: #a07c54;
   }
   .search-navbar-mobile {
     display: block;
-    margin-top: 15px;
+    margin: 0 15px;
   }
   .header-search-btn {
     border: 1px solid #fefefe;
@@ -570,9 +632,9 @@ footer {
     margin-bottom: 10px;
   }
 
-  a.header-cart.mobile-only.nav-link:hover {
+  /* a.header-cart.mobile-only.nav-link:hover {
     background-color: #1c6117;
-  }
+  } */
 
   p.number-in-cart {
     top: -11px;
@@ -589,23 +651,22 @@ footer {
     font-size: 25px;
   }
   .mobile-sign-in.active.nav-link:hover {
-    background-color: #1c6117;
+    color: #232323;
   }
 
   a#username.dropdown-toggle.nav-link {
-    color: #fefefe;
+    color: #232323;
   }
   a#username.dropdown-toggle.nav-link:hover {
-    background-color: #1c6117;
-    color: #fefefe;
+    color: #232323;
   }
 
   a#adminmenu.dropdown-toggle.nav-link {
-    color: #fefefe;
+    color: #232323;
+    margin-left: 0px;
   }
   a#adminmenu.dropdown-toggle.nav-link:hover {
-    background-color: #1c6117;
-    color: #fefefe;
+    color: #232323;
   }
 
   a.active.dropdown-item {
@@ -621,11 +682,11 @@ footer {
   a.dropdown-item {
     font-size: 30px;
   }
-  a.dropdown-toggle.nav-link {
+  /* a.dropdown-toggle.nav-link {
     font-size: 25px;
-  }
+  } */
 
-  a.nav-link:hover {
+  /* a.nav-link:hover {
     background-color: #1c6117;
-  }
+  } */
 }
