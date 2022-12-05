@@ -45,7 +45,10 @@ const CartScreen = () => {
         <h1>Nákupný košík</h1>
         {cartItems.length === 0 ? (
           <Message>
-            Váš košík je prázdny <Link to='/'>Naspäť</Link>
+            Váš košík je prázdny{' '}
+            <Link to='/' className='cart-empty-back-link'>
+              Naspäť
+            </Link>
           </Message>
         ) : (
           <ListGroup variant='flush'>
@@ -149,7 +152,7 @@ const CartScreen = () => {
               <ListGroup.Item>
                 <Button
                   type='button'
-                  className='w-100 btn-brown'
+                  className='w-100 btn-red'
                   disabled={cartItems.lenght === 0}
                   onClick={checkoutHandler}
                 >
@@ -160,7 +163,7 @@ const CartScreen = () => {
             <ListGroup.Item>
               <Button
                 onClick={continueShopping}
-                className='w-100 btn-green'
+                className='w-100 btn-blue'
                 type='button'
               >
                 Pokračovať v nákupe

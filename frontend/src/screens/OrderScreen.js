@@ -316,7 +316,7 @@ const OrderScreen = () => {
                   <ListGroup.Item>
                     <Button
                       typ='button'
-                      className='btn w-100 btn-brown'
+                      className='btn w-100 btn-red'
                       onClick={deliverHandler}
                     >
                       Označiť ako odoslané
@@ -325,7 +325,7 @@ const OrderScreen = () => {
                 )}
               <ListGroup.Item>
                 <Button
-                  className='w-100 btn-green'
+                  className='w-100 btn-blue'
                   onClick={() => newOrderHandler()}
                 >
                   Vytvoriť novú objednávku

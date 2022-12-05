@@ -84,7 +84,7 @@ const RegisterScreen = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Button type='submit' variant='primary' className='my-3 btn-green'>
+        <Button type='submit' variant='primary' className='my-3 btn-blue'>
           Registrovať
         </Button>
       </Form>

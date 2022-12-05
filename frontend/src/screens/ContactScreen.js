@@ -131,7 +131,7 @@ const ContactScreen = () => {
             </p>
           </Form.Group>
 
-          <Button type='submit' variant='primary' className='my-3 btn-green'>
+          <Button type='submit' variant='primary' className='my-3 btn-blue'>
             Odoslať{' '}
           </Button>
         </Form>

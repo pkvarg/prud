@@ -94,7 +94,7 @@ const UserEditScreen = () => {
               ></Form.Check>
             </Form.Group>
 
-            <Button className='my-1 btn-green' type='submit' variant='primary'>
+            <Button className='my-1 btn-blue' type='submit' variant='primary'>
               Upraviť
             </Button>
           </Form>

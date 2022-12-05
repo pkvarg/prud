@@ -48,7 +48,7 @@ const ForgotPasswordScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary' className='my-3 btn-green'>
+        <Button type='submit' variant='primary' className='my-3 btn-blue'>
           Poslať
         </Button>
       </Form>

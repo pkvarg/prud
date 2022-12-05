@@ -137,7 +137,7 @@ const ProductScreen = () => {
                   <ListGroup.Item>
                     <Button
                       onClick={addToCartHandler}
-                      className='w-100 btn-brown'
+                      className='w-100 btn-red'
                       type='button'
                       disabled={product.countInStock === 0}
                     >
@@ -147,7 +147,7 @@ const ProductScreen = () => {
                   <ListGroup.Item>
                     <Button
                       onClick={continueShopping}
-                      className='w-100 btn-green'
+                      className='w-100 btn-blue'
                       type='button'
                     >
                       Pokračovať v nákupe
@@ -204,7 +204,7 @@ const ProductScreen = () => {
                           onChange={(e) => setComment(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
-                      <Button type='submit' className='my-3 btn-green'>
+                      <Button type='submit' className='my-3 btn-blue'>
                         Odoslať
                       </Button>
                     </Form>

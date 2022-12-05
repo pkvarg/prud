@@ -73,7 +73,7 @@ const ResetPasswordScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary' className='my-3 btn-green'>
+        <Button type='submit' variant='primary' className='my-3 btn-blue'>
           Zmeniť heslo
         </Button>
       </Form>
