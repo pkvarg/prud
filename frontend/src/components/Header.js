@@ -185,30 +185,30 @@ const Header = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse className='mob-my' id='basic-navbar-nav'>
-            <NavDropdown title='Darujte 2%' className=''>
+            <NavDropdown title='Darujte 2%' className='red-navbar-item'>
               <LinkContainer to='profile'>
                 <NavDropdown.Item>Fyzické osoby</NavDropdown.Item>
               </LinkContainer>
               <NavDropdown.Item to='profile'>Podnikatelia</NavDropdown.Item>
               <NavDropdown.Item to='profile'>Právnické osoby</NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title='Nové' className=''>
+            <NavDropdown title='Nové' className='red-navbar-item'>
               <LinkContainer to='profile'>
                 <NavDropdown.Item>Knihy 2020 12</NavDropdown.Item>
               </LinkContainer>
               <NavDropdown.Item to='profile'>Knihy 2020 12</NavDropdown.Item>
               <NavDropdown.Item to='profile'>Knihy 2020 12</NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title='Podcast' className=''>
+            <NavDropdown title='Podcast' className='red-navbar-item'>
               <LinkContainer to='profile'>
                 <NavDropdown.Item>Slová života</NavDropdown.Item>
               </LinkContainer>
               <NavDropdown.Item to='profile'>Štúdium života</NavDropdown.Item>
             </NavDropdown>
             <LinkContainer to='/video'>
-              <Nav.Link className='video-link'>Video</Nav.Link>
+              <Nav.Link className='red-navbar-item'>Video</Nav.Link>
             </LinkContainer>
-            <NavDropdown title='Eshop' className=''>
+            <NavDropdown title='Eshop' className='red-navbar-item'>
               <LinkContainer to='profile'>
                 <NavDropdown.Item>Abecedný zoznamkníh</NavDropdown.Item>
               </LinkContainer>
@@ -231,14 +231,14 @@ const Header = () => {
               <NavDropdown.Item to='profile'>Život</NavDropdown.Item>{' '}
               <NavDropdown.Item to='profile'>Životopisné</NavDropdown.Item>
             </NavDropdown>
-            <LinkContainer to='/video'>
-              <Nav.Link className='video-link'>Čitáreň</Nav.Link>
+            <LinkContainer to='/library'>
+              <Nav.Link className='red-navbar-item'>Čitáreň</Nav.Link>
             </LinkContainer>
-            <LinkContainer to='/video'>
-              <Nav.Link className='video-link'>Info</Nav.Link>
+            <LinkContainer to='/info'>
+              <Nav.Link className='red-navbar-item'>Info</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/contact'>
-              <Nav.Link className='video-link'>Kontakt</Nav.Link>
+              <Nav.Link className='red-navbar-item'>Kontakt</Nav.Link>
             </LinkContainer>
             <div className='search-navbar-mobile mobile-only'>
               <SearchBox />

@@ -8,7 +8,7 @@ const Footer = () => {
       <Container>
         <Row>
           <Col className='text-center py-3'>
-            Copyright &copy; Prúd{' '}
+            Copyright &copy; {Date().substring(11, 15)} PRÚD
             <a
               href='https://www.pictusweb.sk'
               target='_blank'
