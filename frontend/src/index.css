@@ -368,22 +368,52 @@ a.dropdown-item:hover,
 .carousel-caption {
   position: absolute;
   top: 0;
+  background-color: #2cb3e6;
+  margin-left: 40%;
+  height: 100vw;
+
+  right: 0 !important;
 }
 
 .carousel-caption h2 {
-  color: #fff;
+  margin-top: 15%;
+  color: #f1f1f1;
+}
+
+.carousel-caption p {
+  color: #f1f1f1;
+}
+
+.carousel-caption-2 {
+  margin-left: 33%;
 }
 
 .carousel img {
   height: 300px;
   padding: 30px;
   margin: 40px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   margin-left: auto;
   margin-right: auto;
 }
 .carousel a {
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-left: 15%;
+}
+
+.carousel-control-prev,
+.carousel-control-next,
+.carousel-indicators {
+  display: none !important;
+}
+
+img.slide-img-2.img-fluid {
+  height: 100%;
+  width: 100vw;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding: 0px;
 }
 
 @media (max-width: 990px) {
@@ -393,6 +423,13 @@ a.dropdown-item:hover,
   /* .mob-my {
     margin-top: 25px;
   } */
+}
+
+/* HOME SCREEN  */
+.new-publications {
+  margin-top: 25px;
+  font-weight: 400;
+  letter-spacing: normal;
 }
 
 /* PRODUCT */

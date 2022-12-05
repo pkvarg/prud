@@ -216,7 +216,7 @@ const Header = () => {
             </LinkContainer>
             <NavDropdown title='Eshop' className='red-navbar-item'>
               <LinkContainer to='profile'>
-                <NavDropdown.Item>Abecedný zoznamkníh</NavDropdown.Item>
+                <NavDropdown.Item>Abecedný zoznam kníh</NavDropdown.Item>
               </LinkContainer>
               <NavDropdown.Item to='profile'>Božia ekonómia</NavDropdown.Item>
               <NavDropdown.Item to='profile'>Brožúry</NavDropdown.Item>
