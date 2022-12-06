@@ -32,7 +32,7 @@ const ProductScreen = () => {
 
   useEffect(() => {
     if (successProductReview) {
-      alert('Review Submitted')
+      alert('Recenzia pridaná')
       setRating(0)
       setComment('')
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })

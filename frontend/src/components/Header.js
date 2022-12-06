@@ -253,14 +253,17 @@ const Header = () => {
         </div>
       </Navbar>
       <div className='mobile-logo-under-grey mobile-only'>
-        <img
-          src='/images/prud-zivota-logo.png'
-          className='img-mobile-logo-under-grey'
-          alt='prud-zivota'
-        ></img>
-        <p className='mobile-under-grey-publisher'>
-          Prinášať bohatstvo Božieho slova celému Božiemu ľudu
-        </p>
+        <Link to='/' className='no-underline'>
+          <img
+            src='/images/prud-zivota-logo.png'
+            className='img-mobile-logo-under-grey'
+            alt='prud-zivota'
+          ></img>
+          <p className='mobile-under-grey-publisher'>
+            Prinášať bohatstvo Božieho slova celému Božiemu ľudu
+          </p>
+        </Link>
+
         <div className='search-navbar-mobile mobile-only'>
           <SearchBox />
         </div>

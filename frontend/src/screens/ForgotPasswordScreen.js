@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FC'
@@ -30,29 +32,37 @@ const ForgotPasswordScreen = () => {
   }
 
   return (
-    <FormContainer>
-      <h1>Zadajte svoj email</h1>
-      {message && <Message variant='danger'>{message}</Message>}
-      {messageSuccess && <Message variant='success'>{messageSuccess}</Message>}
+    <>
+      <Link className='btn btn-back my-3' to='/'>
+        Naspäť
+      </Link>
 
-      {error && <Message variant='danger'>{error}</Message>}
-      {loading && <Loader />}
-      <Form onSubmit={submitHandler}>
-        <Form.Group controlId='email'>
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Váš email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+      <FormContainer>
+        <h1>Zadajte svoj email</h1>
+        {message && <Message variant='danger'>{message}</Message>}
+        {messageSuccess && (
+          <Message variant='success'>{messageSuccess}</Message>
+        )}
 
-        <Button type='submit' variant='primary' className='my-3 btn-blue'>
-          Poslať
-        </Button>
-      </Form>
-    </FormContainer>
+        {error && <Message variant='danger'>{error}</Message>}
+        {loading && <Loader />}
+        <Form onSubmit={submitHandler}>
+          <Form.Group controlId='email'>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type='email'
+              placeholder='Váš email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+
+          <Button type='submit' variant='primary' className='my-5 btn-blue'>
+            Poslať link pre obnovu hesla
+          </Button>
+        </Form>
+      </FormContainer>
+    </>
   )
 }
 
