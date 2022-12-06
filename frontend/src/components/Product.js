@@ -9,20 +9,22 @@ const Product = ({ product }) => {
       <Link to={`/product/${product._id}`}>
         <Card.Img src={product.image} variant='top' />
       </Link>
-      <Card.Body>
-        <Link to={`/product/${product._id}`}>
-          <Card.Title as='div'>
+      <Card.Body className='product-home-info'>
+        <Link to={`/product/${product._id}`} className='no-underline'>
+          <Card.Title as='div' className='product-home-name'>
             <strong>{product.name}</strong>
           </Card.Title>
         </Link>
-        <Card.Text as='div'>
+        {/* <Card.Text as='div'>
           <Rating
-            value={product.rating}
-            text={`${product.numReviews} reviews`}
+          value={product.rating}
+          text={`${product.numReviews} reviews`}
           />
-        </Card.Text>
+        </Card.Text> */}
 
-        <Card.Text as='h3'>€ {product.price}</Card.Text>
+        <Card.Text as='h3' className='product-home-price'>
+          € {product.price}
+        </Card.Text>
       </Card.Body>
     </Card>
   )
