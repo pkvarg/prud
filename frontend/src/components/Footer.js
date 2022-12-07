@@ -61,54 +61,56 @@ const Footer = () => {
           </Row>
         </div>
       </Container>
-      <Row>
-        <Col className='py-3'>
-          <div className='footer-copyright no-mobile'>
-            <p>
-              Copyright &copy; {Date().substring(11, 15)} PRÚD, všetky práva
-              vyhradené,
-            </p>
-            <a
-              href='https://www.lsm.org'
-              target='_blank'
-              rel='noreferrer'
-              className='footer-link'
-            >
-              s povolením LIVING STREAM MINISTRY
-            </a>
-            <a
-              href='https://www.pictusweb.sk'
-              target='_blank'
-              rel='noreferrer'
-              className='footer-link'
-            >
-              &#60;&#47;&#62; PICTUSWEB Development
-            </a>
-          </div>
+      <Container>
+        <Row>
+          <Col className='py-3'>
+            <div className='footer-copyright no-mobile'>
+              <p>
+                Copyright &copy; {Date().substring(11, 15)} PRÚD, všetky práva
+                vyhradené,
+              </p>
+              <a
+                href='https://www.lsm.org'
+                target='_blank'
+                rel='noreferrer'
+                className='footer-link'
+              >
+                s povolením LIVING STREAM MINISTRY
+              </a>
+              <a
+                href='https://www.pictusweb.sk'
+                target='_blank'
+                rel='noreferrer'
+                className='footer-link'
+              >
+                &#60;&#47;&#62; PICTUSWEB Development
+              </a>
+            </div>
 
-          <div className='footer-copyright mobile-only'>
-            <p>Copyright &copy; {Date().substring(11, 15)} PRÚD,</p>
-            <p>všetky práva vyhradené,</p>
-            <p> s povolením</p>
-            <a
-              href='https://www.lsm.org'
-              target='_blank'
-              rel='noreferrer'
-              className='footer-link'
-            >
-              LIVING STREAM MINISTRY
-            </a>
-            <a
-              href='https://www.pictusweb.sk'
-              target='_blank'
-              rel='noreferrer'
-              className='footer-link'
-            >
-              &#60;&#47;&#62; PICTUSWEB Development
-            </a>
-          </div>
-        </Col>
-      </Row>
+            <div className='footer-copyright mobile-only'>
+              <p>Copyright &copy; {Date().substring(11, 15)} PRÚD,</p>
+              <p>všetky práva vyhradené,</p>
+              <p> s povolením</p>
+              <a
+                href='https://www.lsm.org'
+                target='_blank'
+                rel='noreferrer'
+                className='footer-link'
+              >
+                LIVING STREAM MINISTRY
+              </a>
+              <a
+                href='https://www.pictusweb.sk'
+                target='_blank'
+                rel='noreferrer'
+                className='footer-link'
+              >
+                &#60;&#47;&#62; PICTUSWEB Development
+              </a>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </footer>
   )
 }
