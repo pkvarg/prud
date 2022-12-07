@@ -75,14 +75,22 @@ const ProductScreen = () => {
             <Col md={3}>
               <Image src={product.image} alt={product.name} fluid></Image>
               <ListGroup.Item className='product-see-also'>
-                <h5>Pozrite si tiež</h5>
-                <h6>{product.related}</h6>
                 <h5>Katalóg</h5>
-
                 <h6>{product.catalog}</h6>
                 <h5>Hmotnosť</h5>
-
                 <h6>{product.weight}</h6>
+                <h5>Tagy</h5>
+                <h6>{product.tags}</h6>
+                <h5>Väzba</h5>
+                <h6>{product.binding}</h6>
+                <h5>Počet strán</h5>
+                <h6>{product.pages}</h6>
+                <h5>ISBN:</h5>
+                <h6>{product.isbn}</h6>
+                <h5>Jazyk</h5>
+                <h6>{product.flag}</h6>
+                <h5>Pozrite si tiež</h5>
+                <h6>{product.related}</h6>
               </ListGroup.Item>
             </Col>
             <Col md={6}>

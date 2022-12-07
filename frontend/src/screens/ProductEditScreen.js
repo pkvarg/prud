@@ -135,7 +135,7 @@ const ProductEditScreen = () => {
           <Message variant='danger'>{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId='name'>
+            <Form.Group controlId='product-name'>
               <Form.Label>Meno</Form.Label>
               <Form.Control
                 type='name'
@@ -170,10 +170,10 @@ const ProductEditScreen = () => {
               {uploading && <Loader />}
             </Form.Group>
             <Form.Group controlId='author'>
-              <Form.Label>Značka</Form.Label>
+              <Form.Label>Autor</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Značka'
+                placeholder='Autor'
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
               ></Form.Control>
@@ -224,6 +224,61 @@ const ProductEditScreen = () => {
                 placeholder='Tituly...'
                 value={related}
                 onChange={(e) => setRelated(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='tags'>
+              <Form.Label>Tagy</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Tagy'
+                value={tags}
+                onChange={(e) => setTags(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='language'>
+              <Form.Label>Jazyk</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Jazyk'
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='binding'>
+              <Form.Label>Väzba</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Väzba'
+                value={binding}
+                onChange={(e) => setBinding(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='pages'>
+              <Form.Label>Počet strán</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Počet strán'
+                value={pages}
+                onChange={(e) => setPages(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='flag'>
+              <Form.Label>Vlajka</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Vlajka'
+                value={flag}
+                onChange={(e) => setFlag(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='isbn'>
+              <Form.Label>ISBN</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='ISBN'
+                value={isbn}
+                onChange={(e) => setIsbn(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
