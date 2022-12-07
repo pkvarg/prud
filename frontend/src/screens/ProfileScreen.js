@@ -113,7 +113,7 @@ const ProfileScreen = () => {
             ></Form.Control>
           </Form.Group>
           <Button type='submit' className='my-3 btn-blue'>
-            Zmeniť heslo
+            Upraviť profil
           </Button>
         </Form>
       </Col>

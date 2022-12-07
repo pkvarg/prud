@@ -631,6 +631,10 @@ footer {
     height: 35px;
   }
 
+  .active.navbar-brand {
+    width: 90vw !important;
+  }
+
   .red-navbar-item {
     font-weight: 400;
     margin: 2px 0;
@@ -731,10 +735,11 @@ footer {
     font-weight: 400;
     font-style: italic;
     color: #a07c54;
+    overflow: hidden; /* Hide scrollbars */
   }
   .search-navbar-mobile {
     display: block;
-    margin: 0 15px;
+    margin: 0 25px;
   }
   .header-search-btn {
     border: 1px solid #fefefe;
