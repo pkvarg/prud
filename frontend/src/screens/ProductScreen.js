@@ -72,13 +72,24 @@ const ProductScreen = () => {
         <>
           <Meta title={product.name} />
           <Row>
-            <Col md={6}>
-              <Image src={product.image} alt={product.name} fluid></Image>
-            </Col>
             <Col md={3}>
+              <Image src={product.image} alt={product.name} fluid></Image>
+              <ListGroup.Item className='product-see-also'>
+                <h5>Pozrite si tiež</h5>
+                <h6>{product.related}</h6>
+                <h5>Katalóg</h5>
+
+                <h6>{product.catalog}</h6>
+                <h5>Hmotnosť</h5>
+
+                <h6>{product.weight}</h6>
+              </ListGroup.Item>
+            </Col>
+            <Col md={6}>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
                   <h3>{product.name}</h3>
+                  <h4>{product.author}</h4>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Rating
@@ -88,7 +99,9 @@ const ProductScreen = () => {
                 </ListGroup.Item>
 
                 <ListGroup.Item>Cena: €{product.price}</ListGroup.Item>
-                <ListGroup.Item>Popis: {product.description}</ListGroup.Item>
+                <ListGroup.Item className='product-description'>
+                  Popis: {product.description}
+                </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={3}>

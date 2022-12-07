@@ -100,7 +100,7 @@ const ProductListScreen = () => {
                 <th>MENO</th>
                 <th>CENA</th>
                 <th>KATEGÓRIA</th>
-                <th>ZNAČKA</th>
+                {/* <th>ZNAČKA</th> */}
               </tr>
             </thead>
             <tbody>
@@ -110,7 +110,7 @@ const ProductListScreen = () => {
                   <td>{product.name}</td>
                   <td>${product.price}</td>
                   <td>{product.category}</td>
-                  <td>{product.brand}</td>
+                  {/* <td>{product.brand}</td> */}
 
                   <td>
                     <LinkContainer to={`/admin/product/${product._id}/edit`}>

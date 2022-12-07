@@ -246,7 +246,11 @@ const Header = () => {
             <LinkContainer to='/contact'>
               <Nav.Link className='red-navbar-item'>Kontakt</Nav.Link>
             </LinkContainer>
-            <a href='http://www.facebook.com/prud.sk' target='_blank'>
+            <a
+              href='http://www.facebook.com/prud.sk'
+              target='_blank'
+              rel='noreferrer'
+            >
               <i class='fab fa-facebook-f'></i>
             </a>
 

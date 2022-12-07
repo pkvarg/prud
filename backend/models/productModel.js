@@ -5,6 +5,7 @@ const reviewSchema = mongoose.Schema(
     name: { type: String, required: true },
     rating: { type: Number, required: true },
     comment: { type: String, required: true },
+
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
@@ -31,13 +32,12 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    brand: {
+    author: {
       type: String,
       required: true,
     },
     category: {
       type: String,
-      required: true,
     },
     description: {
       type: String,
@@ -64,6 +64,15 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    catalog: { type: String },
+    weight: { type: String },
+    related: { type: String },
+    tags: { type: String },
+    language: { type: String },
+    binding: { type: String },
+    pages: { type: String },
+    flag: { type: String },
+    isbn: { type: String },
   },
   {
     timestamps: true,

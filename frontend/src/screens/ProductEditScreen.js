@@ -17,11 +17,20 @@ const ProductEditScreen = () => {
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
   const [image, setImage] = useState('')
-  const [brand, setBrand] = useState('')
+  const [author, setAuthor] = useState('')
   const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState('')
   const [uploading, setUploading] = useState(false)
+  const [catalog, setCatalog] = useState('')
+  const [weight, setWeight] = useState('')
+  const [related, setRelated] = useState('')
+  const [tags, setTags] = useState('')
+  const [language, setLanguage] = useState('')
+  const [binding, setBinding] = useState('')
+  const [pages, setPages] = useState('')
+  const [flag, setFlag] = useState('')
+  const [isbn, setIsbn] = useState('')
 
   const dispatch = useDispatch()
 
@@ -46,10 +55,19 @@ const ProductEditScreen = () => {
         setName(product.name)
         setPrice(product.price)
         setImage(product.image)
-        setBrand(product.brand)
+        setAuthor(product.author)
         setCategory(product.category)
         setCountInStock(product.countInStock)
         setDescription(product.description)
+        setCatalog(product.catalog)
+        setWeight(product.weight)
+        setRelated(product.related)
+        setTags(product.tags)
+        setLanguage(product.language)
+        setBinding(product.binding)
+        setPages(product.pages)
+        setFlag(product.flag)
+        setIsbn(product.isbn)
       }
     }
   }, [dispatch, navigate, productId, product, successUpdate])
@@ -85,10 +103,19 @@ const ProductEditScreen = () => {
         name,
         price,
         image,
-        brand,
+        author,
         category,
         description,
         countInStock,
+        catalog,
+        weight,
+        related,
+        tags,
+        language,
+        binding,
+        pages,
+        flag,
+        isbn,
       })
     )
   }
@@ -142,13 +169,13 @@ const ProductEditScreen = () => {
               ></Form.Control>
               {uploading && <Loader />}
             </Form.Group>
-            <Form.Group controlId='brand'>
+            <Form.Group controlId='author'>
               <Form.Label>Značka</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Značka'
-                value={brand}
-                onChange={(e) => setBrand(e.target.value)}
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
@@ -172,17 +199,47 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
 
+            <Form.Group controlId='catalog'>
+              <Form.Label>Katalóg</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Katalóg'
+                value={catalog}
+                onChange={(e) => setCatalog(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='weight'>
+              <Form.Label>Hmotnosť</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Hmotnosť'
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='related'>
+              <Form.Label>Pozrite si tiež</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Tituly...'
+                value={related}
+                onChange={(e) => setRelated(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
             <Form.Group controlId='description'>
               <Form.Label>Popis</Form.Label>
               <Form.Control
-                type='text'
+                as='textarea'
+                rows={15}
+                type='textarea'
                 placeholder='Popis'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
-            <Button className='my-3 btn-blue' type='submit' variant='primary'>
+            <Button className='my-5 btn-blue' type='submit' variant='primary'>
               Uložiť
             </Button>
           </Form>

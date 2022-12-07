@@ -59,15 +59,24 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
-    name: 'Sample name',
+    name: '',
     price: 0,
     user: req.user._id,
     image: '/images/sample.jpg',
-    brand: 'Sample brand',
-    category: 'Sample category',
+    author: '',
+    category: '',
     countInStock: 0,
     numReviews: 0,
-    description: 'Sample description',
+    description: '',
+    catalog: '',
+    weight: '',
+    related: '',
+    tags: '',
+    language: '',
+    binding: '',
+    pages: '',
+    flag: '',
+    isbn: '',
   })
 
   const createdProduct = await product.save()
@@ -78,8 +87,24 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route   PUT /api/products/:id
 // @access  Private/Admin
 const updateProduct = asyncHandler(async (req, res) => {
-  const { name, price, description, image, brand, category, countInStock } =
-    req.body
+  const {
+    name,
+    price,
+    description,
+    image,
+    author,
+    category,
+    countInStock,
+    catalog,
+    weight,
+    related,
+    tags,
+    language,
+    binding,
+    pages,
+    flag,
+    isbn,
+  } = req.body
 
   const product = await Product.findById(req.params.id)
 
@@ -88,9 +113,18 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.price = price
     product.description = description
     product.image = image
-    product.brand = brand
+    product.author = author
     product.category = category
     product.countInStock = countInStock
+    product.catalog = catalog
+    product.weight = weight
+    product.related = related
+    product.tags = tags
+    product.language = language
+    product.binding = binding
+    product.pages = pages
+    product.flag = flag
+    product.isbn = isbn
 
     const updatedProduct = await product.save()
     res.json(updatedProduct)
