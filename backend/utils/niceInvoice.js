@@ -126,14 +126,14 @@ let invoiceTable = (doc, invoice) => {
 
   for (i = 0; i < invoice.items.length; i++) {
     let item = invoice.items[i]
-    let total = invoice.items[i].qty * invoice.items[i].price
+    let total = (invoice.items[i].qty * invoice.items[i].price).toFixed(2)
     const position = invoiceTableTop + (i + 1) * 30
     tableRow(
       doc,
       position,
       item.name,
       item.description,
-      formatCurrency(item.price, currencySymbol),
+      formatCurrency(item.price.toFixed(2), currencySymbol),
       item.qty,
       total
     ),

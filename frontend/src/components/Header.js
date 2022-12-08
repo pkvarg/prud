@@ -251,7 +251,7 @@ const Header = () => {
               target='_blank'
               rel='noreferrer'
             >
-              <i class='fab fa-facebook-f'></i>
+              <i className='fab fa-facebook-f'></i>
             </a>
 
             {/* <div className='search-navbar-mobile mobile-only'>

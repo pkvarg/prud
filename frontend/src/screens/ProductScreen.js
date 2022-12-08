@@ -59,6 +59,10 @@ const ProductScreen = () => {
     navigate('/')
   }
 
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2)
+  }
+
   return (
     <>
       <Link className='btn btn-back my-3' to='/'>
@@ -119,13 +123,15 @@ const ProductScreen = () => {
                     <Row>
                       <Col>Cena</Col>
                       <Col>
-                        <strong> €{product.price}</strong>
+                        €{addDecimals(product.price)}
+                        {/* € {(2.232323).toFixed(2)} */}
+                        {/* <strong> €{product.price}</strong> */}
                       </Col>
                     </Row>
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Status</Col>
+                      <Col>Dostupnosť</Col>
                       <Col>
                         {product.countInStock > 0 ? 'Na sklade' : 'Vypredané'}
                       </Col>

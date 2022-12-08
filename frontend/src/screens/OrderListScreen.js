@@ -37,11 +37,11 @@ const OrderListScreen = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>USER</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
+              <th>Užívateľ</th>
+              <th>Dátum</th>
+              <th>Cena</th>
+              <th>Zaplatené</th>
+              <th>Odoslané</th>
             </tr>
           </thead>
           <tbody>

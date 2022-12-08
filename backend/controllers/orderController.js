@@ -53,7 +53,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     let productsObject = {}
     loop.map((item, i) => {
       productsObject[i] =
-        ' ' + item.qty + ' x ' + item.name + ' €' + item.price + '  '
+        ' ' + item.qty + ' x ' + item.name + ' €' + item.price.toFixed(2) + '  '
     })
 
     // object with address info
@@ -64,7 +64,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     productsObject.email = email
     productsObject.name = name
     productsObject.taxPrice = createdOrder.taxPrice
-    productsObject.totalPrice = createdOrder.totalPrice
+    productsObject.totalPrice = createdOrder.totalPrice.toFixed(2)
     productsObject.shippingPrice = createdOrder.shippingPrice.toFixed(2)
     productsObject.isPaid = createdOrder.isPaid
     productsObject.productsCount = productsCount
@@ -138,7 +138,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
       invoiceNo: invoiceNo,
       paymentMethod: createdOrder.paymentMethod,
 
-      total: createdOrder.totalPrice,
+      total: createdOrder.totalPrice.toFixed(2),
       taxPrice: createdOrder.taxPrice,
       shippingPrice: createdOrder.shippingPrice.toFixed(2),
       order_number: 1234222,
@@ -213,7 +213,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     let updatedOrderProductsObject = {}
     updatedOrderLoop.map((item, i) => {
       updatedOrderProductsObject[i] =
-        item.qty + ' x ' + item.name + ' €' + item.price
+        item.qty + ' x ' + item.name + ' €' + item.price.toFixed(2)
     })
 
     // object with address info
@@ -235,7 +235,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
       ' ' +
       updatedOrder.paymentResult.name.surname
     updatedOrderProductsObject.taxPrice = updatedOrder.taxPrice
-    updatedOrderProductsObject.totalPrice = updatedOrder.totalPrice
+    updatedOrderProductsObject.totalPrice = updatedOrder.totalPrice.toFixed(2)
     updatedOrderProductsObject.shippingPrice =
       updatedOrder.shippingPrice.toFixed(2)
     updatedOrderProductsObject.isPaid = updatedOrder.isPaid
