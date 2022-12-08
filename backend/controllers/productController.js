@@ -105,6 +105,8 @@ const updateProduct = asyncHandler(async (req, res) => {
     flag,
     isbn,
   } = req.body
+  const qty = req.body.prodQty
+  console.log(qty)
 
   const product = await Product.findById(req.params.id)
 
@@ -125,6 +127,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.pages = pages
     product.flag = flag
     product.isbn = isbn
+    product.qty = qty
 
     const updatedProduct = await product.save()
     res.json(updatedProduct)
@@ -133,6 +136,27 @@ const updateProduct = asyncHandler(async (req, res) => {
     throw new Error('Product not found')
   }
 })
+
+// @desc    Update count in stock upis
+// @route   PUT /api/products/:id/upis
+// @access  Private/Admin
+// const upis = asyncHandler(async (req, res) => {
+//   const prodQty = req.body
+//   const prodId = req.body
+
+//   const product = await Product.findById(prodId)
+//   console.log('cont:', prodId, prodQty)
+
+//   if (product) {
+//     product.qty = prodQty
+
+//     const updatedProduct = await product.save()
+//     res.json(updatedProduct)
+//   } else {
+//     res.status(404)
+//     throw new Error('Product not found')
+//   }
+// })
 
 // @desc    Create new review
 // @route   POST /api/products/:id/reviews

@@ -60,6 +60,11 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    qty: {
+      type: Number,
+      default: 0,
+    },
+
     catalog: { type: String },
     weight: { type: String },
     related: { type: String },

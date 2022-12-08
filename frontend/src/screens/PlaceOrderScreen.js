@@ -4,7 +4,7 @@ import { Button, Row, Col, ListGroup, Image, Card, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
-import { createOrder } from '../actions/orderActions'
+import { createOrder, updateQty } from '../actions/orderActions'
 
 const PlaceOrderScreen = () => {
   const dispatch = useDispatch()
@@ -51,6 +51,14 @@ const PlaceOrderScreen = () => {
 
   const [message, setMessage] = useState(null)
 
+  /* prod quantities TO update countInStock */
+  let prodsQtys = {}
+  cart.cartItems.map((item, index) => {
+    const productId = cart.cartItems[index].product
+    const productQty = Number(cart.cartItems[index].qty)
+    return (prodsQtys[index] = { product: productId, qty: productQty })
+  })
+
   const placeOrderhandler = () => {
     if (gdrpOrderChecked && tradeRulesOrderChecked) {
       dispatch(
@@ -67,6 +75,7 @@ const PlaceOrderScreen = () => {
           email: orderEmailToEmail,
         })
       )
+      dispatch(updateQty(prodsQtys))
     } else {
       setMessage('Potvrďte súhlas nižšie')
     }

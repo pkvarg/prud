@@ -21,6 +21,9 @@ import {
   ORDER_DELIVER_REQUEST,
   ORDER_DELIVER_SUCCESS,
   ORDER_DELIVER_FAIL,
+  UPDATE_COUNTINSTOCK_REQUEST,
+  UPDATE_COUNTINSTOCK_SUCCESS,
+  UPDATE_COUNTINSTOCK_FAIL,
   // ORDER_DELIVER_RESET,
 } from '../constants/orderConstants'
 
@@ -50,6 +53,50 @@ export const createOrder = (order) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ORDER_CREATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const updateQty = (prodsQtys) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: UPDATE_COUNTINSTOCK_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    let prodId = `${prodsQtys[0].product}`
+    let prodQty = `${prodsQtys[0].qty}`
+    console.log(prodId, prodQty)
+
+    // const { data } = await axios.put(
+    //   `/api/products/${product._id}`,
+    //   product,
+    //   config
+    // )
+
+    const { data } = await axios.put(`/api/products/${prodId}`, prodQty, config)
+
+    dispatch({
+      type: UPDATE_COUNTINSTOCK_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: UPDATE_COUNTINSTOCK_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

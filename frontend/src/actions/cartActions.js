@@ -32,7 +32,6 @@ export const removeFromCart = (id) => (dispatch, getState) => {
 }
 
 export const saveShippingAddress = (data) => (dispatch) => {
-  console.log('ShBl:', data)
   dispatch({
     type: CART_SAVE_SHIPPING_ADDRESS,
     payload: data,
