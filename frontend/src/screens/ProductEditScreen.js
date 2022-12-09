@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Dropdown, FormControl } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -24,13 +24,21 @@ const ProductEditScreen = () => {
   const [uploading, setUploading] = useState(false)
   const [catalog, setCatalog] = useState('')
   const [weight, setWeight] = useState('')
-  const [related, setRelated] = useState('')
+  const [related, setRelated] = useState([])
   const [tags, setTags] = useState('')
   const [language, setLanguage] = useState('')
   const [binding, setBinding] = useState('')
   const [pages, setPages] = useState('')
   const [flag, setFlag] = useState('')
   const [isbn, setIsbn] = useState('')
+
+  /* All Products Dropdown content*/
+  const productList = useSelector((state) => state.productList)
+  const { products } = productList
+  // products.map((product) => {
+  //   console.log(product.name)
+  //   console.log(product._id)
+  // })
 
   const dispatch = useDispatch()
 
@@ -62,6 +70,7 @@ const ProductEditScreen = () => {
         setCatalog(product.catalog)
         setWeight(product.weight)
         setRelated(product.related)
+        // product.related = related
         setTags(product.tags)
         setLanguage(product.language)
         setBinding(product.binding)
@@ -70,7 +79,7 @@ const ProductEditScreen = () => {
         setIsbn(product.isbn)
       }
     }
-  }, [dispatch, navigate, productId, product, successUpdate])
+  }, [dispatch, navigate, productId, product, successUpdate, products])
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0]
@@ -118,6 +127,10 @@ const ProductEditScreen = () => {
         isbn,
       })
     )
+  }
+
+  const relatedHandler = (product) => {
+    setRelated([related, product])
   }
 
   return (
@@ -219,11 +232,50 @@ const ProductEditScreen = () => {
             </Form.Group>
             <Form.Group controlId='related'>
               <Form.Label>Pozrite si tiež</Form.Label>
+              {/* <Dropdown>
+                <Dropdown.Toggle variant='success' id='dropdown-basic'>
+                  Tituly
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  {products.map((product) => {
+                    return (
+                      <Dropdown.Item
+                        key={product._id}
+                        // value={product.name}
+                      >
+                        {product.name}
+                      </Dropdown.Item>
+                    )
+                  })}
+                </Dropdown.Menu>
+              </Dropdown> */}
+              <Dropdown>
+                <Dropdown.Toggle variant='success' id='dropdown-basic'>
+                  Tituly
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {products.map((product) => {
+                    return (
+                      <Dropdown.Item
+                        key={product._id}
+                        value={product.name}
+                        readOnly
+                        onClick={() => relatedHandler(product.name)}
+                      >
+                        {product.name}
+                      </Dropdown.Item>
+                    )
+                  })}
+                </Dropdown.Menu>
+              </Dropdown>
+
               <Form.Control
-                type='text'
+                type='textarea'
+                as='textarea'
                 placeholder='Tituly...'
                 value={related}
-                onChange={(e) => setRelated(e.target.value)}
+                readOnly
               ></Form.Control>
             </Form.Group>
 
