@@ -68,6 +68,9 @@ const productSchema = mongoose.Schema(
     catalog: { type: String },
     weight: { type: String },
     related: { type: Object },
+    related2: { type: Object },
+    related3: { type: Object },
+
     tags: { type: String },
     language: { type: String },
     binding: { type: String },

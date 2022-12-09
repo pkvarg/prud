@@ -492,6 +492,20 @@ img.slide-img-2.img-fluid {
 .product-see-also h6 {
   font-size: 15px;
 }
+
+.related-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.related-link:hover {
+  color: #24b9d6;
+}
+
+.related-dropdown {
+  background-color: #24b9d6;
+}
+
 .btn-back {
   background-color: #2cb3e6;
   border: 1px solid #2cb3e6;

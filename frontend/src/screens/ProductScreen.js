@@ -63,6 +63,10 @@ const ProductScreen = () => {
     return (Math.round(num * 100) / 100).toFixed(2)
   }
 
+  const handleLink = (id) => {
+    navigate(`/product/${id}`)
+  }
+
   return (
     <>
       <Link className='btn btn-back my-3' to='/'>
@@ -94,7 +98,21 @@ const ProductScreen = () => {
                 <h5>Jazyk</h5>
                 <h6>{product.flag}</h6>
                 <h5>Pozrite si tiež</h5>
-                <h5>{product.related.name}</h5>
+                {product.related && (
+                  <Form onClick={() => handleLink(product.related._id)}>
+                    <h5 className='related-link'>{product.related.name}</h5>
+                  </Form>
+                )}
+                {product.related2 && (
+                  <Form onClick={() => handleLink(product.related2._id)}>
+                    <h5 className='related-link'>{product.related2.name}</h5>
+                  </Form>
+                )}
+                {product.related3 && (
+                  <Form onClick={() => handleLink(product.related3._id)}>
+                    <h5 className='related-link'>{product.related3.name}</h5>
+                  </Form>
+                )}
               </ListGroup.Item>
             </Col>
             <Col md={6}>

@@ -25,6 +25,9 @@ const ProductEditScreen = () => {
   const [catalog, setCatalog] = useState('')
   const [weight, setWeight] = useState('')
   const [related, setRelated] = useState('')
+  const [related2, setRelated2] = useState('')
+  const [related3, setRelated3] = useState('')
+
   const [tags, setTags] = useState('')
   const [language, setLanguage] = useState('')
   const [binding, setBinding] = useState('')
@@ -35,10 +38,6 @@ const ProductEditScreen = () => {
   /* All Products Dropdown content*/
   const productList = useSelector((state) => state.productList)
   const { products } = productList
-  // products.map((product) => {
-  //   console.log(product.name)
-  //   console.log(product._id)
-  // })
 
   const dispatch = useDispatch()
 
@@ -70,7 +69,8 @@ const ProductEditScreen = () => {
         setCatalog(product.catalog)
         setWeight(product.weight)
         setRelated(product.related)
-        // product.related = related
+        setRelated2(product.related2)
+        setRelated3(product.related3)
         setTags(product.tags)
         setLanguage(product.language)
         setBinding(product.binding)
@@ -119,6 +119,8 @@ const ProductEditScreen = () => {
         catalog,
         weight,
         related,
+        related2,
+        related3,
         tags,
         language,
         binding,
@@ -127,22 +129,21 @@ const ProductEditScreen = () => {
         isbn,
       })
     )
+    document.location.href = `/admin/product/${productId}/edit`
   }
-  // const relatedHandler = (product) => {
-  //   let objectsCount = related.length
-  //   if (objectsCount === 0) {
-  //     setRelated(product)
-  //   } else {
-  //     setRelated([related, product])
-  //   }
-  //   console.log(objectsCount)
-  // }
-  let list = []
 
   const relatedHandler = (product) => {
-    let objectsCount = related.length
-    console.log(product.name, product._id)
     setRelated(product)
+  }
+
+  const relatedHandler2 = (product) => {
+    setRelated2(product)
+    console.log(product)
+  }
+
+  const relatedHandler3 = (product) => {
+    setRelated3(product)
+    console.log(product)
   }
 
   return (
@@ -243,10 +244,14 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId='related'>
-              <Form.Label>Pozrite si tiež</Form.Label>
+              <Form.Label className='my-3'>Pozrite si tiež</Form.Label>
               <Dropdown>
-                <Dropdown.Toggle variant='success' id='dropdown-basic'>
-                  Tituly
+                <Dropdown.Toggle
+                  variant='success'
+                  id='dropdown-basic'
+                  className='related-dropdown'
+                >
+                  Titul č.1
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {products.map((product) => {
@@ -262,13 +267,67 @@ const ProductEditScreen = () => {
                   })}
                 </Dropdown.Menu>
               </Dropdown>
-
               <Form.Control
-                type='textarea'
-                as='textarea'
-                placeholder='Tituly...'
+                type='text'
+                placeholder='Titul'
                 value={related.name}
                 onChange={(e) => setRelated(e.target.value)}
+              ></Form.Control>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant='success'
+                  id='dropdown-basic'
+                  className='related-dropdown'
+                >
+                  Titul č.2
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {products.map((product) => {
+                    return (
+                      <Dropdown.Item
+                        key={product._id}
+                        value={product.name}
+                        onClick={() => relatedHandler2(product)}
+                      >
+                        {product.name}
+                      </Dropdown.Item>
+                    )
+                  })}
+                </Dropdown.Menu>
+              </Dropdown>
+              <Form.Control
+                type='text'
+                placeholder='Titul2'
+                value={related2.name}
+                onChange={(e) => setRelated2(e.target.value)}
+              ></Form.Control>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant='success'
+                  id='dropdown-basic'
+                  className='related-dropdown'
+                >
+                  Titul č.3
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {products.map((product) => {
+                    return (
+                      <Dropdown.Item
+                        key={product._id}
+                        value={product.name}
+                        onClick={() => relatedHandler3(product)}
+                      >
+                        {product.name}
+                      </Dropdown.Item>
+                    )
+                  })}
+                </Dropdown.Menu>
+              </Dropdown>
+              <Form.Control
+                type='text'
+                placeholder='Titul3'
+                value={related3.name}
+                onChange={(e) => setRelated3(e.target.value)}
               ></Form.Control>
             </Form.Group>
 

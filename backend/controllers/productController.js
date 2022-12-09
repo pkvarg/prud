@@ -71,6 +71,8 @@ const createProduct = asyncHandler(async (req, res) => {
     catalog: '',
     weight: '',
     related: '',
+    related2: '',
+    related3: '',
     tags: '',
     language: '',
     binding: '',
@@ -98,6 +100,8 @@ const updateProduct = asyncHandler(async (req, res) => {
     catalog,
     weight,
     related,
+    related2,
+    related3,
     tags,
     language,
     binding,
@@ -119,6 +123,9 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.catalog = catalog
     product.weight = weight
     product.related = related
+    product.related2 = related2
+    product.related3 = related3
+
     product.tags = tags
     product.language = language
     product.binding = binding
