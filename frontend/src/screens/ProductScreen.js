@@ -13,7 +13,7 @@ import {
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
 const ProductScreen = () => {
-  const [qty, setQty] = useState(1)
+  const [qty, setQty] = useState(0)
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
 
@@ -94,7 +94,7 @@ const ProductScreen = () => {
                 <h5>Jazyk</h5>
                 <h6>{product.flag}</h6>
                 <h5>Pozrite si tiež</h5>
-                <h6>{product.related}</h6>
+                <h5>{product.related.name}</h5>
               </ListGroup.Item>
             </Col>
             <Col md={6}>

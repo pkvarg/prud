@@ -24,7 +24,7 @@ const ProductEditScreen = () => {
   const [uploading, setUploading] = useState(false)
   const [catalog, setCatalog] = useState('')
   const [weight, setWeight] = useState('')
-  const [related, setRelated] = useState([])
+  const [related, setRelated] = useState('')
   const [tags, setTags] = useState('')
   const [language, setLanguage] = useState('')
   const [binding, setBinding] = useState('')
@@ -128,9 +128,21 @@ const ProductEditScreen = () => {
       })
     )
   }
+  // const relatedHandler = (product) => {
+  //   let objectsCount = related.length
+  //   if (objectsCount === 0) {
+  //     setRelated(product)
+  //   } else {
+  //     setRelated([related, product])
+  //   }
+  //   console.log(objectsCount)
+  // }
+  let list = []
 
   const relatedHandler = (product) => {
-    setRelated([related, product])
+    let objectsCount = related.length
+    console.log(product.name, product._id)
+    setRelated(product)
   }
 
   return (
@@ -232,24 +244,6 @@ const ProductEditScreen = () => {
             </Form.Group>
             <Form.Group controlId='related'>
               <Form.Label>Pozrite si tiež</Form.Label>
-              {/* <Dropdown>
-                <Dropdown.Toggle variant='success' id='dropdown-basic'>
-                  Tituly
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  {products.map((product) => {
-                    return (
-                      <Dropdown.Item
-                        key={product._id}
-                        // value={product.name}
-                      >
-                        {product.name}
-                      </Dropdown.Item>
-                    )
-                  })}
-                </Dropdown.Menu>
-              </Dropdown> */}
               <Dropdown>
                 <Dropdown.Toggle variant='success' id='dropdown-basic'>
                   Tituly
@@ -260,8 +254,7 @@ const ProductEditScreen = () => {
                       <Dropdown.Item
                         key={product._id}
                         value={product.name}
-                        readOnly
-                        onClick={() => relatedHandler(product.name)}
+                        onClick={() => relatedHandler(product)}
                       >
                         {product.name}
                       </Dropdown.Item>
@@ -274,8 +267,8 @@ const ProductEditScreen = () => {
                 type='textarea'
                 as='textarea'
                 placeholder='Tituly...'
-                value={related}
-                readOnly
+                value={related.name}
+                onChange={(e) => setRelated(e.target.value)}
               ></Form.Control>
             </Form.Group>
 

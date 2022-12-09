@@ -110,6 +110,8 @@ const ProductListScreen = () => {
                   <td>{product.name}</td>
                   <td>€{product.price.toFixed(2)}</td>
                   <td>{product.category}</td>
+                  {/* <td>{product.related}</td> */}
+
                   {/* <td>{product.brand}</td> */}
 
                   <td>
