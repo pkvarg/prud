@@ -61,50 +61,6 @@ export const createOrder = (order) => async (dispatch, getState) => {
   }
 }
 
-export const updateQty = (prodsQtys) => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: UPDATE_COUNTINSTOCK_REQUEST,
-    })
-
-    const {
-      userLogin: { userInfo },
-    } = getState()
-
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    }
-
-    let prodId = `${prodsQtys[0].product}`
-    let prodQty = `${prodsQtys[0].qty}`
-    console.log(prodId, prodQty)
-
-    // const { data } = await axios.put(
-    //   `/api/products/${product._id}`,
-    //   product,
-    //   config
-    // )
-
-    const { data } = await axios.put(`/api/products/${prodId}`, prodQty, config)
-
-    dispatch({
-      type: UPDATE_COUNTINSTOCK_SUCCESS,
-      payload: data,
-    })
-  } catch (error) {
-    dispatch({
-      type: UPDATE_COUNTINSTOCK_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    })
-  }
-}
-
 export const getOrderDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({

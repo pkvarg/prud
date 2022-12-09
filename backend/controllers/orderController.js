@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Order from '../models/orderModel.js'
+import Product from '../models/productModel.js'
 import Email from '../utils/email.js'
 import niceInvoice from '../utils/niceInvoice.js'
 import path from 'path'
@@ -23,6 +24,20 @@ const addOrderItems = asyncHandler(async (req, res) => {
   const user = req.body.user
   const name = req.body.name
   const email = req.body.email
+
+  /* Update Count in stock on purchased products */
+  const qtys = req.body.qtys
+  Object.keys(qtys).forEach(async (key, index) => {
+    let purchasedProductId = `${qtys[key].product}`
+    let purchasedProductQty = `${qtys[key].qty}`
+    let product = await Product.findById(purchasedProductId)
+    let updatedCountInStockToDb = product.countInStock - purchasedProductQty
+    if (product) {
+      product.countInStock = updatedCountInStockToDb
+    }
+    const prodNewCountInStock = await product.save()
+  })
+
   if (orderItems && orderItems.length === 0) {
     res.status(400)
     throw new Error('No order items')

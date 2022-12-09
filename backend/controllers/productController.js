@@ -105,8 +105,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     flag,
     isbn,
   } = req.body
-  const qty = req.body.prodQty
-  console.log(qty)
 
   const product = await Product.findById(req.params.id)
 
@@ -127,7 +125,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.pages = pages
     product.flag = flag
     product.isbn = isbn
-    product.qty = qty
 
     const updatedProduct = await product.save()
     res.json(updatedProduct)

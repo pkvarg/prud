@@ -4,7 +4,7 @@ import { Button, Row, Col, ListGroup, Image, Card, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
-import { createOrder, updateQty } from '../actions/orderActions'
+import { createOrder } from '../actions/orderActions'
 
 const PlaceOrderScreen = () => {
   const dispatch = useDispatch()
@@ -73,9 +73,9 @@ const PlaceOrderScreen = () => {
           user: userInfo.name,
           name: cart.shippingAddress.name,
           email: orderEmailToEmail,
+          qtys: prodsQtys,
         })
       )
-      dispatch(updateQty(prodsQtys))
     } else {
       setMessage('Potvrďte súhlas nižšie')
     }
