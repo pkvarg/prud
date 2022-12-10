@@ -16,6 +16,9 @@ const ProductEditScreen = () => {
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
+  const [discount, setDiscount] = useState(0)
+  const [discountedPrice, setDiscountedPrice] = useState(0)
+
   const [image, setImage] = useState('')
   const [author, setAuthor] = useState('')
   const [category, setCategory] = useState('')
@@ -60,6 +63,8 @@ const ProductEditScreen = () => {
       } else {
         setName(product.name)
         setPrice(product.price)
+        setDiscount(product.discount)
+        setDiscountedPrice(product.discountedPrice)
         setImage(product.image)
         setAuthor(product.author)
         setCategory(product.category)
@@ -109,6 +114,8 @@ const ProductEditScreen = () => {
         _id: productId,
         name,
         price,
+        discount,
+        discountedPrice,
         image,
         author,
         category,
@@ -143,6 +150,12 @@ const ProductEditScreen = () => {
     console.log(product)
   }
 
+  const discountHandler = (discount) => {
+    setDiscount(discount)
+    const newPrice = (price - (price * discount) / 100).toFixed(2)
+    setDiscountedPrice(newPrice)
+  }
+
   return (
     <>
       <Link to='/admin/productlist' className='btn btn-back my-3'>
@@ -175,6 +188,26 @@ const ProductEditScreen = () => {
                 placeholder='Cena'
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='discount'>
+              <Form.Label>Zľava (vo formáte napr: 30 bez %)</Form.Label>
+              <Form.Control
+                type='number'
+                placeholder='Zľava'
+                value={discount}
+                onChange={(e) => discountHandler(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='discounted-price'>
+              <Form.Label>Cena po zľave (vypočíta sa automaticky)</Form.Label>
+              <Form.Control
+                type='number'
+                placeholder='Cena po zľave'
+                value={discountedPrice}
+                readOnly
               ></Form.Control>
             </Form.Group>
 

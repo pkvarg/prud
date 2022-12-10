@@ -125,11 +125,14 @@ let invoiceTable = (doc, invoice) => {
   doc.font('Cardo')
 
   let productsTotalPrice = 0
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2)
+  }
 
   for (i = 0; i < invoice.items.length; i++) {
     let item = invoice.items[i]
-    let total = (invoice.items[i].qty * invoice.items[i].price).toFixed(2)
-    productsTotalPrice = Number(productsTotalPrice + total).toFixed(2)
+    let total = Number(invoice.items[i].qty * invoice.items[i].price)
+    productsTotalPrice = productsTotalPrice + total
     const position = invoiceTableTop + (i + 1) * 30
     tableRow(
       doc,
@@ -138,7 +141,7 @@ let invoiceTable = (doc, invoice) => {
       item.description,
       formatCurrency(item.price.toFixed(2), currencySymbol),
       item.qty,
-      total
+      addDecimals(total)
     ),
       generateHr(doc, position + 20)
   }
@@ -146,6 +149,7 @@ let invoiceTable = (doc, invoice) => {
   let shippingPrice = invoice.shippingPrice
   // let tax = invoice.taxPrice
   let totalPrice = invoice.total
+  productsTotalPrice = addDecimals(productsTotalPrice)
 
   const productsTotalPosition = invoiceTableTop + (i + 1) * 30
   doc.font('Cardo-Bold')

@@ -142,7 +142,9 @@ const ProductScreen = () => {
                   />
                 </ListGroup.Item>
 
-                <ListGroup.Item>Cena: €{product.price}</ListGroup.Item>
+                <ListGroup.Item>
+                  Cena: €{addDecimals(product.price)}
+                </ListGroup.Item>
                 <ListGroup.Item className='product-description'>
                   Popis: {product.description}
                 </ListGroup.Item>
@@ -153,17 +155,25 @@ const ProductScreen = () => {
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Cena</Col>
+                      <Col>Cena :</Col>
                       <Col>
-                        €{addDecimals(product.price)}
-                        {/* € {(2.232323).toFixed(2)} */}
-                        {/* <strong> €{product.price}</strong> */}
+                        {product.discount ? (
+                          <h5 className='discounted-price'>
+                            <span className='discounted-price-span'>
+                              Zľava {product.discount}%
+                            </span>
+                            €{addDecimals(product.discountedPrice)}
+                          </h5>
+                        ) : (
+                          <h4>€{addDecimals(product.price)}</h4>
+                        )}
+                        {/* €{addDecimals(product.price)} */}
                       </Col>
                     </Row>
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Dostupnosť</Col>
+                      <Col>Status:</Col>
                       <Col>
                         {product.countInStock > 0 ? 'Na sklade' : 'Vypredané'}
                       </Col>
@@ -173,7 +183,7 @@ const ProductScreen = () => {
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
-                        <Col>Počet</Col>
+                        <Col>Počet:</Col>
                         <Col>
                           <Form.Control
                             as='select'

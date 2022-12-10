@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import Rating from './Rating'
 
+const addDecimals = (num) => {
+  return (Math.round(num * 100) / 100).toFixed(2)
+}
+
 const Product = ({ product }) => {
   return (
     <Card className='my-3 p-3 rounded'>
@@ -23,7 +27,17 @@ const Product = ({ product }) => {
         </Card.Text> */}
 
         <Card.Text as='h3' className='product-home-price'>
-          € {product.price.toFixed(2)}
+          {product.discount ? (
+            <h5 className='discounted-price'>
+              <span className='discounted-price-span'>
+                Zľava {product.discount}%
+              </span>
+              €{addDecimals(product.discountedPrice)}
+            </h5>
+          ) : (
+            <h4>€{addDecimals(product.price)}</h4>
+          )}
+          {/* € {product.price.toFixed(2)} */}
         </Card.Text>
       </Card.Body>
     </Card>

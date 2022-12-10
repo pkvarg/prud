@@ -65,7 +65,8 @@ const productSchema = mongoose.Schema(
     related: { type: Object },
     related2: { type: Object },
     related3: { type: Object },
-
+    discount: { type: Number },
+    discountedPrice: { type: Number },
     tags: { type: String },
     language: { type: String },
     binding: { type: String },
