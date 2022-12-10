@@ -124,9 +124,12 @@ let invoiceTable = (doc, invoice) => {
   generateHr(doc, invoiceTableTop + 20)
   doc.font('Cardo')
 
+  let productsTotalPrice = 0
+
   for (i = 0; i < invoice.items.length; i++) {
     let item = invoice.items[i]
     let total = (invoice.items[i].qty * invoice.items[i].price).toFixed(2)
+    productsTotalPrice = Number(productsTotalPrice + total).toFixed(2)
     const position = invoiceTableTop + (i + 1) * 30
     tableRow(
       doc,
@@ -141,20 +144,28 @@ let invoiceTable = (doc, invoice) => {
   }
 
   let shippingPrice = invoice.shippingPrice
-  let tax = invoice.taxPrice
+  // let tax = invoice.taxPrice
   let totalPrice = invoice.total
-  let sumTotal = tax + totalPrice
 
-  const subtotalPosition = invoiceTableTop + (i + 1) * 30
+  const productsTotalPosition = invoiceTableTop + (i + 1) * 30
   doc.font('Cardo-Bold')
   totalTable(
     doc,
-    subtotalPosition,
+    productsTotalPosition,
+    'Produkty',
+    formatCurrency(productsTotalPrice, currencySymbol)
+  )
+
+  const shippingPosition = productsTotalPosition + 20
+  doc.font('Cardo-Bold')
+  totalTable(
+    doc,
+    shippingPosition,
     'Poštovné',
     formatCurrency(shippingPrice, currencySymbol)
   )
 
-  const paidToDatePosition = subtotalPosition + 20
+  const paidToDatePosition = shippingPosition + 20
   doc.font('Cardo-Bold')
   totalTable(
     doc,
