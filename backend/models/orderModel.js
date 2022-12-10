@@ -55,6 +55,10 @@ const orderSchema = mongoose.Schema(
       address: { type: Object },
       name: { type: Object },
     },
+    discounts: {
+      type: Object,
+    },
+
     taxPrice: {
       type: Number,
       required: true,

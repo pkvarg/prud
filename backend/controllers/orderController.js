@@ -24,6 +24,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
   const user = req.body.user
   const name = req.body.name
   const email = req.body.email
+  const discounts = req.body.discounts
 
   /* Update Count in stock on purchased products */
   const qtys = req.body.qtys
@@ -41,7 +42,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
   if (orderItems && orderItems.length === 0) {
     res.status(400)
     throw new Error('No order items')
-    return
+    // return
   } else {
     const order = new Order({
       orderItems,
@@ -54,8 +55,10 @@ const addOrderItems = asyncHandler(async (req, res) => {
       totalPrice,
       name,
       email,
+      discounts,
     })
     const createdOrder = await order.save()
+    console.log('co:', createdOrder)
     const createdOrderId = createdOrder._id
     const today = new Date()
     const currentYear = today.getFullYear()
@@ -67,8 +70,27 @@ const addOrderItems = asyncHandler(async (req, res) => {
     const productsCount = loop.length
     let productsObject = {}
     loop.map((item, i) => {
-      productsObject[i] =
-        ' ' + item.qty + ' x ' + item.name + ' €' + item.price.toFixed(2) + '  '
+      if (discounts[i].discount > 0) {
+        productsObject[i] =
+          ' ' +
+          item.qty +
+          ' x ' +
+          item.name +
+          ' €' +
+          item.price.toFixed(2) +
+          ' zľava: ' +
+          discounts[i].discount +
+          ' %'
+      } else {
+        productsObject[i] =
+          ' ' +
+          item.qty +
+          ' x ' +
+          item.name +
+          ' €' +
+          item.price.toFixed(2) +
+          '  '
+      }
     })
 
     // object with address info
@@ -150,6 +172,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
         DIC: createdOrder.shippingAddress.billingDIC,
       },
       items: createdOrder.orderItems,
+      discounts: discounts,
       invoiceNo: invoiceNo,
       paymentMethod: createdOrder.paymentMethod,
 
@@ -221,26 +244,44 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     }
 
     const updatedOrder = await order.save()
+    const discounts = order.discounts
 
     // send PaymentSuccessfull Email
     const updatedOrderLoop = updatedOrder.orderItems
     const updatedOrderProductsCount = updatedOrderLoop.length
     let updatedOrderProductsObject = {}
+
     updatedOrderLoop.map((item, i) => {
-      updatedOrderProductsObject[i] =
-        item.qty + ' x ' + item.name + ' €' + item.price.toFixed(2)
+      if (discounts[i].discount > 0) {
+        updatedOrderProductsObject[i] =
+          ' ' +
+          item.qty +
+          ' x ' +
+          item.name +
+          ' €' +
+          item.price.toFixed(2) +
+          ' zľava: ' +
+          discounts[i].discount +
+          ' %'
+      } else {
+        updatedOrderProductsObject[i] =
+          ' ' +
+          item.qty +
+          ' x ' +
+          item.name +
+          ' €' +
+          item.price.toFixed(2) +
+          '  '
+      }
     })
+
+    // updatedOrderLoop.map((item, i) => {
+    //   updatedOrderProductsObject[i] =
+    //     item.qty + ' x ' + item.name + ' €' + item.price.toFixed(2)
+    // })
 
     // object with address info
     const updatedOrderAddressInfo = updatedOrder.shippingAddress
-    // const updatedOrderAdditional = {
-    //   paymentMethod: updatedOrder.paymentMethod,
-    //   taxPrice: updatedOrder.taxPrice,
-    //   shippingPrice: updatedOrder.shippingPrice.toFixed(2),
-    //   totalPrice: updatedOrder.totalPrice,
-    //   isPaid: updatedOrder.isPaid,
-    //   createdAt: updatedOrder.createdAt,
-    // }
 
     // ADD THESE LATER
     updatedOrderProductsObject.email = updatedOrder.email

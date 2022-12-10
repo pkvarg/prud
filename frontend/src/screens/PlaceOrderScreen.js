@@ -59,6 +59,16 @@ const PlaceOrderScreen = () => {
     return (prodsQtys[index] = { product: productId, qty: productQty })
   })
 
+  let prodsDiscounts = {}
+  cart.cartItems.map((item, index) => {
+    const productId = cart.cartItems[index].product
+    const productDiscount = Number(cart.cartItems[index].discount)
+    return (prodsDiscounts[index] = {
+      product: productId,
+      discount: productDiscount,
+    })
+  })
+
   const placeOrderhandler = () => {
     if (gdrpOrderChecked && tradeRulesOrderChecked) {
       dispatch(
@@ -74,6 +84,7 @@ const PlaceOrderScreen = () => {
           name: cart.shippingAddress.name,
           email: orderEmailToEmail,
           qtys: prodsQtys,
+          discounts: prodsDiscounts,
         })
       )
     } else {
@@ -161,6 +172,11 @@ const PlaceOrderScreen = () => {
                           <Link to={`/product/${item.product}`}>
                             {item.name}
                           </Link>
+                          {item.discount && (
+                            <h5 className='place-order-discount'>
+                              Zľava {item.discount}%
+                            </h5>
+                          )}
                         </Col>
                         <Col md={4}>
                           {item.qty} x €{item.price.toFixed(2)} = €

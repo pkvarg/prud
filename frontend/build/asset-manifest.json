@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.b73cab6c.css",
-    "main.js": "/static/js/main.2c61ef58.js",
+    "main.css": "/static/css/main.fa06c3c4.css",
+    "main.js": "/static/js/main.c3030fb7.js",
     "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
     "static/media/NotoSerif-BoldItalic.ttf": "/static/media/NotoSerif-BoldItalic.6f32e263f69d8e4b6a27.ttf",
     "static/media/OpenSans-Regular.ttf": "/static/media/OpenSans-Regular.77c09223204154ae8d43.ttf",
     "static/media/Cinzel-VariableFont_wght.ttf": "/static/media/Cinzel-VariableFont_wght.41aef329e5d6288b5ca1.ttf",
     "index.html": "/index.html",
-    "main.b73cab6c.css.map": "/static/css/main.b73cab6c.css.map",
-    "main.2c61ef58.js.map": "/static/js/main.2c61ef58.js.map",
+    "main.fa06c3c4.css.map": "/static/css/main.fa06c3c4.css.map",
+    "main.c3030fb7.js.map": "/static/js/main.c3030fb7.js.map",
     "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b73cab6c.css",
-    "static/js/main.2c61ef58.js"
+    "static/css/main.fa06c3c4.css",
+    "static/js/main.c3030fb7.js"
   ]
 }
