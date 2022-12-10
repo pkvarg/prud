@@ -27,7 +27,7 @@ const OrderListScreen = () => {
 
   return (
     <>
-      <h1>Orders</h1>
+      <h1>OBJEDNÁVKY</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -50,7 +50,7 @@ const OrderListScreen = () => {
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
-                <td>${order.totalPrice}</td>
+                <td>€{order.totalPrice}</td>
 
                 <td>
                   {order.isPaid ? (
@@ -69,7 +69,7 @@ const OrderListScreen = () => {
                 <td>
                   <LinkContainer to={`/order/${order._id}`}>
                     <Button variant='light' className='btn-sm'>
-                      Details
+                      Detaily
                     </Button>
                   </LinkContainer>
                 </td>

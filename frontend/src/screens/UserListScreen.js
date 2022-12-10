@@ -34,7 +34,7 @@ const UserListScreen = () => {
   }
   return (
     <>
-      <h1>users</h1>
+      <h1>Používatelia</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -44,7 +44,7 @@ const UserListScreen = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>NAME</th>
+              <th>MENO</th>
               <th>EMAIL</th>
               <th>ADMIN</th>
               <th></th>

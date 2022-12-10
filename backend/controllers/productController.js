@@ -123,7 +123,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.related = related
     product.related2 = related2
     product.related3 = related3
-
     product.tags = tags
     product.language = language
     product.binding = binding
@@ -137,27 +136,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     throw new Error('Product not found')
   }
 })
-
-// @desc    Update count in stock upis
-// @route   PUT /api/products/:id/upis
-// @access  Private/Admin
-// const upis = asyncHandler(async (req, res) => {
-//   const prodQty = req.body
-//   const prodId = req.body
-
-//   const product = await Product.findById(prodId)
-//   console.log('cont:', prodId, prodQty)
-
-//   if (product) {
-//     product.qty = prodQty
-
-//     const updatedProduct = await product.save()
-//     res.json(updatedProduct)
-//   } else {
-//     res.status(404)
-//     throw new Error('Product not found')
-//   }
-// })
 
 // @desc    Create new review
 // @route   POST /api/products/:id/reviews

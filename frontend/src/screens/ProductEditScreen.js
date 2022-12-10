@@ -149,7 +149,7 @@ const ProductEditScreen = () => {
         Naspäť
       </Link>
       <FormContainer>
-        <h1>Upraviť produkt</h1>
+        <h1>Produkt</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (

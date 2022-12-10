@@ -51,7 +51,7 @@ const UserEditScreen = () => {
 
   return (
     <>
-      <Link to='/admin/userlist' className='btn btn-light my-3'>
+      <Link to='/admin/userlist' className='btn btn-back my-3'>
         Naspäť
       </Link>
       <FormContainer>
@@ -94,7 +94,7 @@ const UserEditScreen = () => {
               ></Form.Check>
             </Form.Group>
 
-            <Button className='my-1 btn-blue' type='submit' variant='primary'>
+            <Button className='my-5 btn-blue' type='submit' variant='primary'>
               Upraviť
             </Button>
           </Form>

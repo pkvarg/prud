@@ -97,7 +97,7 @@ const ProductListScreen = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>MENO</th>
+                <th>NÁZOV</th>
                 <th>CENA</th>
                 <th>KATEGÓRIA</th>
                 {/* <th>ZNAČKA</th> */}
