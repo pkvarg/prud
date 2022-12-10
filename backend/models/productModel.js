@@ -75,7 +75,6 @@ const productSchema = mongoose.Schema(
     language: { type: String },
     binding: { type: String },
     pages: { type: String },
-    flag: { type: String },
     isbn: { type: String },
   },
   {

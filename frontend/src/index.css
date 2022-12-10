@@ -486,11 +486,16 @@ img.slide-img-2.img-fluid {
 }
 
 .product-see-also h5 {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .product-see-also h6 {
-  font-size: 15px;
+  font-size: 20px;
+  text-transform: none;
+}
+
+h6.related-link {
+  color: #8a1c1f;
 }
 
 .related-link {
@@ -587,12 +592,25 @@ sup {
 
 .agree-gdpr {
   font-size: 25px;
-  transform: translateY(20%);
+  transform: translateY(50%);
+}
+
+.billing-address-title-check {
+  transform: translateY(13%);
+}
+
+.billing-icodic-title-check {
+  transform: translateY(10%);
 }
 
 .agree-gdpr-order {
   font-size: 17px;
   transform: translateY(30%);
+}
+
+.agree-traderules-order {
+  font-size: 17px;
+  transform: translateY(55%);
 }
 
 /* FOOTER */

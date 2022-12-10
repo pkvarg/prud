@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import FormContainer from '../components/FC'
+import FormContainer from '../components/FormContainer'
 import { sendContactFormAction } from '../actions/contactActions'
 
 const ContactScreen = () => {
@@ -64,7 +64,9 @@ const ContactScreen = () => {
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId='name'>
-            <Form.Label>Meno a priezvisko</Form.Label>
+            <Form.Label>
+              Meno a priezvisko<sup>*</sup>
+            </Form.Label>
             <Form.Control
               required
               type='name'
@@ -74,7 +76,9 @@ const ContactScreen = () => {
             ></Form.Control>
           </Form.Group>
           <Form.Group controlId='email'>
-            <Form.Label>Email</Form.Label>
+            <Form.Label>
+              Email<sup>*</sup>
+            </Form.Label>
             <Form.Control
               required
               type='email'
@@ -84,7 +88,9 @@ const ContactScreen = () => {
             ></Form.Control>
           </Form.Group>
           <Form.Group controlId='subject'>
-            <Form.Label>Predmet</Form.Label>
+            <Form.Label>
+              Predmet<sup>*</sup>
+            </Form.Label>
             <Form.Control
               required
               type='subject'
@@ -94,7 +100,9 @@ const ContactScreen = () => {
             ></Form.Control>
           </Form.Group>
           <Form.Group controlId='message'>
-            <Form.Label>Správa</Form.Label>
+            <Form.Label>
+              Správa<sup>*</sup>
+            </Form.Label>
             <Form.Control
               required
               as='textarea'

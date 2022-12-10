@@ -226,7 +226,7 @@ const PlaceOrderScreen = () => {
                     required
                     onChange={handleTradeRulesOrder}
                   />
-                  <p className='agree-gdpr-order'>
+                  <p className='agree-traderules-order'>
                     Súhlasím s obchodnými podmienkami
                   </p>
                 </Form.Group>

@@ -4,7 +4,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import FormContainer from '../components/FC'
+import FormContainer from '../components/FormContainer'
 import { login, getGoogleUserInfo } from '../actions/userActions'
 import jwt_decode from 'jwt-decode'
 const LoginScreen = () => {

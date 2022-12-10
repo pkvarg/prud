@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import FormContainer from '../components/FC'
+import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { saveShippingAddress } from '../actions/cartActions'
 
@@ -160,7 +160,9 @@ const ShippingScreen = () => {
             name='billingCheck'
             onChange={handleChange}
           />
-          <h2>Fakturačná adresa je iná ako doručovacia</h2>
+          <h2 className='billing-address-title-check'>
+            Fakturačná adresa je iná ako doručovacia
+          </h2>
         </Form.Group>
         {checked ? (
           <div>
@@ -215,7 +217,7 @@ const ShippingScreen = () => {
                 name='billingCheck'
                 onChange={handleChangeICO}
               />
-              <h2 className='my-5'>IČO a DIČ</h2>
+              <h2 className='my-5 billing-icodic-title-check'>IČO a DIČ</h2>
             </Form.Group>
             {checkedICO ? (
               <div>

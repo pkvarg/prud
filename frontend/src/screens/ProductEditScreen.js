@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { Form, Button, Dropdown, FormControl } from 'react-bootstrap'
+import { Form, Button, Dropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import FormContainer from '../components/FC'
+import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 
@@ -32,7 +32,6 @@ const ProductEditScreen = () => {
   const [language, setLanguage] = useState('')
   const [binding, setBinding] = useState('')
   const [pages, setPages] = useState('')
-  const [flag, setFlag] = useState('')
   const [isbn, setIsbn] = useState('')
 
   /* All Products Dropdown content*/
@@ -75,7 +74,6 @@ const ProductEditScreen = () => {
         setLanguage(product.language)
         setBinding(product.binding)
         setPages(product.pages)
-        setFlag(product.flag)
         setIsbn(product.isbn)
       }
     }
@@ -125,7 +123,6 @@ const ProductEditScreen = () => {
         language,
         binding,
         pages,
-        flag,
         isbn,
       })
     )
@@ -162,7 +159,7 @@ const ProductEditScreen = () => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='product-name'>
-              <Form.Label>Meno</Form.Label>
+              <Form.Label>Názov</Form.Label>
               <Form.Control
                 type='name'
                 placeholder='Meno'
@@ -172,7 +169,7 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='price'>
-              <Form.Label>Cena</Form.Label>
+              <Form.Label>Cena (vo formáte napr: 5,8 bez meny)</Form.Label>
               <Form.Control
                 type='number'
                 placeholder='Cena'
@@ -244,14 +241,14 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId='related'>
-              <Form.Label className='my-3'>Pozrite si tiež</Form.Label>
+              <Form.Label className='my-3'>Súvisiace tituly (max 3)</Form.Label>
               <Dropdown>
                 <Dropdown.Toggle
                   variant='success'
                   id='dropdown-basic'
                   className='related-dropdown'
                 >
-                  Titul č.1
+                  Súvisiaci titul č.1
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {products.map((product) => {
@@ -279,7 +276,7 @@ const ProductEditScreen = () => {
                   id='dropdown-basic'
                   className='related-dropdown'
                 >
-                  Titul č.2
+                  Súvisiaci titul č.2
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {products.map((product) => {
@@ -307,7 +304,7 @@ const ProductEditScreen = () => {
                   id='dropdown-basic'
                   className='related-dropdown'
                 >
-                  Titul č.3
+                  Súvisiaci titul č.3
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {products.map((product) => {
@@ -341,7 +338,7 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId='language'>
-              <Form.Label>Jazyk</Form.Label>
+              <Form.Label>Jazyk (vo formáte SK alebo CZ)</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Jazyk'
@@ -365,15 +362,6 @@ const ProductEditScreen = () => {
                 placeholder='Počet strán'
                 value={pages}
                 onChange={(e) => setPages(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-            <Form.Group controlId='flag'>
-              <Form.Label>Vlajka</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Vlajka'
-                value={flag}
-                onChange={(e) => setFlag(e.target.value)}
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId='isbn'>

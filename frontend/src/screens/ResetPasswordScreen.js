@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import FormContainer from '../components/FC'
+import FormContainer from '../components/FormContainer'
 import { resetPasswordAction } from '../actions/userActions'
 
 const ResetPasswordScreen = () => {
@@ -20,7 +20,6 @@ const ResetPasswordScreen = () => {
   const resetPassword = useSelector((state) => state.resetPassword)
   const { loading, error } = resetPassword
   const params = useParams()
-  const token = params.token
   const genToken = params.genToken
   const name = params.name
   const email = params.email

@@ -77,7 +77,6 @@ const createProduct = asyncHandler(async (req, res) => {
     language: '',
     binding: '',
     pages: '',
-    flag: '',
     isbn: '',
   })
 
@@ -106,7 +105,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     language,
     binding,
     pages,
-    flag,
     isbn,
   } = req.body
 
@@ -130,7 +128,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.language = language
     product.binding = binding
     product.pages = pages
-    product.flag = flag
     product.isbn = isbn
 
     const updatedProduct = await product.save()

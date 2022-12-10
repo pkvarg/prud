@@ -85,6 +85,23 @@ const ProductScreen = () => {
               <ListGroup.Item className='product-see-also'>
                 <h5>Katalóg</h5>
                 <h6>{product.catalog}</h6>
+                <h5>Pozrite si tiež</h5>
+                {product.related && (
+                  <Form onClick={() => handleLink(product.related._id)}>
+                    <h6 className='related-link'>{product.related.name}</h6>
+                  </Form>
+                )}
+                {product.related2 && (
+                  <Form onClick={() => handleLink(product.related2._id)}>
+                    <h6 className='related-link'>{product.related2.name}</h6>
+                  </Form>
+                )}
+                {product.related3 && (
+                  <Form onClick={() => handleLink(product.related3._id)}>
+                    <h6 className='related-link'>{product.related3.name}</h6>
+                  </Form>
+                )}
+
                 <h5>Hmotnosť</h5>
                 <h6>{product.weight}</h6>
                 <h5>Tagy</h5>
@@ -96,22 +113,19 @@ const ProductScreen = () => {
                 <h5>ISBN:</h5>
                 <h6>{product.isbn}</h6>
                 <h5>Jazyk</h5>
-                <h6>{product.flag}</h6>
-                <h5>Pozrite si tiež</h5>
-                {product.related && (
-                  <Form onClick={() => handleLink(product.related._id)}>
-                    <h5 className='related-link'>{product.related.name}</h5>
-                  </Form>
+                {product.language === 'SK' && (
+                  <Image
+                    src='/images/flag_sk40px_0.png'
+                    alt={product.name}
+                    fluid
+                  ></Image>
                 )}
-                {product.related2 && (
-                  <Form onClick={() => handleLink(product.related2._id)}>
-                    <h5 className='related-link'>{product.related2.name}</h5>
-                  </Form>
-                )}
-                {product.related3 && (
-                  <Form onClick={() => handleLink(product.related3._id)}>
-                    <h5 className='related-link'>{product.related3.name}</h5>
-                  </Form>
+                {product.language === 'CZ' && (
+                  <Image
+                    src='/images/flag_cz40px_2_27.png'
+                    alt={product.name}
+                    fluid
+                  ></Image>
                 )}
               </ListGroup.Item>
             </Col>
@@ -204,7 +218,7 @@ const ProductScreen = () => {
           </Row>
           <Row>
             <Col md={6}>
-              <h2>Recenzie</h2>
+              <h2 className='my-3'>Recenzie</h2>
               {product.reviews.length === 0 && (
                 <Message>Žiadne recenzie</Message>
               )}
