@@ -133,21 +133,31 @@ const ProductEditScreen = () => {
         isbn,
       })
     )
-    document.location.href = `/admin/product/${productId}/edit`
+    // document.location.href = `/admin/product/${productId}/edit`
   }
 
-  const relatedHandler = (product) => {
-    setRelated(product)
+  const relatedHandler = (productName, productId) => {
+    let relatedProd = {
+      name: productName,
+      id: productId,
+    }
+    setRelated(relatedProd)
   }
 
-  const relatedHandler2 = (product) => {
-    setRelated2(product)
-    console.log(product)
+  const relatedHandler2 = (productName, productId) => {
+    let relatedProd = {
+      name: productName,
+      id: productId,
+    }
+    setRelated2(relatedProd)
   }
 
-  const relatedHandler3 = (product) => {
-    setRelated3(product)
-    console.log(product)
+  const relatedHandler3 = (productName, productId) => {
+    let relatedProd = {
+      name: productName,
+      id: productId,
+    }
+    setRelated3(relatedProd)
   }
 
   const discountHandler = (discount) => {
@@ -290,7 +300,9 @@ const ProductEditScreen = () => {
                       <Dropdown.Item
                         key={product._id}
                         value={product.name}
-                        onClick={() => relatedHandler(product)}
+                        onClick={() =>
+                          relatedHandler(product.name, product._id)
+                        }
                       >
                         {product.name}
                       </Dropdown.Item>
@@ -318,7 +330,9 @@ const ProductEditScreen = () => {
                       <Dropdown.Item
                         key={product._id}
                         value={product.name}
-                        onClick={() => relatedHandler2(product)}
+                        onClick={() =>
+                          relatedHandler2(product.name, product._id)
+                        }
                       >
                         {product.name}
                       </Dropdown.Item>
@@ -346,7 +360,9 @@ const ProductEditScreen = () => {
                       <Dropdown.Item
                         key={product._id}
                         value={product.name}
-                        onClick={() => relatedHandler3(product)}
+                        onClick={() =>
+                          relatedHandler3(product.name, product._id)
+                        }
                       >
                         {product.name}
                       </Dropdown.Item>
@@ -372,12 +388,38 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId='language'>
-              <Form.Label>Jazyk (vo formáte SK alebo CZ)</Form.Label>
+              <Form.Label>Jazyk</Form.Label>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant='success'
+                  id='dropdown-basic'
+                  className='language-dropdown'
+                >
+                  Jazyk
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item
+                    key='SK'
+                    value='SK'
+                    onClick={() => setLanguage('SK')}
+                  >
+                    <h5 className='language-dropdown-lang'>SK</h5>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    key='CZ'
+                    value='CZ'
+                    onClick={() => setLanguage('CZ')}
+                  >
+                    <h5 className='language-dropdown-lang'>CZ</h5>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
               <Form.Control
                 type='text'
                 placeholder='Jazyk'
                 value={language}
-                onChange={(e) => setLanguage(e.target.value)}
+                readOnly
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId='binding'>

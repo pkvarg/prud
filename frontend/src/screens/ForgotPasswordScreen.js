@@ -26,7 +26,6 @@ const ForgotPasswordScreen = () => {
       setMessage('Musíte zadať existujúci email')
     } else {
       dispatch(forgotPasswordAction(email, origURL))
-      console.log(email, origURL)
       setMessageSuccess('Linka bola odoslaná na Váš email')
     }
   }

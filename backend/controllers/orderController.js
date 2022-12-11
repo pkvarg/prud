@@ -58,7 +58,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
       discounts,
     })
     const createdOrder = await order.save()
-    console.log('co:', createdOrder)
     const createdOrderId = createdOrder._id
     const today = new Date()
     const currentYear = today.getFullYear()

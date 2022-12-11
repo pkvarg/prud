@@ -511,6 +511,14 @@ h6.related-link {
   background-color: #24b9d6;
 }
 
+.language-dropdown {
+  background-color: #24b9d6;
+}
+
+h5.language-dropdown-lang {
+  font-weight: 300;
+}
+
 h5.discounted-price {
   display: flex;
   flex-direction: column;

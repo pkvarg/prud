@@ -58,7 +58,6 @@ router.post('/contact', async (req, res) => {
     subject: data.subject,
     message: data.emailMessage,
   }
-  console.log(emailForm)
   await new Email(emailForm).sendContactForm()
 })
 
