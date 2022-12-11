@@ -129,16 +129,27 @@ let invoiceTable = (doc, invoice) => {
     return (Math.round(num * 100) / 100).toFixed(2)
   }
 
+  let disc = 0
+  let discount = ''
+
   for (i = 0; i < invoice.items.length; i++) {
     let item = invoice.items[i]
     let total = Number(invoice.items[i].qty * invoice.items[i].price)
     productsTotalPrice = productsTotalPrice + total
+    /* loop discounts */
+    disc = invoice.discounts[i].discount
+    if (disc > 0) {
+      discount = `zľava ${disc}%`
+    } else {
+      discount = ''
+    }
+
     const position = invoiceTableTop + (i + 1) * 30
     tableRow(
       doc,
       position,
       item.name,
-      item.description,
+      discount,
       formatCurrency(item.price.toFixed(2), currencySymbol),
       item.qty,
       addDecimals(total)
@@ -194,12 +205,12 @@ let totalTable = (doc, y, name, description) => {
     .text(description, 500, y, { align: 'right' })
 }
 
-let tableRow = (doc, y, item, description, price, quantity, lineTotal) => {
+let tableRow = (doc, y, item, discount, price, quantity, lineTotal) => {
   doc
   doc
     .fontSize(12.5)
     .text(item, 50, y)
-    .text(description, 130, y)
+    .text(discount, 300, y)
     .text(price, 337, y, { width: 90, align: 'right' })
     .text(quantity, 402, y, { width: 90, align: 'right' })
     .text(lineTotal, 467, y, { width: 90, align: 'right' })

@@ -153,7 +153,10 @@ const ProductEditScreen = () => {
   const discountHandler = (discount) => {
     setDiscount(discount)
     const newPrice = (price - (price * discount) / 100).toFixed(2)
-    setDiscountedPrice(newPrice)
+
+    const roundedToFiveCents = Math.round(newPrice)
+    console.log(roundedToFiveCents)
+    // setDiscountedPrice(newPrice)
   }
 
   return (

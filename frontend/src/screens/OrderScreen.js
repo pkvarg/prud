@@ -238,6 +238,12 @@ const OrderScreen = () => {
                           <Link to={`/product/${item.product}`}>
                             {item.name}
                           </Link>
+                          {order.discounts[index].discount > 0 && (
+                            <h5 className='place-order-discount'>
+                              Zľava
+                              {order.discounts[index].discount}%
+                            </h5>
+                          )}
                         </Col>
                         <Col md={4}>
                           {item.qty} x €{item.price.toFixed(2)} = €
@@ -269,7 +275,6 @@ const OrderScreen = () => {
                   <Col>€ {order.shippingPrice.toFixed(2)}</Col>
                 </Row>
               </ListGroup.Item>
-              {/* Zľava  */}
               {/* <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
@@ -310,20 +315,17 @@ const OrderScreen = () => {
                   // </ListGroup.Item>
                 )}
               {loadingDeliver && <Loader />}
-              {userInfo &&
-                userInfo.isAdmin &&
-                order.isPaid &&
-                !order.isDelivered && (
-                  <ListGroup.Item>
-                    <Button
-                      typ='button'
-                      className='btn w-100 btn-red'
-                      onClick={deliverHandler}
-                    >
-                      Označiť ako odoslané
-                    </Button>
-                  </ListGroup.Item>
-                )}
+              {userInfo && userInfo.isAdmin && !order.isDelivered && (
+                <ListGroup.Item>
+                  <Button
+                    typ='button'
+                    className='btn w-100 btn-red'
+                    onClick={deliverHandler}
+                  >
+                    Označiť ako odoslané
+                  </Button>
+                </ListGroup.Item>
+              )}
               <ListGroup.Item>
                 <Button
                   className='w-100 btn-blue'

@@ -16,8 +16,6 @@ const CartScreen = () => {
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
 
-  console.log(cartItems)
-
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2)
   }
