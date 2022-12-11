@@ -26,7 +26,7 @@ const Product = ({ product }) => {
           />
         </Card.Text> */}
 
-        <Card.Text as='h3' className='product-home-price'>
+        <div className='product-home-price'>
           {product.discount ? (
             <h5 className='discounted-price'>
               <span className='discounted-price-span'>
@@ -38,7 +38,7 @@ const Product = ({ product }) => {
             <h4>€{addDecimals(product.price)}</h4>
           )}
           {/* € {product.price.toFixed(2)} */}
-        </Card.Text>
+        </div>
       </Card.Body>
     </Card>
   )

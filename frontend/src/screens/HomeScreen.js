@@ -44,8 +44,22 @@ const HomeScreen = () => {
             {products.map((product) => (
               <Col
                 className='
-            align-items-stretch
-            d-flex'
+            align-items-stretch d-flex no-mobile
+            '
+                key={product._id}
+                sm={12}
+                md={6}
+                lg={4}
+                xl={3}
+              >
+                <Product product={product} />
+              </Col>
+            ))}
+            {products.map((product) => (
+              <Col
+                className='
+            align-items-stretch mobile-only
+            '
                 key={product._id}
                 sm={12}
                 md={6}

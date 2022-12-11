@@ -694,7 +694,7 @@ footer {
 /* Tablets and smaller */
 @media (min-width: 100px) and (max-width: 1180px) {
   .no-mobile {
-    display: none;
+    display: none !important;
   }
 
   .red-navbar-container {
@@ -911,6 +911,10 @@ footer {
 
   .carousel img {
     margin-left: -13%;
+  }
+
+  .align-items-stretch.mobile-only {
+    display: block;
   }
 
   /* MOBILE FOOTER*/
