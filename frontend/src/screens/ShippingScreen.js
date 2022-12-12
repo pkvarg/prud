@@ -11,23 +11,28 @@ const ShippingScreen = () => {
   const { shippingAddress } = cart
   const [name, setName] = useState('')
 
-  const [address, setAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [postalCode, setPostalCode] = useState('')
-  const [country, setCountry] = useState('')
+  const [address, setAddress] = useState(shippingAddress.address)
+  const [city, setCity] = useState(shippingAddress.city)
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
+  const [country, setCountry] = useState(shippingAddress.country)
 
   // Billing Address
-  const [billingName, setBillingName] = useState('')
+  const [billingName, setBillingName] = useState(shippingAddress.billingName)
 
-  const [billingAddress, setBillingAddress] = useState('')
-  const [billingCity, setBillingCity] = useState('')
-  const [billingPostalCode, setBillingPostalCode] = useState()
-  const [billingCountry, setBillingCountry] = useState('')
+  const [billingAddress, setBillingAddress] = useState(
+    shippingAddress.billingAddress
+  )
+  const [billingCity, setBillingCity] = useState(shippingAddress.billingCity)
+  const [billingPostalCode, setBillingPostalCode] = useState(
+    shippingAddress.billingPostalCode
+  )
+  const [billingCountry, setBillingCountry] = useState(
+    shippingAddress.billingCountry
+  )
 
-  const [billingICO, setBillingICO] = useState('')
+  const [billingICO, setBillingICO] = useState(shippingAddress.billingICO)
 
-  const [billingDIC, setBillingDIC] = useState('')
-
+  const [billingDIC, setBillingDIC] = useState(shippingAddress.billingDIC)
   const [note, setNote] = useState('')
 
   const dispatch = useDispatch('')

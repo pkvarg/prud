@@ -6,7 +6,6 @@ import niceInvoice from '../utils/niceInvoice.js'
 import path from 'path'
 
 const __dirname = path.resolve()
-let orderNumber = 0
 
 // @desc Create new Order
 // @desc POST /api/orders
@@ -26,17 +25,22 @@ const addOrderItems = asyncHandler(async (req, res) => {
   const name = req.body.name
   const email = req.body.email
   const discounts = req.body.discounts
-  // let orderNumber = req.body.orderNumber
+
   /* orderNumber always 20220000 */
+  const allOrders = await Order.find({}).populate('user', 'id name')
+  let allOrdersCount = allOrders.length
+  console.log('allOrd:', allOrdersCount)
+
   /* Create OrderNumber in format 20220001 and increment */
   let thisYear = Date.now()
   let orderNumberPrefix = new Date(thisYear).getFullYear()
-  let createOrderNumber = 0
-  createOrderNumber.toString()
+  let orderNumber = 0
+  allOrdersCount++
+  allOrdersCount.toString()
   function addLeadingZeros(num, totalLength) {
     return String(num).padStart(totalLength, '0')
   }
-  let createOrderNumberWithLeadingZeros = addLeadingZeros(createOrderNumber, 4)
+  let createOrderNumberWithLeadingZeros = addLeadingZeros(allOrdersCount, 4)
   orderNumber = orderNumberPrefix + createOrderNumberWithLeadingZeros
 
   console.log('ON:', orderNumber)
@@ -216,8 +220,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
     res.status(201).json(createdOrder)
   }
-  orderNumber++
-  console.log('NcOD:', orderNumber)
 })
 
 // @desc Get order by ID
