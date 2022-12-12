@@ -14,6 +14,7 @@ import {
 } from '../actions/productActions'
 import { useNavigate } from 'react-router-dom'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
+import { Link } from 'react-router-dom'
 
 const ProductListScreen = () => {
   const params = useParams()
@@ -70,11 +71,17 @@ const ProductListScreen = () => {
   const createProductHandler = (product) => {
     dispatch(createProduct())
   }
+
   return (
     <>
       <Row className='align-items-center'>
         <Col>
           <h1>Produkty</h1>
+        </Col>
+        <Col className='text-end'>
+          <Link className='btn btn-back my-3' to='/create-discount'>
+            <i className='fas fa-plus'></i> Vytvoriť Akciu
+          </Link>
         </Col>
         <Col className='text-end'>
           <Button className='my-3 btn-blue' onClick={createProductHandler}>

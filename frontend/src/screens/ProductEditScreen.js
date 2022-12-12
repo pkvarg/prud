@@ -213,7 +213,9 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='discounted-price'>
-              <Form.Label>Cena po zľave (vypočíta sa automaticky)</Form.Label>
+              <Form.Label>
+                Cena po zľave (automatický výpočet a zaokrúhlenie na 5 centov)
+              </Form.Label>
               <Form.Control
                 type='number'
                 placeholder='Cena po zľave'

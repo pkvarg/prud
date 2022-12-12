@@ -29,7 +29,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
   /* orderNumber always 20220000 */
   const allOrders = await Order.find({}).populate('user', 'id name')
   let allOrdersCount = allOrders.length
-  console.log('allOrd:', allOrdersCount)
 
   /* Create OrderNumber in format 20220001 and increment */
   let thisYear = Date.now()
@@ -42,8 +41,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
   }
   let createOrderNumberWithLeadingZeros = addLeadingZeros(allOrdersCount, 4)
   orderNumber = orderNumberPrefix + createOrderNumberWithLeadingZeros
-
-  console.log('ON:', orderNumber)
 
   /* Update Count in stock on purchased products */
   const qtys = req.body.qtys
@@ -78,10 +75,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
       orderNumber,
     })
     const createdOrder = await order.save()
-    // const createdOrderId = createdOrder._id
-    // const today = new Date()
-    // const currentYear = today.getFullYear()
-    // const invoiceNo = `${currentYear}-${createdOrderId}`
     // array of items
     const loop = createdOrder.orderItems
     const productsCount = loop.length

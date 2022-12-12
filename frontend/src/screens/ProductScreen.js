@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col, Image, ListGroup, Card, Form, Button } from 'react-bootstrap'
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  ListGroup,
+  Card,
+  Form,
+  Button,
+} from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -81,8 +90,12 @@ const ProductScreen = () => {
           <Meta title={product.name} />
           <Row>
             <Col md={3}>
-              <Image src={product.image} alt={product.name} fluid></Image>
-              <ListGroup.Item className='product-see-also'>
+              <Image
+                src={product.image}
+                alt={product.name}
+                className='prod-img-width'
+              ></Image>
+              <ListGroup.Item className='product-see-also no-mobile'>
                 <h5>Katalóg</h5>
                 <h6>{product.catalog}</h6>
                 {product.related && <h5>Pozrite si tiež</h5>}
@@ -227,6 +240,56 @@ const ProductScreen = () => {
               </Card>
             </Col>
           </Row>
+          <Container>
+            <ListGroup.Item className='product-see-also mobile-only'>
+              <h5>Katalóg</h5>
+              <h6>{product.catalog}</h6>
+              {product.related && <h5>Pozrite si tiež</h5>}
+
+              {product.related && (
+                <Form onClick={() => handleLink(product.related.id)}>
+                  <h6 className='related-link'>{product.related.name}</h6>
+                </Form>
+              )}
+              {product.related2 && (
+                <Form onClick={() => handleLink(product.related2.id)}>
+                  <h6 className='related-link'>{product.related2.name}</h6>
+                </Form>
+              )}
+              {product.related3 && (
+                <Form onClick={() => handleLink(product.related3.id)}>
+                  <h6 className='related-link'>{product.related3.name}</h6>
+                </Form>
+              )}
+
+              <h5>Hmotnosť</h5>
+              <h6>{product.weight}</h6>
+              <h5>Tagy</h5>
+              <h6>{product.tags}</h6>
+              <h5>Väzba</h5>
+              <h6>{product.binding}</h6>
+              <h5>Počet strán</h5>
+              <h6>{product.pages}</h6>
+              <h5>ISBN:</h5>
+              <h6>{product.isbn}</h6>
+              <h5>Jazyk</h5>
+              {product.language === 'SK' && (
+                <Image
+                  src='/images/flag_sk40px_0.png'
+                  alt={product.name}
+                  fluid
+                ></Image>
+              )}
+              {product.language === 'CZ' && (
+                <Image
+                  src='/images/flag_cz40px_2_27.png'
+                  alt={product.name}
+                  fluid
+                ></Image>
+              )}
+            </ListGroup.Item>
+          </Container>
+
           <Row>
             <Col md={6}>
               <h2 className='my-3'>Recenzie</h2>

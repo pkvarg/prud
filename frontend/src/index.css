@@ -546,6 +546,14 @@ h5.place-order-discount {
   color: #fff;
 }
 
+.product-img-card-width {
+  width: auto !important;
+}
+
+.prod-img-width {
+  width: 100%;
+}
+
 .btn-back {
   background-color: #2cb3e6;
   border: 1px solid #2cb3e6;
@@ -922,6 +930,14 @@ footer {
   }
 
   .align-items-stretch.mobile-only {
+    display: block;
+  }
+
+  .product-img-card-width {
+    width: 100% !important;
+  }
+
+  .product-see-also.mobile-only {
     display: block;
   }
 

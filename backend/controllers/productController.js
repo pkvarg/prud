@@ -24,6 +24,29 @@ const getProducts = asyncHandler(async (req, res) => {
   res.json({ products, page, pages: Math.ceil(count / pageSize) })
 })
 
+// @desc POST /api/products
+// @access Admin
+const createDiscountAllProducts = asyncHandler(async (req, res) => {
+  const discount = req.body.discount
+  console.log('disis:', discount)
+  const products = await Product.find({})
+  if (products) {
+    const productsCount = products.length
+    products.map((product, i) => {
+      console.log(products[i].discount)
+      products[i].discount = discount
+    })
+    await products.save()
+
+    res.status(200).json({
+      message: 'Discounts set for all products',
+    })
+  } else {
+    res.status(404)
+    throw new Error('Product not found')
+  }
+})
+
 // @desc Fetch single product
 // @desc GET /api/products/:id
 // @access Public
@@ -197,4 +220,5 @@ export {
   updateProduct,
   createProductReview,
   getTopProducts,
+  createDiscountAllProducts,
 }

@@ -21,6 +21,9 @@ import {
   PRODUCT_TOP_REQUEST,
   PRODUCT_TOP_SUCCESS,
   PRODUCT_TOP_FAIL,
+  CREATE_DISCOUNT_REQUEST,
+  CREATE_DISCOUNT_SUCCESS,
+  CREATE_DISCOUNT_FAIL,
 } from '../constants/productConstants'
 
 export const listProducts =
@@ -95,6 +98,47 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
         : error.message
     dispatch({
       type: PRODUCT_DELETE_FAIL,
+      payload: message,
+    })
+  }
+}
+
+export const createDiscount = (discount) => async (dispatch, getState) => {
+  try {
+    console.log('dcs:', discount)
+
+    dispatch({
+      type: CREATE_DISCOUNT_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.post(
+      `/api/products/discount`,
+      discount,
+      config
+    )
+    console.log('data:', data)
+
+    dispatch({
+      type: CREATE_DISCOUNT_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    dispatch({
+      type: CREATE_DISCOUNT_FAIL,
       payload: message,
     })
   }
