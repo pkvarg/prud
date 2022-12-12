@@ -105,8 +105,6 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
 
 export const createDiscount = (discount) => async (dispatch, getState) => {
   try {
-    console.log('dcs:', discount)
-
     dispatch({
       type: CREATE_DISCOUNT_REQUEST,
     })
@@ -126,7 +124,6 @@ export const createDiscount = (discount) => async (dispatch, getState) => {
       discount,
       config
     )
-    console.log('data:', data)
 
     dispatch({
       type: CREATE_DISCOUNT_SUCCESS,

@@ -28,15 +28,17 @@ const getProducts = asyncHandler(async (req, res) => {
 // @access Admin
 const createDiscountAllProducts = asyncHandler(async (req, res) => {
   const discount = req.body.discount
-  console.log('disis:', discount)
   const products = await Product.find({})
   if (products) {
-    const productsCount = products.length
-    products.map((product, i) => {
-      console.log(products[i].discount)
-      products[i].discount = discount
+    products.map(async (product, i) => {
+      const singleProduct = await Product.findById(products[i]._id)
+      singleProduct.discount = discount
+      const price = singleProduct.price
+      const newPrice = (price - (price * discount) / 100).toFixed(2)
+      const roundedPriceToFiveCents = (Math.ceil(newPrice * 20) / 20).toFixed(2)
+      singleProduct.discountedPrice = roundedPriceToFiveCents
+      await singleProduct.save()
     })
-    await products.save()
 
     res.status(200).json({
       message: 'Discounts set for all products',
