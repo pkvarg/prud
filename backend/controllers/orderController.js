@@ -6,6 +6,7 @@ import niceInvoice from '../utils/niceInvoice.js'
 import path from 'path'
 
 const __dirname = path.resolve()
+let orderNumber = 0
 
 // @desc Create new Order
 // @desc POST /api/orders
@@ -25,6 +26,20 @@ const addOrderItems = asyncHandler(async (req, res) => {
   const name = req.body.name
   const email = req.body.email
   const discounts = req.body.discounts
+  // let orderNumber = req.body.orderNumber
+  /* orderNumber always 20220000 */
+  /* Create OrderNumber in format 20220001 and increment */
+  let thisYear = Date.now()
+  let orderNumberPrefix = new Date(thisYear).getFullYear()
+  let createOrderNumber = 0
+  createOrderNumber.toString()
+  function addLeadingZeros(num, totalLength) {
+    return String(num).padStart(totalLength, '0')
+  }
+  let createOrderNumberWithLeadingZeros = addLeadingZeros(createOrderNumber, 4)
+  orderNumber = orderNumberPrefix + createOrderNumberWithLeadingZeros
+
+  console.log('ON:', orderNumber)
 
   /* Update Count in stock on purchased products */
   const qtys = req.body.qtys
@@ -56,14 +71,13 @@ const addOrderItems = asyncHandler(async (req, res) => {
       name,
       email,
       discounts,
+      orderNumber,
     })
     const createdOrder = await order.save()
-    const createdOrderId = createdOrder._id
-    const today = new Date()
-    const currentYear = today.getFullYear()
-    // const currentMonth = today.getMonth() + 1
-    // const currentDay = today.getDate()
-    const invoiceNo = `${currentYear}-${createdOrderId}`
+    // const createdOrderId = createdOrder._id
+    // const today = new Date()
+    // const currentYear = today.getFullYear()
+    // const invoiceNo = `${currentYear}-${createdOrderId}`
     // array of items
     const loop = createdOrder.orderItems
     const productsCount = loop.length
@@ -99,6 +113,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     productsObject.user = user
     productsObject.email = email
     productsObject.name = name
+    productsObject.orderNumber = createdOrder.orderNumber
     productsObject.taxPrice = createdOrder.taxPrice
     productsObject.totalPrice = createdOrder.totalPrice.toFixed(2)
     productsObject.shippingPrice = createdOrder.shippingPrice.toFixed(2)
@@ -172,13 +187,11 @@ const addOrderItems = asyncHandler(async (req, res) => {
       },
       items: createdOrder.orderItems,
       discounts: discounts,
-      invoiceNo: invoiceNo,
       paymentMethod: createdOrder.paymentMethod,
-
       total: createdOrder.totalPrice.toFixed(2),
       taxPrice: createdOrder.taxPrice,
       shippingPrice: createdOrder.shippingPrice.toFixed(2),
-      order_number: 1234222,
+      orderNumber: createdOrder.orderNumber,
       header: {
         company_name: 'Prúd',
         company_logo: __dirname + '/backend/utils/prud-prud-logo.png',
@@ -196,13 +209,15 @@ const addOrderItems = asyncHandler(async (req, res) => {
       },
     }
 
-    niceInvoice(invoiceDetails, `${invoiceNo}.pdf`)
-    const fileTosend = `${invoiceNo}.pdf`
+    niceInvoice(invoiceDetails, `${orderNumber}.pdf`)
+    const fileTosend = `${orderNumber}.pdf`
 
     await new Email(productsObject, '', fileTosend).sendOrderToEmail()
 
     res.status(201).json(createdOrder)
   }
+  orderNumber++
+  console.log('NcOD:', orderNumber)
 })
 
 // @desc Get order by ID
@@ -244,6 +259,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 
     const updatedOrder = await order.save()
     const discounts = order.discounts
+    const orderNumber = order.orderNumber
 
     // send PaymentSuccessfull Email
     const updatedOrderLoop = updatedOrder.orderItems
@@ -289,6 +305,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
       updatedOrder.paymentResult.name.given_name +
       ' ' +
       updatedOrder.paymentResult.name.surname
+    updatedOrderProductsObject.orderNumber = orderNumber
     updatedOrderProductsObject.taxPrice = updatedOrder.taxPrice
     updatedOrderProductsObject.totalPrice = updatedOrder.totalPrice.toFixed(2)
     updatedOrderProductsObject.shippingPrice =

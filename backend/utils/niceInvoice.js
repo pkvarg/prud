@@ -55,7 +55,7 @@ let customerInformation = (doc, invoice) => {
     .fontSize(20)
     .text('Faktúra číslo:', 50, 160)
     .fontSize(15)
-    .text(invoice.invoiceNo, 175, 165)
+    .text(invoice.orderNumber, 175, 165)
   generateHr(doc, 185)
 
   const customerInformationTop = 200

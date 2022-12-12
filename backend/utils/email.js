@@ -32,7 +32,7 @@ class Email {
     this.shippingPrice = user.shippingPrice
     this.taxPrice = user.taxPrice
     this.totalPrice = user.totalPrice
-    this.orderId = user.orderId
+    this.orderNumber = user.orderNumber
     this.file = file
     //this.subject = user.subject
     this.message = user.message
@@ -76,7 +76,7 @@ class Email {
         shippingPrice: this.shippingPrice,
         taxPrice: this.taxPrice,
         totalPrice: this.totalPrice,
-        orderId: this.orderId,
+        orderNumber: this.orderNumber,
         file: this.file,
         // contactForm
         emailSubject: this.subject,
@@ -134,7 +134,7 @@ class Email {
   }
 
   async sendOrderToEmail() {
-    await this.send('orderToEmail', `Vaša objednávka ${this.orderId}`)
+    await this.send('orderToEmail', `Vaša objednávka ${this.orderNumber}`)
   }
 
   async sendPaymentSuccessfullToEmail() {

@@ -85,7 +85,8 @@ const ProductScreen = () => {
               <ListGroup.Item className='product-see-also'>
                 <h5>Katalóg</h5>
                 <h6>{product.catalog}</h6>
-                <h5>Pozrite si tiež</h5>
+                {product.related && <h5>Pozrite si tiež</h5>}
+
                 {product.related && (
                   <Form onClick={() => handleLink(product.related.id)}>
                     <h6 className='related-link'>{product.related.name}</h6>

@@ -68,6 +68,17 @@ const PlaceOrderScreen = () => {
       discount: productDiscount,
     })
   })
+  /* Create OrderNumber in format 20220001 and increment */
+  let thisYear = Date.now()
+  let orderNumberPrefix = new Date(thisYear).getFullYear()
+  let createOrderNumber = 0
+  createOrderNumber.toString()
+  let orderNumber = 0
+  function addLeadingZeros(num, totalLength) {
+    return String(num).padStart(totalLength, '0')
+  }
+  let createOrderNumberWithLeadingZeros = addLeadingZeros(createOrderNumber, 4)
+  orderNumber = orderNumberPrefix + createOrderNumberWithLeadingZeros
 
   const placeOrderhandler = () => {
     if (gdrpOrderChecked && tradeRulesOrderChecked) {
@@ -85,6 +96,7 @@ const PlaceOrderScreen = () => {
           email: orderEmailToEmail,
           qtys: prodsQtys,
           discounts: prodsDiscounts,
+          orderNumber: orderNumber,
         })
       )
     } else {
