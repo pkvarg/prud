@@ -672,6 +672,24 @@ sup {
 .give2-physical p {
   margin: 15px 0;
   line-height: 25px;
+  text-align: justify;
+}
+
+.files-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.btn-file {
+  width: 50%;
+  text-decoration: underline;
+  color: #071e46;
+  background-color: #ddd;
+}
+
+.btn-file:hover {
+  background-color: darkolivegreen;
 }
 
 /* FOOTER */
@@ -963,6 +981,9 @@ footer {
     display: block;
   }
 
+  .btn-file {
+    width: 100%;
+  }
   /* MOBILE FOOTER*/
   .footer-text-links {
     align-items: center;
