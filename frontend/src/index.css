@@ -338,6 +338,11 @@ a.dropdown-item:hover,
   color: #fefefe;
 }
 
+.blue {
+  color: #24b9d6;
+  cursor: pointer;
+}
+
 .mobile-only {
   display: none;
 }
@@ -654,6 +659,19 @@ sup {
 .agree-traderules-order {
   font-size: 17px;
   transform: translateY(55%);
+}
+
+/* GIVE 2% */
+.give2-physical li {
+  margin: 10px 0;
+  line-height: 25px;
+
+  text-align: justify;
+}
+
+.give2-physical p {
+  margin: 15px 0;
+  line-height: 25px;
 }
 
 /* FOOTER */

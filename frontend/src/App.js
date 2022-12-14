@@ -25,6 +25,10 @@ import ForgotPasswordScreen from './screens/ForgotPasswordScreen'
 import ResetPasswordScreen from './screens/ResetPasswordScreen'
 import ContactScreen from './screens/ContactScreen'
 import CreateDiscount from './screens/CreateDiscount'
+import Give2Physical from './screens/Give2Physical'
+import Give2Lawyer from './screens/Give2Lawyer'
+import Give2Business from './screens/Give2Business'
+import Give2PhysicalBusiness from './screens/Give2PhysicalBusiness'
 
 const App = () => {
   const [clientID, setClientID] = useState('')
@@ -103,6 +107,13 @@ const App = () => {
                     path='/forgot-password'
                     element={<ForgotPasswordScreen />}
                   />
+                  <Route path='/give2-physical' element={<Give2Physical />} />
+                  <Route
+                    path='/give2-physical-business'
+                    element={<Give2PhysicalBusiness />}
+                  />
+                  <Route path='/give2-lawyer' element={<Give2Lawyer />} />
+                  <Route path='/give2-business' element={<Give2Business />} />
                 </Routes>
               </Container>
             </main>

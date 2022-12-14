@@ -153,11 +153,15 @@ const Header = () => {
             id='basic-navbar-nav'
           >
             <NavDropdown title='Darujte 2%' className='red-navbar-item'>
-              <LinkContainer to='profile'>
+              <LinkContainer to='give2-physical'>
                 <NavDropdown.Item>Fyzické osoby</NavDropdown.Item>
               </LinkContainer>
-              <NavDropdown.Item to='profile'>Podnikatelia</NavDropdown.Item>
-              <NavDropdown.Item to='profile'>Právnické osoby</NavDropdown.Item>
+              <LinkContainer to='give2-business'>
+                <NavDropdown.Item> Podnikatelia</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='give2-lawyer'>
+                <NavDropdown.Item>Právnické osoby</NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
             <NavDropdown title='Nové' className='red-navbar-item'>
               <LinkContainer to='profile'>
