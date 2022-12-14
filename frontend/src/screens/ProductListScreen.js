@@ -72,18 +72,37 @@ const ProductListScreen = () => {
     dispatch(createProduct())
   }
 
+  const linkToCreateDiscount = () => {
+    navigate('/create-discount')
+  }
+
   return (
     <>
-      <Row className='align-items-center'>
+      <Row className='align-items-center no-mobile'>
         <Col>
           <h1>Produkty</h1>
         </Col>
         <Col className='text-end'>
-          <Link className='btn btn-back my-3' to='/create-discount'>
+          <Button className='my-3 btn-red' onClick={linkToCreateDiscount}>
             <i className='fas fa-plus'></i> Vytvoriť Akciu
-          </Link>
+          </Button>
         </Col>
         <Col className='text-end'>
+          <Button className='my-3 btn-blue' onClick={createProductHandler}>
+            <i className='fas fa-plus'></i> Vytvoriť produkt
+          </Button>
+        </Col>
+      </Row>
+      <Row className='align-items-center mobile-only'>
+        <Col>
+          <h1>Produkty</h1>
+        </Col>
+        <Col className='text-start'>
+          <Button className='my-3 btn-red' onClick={linkToCreateDiscount}>
+            <i className='fas fa-plus'></i> Vytvoriť Akciu
+          </Button>
+        </Col>
+        <Col className='text-start'>
           <Button className='my-3 btn-blue' onClick={createProductHandler}>
             <i className='fas fa-plus'></i> Vytvoriť produkt
           </Button>

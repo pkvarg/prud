@@ -193,9 +193,9 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='price'>
-              <Form.Label>Cena (vo formáte napr: 5,8 bez meny)</Form.Label>
+              <Form.Label>Cena (vo formáte napr: 5.8 bez meny)</Form.Label>
               <Form.Control
-                type='number'
+                type='text'
                 placeholder='Cena'
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}

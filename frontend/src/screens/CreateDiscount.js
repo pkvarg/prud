@@ -10,25 +10,12 @@ import { createDiscount } from '../actions/productActions'
 import { CREATE_DISCOUNT_SUCCESS } from '../constants/productConstants'
 
 const CreateDiscount = () => {
-  // const params = useParams()
-  // const productId = params.id
   const navigate = useNavigate()
 
   const [discount, setDiscount] = useState('')
-  /* All Products Dropdown content*/
-  const productList = useSelector((state) => state.productList)
-  // const { products } = productList
+  const [messageSuccess, setMessageSuccess] = useState(null)
 
   const dispatch = useDispatch()
-
-  // const productDetails = useSelector((state) => state.productDetails)
-  // const { loading, error, product } = productDetails
-
-  // useEffect(() => {
-  //   dispatch({ type: CREATE_DISCOUNT_SUCCESS })
-  //   setDiscount(discount)
-  //   // navigate('/admin/productlist')
-  // }, [dispatch, discount])
 
   const submitHandler = () => {
     dispatch(
@@ -36,6 +23,11 @@ const CreateDiscount = () => {
         discount: discount,
       })
     )
+    if (discount > 0) {
+      setMessageSuccess(`Akcia vytvorená`)
+    } else {
+      setMessageSuccess(`Akcia zrušená`)
+    }
   }
 
   console.log(discount)
@@ -46,11 +38,17 @@ const CreateDiscount = () => {
       </Link>
       <FormContainer>
         <h1>Nová akcia na všetky produkty</h1>
+        {messageSuccess && (
+          <Message variant='success'>{messageSuccess}</Message>
+        )}
+
         <Form onSubmit={submitHandler}>
           <Form.Group controlId='discount-value'>
-            <Form.Label>Výška akcie bez %</Form.Label>
+            <Form.Label>
+              Výška akcie bez %. Akciu možno zrušiť zadaním 0.
+            </Form.Label>
             <Form.Control
-              type='Number'
+              type='text'
               placeholder='zľava'
               value={discount}
               onChange={(e) => setDiscount(e.target.value)}
