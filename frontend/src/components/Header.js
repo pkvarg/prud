@@ -156,7 +156,7 @@ const Header = () => {
               <LinkContainer to='give2-physical'>
                 <NavDropdown.Item>Fyzické osoby</NavDropdown.Item>
               </LinkContainer>
-              <LinkContainer to='give2-business'>
+              <LinkContainer to='give2-physical-business'>
                 <NavDropdown.Item> Podnikatelia</NavDropdown.Item>
               </LinkContainer>
               <LinkContainer to='give2-lawyer'>

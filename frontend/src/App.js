@@ -27,7 +27,6 @@ import ContactScreen from './screens/ContactScreen'
 import CreateDiscount from './screens/CreateDiscount'
 import Give2Physical from './screens/Give2Physical'
 import Give2Lawyer from './screens/Give2Lawyer'
-import Give2Business from './screens/Give2Business'
 import Give2PhysicalBusiness from './screens/Give2PhysicalBusiness'
 
 const App = () => {
@@ -113,7 +112,6 @@ const App = () => {
                     element={<Give2PhysicalBusiness />}
                   />
                   <Route path='/give2-lawyer' element={<Give2Lawyer />} />
-                  <Route path='/give2-business' element={<Give2Business />} />
                 </Routes>
               </Container>
             </main>
