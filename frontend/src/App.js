@@ -28,6 +28,7 @@ import CreateDiscount from './screens/CreateDiscount'
 import Give2Physical from './screens/Give2Physical'
 import Give2Lawyer from './screens/Give2Lawyer'
 import Give2PhysicalBusiness from './screens/Give2PhysicalBusiness'
+import NewBooks from './screens/NewBooks'
 
 const App = () => {
   const [clientID, setClientID] = useState('')
@@ -112,6 +113,7 @@ const App = () => {
                     element={<Give2PhysicalBusiness />}
                   />
                   <Route path='/give2-lawyer' element={<Give2Lawyer />} />
+                  <Route path='/new-books/:year' element={<NewBooks />} />
                 </Routes>
               </Container>
             </main>

@@ -164,11 +164,18 @@ const Header = () => {
               </LinkContainer>
             </NavDropdown>
             <NavDropdown title='Nové' className='red-navbar-item'>
-              <LinkContainer to='profile'>
-                <NavDropdown.Item>Knihy 2020 12</NavDropdown.Item>
+              <LinkContainer to='new-books/2020'>
+                <NavDropdown.Item>Knihy 2020</NavDropdown.Item>
               </LinkContainer>
-              <NavDropdown.Item to='profile'>Knihy 2020 12</NavDropdown.Item>
-              <NavDropdown.Item to='profile'>Knihy 2020 12</NavDropdown.Item>
+              <LinkContainer to='new-books/2019'>
+                <NavDropdown.Item>Knihy 2019</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='new-books/2017'>
+                <NavDropdown.Item>Knihy 2017</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='new-books/2016'>
+                <NavDropdown.Item>Knihy 2016</NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
             <NavDropdown title='Podcast' className='red-navbar-item'>
               <LinkContainer to='profile'>

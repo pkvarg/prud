@@ -163,7 +163,7 @@ const Give2Physical = () => {
             className='btn-file'
             onClick={() => downloadFileHandler(file4)}
           >
-            Poučenie k vyhláseniu o pokázaní dane
+            Poučenie k vyhláseniu o poukázaní dane
           </Button>
         </div>
       </div>

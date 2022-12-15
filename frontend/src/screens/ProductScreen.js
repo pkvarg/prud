@@ -127,14 +127,13 @@ const ProductScreen = () => {
                 <h5>ISBN:</h5>
                 <h6>{product.isbn}</h6>
                 <h5>Jazyk</h5>
-                {product.language === 'SK' && (
+                {product.language === 'SK' ? (
                   <Image
                     src='/images/flag_sk40px_0.png'
                     alt={product.name}
                     fluid
                   ></Image>
-                )}
-                {product.language === 'CZ' && (
+                ) : (
                   <Image
                     src='/images/flag_cz40px_2_27.png'
                     alt={product.name}

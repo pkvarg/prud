@@ -36,6 +36,7 @@ const ProductEditScreen = () => {
   const [binding, setBinding] = useState('')
   const [pages, setPages] = useState('')
   const [isbn, setIsbn] = useState('')
+  const [year, setYear] = useState('')
 
   /* All Products Dropdown content*/
   const productList = useSelector((state) => state.productList)
@@ -80,6 +81,7 @@ const ProductEditScreen = () => {
         setBinding(product.binding)
         setPages(product.pages)
         setIsbn(product.isbn)
+        setYear(product.year)
       }
     }
   }, [dispatch, navigate, productId, product, successUpdate, products])
@@ -131,6 +133,7 @@ const ProductEditScreen = () => {
         binding,
         pages,
         isbn,
+        year,
       })
     )
     // document.location.href = `/admin/product/${productId}/edit`
@@ -255,6 +258,16 @@ const ProductEditScreen = () => {
                 placeholder='Počet na sklade'
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='year'>
+              <Form.Label>Rok vydania</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Rok vydania'
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
               ></Form.Control>
             </Form.Group>
 

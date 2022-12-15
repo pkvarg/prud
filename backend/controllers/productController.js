@@ -105,6 +105,7 @@ const createProduct = asyncHandler(async (req, res) => {
     binding: '',
     pages: '',
     isbn: '',
+    year: '',
   })
 
   const createdProduct = await product.save()
@@ -135,6 +136,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     binding,
     pages,
     isbn,
+    year,
   } = req.body
 
   const product = await Product.findById(req.params.id)
@@ -159,6 +161,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.binding = binding
     product.pages = pages
     product.isbn = isbn
+    product.year = year
 
     const updatedProduct = await product.save()
     res.json(updatedProduct)

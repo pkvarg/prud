@@ -72,6 +72,7 @@ const productSchema = mongoose.Schema(
     binding: { type: String },
     pages: { type: String },
     isbn: { type: String },
+    year: { type: Number },
   },
   {
     timestamps: true,

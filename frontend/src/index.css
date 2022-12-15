@@ -692,6 +692,25 @@ sup {
   background-color: darkolivegreen;
 }
 
+.prods-by-year-container {
+  margin-left: 20%;
+  width: 90vw;
+}
+
+.prod-img-year-width {
+  margin-top: 2.5%;
+  width: 30%;
+}
+.prods-by-year {
+  display: flex;
+  gap: 30px;
+}
+
+.prod-by-year {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 /* FOOTER */
 footer {
   background-color: #edeae4;
@@ -984,6 +1003,35 @@ footer {
   .btn-file {
     width: 100%;
   }
+
+  .prods-by-year-container {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .prods-by-year {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .prod-by-year {
+    text-align: center;
+  }
+
+  .prod-by-year h1 {
+    font-size: 35px;
+  }
+
+  .prod-by-year h4 {
+    font-size: 30px;
+  }
+  .prod-img-year-width {
+    width: 100%;
+    margin-left: 0.75%;
+  }
+
   /* MOBILE FOOTER*/
   .footer-text-links {
     align-items: center;
