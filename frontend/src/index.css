@@ -693,22 +693,31 @@ sup {
 }
 
 .prods-by-year-container {
-  margin-left: 20%;
+  margin-left: 10%;
   width: 90vw;
 }
 
 .prod-img-year-width {
-  margin-top: 2.5%;
-  width: 30%;
+  width: 27%;
 }
+
 .prods-by-year {
   display: flex;
-  gap: 30px;
+  gap: 40px;
 }
 
 .prod-by-year {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+/* Laptop ONLY*/
+
+@media (min-width: 100px) and (max-width: 1440px) {
+  .prod-img-year-width {
+    width: 27%;
+    margin-top: 7%;
+  }
 }
 
 /* FOOTER */

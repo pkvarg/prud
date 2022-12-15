@@ -178,10 +178,12 @@ const Header = () => {
               </LinkContainer>
             </NavDropdown>
             <NavDropdown title='Podcast' className='red-navbar-item'>
-              <LinkContainer to='profile'>
+              <LinkContainer to='words-of-life'>
                 <NavDropdown.Item>Slová života</NavDropdown.Item>
               </LinkContainer>
-              <NavDropdown.Item to='profile'>Štúdium života</NavDropdown.Item>
+              <LinkContainer to='life-study'>
+                <NavDropdown.Item>Štúdium života</NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
             <LinkContainer to='/video'>
               <Nav.Link className='red-navbar-item'>Video</Nav.Link>

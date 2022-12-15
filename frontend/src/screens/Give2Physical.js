@@ -1,35 +1,8 @@
-import React, { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-import Message from '../components/Message'
-import Loader from '../components/Loader'
-import FormContainer from '../components/FormContainer'
-import { forgotPasswordAction } from '../actions/userActions'
-
 const Give2Physical = () => {
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState(null)
-  const [messageSuccess, setMessageSuccess] = useState(null)
-
-  const origURL = window.location.host
-
-  const dispatch = useDispatch()
-
-  const forgotPassword = useSelector((state) => state.forgotPassword)
-  const { loading, error } = forgotPassword
-
-  const submitHandler = (e) => {
-    e.preventDefault()
-    if (!email) {
-      setMessage('Musíte zadať existujúci email')
-    } else {
-      dispatch(forgotPasswordAction(email, origURL))
-      setMessageSuccess('Linka bola odoslaná na Váš email')
-    }
-  }
-
   const file1 = '2022_priloha_c_1_ziadost_o_rocne_zuctovanie.pdf'
   const file2 = '2022_priloha_c_2_potvrdenie_o_zaplateni_dane.pdf'
   const file3 = '2022_priloha_c_3_vyhlasenie_o_poukazani_dane.pdf'
@@ -55,7 +28,22 @@ const Give2Physical = () => {
         Naspäť
       </Link>
       <div className='give2-physical'>
-        <h1>FYZICKÉ OSOBY</h1>
+        <h1 className='my-3'>DARUJTE 2%</h1>
+        <strong>Vážení čitatelia, milí priatelia!</strong>
+        <p>
+          V roku 2022 sme sa stali prijímateľmi 2%. Aj takouto cestou máte teraz
+          možnosť podporiť nás pri propagácii literatúry, organizovaní seminárov
+          a konferencií a ďalších našich aktivitách. Za akúkoľvek vašu podporu
+          sme vám už teraz vďační.
+        </p>
+        <strong>Ďakujeme!</strong>
+        <h3 className='my-3'>Údaje o prijímateľovi 2%</h3>
+        <p>Obchodné meno (názov): Prúd</p>
+        <p>Právna forma: Občianske združenie</p>
+        <p>IČO: 36076589</p>
+        <p>Sídlo: Špieszova 5, 841 04 Bratislava </p>
+
+        <h1 className='my-5'>FYZICKÉ OSOBY</h1>
         <strong>Postup pre fyzické osoby – zamestnancov</strong>
         <p>
           (Postup pre fyzické osoby, ktoré si samy podávajú daňové priznanie

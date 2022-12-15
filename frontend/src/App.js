@@ -29,6 +29,8 @@ import Give2Physical from './screens/Give2Physical'
 import Give2Lawyer from './screens/Give2Lawyer'
 import Give2PhysicalBusiness from './screens/Give2PhysicalBusiness'
 import NewBooks from './screens/NewBooks'
+import WordsOfLife from './screens/WordsOfLife'
+import LifeStudy from './screens/LifeStudy'
 
 const App = () => {
   const [clientID, setClientID] = useState('')
@@ -114,6 +116,8 @@ const App = () => {
                   />
                   <Route path='/give2-lawyer' element={<Give2Lawyer />} />
                   <Route path='/new-books/:year' element={<NewBooks />} />
+                  <Route path='/words-of-life' element={<WordsOfLife />} />
+                  <Route path='/life-study' element={<LifeStudy />} />
                 </Routes>
               </Container>
             </main>
