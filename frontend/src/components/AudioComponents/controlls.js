@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import playerContext from './context/playerContext'
+// import currentSong from './context/01JakBuhPlyne.mp3'
 
 let Controlls = () => {
   // Global State
@@ -18,6 +19,8 @@ let Controlls = () => {
     songslist,
   } = useContext(playerContext)
   const audio = useRef('audio_tag')
+
+  console.log(audio)
 
   // self State
   const [statevolum, setStateVolum] = useState(0.3)
@@ -57,9 +60,16 @@ let Controlls = () => {
         onCanPlay={(e) => setDur(e.target.duration)}
         onEnded={handleEnd}
         ref={audio}
-        type='audio/mpeg'
         preload='true'
         src={songslist[currentSong].fileUrl}
+        type='audio/mpeg'
+        // crossOrigin='anonymous'
+        // proprietary_codecs='true'
+        // ffmpeg_branding='Chrome'
+        // stream='http://localhost:3000/words-of-life'
+        // streamtype='mp3'
+
+        // src={currentSong}
       />
       <div className='vlme'>
         <span className='volum'>
@@ -101,6 +111,7 @@ let Controlls = () => {
       <div className='progressb'>
         <div className='songMeta'>
           <span className='songtitle'>{songslist[currentSong].title}</span>
+
           <span className='songartistName'>
             {songslist[currentSong].artistName}
           </span>
@@ -115,7 +126,7 @@ let Controlls = () => {
         <span className='currentT'>{fmtMSS(currentTime)}</span>/
         <span className='totalT'>{fmtMSS(dur)}</span>
       </div>
-      <div className='plsoptions'>
+      {/* <div className='plsoptions'>
         <span
           onClick={toggleRandom}
           className={'random ' + (random ? 'active' : '')}
@@ -128,7 +139,7 @@ let Controlls = () => {
         >
           <i className='fas fa-redo-alt'></i>
         </span>
-      </div>
+      </div> */}
     </div>
   )
 }

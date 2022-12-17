@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import playerReducer from './playerReducer'
 import playerContext from './playerContext'
-import { song_list } from './songs'
+import { song_list } from './mp3s'
 
 import {
   SET_CURRENT_SONG,
@@ -81,7 +81,7 @@ const PlayerState = (props) => {
     <playerContext.Provider
       value={{
         currentSong: state.currentSong,
-        // songs: state.songs,
+        songs: state.songs,
         songslist: state.songslist,
         repeat: state.repeat,
         random: state.random,
