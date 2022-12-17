@@ -1,33 +1,16 @@
-import React from 'react'
-
-// // Hooks
-const fav = () => {
-  console.log('I like this one')
-}
+import React, { useContext } from 'react'
+import playerContext from './context/playerContext'
 
 // Component
 let AudioActions = () => {
+  const { currentSong, songslist } = useContext(playerContext)
+
   return (
     <div className='actions'>
-      <img
-        src='https://freemusicarchive.org/image?file=images%2Falbums%2FSkidmore_College_Orchestra_-_Mussorgskys_Pictures_at_an_Exhibition_-_2009113013701972.jpg&width=290&height=290&type=image'
-        alt='img-name'
-      />
       <div className='album_meta'>
-        <span className='alb_label'>ALBUM</span>
-        <h1>Mussorgsky's Pictures at an Exhibition</h1>
+        <h1 className='album_meta_title'>SLOVÁ ŽIVOTA A PRAVDY</h1>
+        <h3 className='album_meta_title'>{songslist[currentSong].title}</h3>
       </div>
-      {/* <div className='action_btns'>
-        <button onClick={() => fav()} className='fav_btn'>
-          <i className='far fa-heart fa-2x'></i>
-        </button>
-        <button onClick={() => fav()} className='fav_btn'>
-          <i className='far fa-arrow-alt-circle-down fa-2x'></i>
-        </button>
-        <button onClick={() => fav()} className='fav_btn'>
-          <i className='fas fa-ellipsis-h fa-2x'></i>
-        </button>
-      </div> */}
     </div>
   )
 }

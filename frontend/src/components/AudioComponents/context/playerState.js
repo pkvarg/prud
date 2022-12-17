@@ -2,7 +2,6 @@ import React, { useReducer } from 'react'
 import playerReducer from './playerReducer'
 import playerContext from './playerContext'
 import { song_list } from './mp3s'
-
 import {
   SET_CURRENT_SONG,
   TOGGLE_RANDOM,

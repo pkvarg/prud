@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-* {
+/* * {
   box-sizing: border-box;
 }
 html {
   min-width: 800px;
-}
+} */
 /* body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -113,10 +113,11 @@ span.minW {
 }
 
 .actions {
-  background: #3a3a3a;
+  background: #4aa9de;
   color: white;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -137,9 +138,22 @@ span.minW {
   flex: 1;
   justify-content: center;
 }
-.album_meta {
-  padding-left: 15px;
+
+h1.album_meta_title {
+  color: #dfdfdf;
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
 }
+
+h3.album_meta_title {
+  color: #555;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 10px;
+  text-transform: none;
+}
+
 .alb_label {
   font-size: 0.8em;
 }
@@ -238,11 +252,11 @@ span.minW {
 .vlme {
   display: flex;
   align-content: center;
+  margin-left: 15px;
+
+  width: auto;
   overflow: hidden;
-  width: 25px;
   transition: all 500ms;
-  position: absolute;
-  left: 0;
 }
 
 .vlme:hover {
@@ -269,7 +283,7 @@ span.minW {
 }
 
 .musicControls {
-  margin-left: 90px;
+  margin-left: 15px;
   min-width: 120px;
 }
 
@@ -321,7 +335,7 @@ span.minW {
   justify-content: center;
   align-items: center;
   margin-left: 20px;
-  margin-right: 90px;
+  margin-right: 45px;
   flex: 1;
 }
 .songMeta {
@@ -473,4 +487,73 @@ input[type='range']:focus::-ms-fill-upper {
 
 .plsoptions {
   justify-self: flex-end;
+}
+
+/* MOBILE */
+@media (min-width: 100px) and (max-width: 1180px) {
+  .no-mobile {
+    display: none !important;
+  }
+
+  .album_meta {
+    padding: 0 5px;
+    text-align: center;
+  }
+
+  h1.album_meta_title {
+    font-size: 20px;
+  }
+
+  h3.album_meta_title {
+    font-size: 15px;
+  }
+
+  .playlist {
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+  }
+
+  .loi {
+    width: 100%;
+    margin: 0;
+    margin-left: 1px;
+  }
+
+  .tmbn_song {
+    background: none;
+    background-color: #555;
+  }
+
+  .songname {
+    font-size: 20px;
+  }
+  .songauthors {
+    font-size: 15px;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+  }
+
+  .musicControls {
+    margin: 0;
+    margin-top: 15px;
+  }
+
+  .vlme {
+    display: none;
+  }
+
+  .progressb {
+    align-items: flex-start;
+    flex: none;
+  }
+
+  #prgbar {
+    display: none;
+  }
 }

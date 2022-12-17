@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../src/audio.css'
-import AudioHeader from './AudioComponents/AudioHeader'
 import Controlls from './AudioComponents/Controlls'
 import AudioActions from './AudioComponents/AudioActions'
 import Playlist from './AudioComponents/Playlist'
@@ -11,7 +10,6 @@ let AudioPlayer = () => {
     <PlayerState>
       <div className='audioplayer'>
         <div className='inside_content'>
-          <AudioHeader />
           <AudioActions />
           <Playlist />
         </div>

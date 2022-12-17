@@ -1,5 +1,3 @@
-import React from 'react'
-
 import {
   SET_CURRENT_SONG,
   TOGGLE_RANDOM,

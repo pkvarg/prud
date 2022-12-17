@@ -1,21 +1,21 @@
+import num01 from './01JakBuhPlyne.mp3'
+import num02 from './01HrichHrichy.mp3'
+
 export const song_list = [
   {
     title: 'This is the title',
     artistName: 'This is the artist name',
     albumTitle: 'PROÍVÁNÍ KRISTA JAKO IVOTA',
-    fileUrl:
-      '/frontend/src/components/AudioComponents/context/01JakBuhPlyne.mp3',
-    type: 'audio/mpeg',
-    crossOrigin: 'anonymous',
+    fileUrl: num01,
   },
   {
-    title: 'This is the 2title',
+    title: 'This is the title2',
     artistName: 'This is the artist name',
     albumTitle: 'PROÍVÁNÍ KRISTA JAKO IVOTA',
-    fileUrl: '../context/01JakBuhPlyne.mp3',
+    fileUrl: num02,
   },
   {
-    title: 'Promenade Allegro giusto nel modo russico senza allegrezza ma',
+    title: 'Promenade Allegro giusto ',
     artistName: 'Skidmore College Orchestra',
     albumTitle: "Mussorgsky's Pictures at an Exhibition",
     fileUrl:

@@ -1,19 +1,15 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import playerContext from './context/playerContext'
-// import currentSong from './context/01JakBuhPlyne.mp3'
 
 let Controlls = () => {
   // Global State
+
   const {
     currentSong,
-    songs,
+    // songs,
     nextSong,
     prevSong,
-    repeat,
-    random,
     playing,
-    toggleRandom,
-    toggleRepeat,
     togglePlaying,
     handleEnd,
     songslist,
@@ -63,13 +59,6 @@ let Controlls = () => {
         preload='true'
         src={songslist[currentSong].fileUrl}
         type='audio/mpeg'
-        // crossOrigin='anonymous'
-        // proprietary_codecs='true'
-        // ffmpeg_branding='Chrome'
-        // stream='http://localhost:3000/words-of-life'
-        // streamtype='mp3'
-
-        // src={currentSong}
       />
       <div className='vlme'>
         <span className='volum'>
@@ -109,13 +98,13 @@ let Controlls = () => {
       </div>
 
       <div className='progressb'>
-        <div className='songMeta'>
+        {/* <div className='songMeta'>
           <span className='songtitle'>{songslist[currentSong].title}</span>
 
           <span className='songartistName'>
             {songslist[currentSong].artistName}
           </span>
-        </div>
+        </div> */}
         <input
           onChange={handleProgress}
           value={dur ? (currentTime * 100) / dur : 0}
