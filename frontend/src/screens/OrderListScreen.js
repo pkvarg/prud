@@ -36,7 +36,7 @@ const OrderListScreen = () => {
         <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
-              <th>ID</th>
+              <th>Číslo</th>
               <th>Užívateľ</th>
               <th>Dátum</th>
               <th>Cena</th>
@@ -47,7 +47,7 @@ const OrderListScreen = () => {
           <tbody>
             {orders.map((order) => (
               <tr key={order._id}>
-                <td>{order._id}</td>
+                <td>{order.orderNumber}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>€{order.totalPrice.toFixed(2)}</td>

@@ -32,6 +32,14 @@ import {
   orderDeliverReducer,
 } from './reducers/orderReducers'
 
+import {
+  audioListReducer,
+  audioCreateReducer,
+  audioDetailsReducer,
+  audioDeleteReducer,
+  audioUpdateReducer,
+} from './reducers/audioReducers'
+
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
@@ -57,6 +65,11 @@ const reducer = combineReducers({
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
   orderDelete: orderDeleteReducer,
+  audioList: audioListReducer,
+  audioDetails: audioDetailsReducer,
+  audioDelete: audioDeleteReducer,
+  audioCreate: audioCreateReducer,
+  audioUpdate: audioUpdateReducer,
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')

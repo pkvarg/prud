@@ -31,6 +31,8 @@ import Give2PhysicalBusiness from './screens/Give2PhysicalBusiness'
 import NewBooks from './screens/NewBooks'
 import WordsOfLife from './screens/WordsOfLife'
 import LifeStudy from './screens/LifeStudy'
+import AudioListScreen from './screens/AudioListScreen'
+import AudioEditScreen from './screens/AudioEditScreen'
 
 const App = () => {
   const [clientID, setClientID] = useState('')
@@ -104,6 +106,11 @@ const App = () => {
                   <Route
                     path='/admin/orderlist'
                     element={<OrderListScreen />}
+                  />
+                  <Route path='/admin/audio' element={<AudioListScreen />} />
+                  <Route
+                    path='/admin/audio/:id/edit'
+                    element={<AudioEditScreen />}
                   />
                   <Route
                     path='/forgot-password'
