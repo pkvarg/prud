@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import playerContext from './context/playerContext'
 
-let Controlls = () => {
+let Controls = () => {
   // Global State
   const {
     currentSong,
@@ -130,4 +130,4 @@ let Controlls = () => {
   )
 }
 
-export default Controlls
+export default Controls
