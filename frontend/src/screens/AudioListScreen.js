@@ -5,12 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import Paginate from '../components/Paginate'
 
 import { listAudio, deleteAudio, createAudio } from '../actions/audioActions'
 import { useNavigate } from 'react-router-dom'
 import { AUDIO_CREATE_RESET } from '../constants/audioConstants'
-import { Link } from 'react-router-dom'
 
 const AudioListScreen = () => {
   const params = useParams()
@@ -101,7 +99,7 @@ const AudioListScreen = () => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
-          <Table striped bordered hover responsive className='table-sm'>
+          <Table striped bordered hover responsive className='table-sm my-5'>
             <thead>
               <tr>
                 <th>NÁZOV</th>

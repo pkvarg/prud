@@ -9,7 +9,9 @@ let AudioActions = () => {
     <div className='actions'>
       <div className='album_meta'>
         <h1 className='album_meta_title'>SLOVÁ ŽIVOTA A PRAVDY</h1>
-        <h3 className='album_meta_title'>{songslist[currentSong].title}</h3>
+        <h3 className='album_meta_title'>
+          {songslist[currentSong].audioTitle}
+        </h3>
       </div>
     </div>
   )

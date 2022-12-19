@@ -3,7 +3,6 @@ import playerContext from './context/playerContext'
 
 let Controlls = () => {
   // Global State
-
   const {
     currentSong,
     // songs,
@@ -15,8 +14,6 @@ let Controlls = () => {
     songslist,
   } = useContext(playerContext)
   const audio = useRef('audio_tag')
-
-  console.log(audio)
 
   // self State
   const [statevolum, setStateVolum] = useState(0.3)
@@ -57,7 +54,7 @@ let Controlls = () => {
         onEnded={handleEnd}
         ref={audio}
         preload='true'
-        src={songslist[currentSong].fileUrl}
+        src={songslist[currentSong].mp3file}
         type='audio/mpeg'
       />
       <div className='vlme'>

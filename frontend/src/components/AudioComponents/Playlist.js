@@ -21,8 +21,8 @@ let Playlist = () => {
               <i className='fas fa-play'></i>
             </div>
             <div className='songmeta_playlist'>
-              <span className='songname'>{song.title}</span>
-              <span className='songauthors'>{song.artistName}</span>
+              <span className='songname'>{song.audioTitle}</span>
+              {/* <span className='songauthors'>{song.artistName}</span> */}
             </div>
             <div className='playlist_btns_group'>
               {/* <button className='fav_song playlist_btn'>

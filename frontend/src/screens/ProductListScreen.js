@@ -14,7 +14,6 @@ import {
 } from '../actions/productActions'
 import { useNavigate } from 'react-router-dom'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
-import { Link } from 'react-router-dom'
 
 const ProductListScreen = () => {
   const params = useParams()
@@ -119,7 +118,7 @@ const ProductListScreen = () => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
-          <Table striped bordered hover responsive className='table-sm'>
+          <Table striped bordered hover responsive className='table-sm my-3'>
             <thead>
               <tr>
                 <th>NÁZOV</th>

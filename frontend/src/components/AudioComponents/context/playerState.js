@@ -1,7 +1,8 @@
 import React, { useReducer } from 'react'
 import playerReducer from './playerReducer'
 import playerContext from './playerContext'
-import { song_list } from './mp3s'
+import { uploadedMp3s } from './mp3s'
+
 import {
   SET_CURRENT_SONG,
   TOGGLE_RANDOM,
@@ -13,7 +14,8 @@ import {
 const PlayerState = (props) => {
   const initialState = {
     currentSong: 0,
-    songslist: song_list,
+    // songslist: song_list,
+    songslist: uploadedMp3s,
     repeat: false,
     random: false,
     playing: false,

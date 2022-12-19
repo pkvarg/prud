@@ -38,18 +38,18 @@ const getAudioById = asyncHandler(async (req, res) => {
   }
 })
 
-// @desc Delete a product
-// @desc DELETE /api/products/:id
+// @desc Delete an audio
+// @desc DELETE /api/audio/:id
 // @access Private/Admin
 
 const deleteAudio = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id)
-  if (product) {
-    await product.remove()
-    res.json({ message: 'Product removed' })
+  const audio = await Audio.findById(req.params.id)
+  if (audio) {
+    await audio.remove()
+    res.json({ message: 'Audio removed' })
   } else {
     res.status(404)
-    throw new Error('Product not found')
+    throw new Error('Audio not found')
   }
 })
 
