@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { Link, useParams, useNavigate } from 'react-router-dom'
-import { Form, Button, Dropdown } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
 import Message from '../components/Message'
-import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { createDiscount } from '../actions/productActions'
-import { CREATE_DISCOUNT_SUCCESS } from '../constants/productConstants'
 
 const CreateDiscount = () => {
-  const navigate = useNavigate()
-
   const [discount, setDiscount] = useState('')
   const [messageSuccess, setMessageSuccess] = useState(null)
 

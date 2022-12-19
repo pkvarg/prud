@@ -119,7 +119,8 @@ const AudioEditScreen = () => {
                 type='text'
                 placeholder='Mp3 súbor'
                 value={mp3file}
-                onChange={(e) => setMp3file(e.target.value)}
+                readOnly
+                // onChange={(e) => setMp3file(e.target.value)}
               ></Form.Control>
               <Form.Control
                 type='file'

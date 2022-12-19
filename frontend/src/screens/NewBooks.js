@@ -1,83 +1,28 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  Container,
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Card,
-  Form,
-  Button,
-} from 'react-bootstrap'
-import Rating from '../components/Rating'
-import Message from '../components/Message'
-import Loader from '../components/Loader'
-import Meta from '../components/Meta'
-import {
-  listProductDetails,
-  createProductReview,
-} from '../actions/productActions'
+import { Col, Image } from 'react-bootstrap'
+import { listProductDetails } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
-import Product from '../components/Product'
 import Paginate from '../components/Paginate'
 import { listProducts } from '../actions/productActions'
 
 const NewBooks = () => {
-  const [qty, setQty] = useState(1)
-  const [rating, setRating] = useState(0)
-  const [comment, setComment] = useState('')
-
   const params = useParams()
   const year = params.year
   const dispatch = useDispatch()
-  const productDetails = useSelector((state) => state.productDetails)
-  const { loading, error, product } = productDetails
 
   const productReviewCreate = useSelector((state) => state.productReviewCreate)
-  const { success: successProductReview, error: errorProductReview } =
-    productReviewCreate
-
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
+  const { success: successProductReview } = productReviewCreate
 
   useEffect(() => {
     if (successProductReview) {
       alert('Recenzia pridaná')
-      setRating(0)
-      setComment('')
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
     }
     dispatch(listProductDetails(year))
   }, [dispatch, year, successProductReview])
 
-  const navigate = useNavigate()
-  const addToCartHandler = () => {
-    navigate(`../cart/${year}?qty=${qty}`)
-  }
-
-  const submitHandler = (e) => {
-    e.preventDefault()
-    dispatch(
-      createProductReview(params.id, {
-        rating,
-        comment,
-      })
-    )
-  }
-
-  const continueShopping = () => {
-    navigate('/')
-  }
-
-  const addDecimals = (num) => {
-    return (Math.round(num * 100) / 100).toFixed(2)
-  }
-
-  const handleLink = (id) => {
-    navigate(`/product/${id}`)
-  }
   const keyword = params.keyword
   const pageNumber = params.pageNumber || 1
 
