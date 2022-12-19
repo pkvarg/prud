@@ -30,11 +30,11 @@ let header = (doc, invoice) => {
       .image(invoice.header.company_logo, 50, 45, { width: 100 })
       .fontSize(18)
       .font('Cardo-Bold')
-      .text(invoice.header.company_name, 515, 33)
+      .text(invoice.header.company_name, 515, 31)
       .moveDown()
   } else {
     doc.fontSize(18).font('Cardo-Bold')
-    text(invoice.header.company_name, 515, 33).moveDown()
+    text(invoice.header.company_name, 515, 31).moveDown()
   }
 
   if (invoice.header.company_address.length !== 0) {
@@ -47,15 +47,16 @@ let header = (doc, invoice) => {
   if (invoice.dic.length !== 0) {
     doc.font('Cardo-Bold').fontSize(15).text(invoice.dic, 439.5, 105)
   }
+  doc.font('Cardo').fontSize(12).text('MVSR VUS/1-900/90-26215-1', 395, 125)
 }
 
 let customerInformation = (doc, invoice) => {
   doc
     .fillColor('#444444')
     .fontSize(20)
-    .text('Faktúra číslo:', 50, 160)
+    .text('Faktúra - Daňový doklad:', 50, 160)
     .fontSize(15)
-    .text(invoice.orderNumber, 175, 165)
+    .text(invoice.orderNumber, 275, 165)
   generateHr(doc, 185)
 
   const customerInformationTop = 200
@@ -193,7 +194,7 @@ let invoiceTable = (doc, invoice) => {
 let footer = (doc, invoice) => {
   if (invoice.footer.text.length !== 0) {
     doc
-      .fontSize(10)
+      .fontSize(15)
       .text(invoice.footer.text, 50, 780, { align: 'center', width: 500 })
   }
 }

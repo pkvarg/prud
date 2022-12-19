@@ -21,6 +21,9 @@ import {
   ORDER_DELIVER_REQUEST,
   ORDER_DELIVER_SUCCESS,
   ORDER_DELIVER_FAIL,
+  ORDER_CANCELL_REQUEST,
+  ORDER_CANCELL_SUCCESS,
+  ORDER_CANCELL_FAIL,
   // ORDER_DELIVER_RESET,
 } from '../constants/orderConstants'
 
@@ -167,6 +170,44 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
         : error.message
     dispatch({
       type: ORDER_DELIVER_FAIL,
+      payload: message,
+    })
+  }
+}
+
+export const cancellOrder = (order) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ORDER_CANCELL_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.put(
+      `/api/orders/${order._id}/cancell`,
+      {},
+      config
+    )
+
+    dispatch({
+      type: ORDER_CANCELL_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    dispatch({
+      type: ORDER_CANCELL_FAIL,
       payload: message,
     })
   }

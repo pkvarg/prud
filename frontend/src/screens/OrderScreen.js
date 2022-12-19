@@ -17,14 +17,16 @@ import Loader from '../components/Loader'
 import {
   getOrderDetails,
   payOrder,
-  deleteOrder,
+  // deleteOrder,
   deliverOrder,
+  cancellOrder,
   // createOrder,
 } from '../actions/orderActions'
 
 import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
+  ORDER_CANCELL_RESET,
   ORDER_LIST_MY_RESET,
 } from '../constants/orderConstants'
 
@@ -48,6 +50,9 @@ const OrderScreen = () => {
   const orderDeliver = useSelector((state) => state.orderDeliver)
   const { loading: loadingDeliver, success: successDeliver } = orderDeliver
 
+  const orderCancell = useSelector((state) => state.orderCancell)
+  const { success: successCancell } = orderCancell
+
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
@@ -57,12 +62,12 @@ const OrderScreen = () => {
   const orderDelete = useSelector((state) => state.orderDelete)
   const { success: successDelete } = orderDelete
 
-  const deleteOrderHandler = (id) => {
-    if (window.confirm('Ste si istý?')) {
-      dispatch(deleteOrder(id))
-      navigate('/admin/orderlist')
-    }
-  }
+  // const deleteOrderHandler = (id) => {
+  //   if (window.confirm('Ste si istý?')) {
+  //     dispatch(deleteOrder(id))
+  //     navigate('/admin/orderlist')
+  //   }
+  // }
 
   if (!loading) {
     // Calculate Prices
@@ -83,9 +88,17 @@ const OrderScreen = () => {
       dispatch({ type: ORDER_PAY_RESET })
       dispatch(getOrderDetails(orderId))
     }
-    if (!order || successPay || successDeliver || order._id !== orderId) {
+    if (
+      !order ||
+      successPay ||
+      successDeliver ||
+      successCancell ||
+      order._id !== orderId
+    ) {
       //     dispatch({ type: ORDER_PAY_RESET })
       dispatch({ type: ORDER_DELIVER_RESET })
+      dispatch({ type: ORDER_CANCELL_RESET })
+
       dispatch(getOrderDetails(orderId))
     }
   }, [
@@ -95,6 +108,7 @@ const OrderScreen = () => {
     successPay,
     successDelete,
     successDeliver,
+    successCancell,
     navigate,
     userInfo,
   ])
@@ -122,6 +136,10 @@ const OrderScreen = () => {
 
   const deliverHandler = () => {
     dispatch(deliverOrder(order))
+  }
+
+  const cancellHandler = () => {
+    dispatch(cancellOrder(order))
   }
 
   const newOrderHandler = () => {
@@ -189,6 +207,9 @@ const OrderScreen = () => {
               ) : (
                 <Message variant='danger'>Neodoslané</Message>
               )}
+              {order.isCancelled && (
+                <Message variant='danger'>Zrušená!</Message>
+              )}
             </ListGroup.Item>
 
             <ListGroup.Item>
@@ -204,7 +225,7 @@ const OrderScreen = () => {
               ) : (
                 <Message variant='danger'>
                   Nezaplatené
-                  {userInfo.isAdmin && (
+                  {/* {userInfo.isAdmin && (
                     <Button
                       variant='danger'
                       className='w-100'
@@ -212,7 +233,7 @@ const OrderScreen = () => {
                     >
                       ADMIN: Zmazať objednávku
                     </Button>
-                  )}
+                  )} */}
                 </Message>
               )}
             </ListGroup.Item>
@@ -326,6 +347,20 @@ const OrderScreen = () => {
                   </Button>
                 </ListGroup.Item>
               )}
+              {userInfo &&
+                userInfo.isAdmin &&
+                !order.isCancelled &&
+                !order.isDelivered && (
+                  <ListGroup.Item>
+                    <Button
+                      typ='button'
+                      className='btn w-100 btn-danger'
+                      onClick={cancellHandler}
+                    >
+                      Zrušiť objednávku
+                    </Button>
+                  </ListGroup.Item>
+                )}
               <ListGroup.Item>
                 <Button
                   className='w-100 btn-blue'

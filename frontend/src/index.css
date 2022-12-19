@@ -768,6 +768,7 @@ footer {
 .footer-link {
   text-decoration: none;
   margin-left: 25px;
+  line-height: 27.5px;
 }
 
 /* MOBILE */
@@ -795,6 +796,7 @@ footer {
   .red-navbar-item {
     font-weight: 400;
     margin: 2px 0;
+    line-height: 30px;
   }
 
   .red-navbar-item:last-child {
@@ -866,7 +868,7 @@ footer {
   /* toggled mobile navbar */
 
   .mobile-navbar-collapse {
-    margin-top: -30px;
+    margin-top: -63px;
     background-color: #f1f1f1;
     padding-top: 50px;
     padding-left: 15px;
@@ -997,6 +999,11 @@ footer {
     display: block;
   }
 
+  .product-description {
+    font-size: 18px;
+    text-align: left;
+  }
+
   .product-img-card-width {
     width: 100% !important;
   }
@@ -1048,5 +1055,9 @@ footer {
 
   .footer-copyright.mobile-only {
     display: flex;
+  }
+
+  p.footer-trade-rules {
+    line-height: 35px;
   }
 }

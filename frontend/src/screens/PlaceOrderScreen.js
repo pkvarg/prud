@@ -172,10 +172,12 @@ const PlaceOrderScreen = () => {
                           <Link to={`/product/${item.product}`}>
                             {item.name}
                           </Link>
-                          {item.discount && (
+                          {item.discount > 0 ? (
                             <h5 className='place-order-discount'>
                               Zľava {item.discount}%
                             </h5>
+                          ) : (
+                            ''
                           )}
                         </Col>
                         <Col md={4}>

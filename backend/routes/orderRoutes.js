@@ -5,6 +5,7 @@ import {
   getOrderByid,
   updateOrderToPaid,
   updateOrderToDelivered,
+  updateOrderToCancelled,
   getMyOrders,
   getOrders,
   deleteOrder,
@@ -19,5 +20,6 @@ router
   .delete(protect, admin, deleteOrder)
 router.route('/:id/pay').put(protect, updateOrderToPaid)
 router.route('/:id/deliver').put(protect, admin, updateOrderToDelivered)
+router.route('/:id/cancell').put(protect, admin, updateOrderToCancelled)
 
 export default router

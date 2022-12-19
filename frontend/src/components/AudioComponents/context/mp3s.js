@@ -8,7 +8,6 @@ export const myList = async () => {
     return uploadedMp3s.push(audio)
   })
 }
-console.log(uploadedMp3s)
 
 myList()
 

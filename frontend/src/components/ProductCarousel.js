@@ -35,7 +35,7 @@ const ProductCarousel = () => {
     //     </Carousel.Item>
     //   ))}
     // </Carousel>
-    <Carousel pause='hover' className='carousel-custom'>
+    <Carousel pause='hover' className='carousel-custom' id='crsl-id'>
       <Carousel.Item key='1'>
         <Link to={`/`}>
           <Image src='/images/slide-image-1.jpg' alt='prud-01' fluid />

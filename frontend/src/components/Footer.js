@@ -26,7 +26,7 @@ const Footer = () => {
                   <p>GDPR</p>
                 </Link>
                 <Link to='/trade-rules'>
-                  <p>Obchodné podmienky</p>
+                  <p className='footer-trade-rules'>Obchodné podmienky</p>
                 </Link>
               </div>
             </Col>
@@ -37,7 +37,7 @@ const Footer = () => {
                   <p>Objednávky</p>
                 </Link>
                 <Link to='/forgot-password'>
-                  <p>Zabudnuté heslo</p>
+                  <p className='footer-trade-rules'>Zabudnuté heslo</p>
                 </Link>
               </div>
             </Col>
