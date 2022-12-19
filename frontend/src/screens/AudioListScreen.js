@@ -18,7 +18,7 @@ const AudioListScreen = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const audioList = useSelector((state) => state.audioList)
-  const { loading, error, audios, page, pages } = audioList
+  const { loading, error, audios } = audioList
 
   const audioDelete = useSelector((state) => state.audioDelete)
   const {
@@ -104,20 +104,17 @@ const AudioListScreen = () => {
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>NÁZOV</th>
-                <th>ROK</th>
                 <th>SÚBOR</th>
-                {/* <th>ZNAČKA</th> */}
+                <th>KATEGÓRIA</th>
               </tr>
             </thead>
             <tbody>
               {audios.map((audio) => (
                 <tr key={audio._id}>
-                  <td>{audio._id}</td>
                   <td>{audio.audioTitle}</td>
-                  <td>{audio.year}</td>
                   <td>{audio.mp3file}</td>
+                  <td>{audio.category}</td>
 
                   <td>
                     <LinkContainer to={`/admin/audio/${audio._id}/edit`}>
@@ -137,7 +134,6 @@ const AudioListScreen = () => {
               ))}
             </tbody>
           </Table>
-          <Paginate pages={pages} page={page} isAdmin={true}></Paginate>
         </>
       )}
     </>

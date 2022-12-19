@@ -13,8 +13,8 @@ const audioSchema = mongoose.Schema(
     mp3file: {
       type: String,
     },
-    year: {
-      type: Number,
+    category: {
+      type: String,
     },
   },
   {

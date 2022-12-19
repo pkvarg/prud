@@ -62,69 +62,33 @@ const createAudio = asyncHandler(async (req, res) => {
     user: req.user._id,
     audioTitle: '',
     mp3file: '',
-    year: '',
+    category: '',
   })
 
   const createdAudio = await audio.save()
   res.status(201).json(createdAudio)
 })
 
-// @desc    Update a product
-// @route   PUT /api/products/:id
+// @desc    Update an audio
+// @route   PUT /api/audio/:id
 // @access  Private/Admin
 const updateAudio = asyncHandler(async (req, res) => {
-  const {
-    name,
-    price,
-    discount,
-    discountedPrice,
-    description,
-    image,
-    author,
-    category,
-    countInStock,
-    catalog,
-    weight,
-    related,
-    related2,
-    related3,
-    tags,
-    language,
-    binding,
-    pages,
-    isbn,
-    year,
-  } = req.body
+  const { audioTitle, mp3file, category } = req.body
+  const user = req.user._id
 
-  const product = await Product.findById(req.params.id)
+  const audio = await Audio.findById(req.params.id)
 
-  if (product) {
-    product.name = name
-    product.price = price
-    product.discount = discount
-    product.discountedPrice = discountedPrice
-    product.description = description
-    product.image = image
-    product.author = author
-    product.category = category
-    product.countInStock = countInStock
-    product.catalog = catalog
-    product.weight = weight
-    product.related = related
-    product.related2 = related2
-    product.related3 = related3
-    product.tags = tags
-    product.language = language
-    product.binding = binding
-    product.pages = pages
-    product.isbn = isbn
-    product.year = year
+  if (audio) {
+    audio.user = user
+    audio.audioTitle = audioTitle
+    audio.mp3file = mp3file
+    audio.category = category
 
-    const updatedProduct = await product.save()
-    res.json(updatedProduct)
+    const updatedAudio = await audio.save()
+    res.json(updatedAudio)
   } else {
     res.status(404)
-    throw new Error('Product not found')
+    throw new Error('Audio not found')
   }
 })
 

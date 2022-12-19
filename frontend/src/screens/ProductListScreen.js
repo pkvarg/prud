@@ -122,23 +122,21 @@ const ProductListScreen = () => {
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>NÁZOV</th>
                 <th>CENA</th>
                 <th>KATEGÓRIA</th>
-                {/* <th>ZNAČKA</th> */}
+                <th>ZĽAVA</th>
+                <th>ZĽ.CENA</th>
               </tr>
             </thead>
             <tbody>
               {products.map((product) => (
                 <tr key={product._id}>
-                  <td>{product._id}</td>
                   <td>{product.name}</td>
                   <td>€{product.price.toFixed(2)}</td>
                   <td>{product.category}</td>
-                  {/* <td>{product.related}</td> */}
-
-                  {/* <td>{product.brand}</td> */}
+                  <td>{product.discount}%</td>
+                  <td>€{product.discountedPrice.toFixed(2)}</td>
 
                   <td>
                     <LinkContainer to={`/admin/product/${product._id}/edit`}>
