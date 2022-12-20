@@ -1066,4 +1066,7 @@ footer {
   p.footer-trade-rules {
     line-height: 35px;
   }
+  p.footer-forgot-password {
+    line-height: 35px;
+  }
 }

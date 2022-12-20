@@ -5,7 +5,6 @@ let Controls = () => {
   // Global State
   let {
     currentSong,
-    // songs,
     nextSong,
     prevSong,
     playing,
@@ -20,11 +19,12 @@ let Controls = () => {
   })
 
   const handleEnd = () => {
-    if (currentSong === songslist.length - 1) {
-      return
-    } else {
-      nextSong()
-    }
+    //   if (currentSong === songslist.length - 1) {
+    //     return
+    //   } else {
+    //     nextSong()
+    // }
+    return
   }
 
   // self State
@@ -107,13 +107,6 @@ let Controls = () => {
       </div>
 
       <div className='progressb'>
-        {/* <div className='songMeta'>
-          <span className='songtitle'>{songslist[currentSong].title}</span>
-
-          <span className='songartistName'>
-            {songslist[currentSong].artistName}
-          </span>
-        </div> */}
         <input
           onChange={handleProgress}
           value={dur ? (currentTime * 100) / dur : 0}
@@ -128,20 +121,6 @@ let Controls = () => {
         </span>
         /<span className='totalT'>{fmtMSS(dur)}</span>
       </div>
-      {/* <div className='plsoptions'>
-        <span
-          onClick={toggleRandom}
-          className={'random ' + (random ? 'active' : '')}
-        >
-          <i className='fas fa-random'></i>
-        </span>
-        <span
-          onClick={toggleRepeat}
-          className={'repeat ' + (repeat ? 'active' : '')}
-        >
-          <i className='fas fa-redo-alt'></i>
-        </span>
-      </div> */}
     </div>
   )
 }

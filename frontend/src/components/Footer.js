@@ -15,7 +15,7 @@ const Footer = () => {
                   <p>O nás</p>
                 </Link>
                 <Link to='/contact'>
-                  <p>Kontaktujte nás</p>
+                  <p className='footer-trade-rules'>Kontaktujte nás</p>
                 </Link>
               </div>
             </Col>

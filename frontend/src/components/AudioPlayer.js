@@ -10,10 +10,10 @@ let AudioPlayer = (subcategory) => {
     <PlayerState>
       <div className='audioplayer'>
         <div className='inside_content'>
-          <AudioActions subcategory={subcategory} />
+          <AudioActions />
           <Playlist subcategory={subcategory} />
         </div>
-        <Controls subcategory={subcategory} />
+        <Controls />
       </div>
     </PlayerState>
   )

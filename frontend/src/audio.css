@@ -391,8 +391,29 @@ h3.album_meta_title {
 
 .subcategories {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   margin-bottom: 35px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.playlist-subcategory h3 {
+  text-align: center;
+}
+
+.btn-subcategory {
+  background-color: none;
+  border-bottom: 1px solid #2a6586;
+  display: inline-block;
+}
+
+.btn-subcategory:hover {
+  color: #fff;
+  background-color: #4aa9de;
+  border: none;
+  padding: 2.5px 0;
 }
 
 input[type='range'] {
