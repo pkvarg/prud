@@ -3,17 +3,29 @@ import playerContext from './context/playerContext'
 
 let Controls = () => {
   // Global State
-  const {
+  let {
     currentSong,
     // songs,
     nextSong,
     prevSong,
     playing,
     togglePlaying,
-    handleEnd,
+
     songslist,
   } = useContext(playerContext)
   const audio = useRef('audio_tag')
+
+  songslist = songslist.filter((audio) => {
+    return audio.category === 'Slová života'
+  })
+
+  const handleEnd = () => {
+    if (currentSong === songslist.length - 1) {
+      return
+    } else {
+      nextSong()
+    }
+  }
 
   // self State
   const [statevolum, setStateVolum] = useState(0.3)
@@ -109,8 +121,12 @@ let Controls = () => {
           name='progresBar'
           id='prgbar'
         />
-        <span className='currentT'>{fmtMSS(currentTime)}</span>/
-        <span className='totalT'>{fmtMSS(dur)}</span>
+        <span className='currentT'>
+          {currentTime < 599.516421
+            ? '0' + fmtMSS(currentTime)
+            : fmtMSS(currentTime)}
+        </span>
+        /<span className='totalT'>{fmtMSS(dur)}</span>
       </div>
       {/* <div className='plsoptions'>
         <span

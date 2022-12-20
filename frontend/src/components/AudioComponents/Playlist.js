@@ -2,8 +2,15 @@ import React, { useContext } from 'react'
 import playerContext from '../../components/AudioComponents/context/playerContext'
 // import { song_list } from './context/songs'
 
-let Playlist = () => {
-  const { songslist, currentSong, SetCurrent } = useContext(playerContext)
+let Playlist = (subcategory) => {
+  let { songslist, currentSong, SetCurrent } = useContext(playerContext)
+  console.log(songslist)
+  songslist = songslist.filter((audio) => {
+    return (
+      audio.category === 'Slová života' &&
+      audio.subcategory === subcategory.subcategory.subcategory
+    )
+  })
 
   return (
     <div className='playlist no_drag'>

@@ -17,6 +17,8 @@ const AudioEditScreen = () => {
   const [audioTitle, setAudioTitle] = useState('')
   const [mp3file, setMp3file] = useState('')
   const [category, setCategory] = useState('')
+  const [subcategory, setSubcategory] = useState('')
+
   const [uploading, setUploading] = useState(false)
 
   /* All Audios Dropdown content*/
@@ -46,6 +48,7 @@ const AudioEditScreen = () => {
         setAudioTitle(audio.audioTitle)
         setMp3file(audio.mp3file)
         setCategory(audio.category)
+        setSubcategory(audio.subcategory)
       }
     }
   }, [dispatch, navigate, audioId, audio, successUpdate, audios])
@@ -81,6 +84,7 @@ const AudioEditScreen = () => {
         audioTitle,
         mp3file,
         category,
+        subcategory,
       })
     )
   }
@@ -162,6 +166,16 @@ const AudioEditScreen = () => {
                 placeholder='Kategória'
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='subcategory'>
+              <Form.Label>Podkategória</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Podkategória'
+                value={subcategory}
+                onChange={(e) => setSubcategory(e.target.value)}
               ></Form.Control>
             </Form.Group>
 

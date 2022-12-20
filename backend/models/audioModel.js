@@ -16,6 +16,9 @@ const audioSchema = mongoose.Schema(
     category: {
       type: String,
     },
+    subcategory: {
+      type: String,
+    },
   },
   {
     timestamps: true,

@@ -63,6 +63,7 @@ const createAudio = asyncHandler(async (req, res) => {
     audioTitle: '',
     mp3file: '',
     category: '',
+    subcategory: '',
   })
 
   const createdAudio = await audio.save()
@@ -73,7 +74,7 @@ const createAudio = asyncHandler(async (req, res) => {
 // @route   PUT /api/audio/:id
 // @access  Private/Admin
 const updateAudio = asyncHandler(async (req, res) => {
-  const { audioTitle, mp3file, category } = req.body
+  const { audioTitle, mp3file, category, subcategory } = req.body
   const user = req.user._id
 
   const audio = await Audio.findById(req.params.id)
@@ -83,6 +84,7 @@ const updateAudio = asyncHandler(async (req, res) => {
     audio.audioTitle = audioTitle
     audio.mp3file = mp3file
     audio.category = category
+    audio.subcategory = subcategory
 
     const updatedAudio = await audio.save()
     res.json(updatedAudio)

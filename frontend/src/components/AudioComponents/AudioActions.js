@@ -2,8 +2,14 @@ import React, { useContext } from 'react'
 import playerContext from './context/playerContext'
 
 // Component
-let AudioActions = () => {
-  const { currentSong, songslist } = useContext(playerContext)
+let AudioActions = (subcategory) => {
+  let { currentSong, songslist } = useContext(playerContext)
+  songslist = songslist.filter((audio) => {
+    return (
+      audio.category === 'Slová života' &&
+      audio.subcategory === subcategory.subcategory.subcategory
+    )
+  })
 
   return (
     <div className='actions'>

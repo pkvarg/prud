@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import AudioPlayer from '../components/AudioPlayer'
+import { Button } from 'react-bootstrap'
 
 const WordsOfLife = () => {
+  const [subcategory, setSubcategory] = useState()
+  const subHandler = (sub) => {
+    setSubcategory(sub)
+  }
+
   return (
     <>
       <Link className='btn btn-back my-3' to='/'>
@@ -20,7 +26,19 @@ const WordsOfLife = () => {
           života, z ktorého sa tešia všetci veriaci v Krista.{' '}
         </p>
       </div>
-      <AudioPlayer />
+      <div className='subcategories'>
+        <Button
+          className='my-2'
+          onClick={() => subHandler('Boh v liste Rimanom')}
+        >
+          Boh v liste Rimanom
+        </Button>
+        <Button className='my-2' onClick={() => subHandler('Boží evangelium')}>
+          Boží evangelium
+        </Button>
+      </div>
+
+      <AudioPlayer subcategory={subcategory} />
     </>
   )
 }

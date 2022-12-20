@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import playerReducer from './playerReducer'
 import playerContext from './playerContext'
-import { uploadedMp3s } from './mp3s'
+import { wordsOflife } from './mp3s'
 
 import {
   SET_CURRENT_SONG,
@@ -14,8 +14,7 @@ import {
 const PlayerState = (props) => {
   const initialState = {
     currentSong: 0,
-    // songslist: song_list,
-    songslist: uploadedMp3s,
+    songslist: wordsOflife,
     repeat: false,
     random: false,
     playing: false,
@@ -63,20 +62,26 @@ const PlayerState = (props) => {
     dispatch({ type: TOGGLE_RANDOM, data: state.random ? false : true })
 
   // End of Song
-  const handleEnd = () => {
-    // Check for random and repeat options
-    if (state.random) {
-      return SetCurrent(~~(Math.random() * state.songslist.length))
-    } else {
-      if (state.repeat) {
-        nextSong()
-      } else if (state.currentSong === state.songslist.length - 1) {
-        return
-      } else {
-        nextSong()
-      }
-    }
-  }
+  // const handleEnd = () => {
+  //   // Check for random and repeat options
+  //   // if (state.random) {
+  //   //   return SetCurrent(~~(Math.random() * state.songslist.length))
+  //   // } else {
+  //   //   if (state.repeat) {
+  //   //     nextSong()
+  //   //   } else if (state.currentSong === state.songslist.length - 1) {
+  //   //     return
+  //   //   } else {
+  //   //     nextSong()
+  //   //   }
+  //   // }
+
+  //   if (state.currentSong === state.songslist.length - 1) {
+  //     return
+  //   } else {
+  //     nextSong()
+  //   }
+  // }
 
   return (
     <playerContext.Provider
@@ -94,7 +99,6 @@ const PlayerState = (props) => {
         toggleRandom,
         toggleRepeat,
         togglePlaying,
-        handleEnd,
         songsSet,
       }}
     >

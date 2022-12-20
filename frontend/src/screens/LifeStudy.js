@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import AudioPlayer2 from '../components/AudioPlayer2'
 
 const LifeStudy = () => {
   return (
@@ -22,6 +23,7 @@ const LifeStudy = () => {
           výklady biblickej pravdy.
         </p>
       </div>
+      <AudioPlayer2 />
     </>
   )
 }

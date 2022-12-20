@@ -5,15 +5,15 @@ import AudioActions from './AudioComponents/AudioActions'
 import Playlist from './AudioComponents/Playlist'
 import PlayerState from './AudioComponents/context/playerState'
 
-let AudioPlayer = () => {
+let AudioPlayer = (subcategory) => {
   return (
     <PlayerState>
       <div className='audioplayer'>
         <div className='inside_content'>
-          <AudioActions />
-          <Playlist />
+          <AudioActions subcategory={subcategory} />
+          <Playlist subcategory={subcategory} />
         </div>
-        <Controls />
+        <Controls subcategory={subcategory} />
       </div>
     </PlayerState>
   )

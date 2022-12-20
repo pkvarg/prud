@@ -377,11 +377,22 @@ h3.album_meta_title {
 
 .currentT {
   width: 35px;
-  margin: 0 25px;
+
+  margin: 0;
+  margin-left: 5.5px;
+  margin-right: 33.5px;
 }
 .totalT {
   width: 35px;
-  margin: 0 10px;
+  margin: 0;
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.subcategories {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 35px;
 }
 
 input[type='range'] {

@@ -589,6 +589,12 @@ h5.place-order-discount {
   border: 1px solid #8a1c1f;
 }
 
+.btn-danger:hover {
+  background-color: #fefefe;
+  color: #907355;
+  border: 1px solid #8a1c1f;
+}
+
 h3.product-home-price.card-text {
   color: #555555;
 }
