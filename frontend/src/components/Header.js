@@ -67,12 +67,18 @@ const Header = () => {
                 <LinkContainer to='/admin/audio'>
                   <NavDropdown.Item>Audio</NavDropdown.Item>
                 </LinkContainer>
+                <LinkContainer to='/admin/banner'>
+                  <NavDropdown.Item>Bannery</NavDropdown.Item>
+                </LinkContainer>
               </NavDropdown>
             )}
             {userInfo && userInfo.isAssistant && (
               <NavDropdown title='Asistent' id='adminmenu'>
                 <LinkContainer to='/admin/audio'>
                   <NavDropdown.Item>Audio</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/admin/banner'>
+                  <NavDropdown.Item>Bannery</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
             )}
@@ -137,12 +143,18 @@ const Header = () => {
                       <LinkContainer to='/admin/audio'>
                         <NavDropdown.Item>Audio</NavDropdown.Item>
                       </LinkContainer>
+                      <LinkContainer to='/admin/banner'>
+                        <NavDropdown.Item>Bannery</NavDropdown.Item>
+                      </LinkContainer>
                     </NavDropdown>
                   )}
                   {userInfo && userInfo.isAssistant && (
                     <NavDropdown title='Asistent' id='adminmenu'>
                       <LinkContainer to='/admin/audio'>
                         <NavDropdown.Item>Audio</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to='/admin/banner'>
+                        <NavDropdown.Item>Bannery</NavDropdown.Item>
                       </LinkContainer>
                     </NavDropdown>
                   )}

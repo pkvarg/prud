@@ -4,10 +4,13 @@ import { Carousel, Image } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import Loader from './Loader'
 import Message from './Message'
+import { images } from '../bannerImages/images'
 // import { listTopProducts } from '../actions/productActions'
 
 const ProductCarousel = () => {
   // const dispatch = useDispatch()
+
+  console.log(images[0].bannerTitle)
 
   const productTopRated = useSelector((state) => state.productTopRated)
   const { loading, error } = productTopRated
@@ -21,17 +24,11 @@ const ProductCarousel = () => {
   ) : error ? (
     <Message variant='danger'>{error}</Message>
   ) : (
+    // Uploaded Images from DB
     // <Carousel pause='hover' className='carousel-custom'>
-    //   {products.map((product) => (
-    //     <Carousel.Item key={product._id}>
-    //       <Link to={`/product/${product._id}`}>
-    //         <Image src={product.image} alt={product.name} fluid />
-    //         <Carousel.Caption className='carousel-caption'>
-    //           <h2>
-    //             {product.name} (${product.price})
-    //           </h2>
-    //         </Carousel.Caption>
-    //       </Link>
+    //   {images.map((image) => (
+    //     <Carousel.Item key={image._id}>
+    //       <Image src={image.image} alt={image.bannerTitle} />
     //     </Carousel.Item>
     //   ))}
     // </Carousel>

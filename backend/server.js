@@ -12,6 +12,7 @@ import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 import authRoutes from './routes/authRoutes.js'
 import audioRoutes from './routes/audioRoutes.js'
+import bannerRoutes from './routes/bannerRoutes.js'
 
 dotenv.config()
 connectDB()
@@ -31,6 +32,7 @@ app.use('/api/orders', orderRoutes)
 app.use('/api/upload', uploadRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/audio', audioRoutes)
+app.use('/api/banner', bannerRoutes)
 
 app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
@@ -59,7 +61,7 @@ app.use(
     origin: [
       'http://localhost:3000',
       'https://pictusweb.art',
-      'https://pictusweb-mern.onrender.com',
+      'https://prud.onrender.com',
     ],
   })
 )

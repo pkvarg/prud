@@ -33,6 +33,8 @@ import WordsOfLife from './screens/WordsOfLife'
 import LifeStudy from './screens/LifeStudy'
 import AudioListScreen from './screens/AudioListScreen'
 import AudioEditScreen from './screens/AudioEditScreen'
+import BannerListScreen from './screens/BannerListScreen'
+import BannerEditScreen from './screens/BannerEditScreen'
 
 const App = () => {
   const [clientID, setClientID] = useState('')
@@ -125,6 +127,12 @@ const App = () => {
                   <Route path='/new-books/:year' element={<NewBooks />} />
                   <Route path='/words-of-life' element={<WordsOfLife />} />
                   <Route path='/life-study' element={<LifeStudy />} />
+
+                  <Route path='/admin/banner' element={<BannerListScreen />} />
+                  <Route
+                    path='/admin/banner/:id/edit'
+                    element={<BannerEditScreen />}
+                  />
                 </Routes>
               </Container>
             </main>
