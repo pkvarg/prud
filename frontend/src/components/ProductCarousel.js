@@ -10,8 +10,6 @@ import { images } from '../bannerImages/images'
 const ProductCarousel = () => {
   // const dispatch = useDispatch()
 
-  console.log(images[0].bannerTitle)
-
   const productTopRated = useSelector((state) => state.productTopRated)
   const { loading, error } = productTopRated
 
