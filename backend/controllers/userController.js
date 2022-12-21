@@ -16,6 +16,7 @@ const authUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      isAssistant: user.isAssistant,
       token: generateToken(user._id),
     })
   } else {
@@ -51,6 +52,8 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      isAssistant: user.isAssistant,
+
       token: generateToken(user._id),
     })
   } else {
@@ -71,6 +74,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      isAssistant: user.isAssistant,
     })
   } else {
     res.status(404)
@@ -96,6 +100,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       name: updatedUser.name,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
+      isAssistant: user.isAssistant,
+
       token: generateToken(updatedUser._id),
     })
   } else {
@@ -155,6 +161,7 @@ const updateUser = asyncHandler(async (req, res) => {
     user.email = req.body.email || user.email
     // with below not working
     user.isAdmin = req.body.isAdmin
+    user.isAssistant = req.body.isAssistant
 
     const updatedUser = await user.save()
 
@@ -163,6 +170,7 @@ const updateUser = asyncHandler(async (req, res) => {
       name: updatedUser.name,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
+      isAssistant: updatedUser.isAssistant,
     })
   } else {
     res.status(404)

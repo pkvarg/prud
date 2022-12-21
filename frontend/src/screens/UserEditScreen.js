@@ -16,6 +16,7 @@ const UserEditScreen = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [isAdmin, setIsAdmin] = useState(false)
+  const [isAssistant, setIsAssistant] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -40,13 +41,14 @@ const UserEditScreen = () => {
         setName(user.name)
         setEmail(user.email)
         setIsAdmin(user.isAdmin)
+        setIsAssistant(user.isAssistant)
       }
     }
   }, [dispatch, navigate, userId, user, successUpdate])
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(updateUser({ _id: userId, name, email, isAdmin }))
+    dispatch(updateUser({ _id: userId, name, email, isAdmin, isAssistant }))
   }
 
   return (
@@ -86,11 +88,21 @@ const UserEditScreen = () => {
 
             <Form.Group controlId='isadmin'>
               <Form.Check
-                className='my-2'
+                className='my-3'
                 type='checkbox'
-                label='Admin ?'
+                label='Admin?'
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)}
+              ></Form.Check>
+            </Form.Group>
+
+            <Form.Group controlId='isassistant'>
+              <Form.Check
+                className='my-2'
+                type='checkbox'
+                label='Asistent? (zaškrtnutím sa prístup obmedzí na Audio a Bannery)'
+                checked={isAssistant}
+                onChange={(e) => setIsAssistant(e.target.checked)}
               ></Form.Check>
             </Form.Group>
 

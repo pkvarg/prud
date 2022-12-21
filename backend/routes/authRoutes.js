@@ -23,6 +23,8 @@ router.post('/currentUser', async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      isAssistant: user.isAssistant,
+
       token: generateToken(user._id),
     })
   } else {
@@ -41,6 +43,8 @@ router.post('/currentUser', async (req, res) => {
       name: createdUser.name,
       email: createdUser.email,
       isAdmin: createdUser.isAdmin,
+      isAssistant: createdUser.isAssistant,
+
       token: generateToken(createdUser._id),
     })
   }

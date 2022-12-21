@@ -169,15 +169,341 @@ const AudioEditScreen = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='subcategory'>
-              <Form.Label>Podkategória</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Podkategória'
-                value={subcategory}
-                onChange={(e) => setSubcategory(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+            {category !== 'Štúdium života' && (
+              <Form.Group controlId='subcategory' className='my-3'>
+                <Form.Label>Podkategória</Form.Label>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant='success'
+                    id='dropdown-basic'
+                    className='category-dropdown'
+                  >
+                    Podkategória
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item
+                      key='Boh v liste Rimanom'
+                      value='Boh v liste Rimanom'
+                      onClick={() => setSubcategory('Boh v liste Rimanom')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        Boh v liste Rimanom
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Boží evangelium'
+                      value='Boží evangelium'
+                      onClick={() => setSubcategory('Boží evangelium')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Boží evangelium
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Charakter Pánovho pracovníka'
+                      value='Charakter Pánovho pracovníka'
+                      onClick={() =>
+                        setSubcategory('Charakter Pánovho pracovníka')
+                      }
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Charakter Pánovho pracovníka
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Človek a dva stromy'
+                      value='Človek a dva stromy'
+                      onClick={() => setSubcategory('Človek a dva stromy')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Človek a dva stromy
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Hlavné Kristove kroky'
+                      value='Hlavné Kristove kroky'
+                      onClick={() => setSubcategory('Hlavné Kristove kroky')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Hlavné Kristove kroky
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Fakt víra a prožitek'
+                      value='Fakt víra a prožitek'
+                      onClick={() => setSubcategory('Fakt víra a prožitek')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Fakt víra a prožitek
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='KŘESŤANSKÝ ŽIVOT'
+                      value='KŘESŤANSKÝ ŽIVOT'
+                      onClick={() => setSubcategory('KŘESŤANSKÝ ŽIVOT')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        KŘESŤANSKÝ ŽIVOT
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Kristovo vzkriesenie'
+                      value='Kristovo vzkriesenie'
+                      onClick={() => setSubcategory('Kristovo vzkriesenie')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Kristovo vzkriesenie
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Kristus ako zľutovnica'
+                      value='Kristus ako zľutovnica'
+                      onClick={() => setSubcategory('Kristus ako zľutovnica')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Kristus ako zľutovnica{' '}
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Naplnenie starého zákona'
+                      value='Naplnenie starého zákona'
+                      onClick={() => setSubcategory('Naplnenie starého zákona')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Naplnenie starého zákona{' '}
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Nevystihnuteľné Kristovo bohatstvo'
+                      value='Nevystihnuteľné Kristovo bohatstvo'
+                      onClick={() =>
+                        setSubcategory('Nevystihnuteľné Kristovo bohatstvo')
+                      }
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Nevystihnuteľné Kristovo bohatstvo
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='O človeku'
+                      value='O človeku'
+                      onClick={() => setSubcategory('O človeku')}
+                    >
+                      <h5 className='language-dropdown-lang'> O človeku</h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='O Duchu'
+                      value='O Duchu'
+                      onClick={() => setSubcategory('O Duchu')}
+                    >
+                      <h5 className='language-dropdown-lang'> O Duchu</h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='O Kristovi'
+                      value='O Kristovi'
+                      onClick={() => setSubcategory('O Kristovi')}
+                    >
+                      <h5 className='language-dropdown-lang'> O Kristovi</h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Porátať sa s hriechmi'
+                      value='Porátať sa s hriechmi'
+                      onClick={() => setSubcategory('Porátať sa s hriechmi')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Porátať sa s hriechmi
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Porátať sa so svetom'
+                      value='Porátať sa so svetom'
+                      onClick={() => setSubcategory('Porátať sa so svetom')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Porátať sa so svetom
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Poselství evangelia'
+                      value='Poselství evangelia'
+                      onClick={() => setSubcategory('Poselství evangelia')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Poselství evangelia
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Prožívání Krista'
+                      value='Prožívání Krista'
+                      onClick={() => setSubcategory('Prožívání Krista')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Prožívání Krista
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='ŘADA PRO NOVÉ VĚŘÍCÍ'
+                      value='ŘADA PRO NOVÉ VĚŘÍCÍ'
+                      onClick={() => setSubcategory('ŘADA PRO NOVÉ VĚŘÍCÍ')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        ŘADA PRO NOVÉ VĚŘÍCÍ
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Rok milosti'
+                      value='Rok milosti'
+                      onClick={() => setSubcategory('Rok milosti')}
+                    >
+                      <h5 className='language-dropdown-lang'> Rok milosti</h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Skúsenosti veriacich s Kristovým vzkriesením'
+                      value='Skúsenosti veriacich s Kristovým vzkriesením'
+                      onClick={() =>
+                        setSubcategory(
+                          'Skúsenosti veriacich s Kristovým vzkriesením'
+                        )
+                      }
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Skúsenosti veriacich s Kristovým vzkriesením
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Skúsenosť života'
+                      value='Skúsenosť života'
+                      onClick={() => setSubcategory('Skúsenosť života')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Skúsenosť života
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Spasenie'
+                      value='Spasenie'
+                      onClick={() => setSubcategory('Spasenie')}
+                    >
+                      <h5 className='language-dropdown-lang'> Spasenie</h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Štruktúra Božieho evanjelia'
+                      value='Štruktúra Božieho evanjelia'
+                      onClick={() =>
+                        setSubcategory('Štruktúra Božieho evanjelia')
+                      }
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Štruktúra Božieho evanjelia
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Svedomie'
+                      value='Svedomie'
+                      onClick={() => setSubcategory('Svedomie')}
+                    >
+                      <h5 className='language-dropdown-lang'> Svedomie</h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Trojnásobné semeno'
+                      value='Trojnásobné semeno'
+                      onClick={() => setSubcategory('Trojnásobné semeno')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Trojnásobné semeno
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Učenie apoštolov'
+                      value='Učenie apoštolov'
+                      onClick={() => setSubcategory('Učenie apoštolov')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Učenie apoštolov
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Udeľovanie života'
+                      value='Udeľovanie života'
+                      onClick={() => setSubcategory('Udeľovanie života')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Udeľovanie života
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='VĚČNÝ BOŽÍ PLÁN'
+                      value='VĚČNÝ BOŽÍ PLÁN'
+                      onClick={() => setSubcategory('VĚČNÝ BOŽÍ PLÁN')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        VĚČNÝ BOŽÍ PLÁN
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Vzoprieť sa satanovi'
+                      value='Vzoprieť sa satanovi'
+                      onClick={() => setSubcategory('Vzoprieť sa satanovi')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Vzoprieť sa satanovi
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='Zjevení života'
+                      value='Zjevení života'
+                      onClick={() => setSubcategory('Zjevení života')}
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        Zjevení života
+                      </h5>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      key='ZÁKLADNÍ PRVKY KŘESŤANSKÉHO ŽIVOTA'
+                      value='ZÁKLADNÍ PRVKY KŘESŤANSKÉHO ŽIVOTA'
+                      onClick={() =>
+                        setSubcategory('ZÁKLADNÍ PRVKY KŘESŤANSKÉHO ŽIVOTA')
+                      }
+                    >
+                      <h5 className='language-dropdown-lang'>
+                        {' '}
+                        ZÁKLADNÍ PRVKY KŘESŤANSKÉHO ŽIVOTA
+                      </h5>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+                <Form.Control
+                  type='text'
+                  placeholder='Podkategória'
+                  value={subcategory}
+                  onChange={(e) => setSubcategory(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+            )}
 
             <Button className='my-5 btn-blue' type='submit' variant='primary'>
               Uložiť

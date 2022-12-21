@@ -397,6 +397,7 @@ h3.album_meta_title {
   align-items: center;
   gap: 10px;
   margin-bottom: 30px;
+  justify-content: space-around;
 }
 
 .playlist-subcategory h3 {
@@ -407,13 +408,15 @@ h3.album_meta_title {
   background-color: none;
   border-bottom: 1px solid #2a6586;
   display: inline-block;
+  font-size: 19px;
+  text-transform: uppercase;
+  padding-top: 2.75px;
 }
 
 .btn-subcategory:hover {
   color: #fff;
   background-color: #4aa9de;
   border: none;
-  padding: 2.5px 0;
 }
 
 input[type='range'] {

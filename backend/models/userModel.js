@@ -22,6 +22,12 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    isAssistant: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+
     googleId: {
       type: String,
     },

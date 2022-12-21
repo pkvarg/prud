@@ -53,7 +53,7 @@ const Header = () => {
                 </Nav.Link>
               </LinkContainer>
             )}
-            {userInfo && userInfo.isAdmin && (
+            {userInfo && userInfo.isAdmin && !userInfo.isAssistant && (
               <NavDropdown title='Admin' id='adminmenu'>
                 <LinkContainer to='/admin/userlist'>
                   <NavDropdown.Item>Používatelia</NavDropdown.Item>
@@ -64,6 +64,13 @@ const Header = () => {
                 <LinkContainer to='/admin/orderlist'>
                   <NavDropdown.Item>Objednávky</NavDropdown.Item>
                 </LinkContainer>
+                <LinkContainer to='/admin/audio'>
+                  <NavDropdown.Item>Audio</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+            )}
+            {userInfo && userInfo.isAssistant && (
+              <NavDropdown title='Asistent' id='adminmenu'>
                 <LinkContainer to='/admin/audio'>
                   <NavDropdown.Item>Audio</NavDropdown.Item>
                 </LinkContainer>
@@ -97,14 +104,6 @@ const Header = () => {
             <Navbar.Brand>
               {/* <i className='fas fa-home no-mobile'></i> */}
               <div className='mobile-navbar mobile-only'>
-                {/* <h1 className='header-name'>Prúd života</h1> */}
-                {/* <Link to='/' className='no-underline'>
-                  <img
-                    src='/images/prud-zivota-logo.png'
-                    className='header-image-mobile'
-                    alt='prud-zivota'
-                  ></img>
-                </Link> */}
                 <div className='mobile-sign-in mobile-only'>
                   {userInfo ? (
                     <NavDropdown title={userInfo.name} id='username'>
@@ -122,7 +121,8 @@ const Header = () => {
                       </Nav.Link>
                     </LinkContainer>
                   )}
-                  {userInfo && userInfo.isAdmin && (
+
+                  {userInfo && userInfo.isAdmin && !userInfo.isAssistant && (
                     <NavDropdown title='Admin' id='adminmenu'>
                       <LinkContainer to='/admin/userlist'>
                         <NavDropdown.Item>Používatelia</NavDropdown.Item>
@@ -133,6 +133,14 @@ const Header = () => {
                       <LinkContainer to='/admin/orderlist'>
                         <NavDropdown.Item>Objednávky</NavDropdown.Item>
                       </LinkContainer>
+
+                      <LinkContainer to='/admin/audio'>
+                        <NavDropdown.Item>Audio</NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
+                  )}
+                  {userInfo && userInfo.isAssistant && (
+                    <NavDropdown title='Asistent' id='adminmenu'>
                       <LinkContainer to='/admin/audio'>
                         <NavDropdown.Item>Audio</NavDropdown.Item>
                       </LinkContainer>
