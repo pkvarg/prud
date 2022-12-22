@@ -629,6 +629,11 @@ sup {
   width: 90%;
 }
 
+.eshop-category {
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
 /* Laptop ONLY*/
 
 @media (min-width: 100px) and (max-width: 1440px) {
@@ -966,9 +971,19 @@ footer {
     margin-left: 0.75%;
   }
 
+  .eshop-row-mobile {
+    width: 80vw;
+  }
+
+  p.eshop-mobile-link {
+    line-height: 35px;
+  }
+
   /* MOBILE FOOTER*/
+
   .footer-text-links {
     align-items: center;
+    width: 90vw;
   }
 
   .footer-copyright.mobile-only {

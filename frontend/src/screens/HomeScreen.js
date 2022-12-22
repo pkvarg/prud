@@ -23,6 +23,43 @@ const HomeScreen = () => {
     dispatch(listProducts(keyword, pageNumber))
   }, [dispatch, keyword, pageNumber])
 
+  // by abc overwrites products array
+  // const abc = products.sort((a, b) => {
+  //   return a.name.localeCompare(b.name)
+  // })
+  // console.log(abc)
+  // by ascending year overwrites products array
+  // const abc = products.sort((a, b) => {
+  //   return a.year - b.year
+  // })
+  // by descending year overwrites products array
+  // const abc = products.sort((a, b) => {
+  //   return b.year - a.year
+  // })
+
+  // by descending year overwrites products array
+  // const abc = products.sort((a, b) => {
+  //   const desc = b.year - a.year
+  //   // const asc = a.year - b.year
+
+  //   return desc
+  // })
+  // by category Function
+  // const byCategory = (category) => {
+  //   products.map((product) => {
+  //     return product.category === category
+  //   })
+  // }
+  // byCategory()
+
+  // by category receiving category from params
+  // const category = params.category
+  // products.map((product) => {
+  //       return product.category === category
+  //     })
+
+  // console.log(abc)
+
   return (
     <>
       <Meta />

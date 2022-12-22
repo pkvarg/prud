@@ -78,7 +78,10 @@ const ProductScreen = () => {
 
   return (
     <>
-      <Link className='btn btn-back my-3' to='/'>
+      {/* <Link className='btn btn-back my-3' to='/'>
+        Naspäť
+      </Link> */}
+      <Link className='btn btn-back my-3' onClick={() => navigate(-1)}>
         Naspäť
       </Link>
       {loading ? (

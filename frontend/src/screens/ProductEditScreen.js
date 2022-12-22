@@ -272,7 +272,11 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='category'>
-              <Form.Label>Kategória</Form.Label>
+              <Form.Label>
+                Kategória (aby sa produkt zobrazil v záložke eshop vo svojej
+                kategórii, formát: napr. cirkev alebo štúdium-života, malé
+                písmo, diakritika, slová oddeliť - , napr. štúdium-života)
+              </Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Kategória'

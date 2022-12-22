@@ -215,27 +215,51 @@ const Header = () => {
               <Nav.Link className='red-navbar-item'>Video</Nav.Link>
             </LinkContainer>
             <NavDropdown title='Eshop' className='red-navbar-item'>
-              <LinkContainer to='profile'>
+              <LinkContainer to='eshop/abecedný-zoznam-kníh'>
                 <NavDropdown.Item>Abecedný zoznam kníh</NavDropdown.Item>
               </LinkContainer>
-              <NavDropdown.Item to='profile'>Božia ekonómia</NavDropdown.Item>
-              <NavDropdown.Item to='profile'>Brožúry</NavDropdown.Item>
-              <NavDropdown.Item to='profile'>Cirkev</NavDropdown.Item>{' '}
-              <NavDropdown.Item to='profile'>Duch</NavDropdown.Item>{' '}
-              <NavDropdown.Item to='profile'>Evanjelium</NavDropdown.Item>{' '}
-              <NavDropdown.Item to='profile'>Kresťanská prax</NavDropdown.Item>{' '}
-              <NavDropdown.Item to='profile'>
-                Kresťanská služba
-              </NavDropdown.Item>{' '}
-              <NavDropdown.Item to='profile'>Kristus</NavDropdown.Item>{' '}
-              <NavDropdown.Item to='profile'>Letáky</NavDropdown.Item>{' '}
-              <NavDropdown.Item to='profile'>Mládež</NavDropdown.Item>{' '}
-              <NavDropdown.Item to='profile'>Trojjediný Boh</NavDropdown.Item>
-              <NavDropdown.Item to='profile'>
-                Štúdium a výklad Biblie
-              </NavDropdown.Item>{' '}
-              <NavDropdown.Item to='profile'>Život</NavDropdown.Item>{' '}
-              <NavDropdown.Item to='profile'>Životopisné</NavDropdown.Item>
+              <LinkContainer to='eshop/božia-ekonómia'>
+                <NavDropdown.Item>Božia ekonómia</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/brožúry'>
+                <NavDropdown.Item>Brožúry</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/cirkev'>
+                <NavDropdown.Item>Cirkev</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/duch'>
+                <NavDropdown.Item>Duch</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/evanjelium'>
+                <NavDropdown.Item>Evanjelium</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/kresťanská-prax'>
+                <NavDropdown.Item>Kresťanská prax</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/kresťanská-služba'>
+                <NavDropdown.Item>Kresťanská služba</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/kristus'>
+                <NavDropdown.Item>Kristus</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/letáky'>
+                <NavDropdown.Item>Letáky</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/mládež'>
+                <NavDropdown.Item>Mládež</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/štúdium-a-výklad-biblie'>
+                <NavDropdown.Item>Štúdium a výklad Biblie</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/trojjediný-boh'>
+                <NavDropdown.Item>Trojjediný Boh</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/život'>
+                <NavDropdown.Item>Život</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='eshop/životopisné'>
+                <NavDropdown.Item>Životopisné</NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
             <LinkContainer to='/library'>
               <Nav.Link className='red-navbar-item'>Čitáreň</Nav.Link>
