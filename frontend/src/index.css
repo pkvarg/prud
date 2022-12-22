@@ -613,6 +613,22 @@ sup {
   margin-top: 15px;
 }
 
+.video-responsive {
+  overflow: hidden;
+  /* padding-bottom: 57%; */
+  position: relative;
+  height: 600px;
+  width: auto;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  position: absolute;
+  height: 90%;
+  width: 90%;
+}
+
 /* Laptop ONLY*/
 
 @media (min-width: 100px) and (max-width: 1440px) {

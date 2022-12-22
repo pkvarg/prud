@@ -35,6 +35,7 @@ import AudioListScreen from './screens/AudioListScreen'
 import AudioEditScreen from './screens/AudioEditScreen'
 import BannerListScreen from './screens/BannerListScreen'
 import BannerEditScreen from './screens/BannerEditScreen'
+import Video from './screens/Video'
 
 const App = () => {
   const [clientID, setClientID] = useState('')
@@ -133,6 +134,7 @@ const App = () => {
                     path='/admin/banner/:id/edit'
                     element={<BannerEditScreen />}
                   />
+                  <Route path='/video' element={<Video />} />
                 </Routes>
               </Container>
             </main>
