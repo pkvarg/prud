@@ -67,6 +67,9 @@ const Header = () => {
                 <LinkContainer to='/admin/audio'>
                   <NavDropdown.Item>Audio</NavDropdown.Item>
                 </LinkContainer>
+                <LinkContainer to='/admin/video'>
+                  <NavDropdown.Item>Video</NavDropdown.Item>
+                </LinkContainer>
                 <LinkContainer to='/admin/banner'>
                   <NavDropdown.Item>Bannery</NavDropdown.Item>
                 </LinkContainer>
@@ -76,6 +79,9 @@ const Header = () => {
               <NavDropdown title='Asistent' id='adminmenu'>
                 <LinkContainer to='/admin/audio'>
                   <NavDropdown.Item>Audio</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/admin/video'>
+                  <NavDropdown.Item>Video</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/admin/banner'>
                   <NavDropdown.Item>Bannery</NavDropdown.Item>
@@ -143,6 +149,9 @@ const Header = () => {
                       <LinkContainer to='/admin/audio'>
                         <NavDropdown.Item>Audio</NavDropdown.Item>
                       </LinkContainer>
+                      <LinkContainer to='/admin/video'>
+                        <NavDropdown.Item>Video</NavDropdown.Item>
+                      </LinkContainer>
                       <LinkContainer to='/admin/banner'>
                         <NavDropdown.Item>Bannery</NavDropdown.Item>
                       </LinkContainer>
@@ -152,6 +161,9 @@ const Header = () => {
                     <NavDropdown title='Asistent' id='adminmenu'>
                       <LinkContainer to='/admin/audio'>
                         <NavDropdown.Item>Audio</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to='/admin/video'>
+                        <NavDropdown.Item>Video</NavDropdown.Item>
                       </LinkContainer>
                       <LinkContainer to='/admin/banner'>
                         <NavDropdown.Item>Bannery</NavDropdown.Item>

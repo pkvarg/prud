@@ -42,6 +42,14 @@ import {
 } from './reducers/audioReducers'
 
 import {
+  videoListReducer,
+  videoCreateReducer,
+  videoDetailsReducer,
+  videoDeleteReducer,
+  videoUpdateReducer,
+} from './reducers/videoReducers'
+
+import {
   bannerListReducer,
   bannerCreateReducer,
   bannerDetailsReducer,
@@ -72,7 +80,6 @@ const reducer = combineReducers({
   orderPay: orderPayReducer,
   orderDeliver: orderDeliverReducer,
   orderCancell: orderCancellReducer,
-
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
   orderDelete: orderDeleteReducer,
@@ -81,6 +88,12 @@ const reducer = combineReducers({
   audioDelete: audioDeleteReducer,
   audioCreate: audioCreateReducer,
   audioUpdate: audioUpdateReducer,
+  videoList: videoListReducer,
+  videoDetails: videoDetailsReducer,
+  videoDelete: videoDeleteReducer,
+  videoCreate: videoCreateReducer,
+  videoUpdate: videoUpdateReducer,
+
   bannerList: bannerListReducer,
   bannerDetails: bannerDetailsReducer,
   bannerDelete: bannerDeleteReducer,

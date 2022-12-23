@@ -37,6 +37,8 @@ import BannerListScreen from './screens/BannerListScreen'
 import BannerEditScreen from './screens/BannerEditScreen'
 import Video from './screens/Video'
 import Eshop from './screens/Eshop'
+import VideoListScreen from './screens/VideoListScreen'
+import VideoEditScreen from './screens/VideoEditScreen'
 
 const App = () => {
   const [clientID, setClientID] = useState('')
@@ -137,6 +139,11 @@ const App = () => {
                   />
                   <Route path='/video' element={<Video />} />
                   <Route path='/eshop/:category' element={<Eshop />} />
+                  <Route path='/admin/video' element={<VideoListScreen />} />
+                  <Route
+                    path='/admin/video/:id/edit'
+                    element={<VideoEditScreen />}
+                  />
                 </Routes>
               </Container>
             </main>
