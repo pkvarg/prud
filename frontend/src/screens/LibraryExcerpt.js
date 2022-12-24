@@ -8,7 +8,7 @@ import { listProducts } from '../actions/productActions'
 
 const LibraryExcerpt = () => {
   const params = useParams()
-  const category = params.category
+  const productId = params.id
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -21,13 +21,6 @@ const LibraryExcerpt = () => {
     dispatch(listProducts(keyword, pageNumber))
   }, [dispatch, keyword, pageNumber])
 
-  // sort by abc
-  if (category === 'abecedný-zoznam-kníh') {
-    products.sort((a, b) => {
-      return a.name.localeCompare(b.name)
-    })
-  }
-
   return (
     <>
       <Link className='btn btn-back my-3' onClick={() => navigate(-1)}>
@@ -36,7 +29,7 @@ const LibraryExcerpt = () => {
       <div className='my-3'>
         {products.map(
           (product) =>
-            product.excerpt && (
+            product._id === productId && (
               <Col key={product._id}>
                 <>
                   <h1>{product.name}</h1>

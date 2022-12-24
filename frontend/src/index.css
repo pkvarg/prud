@@ -444,6 +444,10 @@ h5.place-order-discount {
   width: 100%;
 }
 
+.prod-list-name {
+  text-transform: uppercase;
+}
+
 .btn-back {
   background-color: #2cb3e6;
   border: 1px solid #2cb3e6;
@@ -636,6 +640,7 @@ sup {
 
 p.eshop-mobile-link {
   padding: 3px 0;
+  text-transform: uppercase;
 }
 
 p.eshop-mobile-link:hover {

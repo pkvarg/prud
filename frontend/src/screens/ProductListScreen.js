@@ -131,7 +131,7 @@ const ProductListScreen = () => {
             <tbody>
               {products.map((product) => (
                 <tr key={product._id}>
-                  <td>{product.name}</td>
+                  <td className='prod-list-name'>{product.name}</td>
                   <td>€{product.price.toFixed(2)}</td>
                   <td>{product.category}</td>
                   <td>{product.discount}%</td>
