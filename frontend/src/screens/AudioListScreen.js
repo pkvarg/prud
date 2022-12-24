@@ -62,7 +62,7 @@ const AudioListScreen = () => {
     }
   }
 
-  const createAudioHandler = (audio) => {
+  const createAudioHandler = () => {
     dispatch(createAudio())
   }
 

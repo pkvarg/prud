@@ -39,6 +39,8 @@ import Video from './screens/Video'
 import Eshop from './screens/Eshop'
 import VideoListScreen from './screens/VideoListScreen'
 import VideoEditScreen from './screens/VideoEditScreen'
+import Library from './screens/Library'
+import LibraryExcerpt from './screens/LibraryExcerpt'
 
 const App = () => {
   const [clientID, setClientID] = useState('')
@@ -144,6 +146,8 @@ const App = () => {
                     path='/admin/video/:id/edit'
                     element={<VideoEditScreen />}
                   />
+                  <Route path='/library' element={<Library />} />
+                  <Route path='/library/:id' element={<LibraryExcerpt />} />
                 </Routes>
               </Container>
             </main>

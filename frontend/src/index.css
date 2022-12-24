@@ -657,6 +657,43 @@ p.ytcode {
   margin-left: 26%;
 }
 
+img.prod-img-excerpt-part {
+  float: right;
+  width: 30%;
+  margin-left: 50px;
+  transform: translateY(-20%);
+}
+
+p.prod-excerpt-part {
+  text-align: justify;
+  line-height: 30px;
+}
+
+img.prod-img-excerpt-excerpt {
+  float: right;
+  width: 40%;
+  /* margin-left: 50px;
+  transform: translateY(-20%); */
+}
+
+p.prod-excerpt-excerpt {
+  text-align: justify;
+  white-space: pre-line;
+  line-height: 30px;
+}
+
+.library-more-link {
+  padding: 3px 3px;
+}
+
+.library-more-link:hover {
+  background-color: #24b9d6;
+}
+
+.scroll-up {
+  font-size: 55px;
+}
+
 /* Laptop ONLY*/
 
 @media (min-width: 100px) and (max-width: 1440px) {
@@ -1015,6 +1052,16 @@ footer {
     height: 50px;
     width: 100%;
     margin: 0;
+  }
+
+  img.prod-img-excerpt-part {
+    width: 98vw;
+    transform: translateY(-6%);
+  }
+
+  img.prod-img-excerpt-excerpt {
+    width: 98vw;
+    transform: translateY(-6%);
   }
 
   /* MOBILE FOOTER*/

@@ -39,6 +39,10 @@ const productSchema = mongoose.Schema(
     description: {
       type: String,
     },
+    excerpt: {
+      type: Object,
+    },
+
     reviews: [reviewSchema],
     rating: {
       type: Number,

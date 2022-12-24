@@ -62,7 +62,7 @@ const VideoListScreen = () => {
     }
   }
 
-  const createVideoHandler = (audio) => {
+  const createVideoHandler = () => {
     dispatch(createVideo())
   }
 

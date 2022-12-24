@@ -24,13 +24,15 @@ const ProductEditScreen = () => {
   const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState('')
+  const [excerptImage, setExcerptImage] = useState('')
+  const [excerptPart, setExcerptPart] = useState('')
+  const [excerpt, setExcerpt] = useState('')
   const [uploading, setUploading] = useState(false)
   const [catalog, setCatalog] = useState('')
   const [weight, setWeight] = useState('')
   const [related, setRelated] = useState('')
   const [related2, setRelated2] = useState('')
   const [related3, setRelated3] = useState('')
-
   const [tags, setTags] = useState('')
   const [language, setLanguage] = useState('')
   const [binding, setBinding] = useState('')
@@ -71,6 +73,9 @@ const ProductEditScreen = () => {
         setCategory(product.category)
         setCountInStock(product.countInStock)
         setDescription(product.description)
+        setExcerptImage(product.excerpt.image)
+        setExcerptPart(product.excerpt.part)
+        setExcerpt(product.excerpt.excerpt)
         setCatalog(product.catalog)
         setWeight(product.weight)
         setRelated(product.related)
@@ -100,13 +105,23 @@ const ProductEditScreen = () => {
       }
 
       const { data } = await axios.post('/api/upload', formData, config)
+      if (data.includes('ukazka')) {
+        setExcerptImage(data)
+      } else {
+        setImage(data)
+      }
 
-      setImage(data)
       setUploading(false)
     } catch (error) {
       console.error(error)
       setUploading(false)
     }
+  }
+
+  const excerptObject = {
+    image: excerptImage,
+    part: excerptPart,
+    excerpt: excerpt,
   }
 
   const submitHandler = (e) => {
@@ -122,6 +137,7 @@ const ProductEditScreen = () => {
         author,
         category,
         description,
+        excerpt: excerptObject,
         countInStock,
         catalog,
         weight,
@@ -478,6 +494,45 @@ const ProductEditScreen = () => {
                 placeholder='Popis'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='excerpt-image' className='my-3'>
+              <Form.Label>Ukážka - Obrázok</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Ukážka - Obrázok'
+                value={excerptImage}
+                onChange={(e) => setExcerptImage(e.target.value)}
+              ></Form.Control>
+              <Form.Control
+                type='file'
+                onChange={uploadFileHandler}
+              ></Form.Control>
+              {uploading && <Loader />}
+            </Form.Group>
+
+            <Form.Group controlId='excerpt-part' className='my-3'>
+              <Form.Label>Ukážka - časť (zobrazí sa v Čitárni)</Form.Label>
+              <Form.Control
+                as='textarea'
+                rows={15}
+                type='textarea'
+                placeholder='Ukážka-časť'
+                value={excerptPart}
+                onChange={(e) => setExcerptPart(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='excerpt'>
+              <Form.Label>Ukážka (Rozklik na čítať viac)</Form.Label>
+              <Form.Control
+                as='textarea'
+                rows={15}
+                type='textarea'
+                placeholder='Ukážka'
+                value={excerpt}
+                onChange={(e) => setExcerpt(e.target.value)}
               ></Form.Control>
             </Form.Group>
 

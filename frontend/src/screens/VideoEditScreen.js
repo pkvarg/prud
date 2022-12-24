@@ -74,7 +74,7 @@ const VideoEditScreen = () => {
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='video-title'>
               <Form.Label>
-                Názov (Videá sa zobrazia v abecednom poradí)
+                Názov (Videá sa zobrazia v abecednom resp. číselnom poradí)
               </Form.Label>
               <Form.Control
                 type='text'
