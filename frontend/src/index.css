@@ -448,6 +448,12 @@ h5.place-order-discount {
   text-transform: uppercase;
 }
 
+h5.prod-to-library {
+  font-size: 20px;
+  margin: 15px 0;
+  color: #8a1c1f;
+}
+
 .btn-back {
   background-color: #2cb3e6;
   border: 1px solid #2cb3e6;

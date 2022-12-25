@@ -24,8 +24,6 @@ const Library = () => {
     return a.name.localeCompare(b.name)
   })
 
-  console.log(products)
-
   return (
     <div className='my-3'>
       <h1>Čitáreň</h1>

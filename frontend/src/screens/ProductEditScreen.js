@@ -202,9 +202,12 @@ const ProductEditScreen = () => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='product-name'>
-              <Form.Label>Názov</Form.Label>
+              <Form.Label>
+                Názov <sup>*</sup>
+              </Form.Label>
               <Form.Control
                 type='name'
+                required
                 placeholder='Meno'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -212,9 +215,12 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='price'>
-              <Form.Label>Cena (vo formáte napr: 5.8 bez meny)</Form.Label>
+              <Form.Label>
+                Cena <sup>*</sup> (vo formáte napr: 5.8 bez meny)
+              </Form.Label>
               <Form.Control
                 type='text'
+                required
                 placeholder='Cena'
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
@@ -258,9 +264,12 @@ const ProductEditScreen = () => {
               {uploading && <Loader />}
             </Form.Group>
             <Form.Group controlId='author'>
-              <Form.Label>Autor</Form.Label>
+              <Form.Label>
+                Autor <sup>*</sup>
+              </Form.Label>
               <Form.Control
                 type='text'
+                required
                 placeholder='Autor'
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
@@ -327,7 +336,7 @@ const ProductEditScreen = () => {
                   </Dropdown.Item>
                   <Dropdown.Item
                     value={'evanjelium'}
-                    onClick={() => setCategory('Evanjelium')}
+                    onClick={() => setCategory('evanjelium')}
                   >
                     Evanjelium
                   </Dropdown.Item>
@@ -358,7 +367,7 @@ const ProductEditScreen = () => {
                     Letáky
                   </Dropdown.Item>
                   <Dropdown.Item
-                    value={'mládežcirkev'}
+                    value={'mládež'}
                     onClick={() => setCategory('mládež')}
                   >
                     Mládež

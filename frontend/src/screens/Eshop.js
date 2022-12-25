@@ -32,17 +32,6 @@ const Eshop = () => {
   }
 
   return (
-    // <div className='my-3'>
-    //   <h1>Eshop</h1>
-    //   {category !== 'abecedný-zoznam-kníh'
-    //     ? products.map(
-    //         (product) =>
-    //           product.category === category && (
-    //             <h3 key={product._id}>{product.name}</h3>
-    //           )
-    //       )
-    //     : products.map((product) => <p key={product._id}>{product.name}</p>)}
-    // </div>
     <>
       <div className='eshop-row-mobile'>
         <h1 className='new-publications'>Eshop</h1>
@@ -91,7 +80,7 @@ const Eshop = () => {
                     )
                 )
               : products.map((product) => (
-                  <Link to={`/product/${product._id}`}>
+                  <Link to={`/product/${product._id}`} key={product._id}>
                     <p className='eshop-mobile-link' key={product._id}>
                       {product.name}
                     </p>

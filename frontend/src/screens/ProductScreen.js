@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -38,6 +38,10 @@ const ProductScreen = () => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 250)
+  })
 
   useEffect(() => {
     if (successProductReview) {
@@ -129,6 +133,7 @@ const ProductScreen = () => {
                 <h6>{product.pages}</h6>
                 <h5>ISBN:</h5>
                 <h6>{product.isbn}</h6>
+
                 <h5>Jazyk</h5>
                 {product.language === 'SK' ? (
                   <Image
@@ -142,6 +147,11 @@ const ProductScreen = () => {
                     alt={product.name}
                     fluid
                   ></Image>
+                )}
+                {product.excerpt && (
+                  <Link to={`/library/${product._id}`}>
+                    <h5 className='prod-to-library related-link'>Do čitárne</h5>
+                  </Link>
                 )}
               </ListGroup.Item>
             </Col>
@@ -288,6 +298,11 @@ const ProductScreen = () => {
                   alt={product.name}
                   fluid
                 ></Image>
+              )}
+              {product.excerpt && (
+                <Link to={`/library/${product._id}`}>
+                  <h5 className='prod-to-library related-link'>Do čitárne</h5>
+                </Link>
               )}
             </ListGroup.Item>
           </Container>

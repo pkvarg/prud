@@ -126,6 +126,8 @@ const ProductListScreen = () => {
                 <th>KATEGÓRIA</th>
                 <th>ZĽAVA</th>
                 <th>ZĽ.CENA</th>
+                <th>Úryvok</th>
+                <th>Detaily</th>
               </tr>
             </thead>
             <tbody>
@@ -133,9 +135,28 @@ const ProductListScreen = () => {
                 <tr key={product._id}>
                   <td className='prod-list-name'>{product.name}</td>
                   <td>€{product.price.toFixed(2)}</td>
-                  <td>{product.category}</td>
+                  <td className='prod-list-name'>
+                    {product.category
+                      .replace('-', ' ')
+                      .replace('-', ' ')
+                      .replace('-', ' ')}
+                  </td>
                   <td>{product.discount}%</td>
                   <td>€{product.discountedPrice.toFixed(2)}</td>
+                  <td>{product.excerpt ? 'yes' : 'no'}</td>
+                  <td>
+                    {!product.pages ||
+                    !product.isbn ||
+                    !product.year ||
+                    !product.category ||
+                    !product.tags ||
+                    !product.description ||
+                    !product.weight ||
+                    !product.language ||
+                    !product.binding
+                      ? '???'
+                      : 'OK'}
+                  </td>
 
                   <td>
                     <LinkContainer to={`/admin/product/${product._id}/edit`}>

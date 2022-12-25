@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-
 import { listProducts } from '../actions/productActions'
 
 const LibraryExcerpt = () => {
@@ -16,7 +15,13 @@ const LibraryExcerpt = () => {
   const pageNumber = params.pageNumber || 1
 
   const productList = useSelector((state) => state.productList)
-  const { products } = productList
+  const { products, loading } = productList
+  console.log(loading)
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 250)
+  })
+
   useEffect(() => {
     dispatch(listProducts(keyword, pageNumber))
   }, [dispatch, keyword, pageNumber])
@@ -26,6 +31,7 @@ const LibraryExcerpt = () => {
       <Link className='btn btn-back my-3' onClick={() => navigate(-1)}>
         Naspäť
       </Link>
+
       <div className='my-3'>
         {products.map(
           (product) =>
@@ -53,7 +59,7 @@ const LibraryExcerpt = () => {
             window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
           }}
         >
-          <i class='fa fa-arrow-circle-up' aria-hidden='true'></i>
+          <i className='fa fa-arrow-circle-up' aria-hidden='true'></i>
         </button>
       </div>
     </>
