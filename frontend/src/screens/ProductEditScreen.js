@@ -244,7 +244,7 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='image' className='mb-3'>
-              <Form.Label>Obrázok</Form.Label>
+              <Form.Label>Obrázok (250 x 346 pixelov)</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Obrázok'
@@ -290,14 +290,111 @@ const ProductEditScreen = () => {
             <Form.Group controlId='category'>
               <Form.Label>
                 Kategória (aby sa produkt zobrazil v záložke eshop vo svojej
-                kategórii, formát: napr. cirkev alebo štúdium-života, malé
-                písmo, diakritika, slová oddeliť - , napr. štúdium-života)
+                kategórii)
               </Form.Label>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant='success'
+                  id='dropdown-basic'
+                  className='related-dropdown'
+                >
+                  Kategória
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item
+                    value={'božia-ekonómia'}
+                    onClick={() => setCategory('božia-ekonómia')}
+                  >
+                    Božia ekonómia
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    value={'brožúry'}
+                    onClick={() => setCategory('brožúry')}
+                  >
+                    Brožúry
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    value={'cirkev'}
+                    onClick={() => setCategory('cirkev')}
+                  >
+                    Cirkev
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    value={'duch'}
+                    onClick={() => setCategory('duch')}
+                  >
+                    Duch
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    value={'evanjelium'}
+                    onClick={() => setCategory('Evanjelium')}
+                  >
+                    Evanjelium
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    value={'kresťanská-prax'}
+                    onClick={() => setCategory('kresťanská-prax')}
+                  >
+                    Kresťanská prax
+                  </Dropdown.Item>
+
+                  <Dropdown.Item
+                    value={'kresťanská-služba'}
+                    onClick={() => setCategory('kresťanská-služba')}
+                  >
+                    Kresťanská služba
+                  </Dropdown.Item>
+
+                  <Dropdown.Item
+                    value={'kristus'}
+                    onClick={() => setCategory('kristus')}
+                  >
+                    Kristus
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    value={'letáky'}
+                    onClick={() => setCategory('letáky')}
+                  >
+                    Letáky
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    value={'mládežcirkev'}
+                    onClick={() => setCategory('mládež')}
+                  >
+                    Mládež
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    value={'štúdium-a-výklad-biblie'}
+                    onClick={() => setCategory('štúdium-a-výklad-biblie')}
+                  >
+                    Štúdium a výklad biblie
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    value={'trojjediný-boh'}
+                    onClick={() => setCategory('trojjediný-boh')}
+                  >
+                    Trojjediný Boh
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    value={'život'}
+                    onClick={() => setCategory('život')}
+                  >
+                    Život
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    value={'životopisné'}
+                    onClick={() => setCategory('životopisné')}
+                  >
+                    Životopisné
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
               <Form.Control
                 type='text'
                 placeholder='Kategória'
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                readOnly
               ></Form.Control>
             </Form.Group>
 
@@ -498,7 +595,10 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='excerpt-image' className='my-3'>
-              <Form.Label>Ukážka - Obrázok</Form.Label>
+              <Form.Label>
+                Ukážka - Obrázok (názov súboru musí obsahovať "ukazka", napr.
+                dvaja_duchovia_ukazka.png, 250 x 250 pixelov )
+              </Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Ukážka - Obrázok'
