@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { listProducts } from '../actions/productActions'
+import { listProductDetails } from '../actions/productActions'
 
 const LibraryExcerpt = () => {
   const params = useParams()
@@ -11,20 +11,16 @@ const LibraryExcerpt = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const keyword = params.keyword
-  const pageNumber = params.pageNumber || 1
-
-  const productList = useSelector((state) => state.productList)
-  const { products, loading } = productList
-  console.log(loading)
+  const productDetails = useSelector((state) => state.productDetails)
+  const { loading, error, product } = productDetails
 
   useLayoutEffect(() => {
     window.scrollTo(0, 250)
   })
 
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber))
-  }, [dispatch, keyword, pageNumber])
+    dispatch(listProductDetails(productId))
+  }, [dispatch, productId])
 
   return (
     <>
@@ -33,25 +29,20 @@ const LibraryExcerpt = () => {
       </Link>
 
       <div className='my-3'>
-        {products.map(
-          (product) =>
-            product._id === productId && (
-              <Col key={product._id}>
-                <>
-                  <h1>{product.name}</h1>
-                  <Link to={`/product/${product._id}`}>
-                    <Image
-                      src={product.excerpt.image}
-                      alt={product.name}
-                      className='prod-img-excerpt-excerpt'
-                    ></Image>
-                  </Link>
-                  <p className='prod-excerpt-excerpt'>
-                    {product.excerpt.excerpt}
-                  </p>
-                </>
-              </Col>
-            )
+        {product._id === productId && (
+          <Col key={product._id}>
+            <>
+              <h1>{product.name}</h1>
+              <Link to={`/product/${product._id}`}>
+                <Image
+                  src={product.excerpt.image}
+                  alt={product.name}
+                  className='prod-img-excerpt-excerpt'
+                ></Image>
+              </Link>
+              <p className='prod-excerpt-excerpt'>{product.excerpt.excerpt}</p>
+            </>
+          </Col>
         )}
         <button
           className='scroll-up'

@@ -148,6 +148,14 @@ const App = () => {
                   />
                   <Route path='/library' element={<Library />} />
                   <Route path='/library/:id' element={<LibraryExcerpt />} />
+                  <Route
+                    path='/library/page/:pageNumber'
+                    element={<Library />}
+                  />
+                  <Route
+                    path='/library/:id/page/:pageNumber'
+                    element={<LibraryExcerpt />}
+                  />
                 </Routes>
               </Container>
             </main>
