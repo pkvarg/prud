@@ -60,6 +60,9 @@ const HomeScreen = () => {
 
   // console.log(abc)
 
+  // by year
+  // const byYear = products.filter((product) => product.year == '2020')
+
   return (
     <>
       <Meta />
@@ -107,6 +110,13 @@ const HomeScreen = () => {
               </Col>
             ))}
           </Row>
+          {/* {pageNumber > 1 && (
+            <Paginate
+              pages={pages}
+              page={page}
+              keyword={keyword ? keyword : ''}
+            ></Paginate>
+          )} */}
           <Paginate
             pages={pages}
             page={page}

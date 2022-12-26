@@ -446,6 +446,7 @@ h5.place-order-discount {
 
 .prod-list-name {
   text-transform: uppercase;
+  line-height: 27.5px;
 }
 
 h5.prod-to-library {

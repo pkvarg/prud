@@ -124,7 +124,7 @@ const ProductScreen = () => {
                 )}
 
                 <h5>Hmotnosť</h5>
-                <h6>{product.weight}</h6>
+                <h6>{product.weight}kg</h6>
                 <h5>Tagy</h5>
                 <h6>{product.tags}</h6>
                 <h5>Väzba</h5>

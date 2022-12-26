@@ -22,7 +22,6 @@ const ProductListScreen = () => {
   const navigate = useNavigate()
   const productList = useSelector((state) => state.productList)
   const { loading, error, products, page, pages } = productList
-  console.log(products)
 
   const productDelete = useSelector((state) => state.productDelete)
   const {
@@ -41,6 +40,45 @@ const ProductListScreen = () => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
+
+  // useEffect(() => {
+  //   dispatch({ type: PRODUCT_CREATE_RESET })
+  //   if (!userInfo.isAdmin) {
+  //     navigate('/login')
+  //   }
+  //   if (successCreate) {
+  //     navigate(`/admin/product/${createdProduct._id}/edit`)
+  //   } else {
+  //     dispatch(listProducts('', pageNumber))
+  //   }
+  // }, [
+  //   dispatch,
+  //   userInfo,
+  //   navigate,
+  //   successDelete,
+  //   successCreate,
+  //   createdProduct,
+  //   pageNumber,
+  // ])
+
+  const deleteHandler = (id) => {
+    if (window.confirm('Are you sure?')) {
+      dispatch(deleteProduct(id))
+    }
+  }
+
+  const createProductHandler = (product) => {
+    dispatch(createProduct())
+  }
+
+  const linkToCreateDiscount = () => {
+    navigate('/create-discount')
+  }
+
+  // by abc
+  // products.sort((a, b) => {
+  //   return a.name.localeCompare(b.name)
+  // })
 
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET })
@@ -61,20 +99,6 @@ const ProductListScreen = () => {
     createdProduct,
     pageNumber,
   ])
-
-  const deleteHandler = (id) => {
-    if (window.confirm('Are you sure?')) {
-      dispatch(deleteProduct(id))
-    }
-  }
-
-  const createProductHandler = (product) => {
-    dispatch(createProduct())
-  }
-
-  const linkToCreateDiscount = () => {
-    navigate('/create-discount')
-  }
 
   return (
     <>
@@ -154,7 +178,8 @@ const ProductListScreen = () => {
                     !product.description ||
                     !product.weight ||
                     !product.language ||
-                    !product.binding
+                    !product.binding ||
+                    !product.related
                       ? '???'
                       : 'OK'}
                   </td>

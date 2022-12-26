@@ -417,7 +417,7 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId='weight'>
-              <Form.Label>Hmotnosť</Form.Label>
+              <Form.Label>Hmotnosť bez kg, napr. 0.33</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Hmotnosť'
