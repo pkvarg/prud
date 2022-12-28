@@ -706,6 +706,26 @@ p.prod-excerpt-excerpt {
   font-size: 55px;
 }
 
+.info p {
+  text-align: justify;
+  line-height: 25px;
+}
+
+.info ul li {
+  text-align: justify;
+  line-height: 25px;
+}
+
+.review-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.review-stop {
+  overscroll-behavior: contain;
+}
+
 /* Laptop ONLY*/
 
 @media (min-width: 100px) and (max-width: 1440px) {

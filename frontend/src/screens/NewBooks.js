@@ -3,34 +3,22 @@ import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Image } from 'react-bootstrap'
 import { listProductDetails } from '../actions/productActions'
-import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
-import Paginate from '../components/Paginate'
-import { listProducts } from '../actions/productActions'
+import { listAllProducts } from '../actions/productActions'
 
 const NewBooks = () => {
   const params = useParams()
   const year = params.year
   const dispatch = useDispatch()
 
-  const productReviewCreate = useSelector((state) => state.productReviewCreate)
-  const { success: successProductReview } = productReviewCreate
-
   useEffect(() => {
-    if (successProductReview) {
-      alert('Recenzia pridaná')
-      dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
-    }
     dispatch(listProductDetails(year))
-  }, [dispatch, year, successProductReview])
-
-  const keyword = params.keyword
-  const pageNumber = params.pageNumber || 1
+  }, [dispatch, year])
 
   const productList = useSelector((state) => state.productList)
-  const { products, page, pages } = productList
+  const { products } = productList
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber))
-  }, [dispatch, keyword, pageNumber])
+    dispatch(listAllProducts())
+  }, [dispatch])
 
   return (
     <>
@@ -43,7 +31,7 @@ const NewBooks = () => {
           {products.map((product) => (
             <div className='prods-by-year'>
               <Col key={product._id}>
-                {product.year == year && (
+                {product.year === year && (
                   <div className='prod-by-year'>
                     <h1>{product.name}</h1>
                     <h4>Jazyk: {product.language}</h4>
@@ -67,7 +55,7 @@ const NewBooks = () => {
                 )}
               </Col>
               <Col key={product._id}>
-                {product.year == year && (
+                {product.year === year && (
                   <Link to={`/product/${product._id}`}>
                     <Image
                       src={product.image}
@@ -81,21 +69,6 @@ const NewBooks = () => {
           ))}
         </div>
       </div>
-      {/* <Row>
-        {products.map((product) => (
-          <Col key={product._id}>
-            {product.name === 'ŠTÚDIUM ŽIVOTA EXODUS I.' && (
-              // <Product product={product} />
-              <h1>{product.name}</h1>
-            )}
-          </Col>
-        ))}
-      </Row> */}
-      <Paginate
-        pages={pages}
-        page={page}
-        keyword={keyword ? keyword : ''}
-      ></Paginate>
     </>
   )
 }

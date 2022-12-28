@@ -5,7 +5,6 @@ import { Col, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import PaginateLibrary from '../components/PaginateLibrary'
 import { listProducts } from '../actions/productActions'
-import Meta from '../components/Meta'
 
 const Library = () => {
   const params = useParams()
@@ -13,19 +12,15 @@ const Library = () => {
 
   const keyword = params.keyword
   const pageNumber = params.pageNumber || 1
+  const pageSize = 6
 
   const productList = useSelector((state) => state.productList)
-  const { loading, error, products, page, pages } = productList
+  const { products, page, pages } = productList
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber))
+    dispatch(listProducts(keyword, pageNumber, pageSize))
   }, [dispatch, keyword, pageNumber])
 
   console.log(page, pages)
-
-  // sort by abc
-  products.sort((a, b) => {
-    return a.name.localeCompare(b.name)
-  })
 
   return (
     <>
@@ -33,7 +28,7 @@ const Library = () => {
         <h1>Čitáreň</h1>
         {products.map(
           (product) =>
-            product.excerpt && (
+            product.excerpt.excerpt && (
               <Col key={product._id} className='mb-5'>
                 <>
                   <h2>{product.name}</h2>

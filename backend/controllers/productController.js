@@ -1,12 +1,23 @@
 import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
 
+// @desc Fetch all NO LIMIT products
+// @desc GET /api/products/all
+// @access Public
+
+const getAllProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({})
+    .collation({ locale: 'sk' })
+    .sort({ name: 1 })
+  res.json({ products })
+})
+
 // @desc Fetch all products
 // @desc GET /api/products
 // @access Public
 
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 10
+  const pageSize = req.query.pageSize
   const page = Number(req.query.pageNumber) || 1
   const keyword = req.query.keyword
     ? {
@@ -19,9 +30,11 @@ const getProducts = asyncHandler(async (req, res) => {
 
   const count = await Product.countDocuments({ ...keyword })
   const products = await Product.find({ ...keyword })
+    .collation({ locale: 'sk' })
     .sort({ name: 1 })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
+
   res.json({ products, page, pages: Math.ceil(count / pageSize) })
 })
 
@@ -223,6 +236,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
 
 export {
   getProducts,
+  getAllProducts,
   getProductById,
   deleteProduct,
   createProduct,

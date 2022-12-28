@@ -6,8 +6,7 @@ import Message from '../components/Message'
 import { Link } from 'react-router-dom'
 
 import Loader from '../components/Loader'
-import Paginate from '../components/Paginate'
-import { listProducts } from '../actions/productActions'
+import { listAllProducts } from '../actions/productActions'
 import Product from '../components/Product'
 
 const Eshop = () => {
@@ -15,21 +14,11 @@ const Eshop = () => {
   const category = params.category
   const dispatch = useDispatch()
 
-  const keyword = params.keyword
-  const pageNumber = params.pageNumber || 1
-
   const productList = useSelector((state) => state.productList)
-  const { loading, error, products, page, pages } = productList
+  const { loading, error, products } = productList
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber))
-  }, [dispatch, keyword, pageNumber])
-
-  // sort by abc
-  if (category === 'abecedný-zoznam-kníh') {
-    products.sort((a, b) => {
-      return a.name.localeCompare(b.name)
-    })
-  }
+    dispatch(listAllProducts())
+  }, [dispatch])
 
   return (
     <>
@@ -87,11 +76,11 @@ const Eshop = () => {
                   </Link>
                 ))}
           </Row>
-          <Paginate
+          {/* <Paginate
             pages={pages}
             page={page}
             keyword={keyword ? keyword : ''}
-          ></Paginate>
+          ></Paginate> */}
         </>
       )}
     </>

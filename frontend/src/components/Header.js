@@ -191,6 +191,9 @@ const Header = () => {
             id='basic-navbar-nav'
           >
             <NavDropdown title='Darujte 2%' className='red-navbar-item'>
+              <LinkContainer to='give2'>
+                <NavDropdown.Item>Darujte 2%</NavDropdown.Item>
+              </LinkContainer>
               <LinkContainer to='give2-physical'>
                 <NavDropdown.Item>Fyzické osoby</NavDropdown.Item>
               </LinkContainer>
@@ -276,9 +279,20 @@ const Header = () => {
             <LinkContainer to='/library'>
               <Nav.Link className='red-navbar-item'>Čitáreň</Nav.Link>
             </LinkContainer>
-            <LinkContainer to='/info'>
-              <Nav.Link className='red-navbar-item'>Info</Nav.Link>
-            </LinkContainer>
+            <NavDropdown title='Info' className='red-navbar-item'>
+              <LinkContainer to='watchman-nee'>
+                <NavDropdown.Item>Watchman Nee</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='witness-lee'>
+                <NavDropdown.Item>Witness Lee</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='about'>
+                <NavDropdown.Item>O nás</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to='safety-privacy'>
+                <NavDropdown.Item>Bezpečnosť a súkromie</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
             <LinkContainer to='/contact'>
               <Nav.Link className='red-navbar-item'>Kontakt</Nav.Link>
             </LinkContainer>

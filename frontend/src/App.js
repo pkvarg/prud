@@ -25,6 +25,7 @@ import ForgotPasswordScreen from './screens/ForgotPasswordScreen'
 import ResetPasswordScreen from './screens/ResetPasswordScreen'
 import ContactScreen from './screens/ContactScreen'
 import CreateDiscount from './screens/CreateDiscount'
+import Give2 from './screens/Give2%'
 import Give2Physical from './screens/Give2Physical'
 import Give2Lawyer from './screens/Give2Lawyer'
 import Give2PhysicalBusiness from './screens/Give2PhysicalBusiness'
@@ -41,6 +42,10 @@ import VideoListScreen from './screens/VideoListScreen'
 import VideoEditScreen from './screens/VideoEditScreen'
 import Library from './screens/Library'
 import LibraryExcerpt from './screens/LibraryExcerpt'
+import About from './screens/About'
+import WatchmanNee from './screens/WatchmanNee'
+import WitnessLee from './screens/WitnessLee'
+import SafetyPrivacy from './screens/SafetyPrivacy'
 
 const App = () => {
   const [clientID, setClientID] = useState('')
@@ -124,6 +129,7 @@ const App = () => {
                     path='/forgot-password'
                     element={<ForgotPasswordScreen />}
                   />
+                  <Route path='/give2' element={<Give2 />} />
                   <Route path='/give2-physical' element={<Give2Physical />} />
                   <Route
                     path='/give2-physical-business'
@@ -156,6 +162,10 @@ const App = () => {
                     path='/library/:id/page/:pageNumber'
                     element={<LibraryExcerpt />}
                   />
+                  <Route path='/watchman-nee' element={<WatchmanNee />} />
+                  <Route path='/witness-lee' element={<WitnessLee />} />
+                  <Route path='/about' element={<About />} />
+                  <Route path='/safety-privacy' element={<SafetyPrivacy />} />
                 </Routes>
               </Container>
             </main>

@@ -18,6 +18,7 @@ import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 const ProductListScreen = () => {
   const params = useParams()
   const pageNumber = params.pageNumber || 1
+  const pageSize = 10
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const productList = useSelector((state) => state.productList)
@@ -88,7 +89,7 @@ const ProductListScreen = () => {
     if (successCreate) {
       navigate(`/admin/product/${createdProduct._id}/edit`)
     } else {
-      dispatch(listProducts('', pageNumber))
+      dispatch(listProducts('', pageNumber, pageSize))
     }
   }, [
     dispatch,

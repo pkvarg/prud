@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col, Table } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
@@ -30,6 +30,10 @@ const ProfileScreen = () => {
 
   // const location = useLocation()
   // const { search } = useLocation()
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 200)
+  })
 
   const orderListMy = useSelector((state) => state.orderListMy)
   const { loading: loadingOrders, error: errorOrders, orders } = orderListMy

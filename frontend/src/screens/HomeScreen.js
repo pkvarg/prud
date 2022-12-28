@@ -16,11 +16,12 @@ const HomeScreen = () => {
 
   const keyword = params.keyword
   const pageNumber = params.pageNumber || 1
+  const pageSize = 8
 
   const productList = useSelector((state) => state.productList)
   const { loading, error, products, page, pages } = productList
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber))
+    dispatch(listProducts(keyword, pageNumber, pageSize))
   }, [dispatch, keyword, pageNumber])
 
   // by abc overwrites products array

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
@@ -24,6 +24,10 @@ const ContactScreen = () => {
 
   const forgotPassword = useSelector((state) => state.forgotPassword)
   const { loading, error } = forgotPassword
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 200)
+  })
 
   const contactForm = {
     name,

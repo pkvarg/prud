@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -29,6 +29,10 @@ const ForgotPasswordScreen = () => {
       setMessageSuccess('Linka bola odoslaná na Váš email')
     }
   }
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 200)
+  })
 
   return (
     <>

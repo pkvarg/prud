@@ -22,7 +22,7 @@ const Footer = () => {
             <Col>
               <div className='footer-text-links '>
                 <h2>Podmienky</h2>
-                <Link to='/gdpr'>
+                <Link to='/safety-privacy'>
                   <p>GDPR</p>
                 </Link>
                 <Link to='/trade-rules'>
