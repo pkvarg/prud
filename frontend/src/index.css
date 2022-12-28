@@ -279,7 +279,7 @@ i.fab.fa-facebook-f {
 /* carousel */
 .carousel-custom {
   /* background-image: url('../../frontend/public/images/sample.jpg'); */
-  border: 1px solid #232323;
+  /* border: 1px solid #232323; */
   z-index: -1;
 }
 
@@ -311,13 +311,15 @@ i.fab.fa-facebook-f {
   margin-left: 33%;
 }
 
-.carousel img {
+/* the image in carousel */
+
+/* .carousel img {
   height: 300px;
   padding: 30px;
   margin: 40px;
   margin-left: -5%;
   margin-right: auto;
-}
+} */
 
 .carousel a {
   margin-left: 15%;

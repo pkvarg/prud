@@ -41,19 +41,31 @@ const ProductScreen = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
-  useLayoutEffect(() => {
-    window.scrollTo(0, 250)
-  })
+  // useLayoutEffect(() => {
+  //   window.scrollTo(0, 250)
+  // })
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (successProductReview) {
       alert('Recenzia pridaná')
       setRating(0)
       setComment('')
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
     }
+    window.scrollTo(0, 250)
+
     dispatch(listAllProducts())
   }, [dispatch, id, successProductReview])
+
+  // useEffect(() => {
+  //   if (successProductReview) {
+  //     alert('Recenzia pridaná')
+  //     setRating(0)
+  //     setComment('')
+  //     dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
+  //   }
+  //   dispatch(listAllProducts())
+  // }, [dispatch, id, successProductReview])
 
   const navigate = useNavigate()
   const addToCartHandler = () => {
@@ -103,13 +115,16 @@ const ProductScreen = () => {
                 <>
                   <Meta title={product.name} />
                   <Row>
-                    <Col md={3}>
+                    <Col md={3} key={product._id}>
                       <Image
                         src={product.image}
                         alt={product.name}
                         className='prod-img-width'
                       ></Image>
-                      <ListGroup.Item className='product-see-also no-mobile'>
+                      <ListGroup.Item
+                        className='product-see-also no-mobile'
+                        key={product._id}
+                      >
                         <h5>Katalóg</h5>
                         <h6>{product.catalog}</h6>
                         {product.related && <h5>Pozrite si tiež</h5>}
@@ -175,9 +190,6 @@ const ProductScreen = () => {
                         <ListGroup.Item>
                           <h3>{product.name}</h3>
                           <h4>{product.author}</h4>
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                          <Rating value={product.rating} />
                         </ListGroup.Item>
 
                         <ListGroup.Item>
@@ -272,7 +284,10 @@ const ProductScreen = () => {
             {products.map(
               (product) =>
                 product._id === id && (
-                  <ListGroup.Item className='product-see-also mobile-only'>
+                  <ListGroup.Item
+                    className='product-see-also mobile-only'
+                    key={product._id}
+                  >
                     <h5>Katalóg</h5>
                     <h6>{product.catalog}</h6>
                     {product.related && <h5>Pozrite si tiež</h5>}
@@ -338,7 +353,7 @@ const ProductScreen = () => {
             {products.map(
               (product) =>
                 product._id === id && (
-                  <Col md={6}>
+                  <Col md={6} key={product._id}>
                     <h2 className='my-3'>Recenzie</h2>
                     {product.reviews.length === 0 && (
                       <Message>Žiadne recenzie</Message>
