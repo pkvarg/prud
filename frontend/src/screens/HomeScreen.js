@@ -75,6 +75,7 @@ const HomeScreen = () => {
         </Link>
       )}
       <h1 className='new-publications'>Nové publikácie</h1>
+      <hr></hr>
       {loading ? (
         <Loader />
       ) : error ? (

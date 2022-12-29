@@ -9,7 +9,7 @@ const addDecimals = (num) => {
 
 const Product = ({ product }) => {
   return (
-    <Card className='my-3 p-3 rounded'>
+    <div className='my-3 p-3'>
       <Link to={`/product/${product._id}`}>
         <Card.Img
           src={product.image}
@@ -44,7 +44,7 @@ const Product = ({ product }) => {
           {/* € {product.price.toFixed(2)} */}
         </div>
       </Card.Body>
-    </Card>
+    </div>
   )
 }
 

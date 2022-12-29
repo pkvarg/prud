@@ -92,7 +92,7 @@ const Header = () => {
         </Container>
       </Navbar>
       {/* Header with Logo ... */}
-      <div className='top-container no-mobile'>
+      <div className='top-container no-mobile container'>
         <div>
           <Link to='/' className='no-underline'>
             <img

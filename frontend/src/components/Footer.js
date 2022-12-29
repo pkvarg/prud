@@ -43,12 +43,10 @@ const Footer = () => {
             </Col>
             <Col>
               <div className='footer-text-links '>
-                <h2>Kontakt Slovensko</h2>
-                {/* <p>Prúd</p> */}
-                <p>Špieszova 5</p>
-                <p>84104 Bratislava</p>
-                <a href='mailto:publikacie@prud.sk'>
-                  <p>publikacie@prud.sk</p>
+                <h2>Kontakt</h2>
+
+                <a href='mailto:admin@prud.sk'>
+                  <p>admin@prud.sk</p>
                 </a>
 
                 <a href='tel:+421904060262'>
@@ -65,7 +63,7 @@ const Footer = () => {
         <Row>
           <Col className='py-3'>
             <div className='footer-copyright no-mobile'>
-              <p>
+              <p className='footer-link'>
                 Copyright &copy; {Date().substring(11, 15)} PRÚD, všetky práva
                 vyhradené,
               </p>
