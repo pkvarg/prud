@@ -250,7 +250,7 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='image' className='mb-3'>
-              <Form.Label>Obrázok (250 x 346 pixelov)</Form.Label>
+              <Form.Label>Obrázok (274 x 379 pixelov)</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Obrázok'

@@ -9,7 +9,7 @@
 
 body {
   font-family: OpenSans, sans-serif;
-  color: #232323;
+  color: #5e5d5d;
   font-weight: 200;
   font-size: 21px;
   line-height: 22px;
@@ -20,18 +20,23 @@ main {
   min-height: 80vh;
 }
 
-h3 {
-  padding: 1rem 0;
-}
-
 h1 {
   font-size: 23px;
   padding: 1rem 0;
+  color: inherit !important;
 }
 
 h2 {
   font-size: 18px;
   padding: 0.5rem 0;
+}
+
+h3 {
+  padding: 1rem 0;
+}
+
+h4 {
+  color: inherit !important;
 }
 
 .rating span {
@@ -81,19 +86,19 @@ a.nav-link {
   /* margin: 0 5%; */
   display: flex;
   align-items: center;
-  color: #232323;
+  color: inherit !important;
 }
 
 a.grey-navbar-cart.nav-link,
 a.grey-navbar-sign-in.nav-link {
-  color: #232323;
   font-weight: 200;
   text-transform: none !important;
+  color: inherit !important;
 }
 
 a#username.dropdown-toggle.nav-link,
 a#adminmenu.dropdown-toggle.nav-link {
-  color: #232323;
+  color: #5e5d5d;
   font-weight: 200;
   text-transform: none !important;
   font-size: 18px;
@@ -278,10 +283,7 @@ i.fab.fa-facebook-f {
 
 /* carousel */
 .carousel-custom {
-  /* background-image: url('../../frontend/public/images/sample.jpg'); */
-  /* border: 1px solid #232323; */
   margin-top: 15px;
-
   z-index: -1;
 }
 
@@ -370,6 +372,7 @@ img.slide-img-2.img-fluid {
 
 .product-home-price h4 {
   font-size: 18px;
+  margin-top: 7.5px;
 }
 
 .product-description {
@@ -793,11 +796,16 @@ footer {
   margin-left: 25px;
   line-height: 21.5px;
   font-size: 18px;
+  color: #5e5d5d;
 }
 
 /* MOBILE */
 /* Tablets and smaller */
 @media (min-width: 100px) and (max-width: 1180px) {
+  body {
+    color: #5e5d5d;
+  }
+
   .no-mobile {
     display: none !important;
   }
@@ -838,11 +846,11 @@ footer {
   }
 
   a.dropdown-toggle.nav-link {
-    color: #232323;
+    color: #5e5d5d;
   }
 
   a.dropdown-toggle.nav-link:hover {
-    color: #232323;
+    color: #5e5d5d;
   }
 
   a.nav-link {
@@ -959,27 +967,27 @@ footer {
     font-size: 25px;
   }
   .mobile-sign-in.active.nav-link:hover {
-    color: #232323;
+    color: #5e5d5d;
   }
 
   a#username.dropdown-toggle.nav-link {
-    color: #232323;
+    color: #5e5d5d;
   }
   a#username.dropdown-toggle.nav-link:hover {
-    color: #232323;
+    color: #5e5d5d;
   }
 
   a#adminmenu.dropdown-toggle.nav-link {
-    color: #232323;
+    color: #5e5d5d;
     margin-left: 0px;
   }
   a#adminmenu.dropdown-toggle.nav-link:hover {
-    color: #232323;
+    color: #5e5d5d;
   }
 
   a.active.dropdown-item {
     background-color: #fefefe;
-    color: #000;
+    color: #5e5d5d;
   }
 
   a.active.dropdown-item:hover {
@@ -990,18 +998,6 @@ footer {
   a.dropdown-item {
     font-size: 30px;
   }
-
-  /* .list-group-item {
-    display: flex;
-    align-items: center;
-  } */
-  /* a.dropdown-toggle.nav-link {
-    font-size: 25px;
-  } */
-
-  /* a.nav-link:hover {
-    background-color: #1c6117;
-  } */
 
   /* MOBILE CAROUSEL */
   .carousel-caption h2 {
@@ -1016,7 +1012,8 @@ footer {
   }
 
   .carousel img {
-    margin-left: -13%;
+    height: 150px;
+    width: 100%;
   }
 
   .align-items-stretch.mobile-only {
