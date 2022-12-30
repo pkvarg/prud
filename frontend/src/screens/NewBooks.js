@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Col, Image } from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
 import { listProductDetails } from '../actions/productActions'
 import { listAllProducts } from '../actions/productActions'
 
@@ -20,6 +20,15 @@ const NewBooks = () => {
     dispatch(listAllProducts())
   }, [dispatch])
 
+  let byYear = []
+
+  products.map((product) => {
+    if (product.year === year) return byYear.push(product)
+    else return product
+  })
+
+  console.log(byYear)
+
   return (
     <>
       <Link className='btn btn-back my-3' to='/'>
@@ -28,34 +37,10 @@ const NewBooks = () => {
       <div>
         <h1>Knihy {year}</h1>
         <div className='prods-by-year-container'>
-          {products.map((product) => (
+          {byYear.map((product) => (
             <div className='prods-by-year'>
-              <Col key={product._id}>
-                {product.year === year && (
-                  <div className='prod-by-year'>
-                    <h1>{product.name}</h1>
-                    <h4>Jazyk: {product.language}</h4>
-                    <h4>{product.binding}</h4>
-                    <h4>{product.pages} strán</h4>
-                    <h4>{product.isbn}</h4>
-                    {product.language === 'SK' ? (
-                      <Image
-                        src='/images/flag_sk40px_0.png'
-                        alt={product.name}
-                        fluid
-                      ></Image>
-                    ) : (
-                      <Image
-                        src='/images/flag_cz40px_2_27.png'
-                        alt={product.name}
-                        fluid
-                      ></Image>
-                    )}
-                  </div>
-                )}
-              </Col>
-              <Col key={product._id}>
-                {product.year === year && (
+              {product.year === year && (
+                <>
                   <Link to={`/product/${product._id}`}>
                     <Image
                       src={product.image}
@@ -63,8 +48,26 @@ const NewBooks = () => {
                       className='prod-img-year-width'
                     ></Image>
                   </Link>
-                )}
-              </Col>
+                  <h1>{product.name}</h1>
+                  <h4>Jazyk: {product.language}</h4>
+                  <h4>{product.binding}</h4>
+                  <h4>{product.pages} strán</h4>
+                  <h4>{product.isbn}</h4>
+                  {product.language === 'SK' ? (
+                    <Image
+                      src='/images/flag_sk40px_0.png'
+                      alt={product.name}
+                      fluid
+                    ></Image>
+                  ) : (
+                    <Image
+                      src='/images/flag_cz40px_2_27.png'
+                      alt={product.name}
+                      fluid
+                    ></Image>
+                  )}
+                </>
+              )}
             </div>
           ))}
         </div>
