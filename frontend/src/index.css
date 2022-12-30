@@ -102,12 +102,11 @@ a#adminmenu.dropdown-toggle.nav-link {
 a#adminmenu.dropdown-toggle.nav-link {
   margin-left: 35px;
 }
-
 a.grey-navbar-cart.nav-link:hover,
 a.grey-navbar-sign-in.nav-link:hover,
 a#username.dropdown-toggle.nav-link:hover,
 a#adminmenu.dropdown-toggle.nav-link:hover {
-  color: #24b9d6;
+  color: #24b9d6 !important;
   background-color: none !important;
 }
 
@@ -118,7 +117,7 @@ a#adminmenu.dropdown-toggle.nav-link:hover {
 
 p.number-in-cart {
   position: absolute;
-  right: 56px;
+  right: 50px;
   top: -10px;
   display: inline-block;
   border-radius: 50%;
@@ -228,7 +227,7 @@ a.dropdown-toggle.nav-link {
 
 a.dropdown-toggle.nav-link:hover {
   color: #fefefe;
-  background-color: #611316;
+  /* background-color: #611316; */
 }
 
 a.dropdown-toggle.nav-link:after {
