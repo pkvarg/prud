@@ -234,7 +234,9 @@ const PlaceOrderScreen = () => {
                     onChange={handleGdprOrder}
                   />
                   <p className='agree-gdpr-order'>
-                    Súhlasím so spracovaním osobných údajov
+                    <a href='/safety-privacy' target='_blank'>
+                      Súhlasím so spracovaním osobných údajov
+                    </a>
                   </p>
                 </Form.Group>
                 <Form.Group className='billing-flex'>
@@ -245,7 +247,9 @@ const PlaceOrderScreen = () => {
                     onChange={handleTradeRulesOrder}
                   />
                   <p className='agree-traderules-order'>
-                    Súhlasím s obchodnými podmienkami
+                    <a href='/trade-rules' target='_blank'>
+                      Súhlasím s obchodnými podmienkami
+                    </a>
                   </p>
                 </Form.Group>
               </ListGroup.Item>

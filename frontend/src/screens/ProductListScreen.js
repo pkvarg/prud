@@ -76,6 +76,10 @@ const ProductListScreen = () => {
     navigate('/create-discount')
   }
 
+  const linkToReviews = () => {
+    navigate('/reviews')
+  }
+
   // by abc
   // products.sort((a, b) => {
   //   return a.name.localeCompare(b.name)
@@ -106,6 +110,11 @@ const ProductListScreen = () => {
       <Row className='align-items-center no-mobile'>
         <Col>
           <h1>Produkty</h1>
+        </Col>
+        <Col className='text-end'>
+          <Button className='my-3 btn-blue' onClick={linkToReviews}>
+            Recenzie
+          </Button>
         </Col>
         <Col className='text-end'>
           <Button className='my-3 btn-red' onClick={linkToCreateDiscount}>

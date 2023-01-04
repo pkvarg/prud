@@ -24,6 +24,12 @@ import {
   CREATE_DISCOUNT_REQUEST,
   CREATE_DISCOUNT_SUCCESS,
   CREATE_DISCOUNT_FAIL,
+  PRODUCT_ACKNOWLEDGE_REVIEW_REQUEST,
+  PRODUCT_ACKNOWLEDGE_REVIEW_SUCCESS,
+  PRODUCT_ACKNOWLEDGE_REVIEW_FAIL,
+  PRODUCT_DELETE_REVIEW_REQUEST,
+  PRODUCT_DELETE_REVIEW_SUCCESS,
+  PRODUCT_DELETE_REVIEW_FAIL,
 } from '../constants/productConstants'
 
 export const listProducts =
@@ -267,6 +273,81 @@ export const createProductReview =
       // }
       dispatch({
         type: PRODUCT_CREATE_REVIEW_FAIL,
+        payload: message,
+      })
+    }
+  }
+export const acknowlegeProductReview =
+  (productId, review) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: PRODUCT_ACKNOWLEDGE_REVIEW_REQUEST,
+      })
+
+      const {
+        userLogin: { userInfo },
+      } = getState()
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+
+      await axios.put(`/api/products/${productId}/reviews`, review, config)
+
+      dispatch({
+        type: PRODUCT_ACKNOWLEDGE_REVIEW_SUCCESS,
+      })
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      // // if (message === 'Not authorized, token failed') {
+      //   // dispatch(logout())
+      // }
+      dispatch({
+        type: PRODUCT_ACKNOWLEDGE_REVIEW_FAIL,
+        payload: message,
+      })
+    }
+  }
+
+export const deleteProductReview =
+  (productId, review) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: PRODUCT_DELETE_REVIEW_REQUEST,
+      })
+
+      const {
+        userLogin: { userInfo },
+      } = getState()
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+
+      await axios.delete(`/api/products/${productId}/reviews`, review, config)
+
+      dispatch({
+        type: PRODUCT_DELETE_REVIEW_SUCCESS,
+      })
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      // // if (message === 'Not authorized, token failed') {
+      //   // dispatch(logout())
+      // }
+      dispatch({
+        type: PRODUCT_DELETE_REVIEW_FAIL,
         payload: message,
       })
     }

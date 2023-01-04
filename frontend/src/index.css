@@ -753,6 +753,42 @@ p.prod-excerpt-excerpt {
   overscroll-behavior: contain;
 }
 
+.manage-single-review-title {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.manage-single-review {
+  margin-top: 20px;
+  color: #071e46;
+  height: fit-content;
+  padding: 20px;
+  border: 1px solid #071e46;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-red.reviews {
+  float: right;
+  color: #fff;
+  border-radius: 15px;
+  padding: 10px;
+}
+.btn-blue.reviews {
+  float: right;
+  color: #fff;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.btn-red.reviews:hover,
+.btn-blue.reviews:hover {
+  color: #071e46;
+}
+
 /* Laptop ONLY*/
 
 @media (min-width: 100px) and (max-width: 1440px) {
