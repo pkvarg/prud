@@ -5,6 +5,7 @@ const reviewSchema = mongoose.Schema(
     name: { type: String, required: true },
     rating: { type: Number, required: true },
     comment: { type: String, required: true },
+    isAcknowledged: { type: Boolean, default: false },
 
     user: {
       type: mongoose.Schema.Types.ObjectId,

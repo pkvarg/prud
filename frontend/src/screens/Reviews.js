@@ -11,6 +11,7 @@ import {
   listProducts,
   deleteProduct,
   createProduct,
+  updateProduct,
 } from '../actions/productActions'
 import { useNavigate } from 'react-router-dom'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
@@ -23,6 +24,13 @@ const Reviews = () => {
   const navigate = useNavigate()
   const productList = useSelector((state) => state.productList)
   const { loading, error, products, page, pages } = productList
+
+  const productUpdate = useSelector((state) => state.productUpdate)
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = productUpdate
 
   const productDelete = useSelector((state) => state.productDelete)
   const {
@@ -56,10 +64,11 @@ const Reviews = () => {
     navigate('/create-discount')
   }
 
-  const acknowledgeHandler = (id) => {
-    alert('Recenzia schválená')
-
-    console.log('ack')
+  const acknowledgeHandler = (product, reviewId) => {
+    // dispatch(acknowledgeProductReview(prodId, reviewId))
+    dispatch(updateProduct(product, reviewId))
+    document.location.href = `/reviews`
+    // alert('Recenzia schválená')
   }
 
   useEffect(() => {
@@ -95,9 +104,11 @@ const Reviews = () => {
               {product.reviews.map((review) => (
                 <div className='manage-single-review'>
                   "{review.comment}" napísal {review.name}
+                  <p> {review.createdAt.substring(0, 10)}</p>
+                  <p>{review.isAcknowledged ? 'true' : 'false'}</p>
                   <button
                     className='btn-blue reviews'
-                    onClick={() => acknowledgeHandler(product._id)}
+                    onClick={() => acknowledgeHandler(product, review._id)}
                   >
                     Schváliť recenziu
                   </button>

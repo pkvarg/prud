@@ -155,6 +155,8 @@ const updateProduct = asyncHandler(async (req, res) => {
     year,
   } = req.body
 
+  const reviewId = req.body
+
   const product = await Product.findById(req.params.id)
 
   if (product) {
@@ -179,6 +181,11 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.pages = pages
     product.isbn = isbn
     product.year = year
+    product.reviews.map((rev) => {
+      if ((rev._id = reviewId)) {
+        rev.isAcknowledged = true
+      }
+    })
 
     const updatedProduct = await product.save()
     res.json(updatedProduct)
@@ -225,6 +232,30 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    Create new review
+// @route   PUT /api/products/:id/reviews
+// @access  Private
+const acknowledgeProductReview = asyncHandler(async (req, res) => {
+  console.log(req.params)
+  // const reviewId = req.params.reviewId
+  const product = await Product.findById(req.params.id)
+  // const review = product.reviews.map((rev) => {
+  //   if (rev._id === reviewId) return rev
+  // })
+
+  // console.log(review)
+
+  if (product) {
+    console.log(product)
+    // product.review.isAcknowledged = true
+    await product.save()
+    res.status(201).json({ message: 'Review acknowledged' })
+  } else {
+    res.status(404)
+    throw new Error('Product not found')
+  }
+})
+
 // @desc    Get Top rated products
 // @route   GET /api/products/top
 // @access  Public
@@ -242,6 +273,7 @@ export {
   createProduct,
   updateProduct,
   createProductReview,
+  acknowledgeProductReview,
   getTopProducts,
   createDiscountAllProducts,
 }

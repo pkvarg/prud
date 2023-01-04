@@ -24,9 +24,6 @@ import {
   CREATE_DISCOUNT_REQUEST,
   CREATE_DISCOUNT_SUCCESS,
   CREATE_DISCOUNT_FAIL,
-  PRODUCT_ACKNOWLEDGE_REVIEW_REQUEST,
-  PRODUCT_ACKNOWLEDGE_REVIEW_SUCCESS,
-  PRODUCT_ACKNOWLEDGE_REVIEW_FAIL,
   PRODUCT_DELETE_REVIEW_REQUEST,
   PRODUCT_DELETE_REVIEW_SUCCESS,
   PRODUCT_DELETE_REVIEW_FAIL,
@@ -201,44 +198,47 @@ export const createProduct = () => async (dispatch, getState) => {
   }
 }
 
-export const updateProduct = (product) => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: PRODUCT_UPDATE_REQUEST,
-    })
+export const updateProduct =
+  (product, reviewId) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: PRODUCT_UPDATE_REQUEST,
+      })
 
-    const {
-      userLogin: { userInfo },
-    } = getState()
+      const {
+        userLogin: { userInfo },
+      } = getState()
 
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`,
-      },
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+
+      const { data } = await axios.put(
+        `/api/products/${product._id}`,
+        product,
+        config,
+        reviewId
+      )
+      console.log(data)
+
+      dispatch({
+        type: PRODUCT_UPDATE_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      dispatch({
+        type: PRODUCT_UPDATE_FAIL,
+        payload: message,
+      })
     }
-
-    const { data } = await axios.put(
-      `/api/products/${product._id}`,
-      product,
-      config
-    )
-
-    dispatch({
-      type: PRODUCT_UPDATE_SUCCESS,
-      payload: data,
-    })
-  } catch (error) {
-    const message =
-      error.response && error.response.data.message
-        ? error.response.data.message
-        : error.message
-    dispatch({
-      type: PRODUCT_UPDATE_FAIL,
-      payload: message,
-    })
   }
-}
 
 export const createProductReview =
   (productId, review) => async (dispatch, getState) => {
@@ -273,43 +273,6 @@ export const createProductReview =
       // }
       dispatch({
         type: PRODUCT_CREATE_REVIEW_FAIL,
-        payload: message,
-      })
-    }
-  }
-export const acknowlegeProductReview =
-  (productId, review) => async (dispatch, getState) => {
-    try {
-      dispatch({
-        type: PRODUCT_ACKNOWLEDGE_REVIEW_REQUEST,
-      })
-
-      const {
-        userLogin: { userInfo },
-      } = getState()
-
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      }
-
-      await axios.put(`/api/products/${productId}/reviews`, review, config)
-
-      dispatch({
-        type: PRODUCT_ACKNOWLEDGE_REVIEW_SUCCESS,
-      })
-    } catch (error) {
-      const message =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message
-      // // if (message === 'Not authorized, token failed') {
-      //   // dispatch(logout())
-      // }
-      dispatch({
-        type: PRODUCT_ACKNOWLEDGE_REVIEW_FAIL,
         payload: message,
       })
     }
