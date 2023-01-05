@@ -770,18 +770,27 @@ p.prod-excerpt-excerpt {
   align-items: center;
   gap: 20px;
 }
+.manage-single-review.green {
+  background-color: rgb(41, 203, 54);
+}
+
+.manage-single-review.red {
+  background-color: rgb(200, 17, 17);
+}
 
 .btn-red.reviews {
   float: right;
   color: #fff;
   border-radius: 15px;
   padding: 10px;
+  border: 1px solid #fff;
 }
 .btn-blue.reviews {
   float: right;
   color: #fff;
   border-radius: 15px;
   padding: 10px;
+  border: 1px solid #fff;
 }
 
 .btn-red.reviews:hover,

@@ -198,47 +198,44 @@ export const createProduct = () => async (dispatch, getState) => {
   }
 }
 
-export const updateProduct =
-  (product, reviewId) => async (dispatch, getState) => {
-    try {
-      dispatch({
-        type: PRODUCT_UPDATE_REQUEST,
-      })
+export const updateProduct = (product) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: PRODUCT_UPDATE_REQUEST,
+    })
 
-      const {
-        userLogin: { userInfo },
-      } = getState()
+    const {
+      userLogin: { userInfo },
+    } = getState()
 
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      }
-
-      const { data } = await axios.put(
-        `/api/products/${product._id}`,
-        product,
-        config,
-        reviewId
-      )
-      console.log(data)
-
-      dispatch({
-        type: PRODUCT_UPDATE_SUCCESS,
-        payload: data,
-      })
-    } catch (error) {
-      const message =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message
-      dispatch({
-        type: PRODUCT_UPDATE_FAIL,
-        payload: message,
-      })
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
     }
+
+    const { data } = await axios.put(
+      `/api/products/${product._id}`,
+      product,
+      config
+    )
+
+    dispatch({
+      type: PRODUCT_UPDATE_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    dispatch({
+      type: PRODUCT_UPDATE_FAIL,
+      payload: message,
+    })
   }
+}
 
 export const createProductReview =
   (productId, review) => async (dispatch, getState) => {
@@ -279,7 +276,7 @@ export const createProductReview =
   }
 
 export const deleteProductReview =
-  (productId, review) => async (dispatch, getState) => {
+  (product, comment) => async (dispatch, getState) => {
     try {
       dispatch({
         type: PRODUCT_DELETE_REVIEW_REQUEST,
@@ -296,7 +293,12 @@ export const deleteProductReview =
         },
       }
 
-      await axios.delete(`/api/products/${productId}/reviews`, review, config)
+      const data = await axios.put(
+        `/api/products/${product._id}/reviews`,
+        { product, comment },
+        config
+      )
+      console.log(data)
 
       dispatch({
         type: PRODUCT_DELETE_REVIEW_SUCCESS,

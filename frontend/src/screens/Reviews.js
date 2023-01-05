@@ -9,8 +9,7 @@ import Paginate from '../components/Paginate'
 
 import {
   listProducts,
-  deleteProduct,
-  createProduct,
+  deleteProductReview,
   updateProduct,
 } from '../actions/productActions'
 import { useNavigate } from 'react-router-dom'
@@ -50,23 +49,15 @@ const Reviews = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
-  const deleteHandler = (id) => {
+  const deleteHandler = (product, comment) => {
     if (window.confirm('Delete review? Are you sure?')) {
-      // dispatch(deleteProduct(id))
+      dispatch(deleteProductReview(product, comment))
+      document.location.href = `/reviews`
     }
   }
 
-  const createProductHandler = (product) => {
-    dispatch(createProduct())
-  }
-
-  const linkToCreateDiscount = () => {
-    navigate('/create-discount')
-  }
-
-  const acknowledgeHandler = (product, reviewId) => {
-    // dispatch(acknowledgeProductReview(prodId, reviewId))
-    dispatch(updateProduct(product, reviewId))
+  const acknowledgeHandler = (product, comment) => {
+    dispatch(updateProduct(product, comment))
     document.location.href = `/reviews`
     // alert('Recenzia schválená')
   }
@@ -102,19 +93,31 @@ const Reviews = () => {
               </h2>
 
               {product.reviews.map((review) => (
-                <div className='manage-single-review'>
-                  "{review.comment}" napísal {review.name}
-                  <p> {review.createdAt.substring(0, 10)}</p>
-                  <p>{review.isAcknowledged ? 'true' : 'false'}</p>
+                <div
+                  className={
+                    review.isAcknowledged
+                      ? 'manage-single-review green'
+                      : 'manage-single-review red'
+                  }
+                >
+                  <div key='0'>
+                    "{review.comment}" napísal {review.name}
+                  </div>
+                  <p key='2'>{review.createdAt.substring(0, 10)}</p>
+                  <p key='3'>
+                    {review.isAcknowledged ? 'Schválená' : 'Neschválená'}
+                  </p>
                   <button
+                    key='4'
                     className='btn-blue reviews'
-                    onClick={() => acknowledgeHandler(product, review._id)}
+                    onClick={() => acknowledgeHandler(product, review.comment)}
                   >
                     Schváliť recenziu
                   </button>
                   <button
+                    key='5'
                     className='btn-red reviews'
-                    onClick={() => deleteHandler(product._id)}
+                    onClick={() => deleteHandler(product, review.comment)}
                   >
                     Zmazať
                   </button>

@@ -155,40 +155,32 @@ const updateProduct = asyncHandler(async (req, res) => {
     year,
   } = req.body
 
-  const reviewId = req.body
+  const prod = await Product.findById(req.params.id)
+  if (prod) {
+    prod.name = name
+    prod.price = price
+    prod.discount = discount
+    prod.discountedPrice = discountedPrice
+    prod.description = description
+    prod.excerpt = excerpt
+    prod.image = image
+    prod.author = author
+    prod.category = category
+    prod.countInStock = countInStock
+    prod.catalog = catalog
+    prod.weight = weight
+    prod.related = related
+    prod.related2 = related2
+    prod.related3 = related3
+    prod.tags = tags
+    prod.language = language
+    prod.binding = binding
+    prod.pages = pages
+    prod.isbn = isbn
+    prod.year = year
 
-  const product = await Product.findById(req.params.id)
-
-  if (product) {
-    product.name = name
-    product.price = price
-    product.discount = discount
-    product.discountedPrice = discountedPrice
-    product.description = description
-    product.excerpt = excerpt
-    product.image = image
-    product.author = author
-    product.category = category
-    product.countInStock = countInStock
-    product.catalog = catalog
-    product.weight = weight
-    product.related = related
-    product.related2 = related2
-    product.related3 = related3
-    product.tags = tags
-    product.language = language
-    product.binding = binding
-    product.pages = pages
-    product.isbn = isbn
-    product.year = year
-    product.reviews.map((rev) => {
-      if ((rev._id = reviewId)) {
-        rev.isAcknowledged = true
-      }
-    })
-
-    const updatedProduct = await product.save()
-    res.json(updatedProduct)
+    await prod.save()
+    res.json(prod)
   } else {
     res.status(404)
     throw new Error('Product not found')
@@ -232,27 +224,25 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 })
 
-// @desc    Create new review
+// @desc    Delete review
 // @route   PUT /api/products/:id/reviews
 // @access  Private
-const acknowledgeProductReview = asyncHandler(async (req, res) => {
-  console.log(req.params)
-  // const reviewId = req.params.reviewId
-  const product = await Product.findById(req.params.id)
-  // const review = product.reviews.map((rev) => {
-  //   if (rev._id === reviewId) return rev
-  // })
+const deleteProductReview = asyncHandler(async (req, res) => {
+  const { product, comment } = req.body
 
-  // console.log(review)
+  const prod = await Product.findById(req.params.id)
+  if (prod) {
+    for (let i = 0; i < prod.reviews.length; i++) {
+      if (prod.reviews[i].comment === comment) {
+        prod.reviews.splice(i, 1)
+      }
+    }
 
-  if (product) {
-    console.log(product)
-    // product.review.isAcknowledged = true
-    await product.save()
-    res.status(201).json({ message: 'Review acknowledged' })
+    const updatedProduct = await prod.save()
+    res.json(updatedProduct)
   } else {
     res.status(404)
-    throw new Error('Product not found')
+    throw new Error('Review not found')
   }
 })
 
@@ -273,7 +263,7 @@ export {
   createProduct,
   updateProduct,
   createProductReview,
-  acknowledgeProductReview,
+  deleteProductReview,
   getTopProducts,
   createDiscountAllProducts,
 }
