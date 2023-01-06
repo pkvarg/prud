@@ -17,6 +17,7 @@ const authUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       isAssistant: user.isAssistant,
+      favorites: user.favorites,
       token: generateToken(user._id),
     })
   } else {

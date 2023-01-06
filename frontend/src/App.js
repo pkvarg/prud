@@ -48,6 +48,7 @@ import WitnessLee from './screens/WitnessLee'
 import SafetyPrivacy from './screens/SafetyPrivacy'
 import TradeRules from './screens/TradeRules'
 import Reviews from './screens/Reviews'
+import Favorites from './screens/Favorites'
 
 const App = () => {
   const [clientID, setClientID] = useState('')
@@ -170,6 +171,7 @@ const App = () => {
                   <Route path='/safety-privacy' element={<SafetyPrivacy />} />
                   <Route path='/trade-rules' element={<TradeRules />} />
                   <Route path='/admin/reviews' element={<Reviews />} />
+                  <Route path='/favorites' element={<Favorites />} />
                 </Routes>
               </Container>
             </main>
