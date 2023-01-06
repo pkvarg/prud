@@ -624,10 +624,6 @@ sup {
   /* width: 90vw; */
 }
 
-.prod-img-year-width {
-  /* width: 27%; */
-}
-
 .prods-by-year {
   display: flex;
   flex-direction: column;
@@ -644,9 +640,6 @@ sup {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-}
-
-.prods-by-year h1 {
 }
 
 .isAdmin-check {
@@ -761,16 +754,16 @@ p.prod-excerpt-excerpt {
 .manage-single-review {
   margin-top: 20px;
   margin-bottom: 30px;
-
   color: #071e46;
   height: fit-content;
   padding: 20px;
   border: 1px solid #071e46;
   border-radius: 15px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 30px;
 }
 
 .manage-single-review.green {
@@ -782,7 +775,30 @@ p.prod-excerpt-excerpt {
 }
 
 .manage-single-review-comment {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   font-size: 30px;
+  line-height: 30px;
+  gap: 15px;
+  transform: translateY(10px);
+  text-align: justify;
+}
+
+.manage-single-review-isAck {
+  background-color: #fff;
+  padding: 2px;
+}
+
+.manage-single-review-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7.5px;
+}
+
+.manage-single-review-comment p {
+  font-size: 20px;
 }
 
 .manage-single-review-link {
@@ -791,6 +807,7 @@ p.prod-excerpt-excerpt {
   border-radius: 15px;
   border: 1px solid #24b9d6;
   text-decoration: none;
+  text-align: center;
 }
 
 a.manage-single-review-link:hover {
@@ -820,12 +837,12 @@ a.manage-single-review-link:hover {
 
 /* Laptop ONLY*/
 
-@media (min-width: 100px) and (max-width: 1440px) {
+/* @media (min-width: 100px) and (max-width: 1440px) {
   .prod-img-year-width {
-    /* width: 50%;
-    margin-top: 7%; */
+     width: 50%;
+    margin-top: 7%; 
   }
-}
+} */
 
 /* FOOTER */
 footer {

@@ -63,32 +63,37 @@ const Reviews = () => {
               }
             >
               <div key='0' className='manage-single-review-comment'>
-                "{review.comment}" napísal {review.name}
+                <p>"{review.comment}"</p>
+                <p>{review.name}</p>
+                <p key='2'>{review.createdAt.substring(0, 10)}</p>
+                <p key='3' className='manage-single-review-isAck'>
+                  {review.isAcknowledged ? 'Schválená' : 'Neschválená'}
+                </p>
               </div>
-              <p key='2'>{review.createdAt.substring(0, 10)}</p>
-              <p key='3'>
-                {review.isAcknowledged ? 'Schválená' : 'Neschválená'}
-              </p>
-              <Link
-                to={`/product/${product._id}`}
-                className='manage-single-review-link'
-              >
-                Na produkt
-              </Link>
-              <button
-                key='4'
-                className='btn-blue reviews'
-                onClick={() => acknowledgeHandler(product._id, review.comment)}
-              >
-                Schváliť recenziu
-              </button>
-              <button
-                key='5'
-                className='btn-red reviews'
-                onClick={() => deleteHandler(product, review.comment)}
-              >
-                Zmazať
-              </button>
+              <div className='manage-single-review-buttons'>
+                <Link
+                  to={`/product/${product._id}`}
+                  className='manage-single-review-link'
+                >
+                  Na produkt
+                </Link>
+                <button
+                  key='4'
+                  className='btn-blue reviews'
+                  onClick={() =>
+                    acknowledgeHandler(product._id, review.comment)
+                  }
+                >
+                  Schváliť recenziu
+                </button>
+                <button
+                  key='5'
+                  className='btn-red reviews'
+                  onClick={() => deleteHandler(product, review.comment)}
+                >
+                  Zmazať
+                </button>
+              </div>
             </div>
           ))}
         </>
