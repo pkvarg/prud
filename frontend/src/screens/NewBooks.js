@@ -27,8 +27,6 @@ const NewBooks = () => {
     else return product
   })
 
-  console.log(byYear)
-
   return (
     <>
       <Link className='btn btn-back my-3' to='/'>

@@ -760,6 +760,8 @@ p.prod-excerpt-excerpt {
 
 .manage-single-review {
   margin-top: 20px;
+  margin-bottom: 30px;
+
   color: #071e46;
   height: fit-content;
   padding: 20px;
@@ -770,6 +772,7 @@ p.prod-excerpt-excerpt {
   align-items: center;
   gap: 20px;
 }
+
 .manage-single-review.green {
   background-color: rgb(41, 203, 54);
 }
@@ -794,6 +797,7 @@ a.manage-single-review-link:hover {
   background-color: #a07c54;
   color: #fff;
 }
+
 .btn-red.reviews {
   float: right;
   color: #fff;

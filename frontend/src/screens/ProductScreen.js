@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -11,13 +11,13 @@ import {
   Form,
   Button,
 } from 'react-bootstrap'
-import Rating from '../components/Rating'
+// import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Meta from '../components/Meta'
 import {
   listAllProducts,
-  listProductDetails,
+  // listProductDetails,
   createProductReview,
 } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
@@ -32,7 +32,7 @@ const ProductScreen = () => {
   const dispatch = useDispatch()
 
   const productList = useSelector((state) => state.productList)
-  const { loading, error, products, page, pages } = productList
+  const { loading, error, products } = productList
 
   const productReviewCreate = useSelector((state) => state.productReviewCreate)
   const { success: successProductReview, error: errorProductReview } =
@@ -40,10 +40,6 @@ const ProductScreen = () => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
-
-  // useLayoutEffect(() => {
-  //   window.scrollTo(0, 250)
-  // })
 
   useLayoutEffect(() => {
     if (successProductReview) {
@@ -56,16 +52,6 @@ const ProductScreen = () => {
 
     dispatch(listAllProducts())
   }, [dispatch, id, successProductReview])
-
-  // useEffect(() => {
-  //   if (successProductReview) {
-  //     alert('Recenzia pridaná')
-  //     setRating(0)
-  //     setComment('')
-  //     dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
-  //   }
-  //   dispatch(listAllProducts())
-  // }, [dispatch, id, successProductReview])
 
   const navigate = useNavigate()
   const addToCartHandler = () => {

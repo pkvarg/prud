@@ -20,8 +20,6 @@ const Library = () => {
     dispatch(listProducts(keyword, pageNumber, pageSize))
   }, [dispatch, keyword, pageNumber])
 
-  console.log(page, pages)
-
   return (
     <>
       <div className='my-3'>
