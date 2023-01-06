@@ -20,12 +20,14 @@ import {
   // listProductDetails,
   createProductReview,
 } from '../actions/productActions'
+import { addToUserFavorites } from '../actions/userActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
 const ProductScreen = () => {
   const [qty, setQty] = useState(1)
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
+  const [favorites, setFavorites] = useState('')
 
   const params = useParams()
   const id = params.id
@@ -82,6 +84,12 @@ const ProductScreen = () => {
 
   const commentHandler = (comment) => {
     setComment(comment)
+  }
+
+  const addToFavoritesHandler = (productId) => {
+    dispatch(addToUserFavorites(productId))
+    //dispatch(addToFavorites(productId))
+    //dispatch(updateUser({ _id: userId, name, email, isAdmin, isAssistant }))
   }
 
   return (
@@ -174,7 +182,14 @@ const ProductScreen = () => {
                     <Col md={6}>
                       <ListGroup variant='flush'>
                         <ListGroup.Item>
-                          <h3>{product.name}</h3>
+                          <div className='product-title-and-favorites'>
+                            <h3>{product.name}</h3>
+                            <button
+                              onClick={() => addToFavoritesHandler(product._id)}
+                            >
+                              Pridať k obľúbeným
+                            </button>
+                          </div>
                           <h4>{product.author}</h4>
                         </ListGroup.Item>
 
@@ -357,7 +372,7 @@ const ProductScreen = () => {
                             </ListGroup.Item>
                           )
                       )}
-                      <ListGroup.Item>
+                      <ListGroup.Item className='review-write'>
                         <h2>Napíšte recenziu</h2>
                         {errorProductReview && (
                           <Message variant='danger'>

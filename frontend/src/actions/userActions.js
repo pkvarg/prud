@@ -27,6 +27,9 @@ import {
   FORGOT_PASSWORD_REQUEST,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAIL,
+  USER_FAVORITES_REQUEST,
+  USER_FAVORITES_SUCCESS,
+  USER_FAVORITES_RESET,
   // RESET_PASSWORD_REQUEST,
   // RESET_PASSWORD_SUCCESS,
   // RESET_PASSWORD_FAIL,
@@ -120,7 +123,6 @@ export const forgotPasswordAction = (email, origURL) => async (dispatch) => {
       { email, origURL },
       config
     )
-
 
     dispatch({
       type: FORGOT_PASSWORD_SUCCESS,
@@ -393,6 +395,54 @@ export const updateUser = (user) => async (dispatch, getState) => {
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data })
 
     dispatch({ type: USER_DETAILS_RESET })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: USER_UPDATE_FAIL,
+      payload: message,
+    })
+  }
+}
+
+export const addToUserFavorites = (productId) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_FAVORITES_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const userId = userInfo._id
+    console.log(userId, productId)
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.put(
+      `/api/users/${userId}/favorites`,
+      { productId },
+      config
+    )
+
+    console.log(data)
+
+    dispatch({ type: USER_FAVORITES_SUCCESS })
+
+    dispatch({ type: USER_FAVORITES_SUCCESS, payload: data })
+
+    dispatch({ type: USER_FAVORITES_RESET })
   } catch (error) {
     const message =
       error.response && error.response.data.message

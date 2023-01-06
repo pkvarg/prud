@@ -2,6 +2,21 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 import crypto from 'crypto'
 
+const favoritesSchema = mongoose.Schema(
+  {
+    productId: { type: Number },
+
+    // user: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   required: true,
+    //   ref: 'User',
+    // },
+  },
+  {
+    timestamps: true,
+  }
+)
+
 const userSchema = mongoose.Schema(
   {
     name: {
@@ -27,6 +42,7 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    favorites: [favoritesSchema],
 
     googleId: {
       type: String,

@@ -178,6 +178,23 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 })
 
+const addToFavorites = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id)
+  const { productId } = req.body
+
+  if (user) {
+    console.log(user)
+    user.favorites.push(productId)
+
+    const updatedUser = await user.save()
+
+    res.json(updatedUser)
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
 export {
   authUser,
   registerUser,
@@ -187,4 +204,5 @@ export {
   deleteUser,
   getUserById,
   updateUser,
+  addToFavorites,
 }

@@ -31,6 +31,10 @@ import {
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAIL,
+  USER_FAVORITES_REQUEST,
+  USER_FAVORITES_SUCCESS,
+  USER_FAVORITES_FAIL,
+  USER_FAVORITES_RESET,
 } from '../constants/userConstants'
 
 export const userLoginReducer = (state = {}, action) => {
@@ -161,6 +165,23 @@ export const userUpdateReducer = (state = { user: {} }, action) => {
     case USER_UPDATE_FAIL:
       return { loading: false, error: action.payload }
     case USER_UPDATE_RESET:
+      return {
+        user: {},
+      }
+    default:
+      return state
+  }
+}
+
+export const addToUserFavoritesReducer = (state = { user: {} }, action) => {
+  switch (action.type) {
+    case USER_FAVORITES_REQUEST:
+      return { loading: true }
+    case USER_FAVORITES_SUCCESS:
+      return { loading: false, success: true }
+    case USER_FAVORITES_FAIL:
+      return { loading: false, error: action.payload }
+    case USER_FAVORITES_RESET:
       return {
         user: {},
       }
