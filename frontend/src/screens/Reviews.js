@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Paginate from '../components/Paginate'
 
 import {
   listProducts,
+  acknowledgeProductReview,
   deleteProductReview,
   updateProduct,
 } from '../actions/productActions'
@@ -50,16 +50,16 @@ const Reviews = () => {
   const { userInfo } = userLogin
 
   const deleteHandler = (product, comment) => {
-    if (window.confirm('Delete review? Are you sure?')) {
+    if (window.confirm('Odstrániť recenziu? Ste si istý?')) {
       dispatch(deleteProductReview(product, comment))
-      document.location.href = `/reviews`
+      document.location.href = `/admin/reviews`
     }
   }
 
-  const acknowledgeHandler = (product, comment) => {
-    dispatch(updateProduct(product, comment))
-    document.location.href = `/reviews`
-    // alert('Recenzia schválená')
+  const acknowledgeHandler = (productId, comment) => {
+    dispatch(acknowledgeProductReview(productId, comment))
+    document.location.href = `/admin/reviews`
+    alert('Recenzia schválená')
   }
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const Reviews = () => {
     <>
       {products.map(
         (product) =>
-          product.numReviews > 0 && (
+          product.reviews.length > 0 && (
             <>
               <h2 key={product._id} className='manage-single-review-title'>
                 Titul: {product.name}
@@ -100,17 +100,25 @@ const Reviews = () => {
                       : 'manage-single-review red'
                   }
                 >
-                  <div key='0'>
+                  <div key='0' className='manage-single-review-comment'>
                     "{review.comment}" napísal {review.name}
                   </div>
                   <p key='2'>{review.createdAt.substring(0, 10)}</p>
                   <p key='3'>
                     {review.isAcknowledged ? 'Schválená' : 'Neschválená'}
                   </p>
+                  <Link
+                    to={`/product/${product._id}`}
+                    className='manage-single-review-link'
+                  >
+                    Na produkt
+                  </Link>
                   <button
                     key='4'
                     className='btn-blue reviews'
-                    onClick={() => acknowledgeHandler(product, review.comment)}
+                    onClick={() =>
+                      acknowledgeHandler(product._id, review.comment)
+                    }
                   >
                     Schváliť recenziu
                   </button>

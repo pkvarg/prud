@@ -47,7 +47,7 @@ const ProductScreen = () => {
 
   useLayoutEffect(() => {
     if (successProductReview) {
-      alert('Recenzia pridaná')
+      alert('Recenzia odoslaná adminovi')
       setRating(0)
       setComment('')
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
@@ -359,15 +359,18 @@ const ProductScreen = () => {
                       <Message>Žiadne recenzie</Message>
                     )}
                     <ListGroup variant='flush'>
-                      {product.reviews.map((review) => (
-                        <ListGroup.Item
-                          key={review._id}
-                          className='review-items'
-                        >
-                          <strong>{review.name}</strong>
-                          <p>{review.comment}</p>
-                        </ListGroup.Item>
-                      ))}
+                      {product.reviews.map(
+                        (review) =>
+                          review.isAcknowledged === true && (
+                            <ListGroup.Item
+                              key={review._id}
+                              className='review-items'
+                            >
+                              <strong>{review.name}</strong>
+                              <p>{review.comment}</p>
+                            </ListGroup.Item>
+                          )
+                      )}
                       <ListGroup.Item>
                         <h2>Napíšte recenziu</h2>
                         {errorProductReview && (

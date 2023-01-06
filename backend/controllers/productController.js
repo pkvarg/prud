@@ -224,6 +224,27 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    Acknowledge review
+// @route   PUT /api/products/:id/reviews/acknowledge
+// @access  Private
+const acknowledgeProductReview = asyncHandler(async (req, res) => {
+  const { comment } = req.body
+
+  const prod = await Product.findById(req.params.id)
+  if (prod) {
+    for (let i = 0; i < prod.reviews.length; i++) {
+      if (prod.reviews[i].comment === comment) {
+        prod.reviews[i].isAcknowledged = true
+      }
+    }
+    const updatedProduct = await prod.save()
+    res.json(updatedProduct)
+  } else {
+    res.status(404)
+    throw new Error('Review not found')
+  }
+})
+
 // @desc    Delete review
 // @route   PUT /api/products/:id/reviews
 // @access  Private
@@ -263,6 +284,7 @@ export {
   createProduct,
   updateProduct,
   createProductReview,
+  acknowledgeProductReview,
   deleteProductReview,
   getTopProducts,
   createDiscountAllProducts,

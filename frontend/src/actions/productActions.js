@@ -27,6 +27,9 @@ import {
   PRODUCT_DELETE_REVIEW_REQUEST,
   PRODUCT_DELETE_REVIEW_SUCCESS,
   PRODUCT_DELETE_REVIEW_FAIL,
+  PRODUCT_ACKNOWLEDGE_REVIEW_REQUEST,
+  PRODUCT_ACKNOWLEDGE_REVIEW_SUCCESS,
+  PRODUCT_ACKNOWLEDGE_REVIEW_FAIL,
 } from '../constants/productConstants'
 
 export const listProducts =
@@ -270,6 +273,48 @@ export const createProductReview =
       // }
       dispatch({
         type: PRODUCT_CREATE_REVIEW_FAIL,
+        payload: message,
+      })
+    }
+  }
+
+export const acknowledgeProductReview =
+  (productId, comment) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: PRODUCT_ACKNOWLEDGE_REVIEW_REQUEST,
+      })
+
+      const {
+        userLogin: { userInfo },
+      } = getState()
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+      console.log(productId, comment)
+
+      const data = await axios.put(
+        `/api/products/${productId}/reviews/acknowledge`,
+        { comment },
+        config
+      )
+
+      console.log(data)
+
+      dispatch({
+        type: PRODUCT_ACKNOWLEDGE_REVIEW_SUCCESS,
+      })
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      dispatch({
+        type: PRODUCT_ACKNOWLEDGE_REVIEW_FAIL,
         payload: message,
       })
     }

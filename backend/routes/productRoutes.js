@@ -8,6 +8,7 @@ import {
   createProduct,
   updateProduct,
   createProductReview,
+  acknowledgeProductReview,
   deleteProductReview,
   getTopProducts,
   createDiscountAllProducts,
@@ -19,6 +20,9 @@ router
   .route('/:id/reviews')
   .post(protect, createProductReview)
   .put(protect, admin, deleteProductReview)
+router
+  .route('/:id/reviews/acknowledge')
+  .put(protect, admin, acknowledgeProductReview)
 
 router.get('/top', getTopProducts)
 router.get('/all', getAllProducts)

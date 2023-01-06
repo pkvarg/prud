@@ -778,6 +778,22 @@ p.prod-excerpt-excerpt {
   background-color: rgb(200, 17, 17);
 }
 
+.manage-single-review-comment {
+  font-size: 30px;
+}
+
+.manage-single-review-link {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #24b9d6;
+  text-decoration: none;
+}
+
+a.manage-single-review-link:hover {
+  background-color: #a07c54;
+  color: #fff;
+}
 .btn-red.reviews {
   float: right;
   color: #fff;

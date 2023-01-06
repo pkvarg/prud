@@ -77,7 +77,7 @@ const ProductListScreen = () => {
   }
 
   const linkToReviews = () => {
-    navigate('/reviews')
+    navigate('/admin/reviews')
   }
 
   // by abc

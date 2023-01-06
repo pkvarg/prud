@@ -169,7 +169,7 @@ const App = () => {
                   <Route path='/about' element={<About />} />
                   <Route path='/safety-privacy' element={<SafetyPrivacy />} />
                   <Route path='/trade-rules' element={<TradeRules />} />
-                  <Route path='/reviews' element={<Reviews />} />
+                  <Route path='/admin/reviews' element={<Reviews />} />
                 </Routes>
               </Container>
             </main>
