@@ -80,11 +80,6 @@ const ProductListScreen = () => {
     navigate('/admin/reviews')
   }
 
-  // by abc
-  // products.sort((a, b) => {
-  //   return a.name.localeCompare(b.name)
-  // })
-
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET })
     if (!userInfo.isAdmin) {
@@ -131,6 +126,12 @@ const ProductListScreen = () => {
         <Col>
           <h1>Produkty</h1>
         </Col>
+        <Col className='text-start'>
+          <Button className='my-3 btn-blue' onClick={linkToReviews}>
+            Recenzie
+          </Button>
+        </Col>
+
         <Col className='text-start'>
           <Button className='my-3 btn-red' onClick={linkToCreateDiscount}>
             <i className='fas fa-plus'></i> Vytvoriť Akciu
