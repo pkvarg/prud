@@ -4,7 +4,7 @@ import crypto from 'crypto'
 
 const favoritesSchema = mongoose.Schema(
   {
-    productId: { type: Number },
+    favorites: { type: Number },
 
     // user: {
     //   type: mongoose.Schema.Types.ObjectId,

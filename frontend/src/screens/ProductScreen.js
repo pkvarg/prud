@@ -20,13 +20,19 @@ import {
   // listProductDetails,
   createProductReview,
 } from '../actions/productActions'
-import { addToUserFavorites } from '../actions/userActions'
+import { addToUserFavorites, updateUser } from '../actions/userActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
 const ProductScreen = () => {
   const [qty, setQty] = useState(1)
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
+
+  // const userDetails = useSelector((state) => state.userDetails)
+  // const { user } = userDetails
+  // const userId = user._id
+
+  const [favorites, setFavorites] = useState('')
 
   const params = useParams()
   const id = params.id
@@ -41,6 +47,8 @@ const ProductScreen = () => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
+  const user = userInfo
+  const userId = userInfo._id
 
   useLayoutEffect(() => {
     if (successProductReview) {
@@ -50,6 +58,7 @@ const ProductScreen = () => {
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
     }
     window.scrollTo(0, 250)
+    setFavorites(user.favorites)
 
     dispatch(listAllProducts())
   }, [dispatch, id, successProductReview])
@@ -86,9 +95,10 @@ const ProductScreen = () => {
   }
 
   const addToFavoritesHandler = (productId) => {
-    dispatch(addToUserFavorites(productId))
+    setFavorites(productId)
+    // dispatch(addToUserFavorites(productId))
     //dispatch(addToFavorites(productId))
-    //dispatch(updateUser({ _id: userId, name, email, isAdmin, isAssistant }))
+    dispatch(updateUser({ _id: userId, favorites: favorites }))
   }
 
   return (
