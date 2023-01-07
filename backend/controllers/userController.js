@@ -157,12 +157,20 @@ const getUserById = asyncHandler(async (req, res) => {
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id)
   const favorites = req.body.favorites
-  console.log(favorites, user)
+  // console.log(favorites, user)
+  if (favorites) {
+    user.favorites.push(favorites)
 
-  if (user) {
+    const updatedUser = await user.save()
+    console.log('FUU:', updatedUser)
+
+    res.json({
+      _id: updatedUser._id,
+      favorites: updatedUser.favorites,
+    })
+  } else if (user) {
     user.name = req.body.name || user.name
     user.email = req.body.email || user.email
-    user.favorites = favorites
     user.isAdmin = req.body.isAdmin
     user.isAssistant = req.body.isAssistant
 

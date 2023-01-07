@@ -476,6 +476,14 @@ h5.prod-to-library {
   justify-content: stretch;
 }
 
+i.fa-solid.fa-heart.no-color {
+  color: black;
+}
+
+i.fa-solid.fa-heart.red {
+  color: red;
+}
+
 .btn-back {
   background-color: #2cb3e6;
   border: 1px solid #2cb3e6;

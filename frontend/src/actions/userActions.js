@@ -390,7 +390,6 @@ export const updateUser = (user) => async (dispatch, getState) => {
       },
     }
 
-    console.log(user)
     const { data } = await axios.put(`/api/users/${user._id}`, user, config)
 
     dispatch({ type: USER_UPDATE_SUCCESS })
@@ -424,7 +423,6 @@ export const addToUserFavorites = (productId) => async (dispatch, getState) => {
     } = getState()
 
     const userId = userInfo._id
-    console.log(userId, productId)
 
     const config = {
       headers: {
@@ -438,8 +436,6 @@ export const addToUserFavorites = (productId) => async (dispatch, getState) => {
       { productId },
       config
     )
-
-    console.log(data)
 
     dispatch({ type: USER_FAVORITES_SUCCESS })
 

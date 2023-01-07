@@ -156,7 +156,13 @@ const updateProduct = asyncHandler(async (req, res) => {
   } = req.body
 
   const prod = await Product.findById(req.params.id)
-  if (prod) {
+  const favoriteOf = req.body.favoriteOf
+  if (favoriteOf) {
+    // prod.favoriteOf.push(favoriteOf)
+    prod.favoriteOf.add(favoriteOf)
+
+    await prod.save()
+  } else if (prod) {
     prod.name = name
     prod.price = price
     prod.discount = discount
@@ -179,8 +185,9 @@ const updateProduct = asyncHandler(async (req, res) => {
     prod.isbn = isbn
     prod.year = year
 
-    await prod.save()
-    res.json(prod)
+    const savedProd = await prod.save()
+
+    res.json(savedProd)
   } else {
     res.status(404)
     throw new Error('Product not found')

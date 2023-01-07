@@ -18,6 +18,15 @@ const reviewSchema = mongoose.Schema(
   }
 )
 
+const favoritesSchema = mongoose.Schema(
+  {
+    favoriteOf: { type: Number },
+  },
+  {
+    timestamps: true,
+  }
+)
+
 const productSchema = mongoose.Schema(
   {
     user: {
@@ -78,6 +87,7 @@ const productSchema = mongoose.Schema(
     pages: { type: String },
     isbn: { type: String },
     year: { type: String },
+    favoriteOf: [favoritesSchema],
   },
   {
     timestamps: true,

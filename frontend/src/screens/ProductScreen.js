@@ -17,22 +17,15 @@ import Loader from '../components/Loader'
 import Meta from '../components/Meta'
 import {
   listAllProducts,
-  // listProductDetails,
   createProductReview,
+  updateProduct,
 } from '../actions/productActions'
-import { addToUserFavorites, updateUser } from '../actions/userActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
 const ProductScreen = () => {
   const [qty, setQty] = useState(1)
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
-
-  // const userDetails = useSelector((state) => state.userDetails)
-  // const { user } = userDetails
-  // const userId = user._id
-
-  const [favorites, setFavorites] = useState('')
 
   const params = useParams()
   const id = params.id
@@ -47,7 +40,6 @@ const ProductScreen = () => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
-  const user = userInfo
   const userId = userInfo._id
 
   useLayoutEffect(() => {
@@ -58,7 +50,6 @@ const ProductScreen = () => {
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
     }
     window.scrollTo(0, 250)
-    setFavorites(user.favorites)
 
     dispatch(listAllProducts())
   }, [dispatch, id, successProductReview])
@@ -95,11 +86,17 @@ const ProductScreen = () => {
   }
 
   const addToFavoritesHandler = (productId) => {
-    setFavorites(productId)
-    // dispatch(addToUserFavorites(productId))
-    //dispatch(addToFavorites(productId))
-    dispatch(updateUser({ _id: userId, favorites: favorites }))
+    dispatch(updateProduct({ _id: productId, favoriteOf: userId }))
+    document.location.href = `/product/${id}`
   }
+
+  let isFavorite = false
+  products.map((prod) =>
+    prod.favoriteOf.map((fav) => {
+      if (prod._id === id && fav._id === userInfo._id)
+        return (isFavorite = true)
+    })
+  )
 
   return (
     <>
@@ -115,7 +112,7 @@ const ProductScreen = () => {
           {products.map(
             (product) =>
               product._id === id && (
-                <>
+                <div key={product._id}>
                   <Meta title={product.name} />
                   <Row>
                     <Col md={3} key={product._id}>
@@ -194,9 +191,16 @@ const ProductScreen = () => {
                           <div className='product-title-and-favorites'>
                             <h3>{product.name}</h3>
                             <button
+                              className='favorites-button-class'
                               onClick={() => addToFavoritesHandler(product._id)}
                             >
-                              Pridať k obľúbeným
+                              <i
+                                className={
+                                  isFavorite === true
+                                    ? 'fa-solid fa-heart red'
+                                    : 'fa-solid fa-heart no-color'
+                                }
+                              ></i>
                             </button>
                           </div>
                           <h4>{product.author}</h4>
@@ -287,7 +291,7 @@ const ProductScreen = () => {
                       </Card>
                     </Col>
                   </Row>
-                </>
+                </div>
               )
           )}
           <Container>
