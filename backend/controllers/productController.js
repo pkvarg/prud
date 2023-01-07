@@ -158,8 +158,7 @@ const updateProduct = asyncHandler(async (req, res) => {
   const prod = await Product.findById(req.params.id)
   const favoriteOf = req.body.favoriteOf
   if (favoriteOf) {
-    // prod.favoriteOf.push(favoriteOf)
-    prod.favoriteOf.add(favoriteOf)
+    prod.favoriteOf.push(favoriteOf)
 
     await prod.save()
   } else if (prod) {
