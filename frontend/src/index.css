@@ -264,13 +264,6 @@ a.dropdown-item:hover,
   z-index: 1;
 }
 
-i.fa-solid.fa-heart.white {
-  color: white;
-  font-size: 20px;
-  margin-top: 2px;
-  margin-left: 5px;
-}
-
 /* dropdown on hover NOT on MOBILE */
 
 @media all and (min-width: 992px) {
@@ -285,6 +278,10 @@ i.fa-solid.fa-heart.white {
   }
 }
 
+.favorites-button-class {
+  margin-left: auto;
+}
+
 i.fab.fa-facebook-f {
   color: #f1f1f1;
   font-size: 20px;
@@ -294,6 +291,27 @@ i.fab.fa-facebook-f {
 
 i.fa-facebook-f:hover {
   background-color: #611316;
+}
+
+i.fa-solid.fa-heart.white {
+  color: white;
+  font-size: 22.5px;
+  margin-top: 2px;
+  margin-left: 5px;
+  padding: 8.5px 8.5px;
+}
+
+i.fa-solid.fa-heart:hover {
+  background-color: #611316;
+}
+
+a.my-3.favorites-login h5 {
+  color: #5e5d5d;
+}
+
+p.favorites-add {
+  transform: translateY(20%);
+  text-decoration: underline;
 }
 /* carousel */
 .carousel-custom {
@@ -968,15 +986,15 @@ footer {
   }
 
   a.dropdown-toggle.nav-link {
-    color: inherit !important;
+    color: #5e5d5d !important;
   }
 
   a.dropdown-toggle.nav-link:hover {
-    color: inherit !important;
+    color: #5e5d5d !important;
   }
 
   a.nav-link {
-    color: inherit !important;
+    color: #5e5d5d !important;
   }
 
   .mobile-navbar.mobile-only {
@@ -986,6 +1004,18 @@ footer {
     gap: 30px;
     margin-left: 30px;
     transform: translateY(-13px);
+  }
+
+  i.fab.fa-facebook-f {
+    color: #5e5d5d;
+    margin-left: 0;
+    font-size: 30px;
+  }
+
+  i.fa-solid.fa-heart {
+    color: #5e5d5d !important;
+    margin-left: 30px;
+    font-size: 30px !important;
   }
 
   /* MOBILE Hamburger */

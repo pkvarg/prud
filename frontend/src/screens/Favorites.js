@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import { listProducts } from '../actions/productActions'
 import { useNavigate } from 'react-router-dom'
@@ -68,8 +68,14 @@ const Favorites = () => {
               </Col>
             ))
           ) : (
-            <h3>Nemáte žiadne oblúbené produkty</h3>
+            <h4>Nemáte žiadne oblúbené produkty</h4>
           )}
+          {!userInfo && (
+            <Link to='/login' className='my-3 favorites-login'>
+              <h5>Prihlásiť sa</h5>
+            </Link>
+          )}
+
           {favoriteProducts.length > 0 ? (
             favoriteProducts.map((product) => (
               <Col
@@ -86,7 +92,7 @@ const Favorites = () => {
               </Col>
             ))
           ) : (
-            <h3 className='mobile-only'>Nemáte žiadne oblúbené produkty</h3>
+            <h4 className='mobile-only'>Nemáte žiadne oblúbené produkty</h4>
           )}
         </>
       </Row>

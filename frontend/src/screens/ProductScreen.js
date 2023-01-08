@@ -18,7 +18,8 @@ import Meta from '../components/Meta'
 import {
   listAllProducts,
   createProductReview,
-  updateProduct,
+  //updateProduct,
+  updateProductAnybody,
 } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
@@ -26,6 +27,7 @@ const ProductScreen = () => {
   const [qty, setQty] = useState(1)
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
+  const [message, setMessage] = useState('')
 
   const params = useParams()
   const id = params.id
@@ -40,11 +42,11 @@ const ProductScreen = () => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
-  const userId = userInfo._id
+  // const userId = userInfo._id
 
   useLayoutEffect(() => {
     if (successProductReview) {
-      alert('Recenzia odoslaná adminovi')
+      setMessage('Recenzia odoslaná adminovi')
       setRating(0)
       setComment('')
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
@@ -86,17 +88,20 @@ const ProductScreen = () => {
   }
 
   const addToFavoritesHandler = (productId) => {
-    dispatch(updateProduct({ _id: productId, favoriteOf: userId }))
+    dispatch(updateProductAnybody({ _id: productId, favoriteOf: userInfo._id }))
+
     document.location.href = `/product/${id}`
   }
 
   let isFavorite = false
-  products.map((prod) =>
-    prod.favoriteOf.map((fav) => {
-      if (prod._id === id && fav._id === userInfo._id)
-        return (isFavorite = true)
-    })
-  )
+  if (userInfo) {
+    products.map((prod) =>
+      prod.favoriteOf.map((fav) => {
+        if (prod._id === id && fav._id === userInfo._id)
+          return (isFavorite = true)
+      })
+    )
+  }
 
   return (
     <>
@@ -190,18 +195,29 @@ const ProductScreen = () => {
                         <ListGroup.Item>
                           <div className='product-title-and-favorites'>
                             <h3>{product.name}</h3>
-                            <button
-                              className='favorites-button-class'
-                              onClick={() => addToFavoritesHandler(product._id)}
-                            >
-                              <i
+                            {userInfo && (
+                              <button
+                                className='favorites-button-class'
+                                onClick={() =>
+                                  addToFavoritesHandler(product._id)
+                                }
+                              >
+                                {isFavorite ? (
+                                  <i className='fa-solid fa-heart red'></i>
+                                ) : (
+                                  <p className='favorites-add'>
+                                    Pridať k obľúbeným
+                                  </p>
+                                )}
+                                {/* <i
                                 className={
                                   isFavorite === true
                                     ? 'fa-solid fa-heart red'
                                     : 'fa-solid fa-heart no-color'
                                 }
-                              ></i>
-                            </button>
+                              ></i> */}
+                              </button>
+                            )}
                           </div>
                           <h4>{product.author}</h4>
                         </ListGroup.Item>
@@ -288,6 +304,9 @@ const ProductScreen = () => {
                             </Button>
                           </ListGroup.Item>
                         </ListGroup>
+                        {message && (
+                          <Message variant='success'>{message}</Message>
+                        )}
                       </Card>
                     </Col>
                   </Row>

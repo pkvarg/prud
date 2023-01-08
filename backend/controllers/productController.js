@@ -193,6 +193,72 @@ const updateProduct = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    Update a product
+// @route   PUT /api/products/:id/anybody
+// @access  Private/Admin
+const updateProductAnybody = asyncHandler(async (req, res) => {
+  const {
+    name,
+    price,
+    discount,
+    discountedPrice,
+    description,
+    excerpt,
+    image,
+    author,
+    category,
+    countInStock,
+    catalog,
+    weight,
+    related,
+    related2,
+    related3,
+    tags,
+    language,
+    binding,
+    pages,
+    isbn,
+    year,
+  } = req.body
+
+  const prod = await Product.findById(req.params.id)
+  const favoriteOf = req.body.favoriteOf
+  if (favoriteOf) {
+    prod.favoriteOf.push(favoriteOf)
+
+    await prod.save()
+  } else if (prod) {
+    prod.name = name
+    prod.price = price
+    prod.discount = discount
+    prod.discountedPrice = discountedPrice
+    prod.description = description
+    prod.excerpt = excerpt
+    prod.image = image
+    prod.author = author
+    prod.category = category
+    prod.countInStock = countInStock
+    prod.catalog = catalog
+    prod.weight = weight
+    prod.related = related
+    prod.related2 = related2
+    prod.related3 = related3
+    prod.tags = tags
+    prod.language = language
+    prod.binding = binding
+    prod.pages = pages
+    prod.isbn = isbn
+    prod.year = year
+
+    const savedProd = await prod.save()
+
+    res.json(savedProd)
+  } else {
+    res.status(404)
+    throw new Error('Product not found')
+  }
+})
+
 // @desc    Create new review
 // @route   POST /api/products/:id/reviews
 // @access  Private
@@ -207,7 +273,7 @@ const createProductReview = asyncHandler(async (req, res) => {
     )
     if (alreadyReviewed) {
       res.status(400)
-      throw new Error('Product already reviewed')
+      throw new Error('Recenzia už existuje')
     }
 
     const review = {
@@ -289,6 +355,7 @@ export {
   deleteProduct,
   createProduct,
   updateProduct,
+  updateProductAnybody,
   createProductReview,
   acknowledgeProductReview,
   deleteProductReview,
