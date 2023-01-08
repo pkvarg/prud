@@ -30,6 +30,9 @@ import {
   PRODUCT_ACKNOWLEDGE_REVIEW_REQUEST,
   PRODUCT_ACKNOWLEDGE_REVIEW_SUCCESS,
   PRODUCT_ACKNOWLEDGE_REVIEW_FAIL,
+  PRODUCT_REMOVE_FROM_FAVORITES_FAIL,
+  PRODUCT_REMOVE_FROM_FAVORITES_REQUEST,
+  PRODUCT_REMOVE_FROM_FAVORITES_SUCCESS,
 } from '../constants/productConstants'
 
 export const listProducts =
@@ -278,6 +281,45 @@ export const updateProductAnybody = (product) => async (dispatch, getState) => {
     })
   }
 }
+
+export const removeFromFavorites =
+  (product, userId) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: PRODUCT_REMOVE_FROM_FAVORITES_REQUEST,
+      })
+
+      const {
+        userLogin: { userInfo },
+      } = getState()
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+
+      const data = await axios.put(
+        `/api/products/${product}/remove/favorites`,
+        { userId },
+        config
+      )
+
+      dispatch({
+        type: PRODUCT_REMOVE_FROM_FAVORITES_SUCCESS,
+      })
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      dispatch({
+        type: PRODUCT_REMOVE_FROM_FAVORITES_FAIL,
+        payload: message,
+      })
+    }
+  }
 
 export const createProductReview =
   (productId, review) => async (dispatch, getState) => {

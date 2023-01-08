@@ -8,6 +8,7 @@ import {
   createProduct,
   updateProduct,
   updateProductAnybody,
+  removeFromFavorites,
   createProductReview,
   acknowledgeProductReview,
   deleteProductReview,
@@ -35,6 +36,7 @@ router
   .put(protect, admin, updateProduct)
 
 router.route('/:id/anybody').put(protect, updateProductAnybody)
+router.route('/:id/remove/favorites').put(protect, removeFromFavorites)
 
 router.route('/discount').post(protect, admin, createDiscountAllProducts)
 

@@ -30,6 +30,8 @@ import {
   PRODUCT_ACKNOWLEDGE_REVIEW_SUCCESS,
   PRODUCT_ACKNOWLEDGE_REVIEW_FAIL,
   PRODUCT_ACKNOWLEDGE_REVIEW_RESET,
+  PRODUCT_REMOVE_FROM_FAVORITES_REQUEST,
+  PRODUCT_REMOVE_FROM_FAVORITES_SUCCESS,
 } from '../constants/productConstants'
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -104,6 +106,21 @@ export const productUpdateReducer = (state = { product: {} }, action) => {
       return { loading: false, error: action.payload }
     case PRODUCT_UPDATE_RESET:
       return { product: {} }
+    default:
+      return state
+  }
+}
+
+export const productRemoveFromFavoritesReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_REMOVE_FROM_FAVORITES_REQUEST:
+      return { loading: true }
+    case PRODUCT_REMOVE_FROM_FAVORITES_SUCCESS:
+      return { loading: false, success: true }
+    case PRODUCT_REMOVE_FROM_FAVORITES_REQUEST:
+      return { loading: false, error: action.payload }
+    // case PRODUCT_ACKNOWLEDGE_REVIEW_RESET:
+    //   return {}
     default:
       return state
   }

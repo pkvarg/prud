@@ -259,6 +259,28 @@ const updateProductAnybody = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    Remove from favorites
+// @route   PUT /api/products/:id/remove/favorites
+// @access  Private
+const removeFromFavorites = asyncHandler(async (req, res) => {
+  const userId = req.body.userId
+
+  const prod = await Product.findById(req.params.id)
+  if (prod) {
+    for (let i = 0; i < prod.favoriteOf.length; i++) {
+      if (prod.favoriteOf[i]._id == userId) {
+        prod.favoriteOf.splice(i, 1)
+      }
+    }
+
+    const updatedProduct = await prod.save()
+    res.json(updatedProduct)
+  } else {
+    res.status(404)
+    throw new Error('Review not found')
+  }
+})
+
 // @desc    Create new review
 // @route   POST /api/products/:id/reviews
 // @access  Private
@@ -356,6 +378,7 @@ export {
   createProduct,
   updateProduct,
   updateProductAnybody,
+  removeFromFavorites,
   createProductReview,
   acknowledgeProductReview,
   deleteProductReview,

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 
-import { listProducts } from '../actions/productActions'
+import { listProducts, removeFromFavorites } from '../actions/productActions'
 import { useNavigate } from 'react-router-dom'
 import Product from '../components/Product'
 // import PaginateLibrary from '../components/Paginate'
@@ -42,10 +42,10 @@ const Favorites = () => {
 
   // Remove from Favs !!!
 
-  // const removeFromFavoritesHandler = (productId) => {
-  //   dispatch(updateProduct({ _id: productId, favoriteOf: userId }))
-  //   document.location.href = `/favorites`
-  // }
+  const removeFromFavoritesHandler = (productId) => {
+    dispatch(removeFromFavorites(productId, userInfo._id))
+    document.location.href = `/favorites`
+  }
 
   return (
     <>
@@ -64,6 +64,14 @@ const Favorites = () => {
                 lg={4}
                 xl={3}
               >
+                <div className='prod-and-button'>
+                  <Button
+                    onClick={() => removeFromFavoritesHandler(product._id)}
+                    className='remove-from-favorites-button'
+                  >
+                    X
+                  </Button>
+                </div>
                 <Product product={product} />
               </Col>
             ))
@@ -88,6 +96,14 @@ const Favorites = () => {
                 lg={4}
                 xl={3}
               >
+                <div className='prod-and-button'>
+                  <Button
+                    onClick={() => removeFromFavoritesHandler(product._id)}
+                    className='remove-from-favorites-button'
+                  >
+                    X
+                  </Button>
+                </div>
                 <Product product={product} />
               </Col>
             ))

@@ -313,6 +313,24 @@ p.favorites-add {
   transform: translateY(20%);
   text-decoration: underline;
 }
+
+.prod-and-button {
+  position: relative;
+}
+
+.remove-from-favorites-button {
+  position: absolute;
+  top: 26.5px;
+  left: 242px;
+  background-color: #8a1c1f;
+  border-radius: 50%;
+  color: white;
+}
+
+.remove-from-favorites-button:hover {
+  background-color: red;
+  color: white;
+}
 /* carousel */
 .carousel-custom {
   margin-top: 15px;
@@ -1012,11 +1030,28 @@ footer {
     font-size: 30px;
   }
 
-  i.fa-solid.fa-heart {
+  i.fa-solid.fa-heart.red {
+    font-size: 30px !important;
+  }
+
+  i.fa-solid.fa-heart.white.mobile {
+    margin-left: auto;
+    padding: 0;
+    color: red;
+    font-size: 25px;
+    transform: translateY(-3px);
+  }
+
+  .remove-from-favorites-button {
+    top: 26.5px;
+    left: 318px;
+  }
+
+  /* i.fa-solid.fa-heart.no-color {
     color: #5e5d5d !important;
     margin-left: 30px;
     font-size: 30px !important;
-  }
+  } */
 
   /* MOBILE Hamburger */
 

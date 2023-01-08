@@ -182,6 +182,9 @@ const Header = () => {
                     </Nav.Link>
                   </LinkContainer>
                 </div>
+                <Link to='favorites' className=''>
+                  <i className='fa-solid fa-heart white mobile'></i>
+                </Link>
               </div>
             </Navbar.Brand>
           </Container>
@@ -300,10 +303,11 @@ const Header = () => {
               href='http://www.facebook.com/prud.sk'
               target='_blank'
               rel='noreferrer'
+              className='no-mobile'
             >
               <i className='fab fa-facebook-f'></i>
             </a>
-            <Link to='favorites'>
+            <Link to='favorites' className='no-mobile'>
               <i className='fa-solid fa-heart white'></i>
             </Link>
 
