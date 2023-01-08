@@ -264,6 +264,13 @@ a.dropdown-item:hover,
   z-index: 1;
 }
 
+i.fa-solid.fa-heart.white {
+  color: white;
+  font-size: 20px;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+
 /* dropdown on hover NOT on MOBILE */
 
 @media all and (min-width: 992px) {
@@ -478,10 +485,12 @@ h5.prod-to-library {
 
 i.fa-solid.fa-heart.no-color {
   color: black;
+  transform: translateY(-27.5%);
 }
 
 i.fa-solid.fa-heart.red {
   color: red;
+  transform: translateY(-27.5%);
 }
 
 .btn-back {

@@ -303,7 +303,9 @@ const Header = () => {
             >
               <i className='fab fa-facebook-f'></i>
             </a>
-            <Link to='favorites'>Obľúbené</Link>
+            <Link to='favorites'>
+              <i className='fa-solid fa-heart white'></i>
+            </Link>
 
             {/* <div className='search-navbar-mobile mobile-only'>
               <SearchBox />
