@@ -14,7 +14,7 @@ const WordsOfLife = () => {
         Naspäť
       </Link>
 
-      <div className='give2-physical'>
+      <div className='podcast'>
         <h1 className='my-3'>Poslucháreň</h1>
         <h3 className='my-3'>SLOVÁ ŽIVOTA A PRAVDY</h3>
         <p>

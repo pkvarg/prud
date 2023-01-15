@@ -301,7 +301,7 @@ i.fa-solid.fa-heart.white {
   padding: 8.5px 8.5px;
 }
 
-i.fa-solid.fa-heart:hover {
+i.fa-solid.fa-heart.white:hover {
   background-color: #611316;
 }
 
@@ -706,6 +706,11 @@ sup {
   margin-top: 15px;
 }
 
+.podcast p {
+  text-align: left;
+  line-height: 27.5px;
+}
+
 .video-responsive {
   overflow: hidden;
   /* padding-bottom: 57%; */
@@ -1008,10 +1013,14 @@ footer {
   }
 
   a.dropdown-toggle.nav-link:hover {
-    color: #5e5d5d !important;
+    color: #fff !important;
   }
 
   a.nav-link {
+    color: #5e5d5d !important;
+  }
+
+  i.fas.fa-user::before {
     color: #5e5d5d !important;
   }
 
@@ -1034,13 +1043,18 @@ footer {
     font-size: 30px !important;
   }
 
-  i.fa-solid.fa-heart.white.mobile {
+  i.fa-solid.fa-heart.mobile {
     margin-left: auto;
     padding: 0;
     color: red;
     font-size: 25px;
     transform: translateY(-3px);
   }
+
+  /* i.fa-solid.fa-heart.white.mobile::before {
+    background-color: #f1f1f1 !important;
+    border: none;
+  } */
 
   .remove-from-favorites-button {
     top: 26.5px;

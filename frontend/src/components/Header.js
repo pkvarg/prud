@@ -183,7 +183,7 @@ const Header = () => {
                   </LinkContainer>
                 </div>
                 <Link to='favorites' className=''>
-                  <i className='fa-solid fa-heart white mobile'></i>
+                  <i className='fa-solid fa-heart mobile'></i>
                 </Link>
               </div>
             </Navbar.Brand>
