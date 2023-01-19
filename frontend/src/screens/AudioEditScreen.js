@@ -106,8 +106,8 @@ const AudioEditScreen = () => {
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='audio-title'>
               <Form.Label>
-                Názov (napr. Boh v liste Rimanom I., tak sa to zobrazí v mp3
-                prehrávači )
+                Názov (napr. Boh v liste Rimanom 1 (nie rímske číslice, bez
+                bodiek a čiarok), tak sa to zobrazí v mp3 prehrávači )
               </Form.Label>
               <Form.Control
                 type='text'
@@ -118,7 +118,12 @@ const AudioEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='audio-file' className='mb-3'>
-              <Form.Label>Mp3 súbor</Form.Label>
+              <Form.Label>
+                Mp3 súbor (aby bolo možné mp3 súbor stiahnuť, je nutné
+                premenovať podľa riadku vyššie, ale tak, aby neobsahoval žiadne
+                medzery. Teda zachovať veľké písmená, bez medzier. Napr.
+                BohvlisteRimanom1. Až potom súbor nahrať sem.){' '}
+              </Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Mp3 súbor'

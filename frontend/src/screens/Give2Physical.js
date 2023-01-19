@@ -3,10 +3,10 @@ import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const Give2Physical = () => {
-  const file1 = '2022_priloha_c_1_ziadost_o_rocne_zuctovanie.pdf'
-  const file2 = '2022_priloha_c_2_potvrdenie_o_zaplateni_dane.pdf'
-  const file3 = '2022_priloha_c_3_vyhlasenie_o_poukazani_dane.pdf'
-  const file4 = '2022_priloha_c_3a_poucenie_k_vyhlaseniu_o_poukazani_dane.pdf'
+  const file1 = '2023_priloha_c_1_ziadost_o_rocne_zuctovanie.docx'
+  const file2 = '2023_priloha_c_2_potvrdenie_o_zaplateni_dane.pdf'
+  const file3 = '2023_priloha_c_3_vyhlasenie_o_poukazani_dane.pdf'
+  const file4 = '2023_priloha_c_3a_poucenie_k_vyhlaseniu_o_poukazani_dane.pdf'
   const downloadFileHandler = (fileName) => {
     console.log(fileName)
     fetch(`${fileName}`).then((response) => {

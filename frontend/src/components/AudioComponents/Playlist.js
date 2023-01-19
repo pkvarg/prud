@@ -10,8 +10,8 @@ let Playlist = (subcategory) => {
 
   // AI spec
   const downloadFileHandler = (fileName) => {
-    fileName = `${fileName.split(' ').join('')}.mp3`
     console.log(fileName)
+    fileName = `${fileName.split(' ').join('')}.mp3`
     fetch(`/uploads/${fileName}`).then((response) => {
       response.blob().then((blob) => {
         // Creating new object of PDF file
@@ -53,12 +53,12 @@ let Playlist = (subcategory) => {
               </div>
               <div className='songmeta_playlist'>
                 <span className='songname'>{song.audioTitle}</span>
-                <Button
+                <button
                   className='btn-mp3'
                   onClick={() => downloadFileHandler(song.audioTitle)}
                 >
-                  mp3
-                </Button>
+                  <i class='fa-solid fa-download'></i>
+                </button>
               </div>
               <div className='playlist_btns_group'></div>
             </li>

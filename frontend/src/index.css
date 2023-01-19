@@ -677,15 +677,20 @@ sup {
 
 .btn-mp3 {
   position: absolute;
-  top: -15px;
+  top: -3px;
   right: 10px;
-  width: 5%;
+  width: 4%;
   color: #071e46;
-  background-color: #ddd;
+  /* background-color: #ddd; */
 }
 
-.btn-mp3:hover {
-  background-color: #2cb3e6;
+i.fa-solid.fa-download::before {
+  font-size: larger;
+  margin-right: 15px !important;
+}
+
+i.fa-solid.fa-download:hover {
+  color: #2cb3e6;
 }
 
 .prods-by-year-container {
