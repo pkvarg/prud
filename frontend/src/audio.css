@@ -412,6 +412,7 @@ h3.album_meta_title {
 
 .btn-subcategory {
   background-color: none;
+  color: inherit !important;
   /* border-bottom: 1px solid #2a6586; */
   /* display: inline-block; */
   font-size: 19px;

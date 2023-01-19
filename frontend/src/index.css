@@ -8,8 +8,11 @@
 }
 
 body {
-  font-family: OpenSans, sans-serif;
-  color: #5e5d5d;
+  /* font-family: OpenSans, sans-serif; */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif,
+    sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  color: #313131;
   font-weight: 200;
   font-size: 21px;
   line-height: 22px;
@@ -29,10 +32,12 @@ h1 {
 h2 {
   font-size: 18px;
   padding: 0.5rem 0;
+  color: inherit !important;
 }
 
 h3 {
   padding: 1rem 0;
+  color: inherit !important;
 }
 
 h4 {
@@ -117,7 +122,7 @@ a#adminmenu.dropdown-toggle.nav-link:hover {
 
 p.number-in-cart {
   position: absolute;
-  right: 50px;
+  right: 41px;
   top: -10px;
   display: inline-block;
   border-radius: 50%;
@@ -130,7 +135,7 @@ p.number-in-cart {
 
 p.number-in-cart span {
   font-size: 18px;
-  margin-left: 25%;
+  margin-left: 29%;
   padding-bottom: 10px !important;
 }
 
@@ -551,8 +556,12 @@ i.fa-solid.fa-heart.red {
 
 .btn-blue {
   background-color: #2cb3e6;
-  /* border-radius: 35px; */
 }
+
+.btn-blue.rounded {
+  border-radius: 35px !important;
+}
+
 .btn-blue:hover {
   background-color: #fefefe;
   color: #2cb3e6;
@@ -659,14 +668,14 @@ sup {
 /* GIVE 2% */
 .give2-physical li {
   margin: 10px 0;
-  line-height: 25px;
+  line-height: 35px;
 
   text-align: justify;
 }
 
 .give2-physical p {
   margin: 15px 0;
-  line-height: 25px;
+  line-height: 35px;
   text-align: justify;
 }
 
@@ -1111,7 +1120,7 @@ footer {
 
   .remove-from-favorites-button {
     top: 26.5px;
-    left: 318px;
+    left: 82%;
   }
 
   /* i.fa-solid.fa-heart.no-color {
@@ -1199,11 +1208,12 @@ footer {
 
   p.number-in-cart {
     top: -11px;
-    left: 14px;
+    left: 15px;
     line-height: 15px !important;
   }
 
   .mobile-sign-in.mobile-only {
+    margin-left: 5px;
     display: block;
   }
 
@@ -1218,6 +1228,7 @@ footer {
   a#username.dropdown-toggle.nav-link {
     color: #5e5d5d !important;
     padding: 0;
+    margin-left: 5px;
   }
   a#username.dropdown-toggle.nav-link:hover {
     color: #2cb3e6 !important;
@@ -1225,7 +1236,7 @@ footer {
 
   a#adminmenu.dropdown-toggle.nav-link {
     color: #5e5d5d !important;
-    margin-left: 0px;
+    margin-left: 5px;
   }
   a#adminmenu.dropdown-toggle.nav-link:hover {
     color: #2cb3e6 !important;

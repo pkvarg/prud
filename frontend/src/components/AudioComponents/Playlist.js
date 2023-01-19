@@ -2,10 +2,9 @@ import React, { useContext } from 'react'
 import playerContext from '../../components/AudioComponents/context/playerContext'
 
 let Playlist = (subcategory) => {
-  // AI spec
   const downloadFileHandler = (fileName) => {
+    fileName = `${fileName}.mp3`
     console.log(fileName)
-    fileName = `${fileName.split(' ').join('')}.mp3`
     fetch(`/uploads/${fileName}`).then((response) => {
       response.blob().then((blob) => {
         const fileURL = window.URL.createObjectURL(blob)

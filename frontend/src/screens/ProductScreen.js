@@ -425,7 +425,10 @@ const ProductScreen = () => {
                                 className='review-stop'
                               ></Form.Control>
                             </Form.Group>
-                            <Button type='submit' className='my-3 btn-blue'>
+                            <Button
+                              type='submit'
+                              className='my-3 btn-blue rounded'
+                            >
                               Odoslať
                             </Button>
                           </Form>
