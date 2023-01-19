@@ -672,7 +672,20 @@ sup {
 }
 
 .btn-file:hover {
-  background-color: darkolivegreen;
+  background-color: #2cb3e6;
+}
+
+.btn-mp3 {
+  position: absolute;
+  top: -15px;
+  right: 10px;
+  width: 5%;
+  color: #071e46;
+  background-color: #ddd;
+}
+
+.btn-mp3:hover {
+  background-color: #2cb3e6;
 }
 
 .prods-by-year-container {

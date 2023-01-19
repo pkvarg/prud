@@ -1,7 +1,30 @@
 import React, { useContext } from 'react'
 import playerContext from '../../components/AudioComponents/context/playerContext'
+import { Button } from 'react-bootstrap'
+import axios from 'axios'
 
 let Playlist = (subcategory) => {
+  //   fileName = `${fileName.split(' ').join('')}.mp3`
+
+  //   const data = await axios.get('/api/audio/download', filename)
+
+  // AI spec
+  const downloadFileHandler = (fileName) => {
+    fileName = `${fileName.split(' ').join('')}.mp3`
+    console.log(fileName)
+    fetch(`/uploads/${fileName}`).then((response) => {
+      response.blob().then((blob) => {
+        // Creating new object of PDF file
+        const fileURL = window.URL.createObjectURL(blob)
+        // Setting various property values
+        let alink = document.createElement('a')
+        alink.href = fileURL
+        alink.download = `${fileName}`
+        alink.click()
+      })
+    })
+  }
+
   let { songslist, currentSong, SetCurrent } = useContext(playerContext)
   songslist = songslist.filter((audio) => {
     return (
@@ -30,6 +53,12 @@ let Playlist = (subcategory) => {
               </div>
               <div className='songmeta_playlist'>
                 <span className='songname'>{song.audioTitle}</span>
+                <Button
+                  className='btn-mp3'
+                  onClick={() => downloadFileHandler(song.audioTitle)}
+                >
+                  mp3
+                </Button>
               </div>
               <div className='playlist_btns_group'></div>
             </li>

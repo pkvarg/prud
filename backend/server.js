@@ -25,7 +25,17 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json())
 
-const users = []
+app.use(
+  cors({
+    origin: [
+      'http://localhost:3000',
+      'https://pictusweb.art',
+      'https://prud.onrender.com',
+    ],
+  })
+)
+
+// const users = []
 
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
@@ -57,16 +67,6 @@ if (process.env.NODE_ENV === 'production') {
 app.use(notFound)
 app.use(errorHandler)
 // RENDER
-
-app.use(
-  cors({
-    origin: [
-      'http://localhost:3000',
-      'https://pictusweb.art',
-      'https://prud.onrender.com',
-    ],
-  })
-)
 
 const PORT = process.env.PORT || 5000
 app.listen(
