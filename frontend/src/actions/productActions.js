@@ -300,7 +300,7 @@ export const removeFromFavorites =
         },
       }
 
-      const data = await axios.put(
+      await axios.put(
         `/api/products/${product}/remove/favorites`,
         { userId },
         config

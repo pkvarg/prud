@@ -192,9 +192,9 @@ const ProductScreen = () => {
                     </Col>
                     <Col md={6}>
                       <ListGroup variant='flush'>
-                        <ListGroup.Item>
+                        <ListGroup.Item className='product-author'>
                           <div className='product-title-and-favorites'>
-                            <h3>{product.name}</h3>
+                            <h3 className='product-name'>{product.name}</h3>
                             {userInfo && (
                               <button
                                 className='favorites-button-class'
@@ -222,7 +222,7 @@ const ProductScreen = () => {
                           <h4>{product.author}</h4>
                         </ListGroup.Item>
 
-                        <ListGroup.Item>
+                        <ListGroup.Item className='product-price'>
                           Cena: €{addDecimals(product.price)}
                         </ListGroup.Item>
                         <ListGroup.Item className='product-description'>
@@ -387,7 +387,7 @@ const ProductScreen = () => {
               (product) =>
                 product._id === id && (
                   <Col md={6} key={product._id}>
-                    <h2 className='my-3'>Recenzie</h2>
+                    <h2 className='review'>Recenzie</h2>
                     {product.reviews.length === 0 && (
                       <Message>Žiadne recenzie</Message>
                     )}
@@ -405,7 +405,7 @@ const ProductScreen = () => {
                           )
                       )}
                       <ListGroup.Item className='review-write'>
-                        <h2>Napíšte recenziu</h2>
+                        <h2 className='review-write'>Napíšte recenziu</h2>
                         {errorProductReview && (
                           <Message variant='danger'>
                             {errorProductReview}
@@ -414,7 +414,9 @@ const ProductScreen = () => {
                         {userInfo ? (
                           <Form onSubmit={submitHandler}>
                             <Form.Group controlId='comment'>
-                              <Form.Label>Komentár</Form.Label>
+                              <Form.Label className='review-comment'>
+                                Komentár
+                              </Form.Label>
                               <Form.Control
                                 as='textarea'
                                 row='3'

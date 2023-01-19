@@ -69,7 +69,11 @@ const Eshop = () => {
                     )
                 )
               : products.map((product) => (
-                  <Link to={`/product/${product._id}`} key={product._id}>
+                  <Link
+                    className='eshop-link'
+                    to={`/product/${product._id}`}
+                    key={product._id}
+                  >
                     <p className='eshop-mobile-link' key={product._id}>
                       {product.name}
                     </p>

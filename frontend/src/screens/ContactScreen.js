@@ -136,7 +136,7 @@ const ContactScreen = () => {
               onChange={(e) => setPasswordGroupTwo(e.target.value)}
             ></Form.Control>
           </Form.Group>
-          <Form.Group className='my-5 billing-flex'>
+          <Form.Group className='my-3 billing-flex'>
             <Form.Check type='checkbox' name='gdprCheck' required />
             <p className='agree-gdpr'>
               Súhlasím so spracovaním osobných údajov

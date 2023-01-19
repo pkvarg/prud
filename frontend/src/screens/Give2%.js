@@ -9,15 +9,18 @@ const Give2 = () => {
       </Link>
 
       <div className='give2-physical'>
-        <h1 className='my-3'>DARUJTE 2%</h1>
+        <h1 className='my-3'>
+          DARUJTE 2% zo svojich daní občianskemu združeniu Prúd
+        </h1>
         <strong>Vážení čitatelia, milí priatelia!</strong>
         <p>
-          V roku 2022 sme sa stali prijímateľmi 2%. Aj takouto cestou máte teraz
-          možnosť podporiť nás pri propagácii literatúry, organizovaní seminárov
-          a konferencií a ďalších našich aktivitách. Za akúkoľvek vašu podporu
-          sme vám už teraz vďační.
+          Tento rok sme prijímateľom 2%. Podporte, prosím, aktivity OZ Prúd
+          darovaním 2% z dane. Získané finančné prostriedky budú použité na
+          prezentáciu a propagáciu kvalitnej kresťanskej literatúry,
+          organizovanie konferencií, seminárov a školení, využívanie technológií
+          www a iných služieb internetu.
         </p>
-        <strong>Ďakujeme!</strong>
+        <strong>Ďakujeme za vašu podporu!</strong>
         <h3 className='my-3'>Údaje o prijímateľovi 2%</h3>
         <p>Obchodné meno (názov): Prúd</p>
         <p>Právna forma: Občianske združenie</p>

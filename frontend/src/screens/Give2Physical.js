@@ -41,9 +41,9 @@ const Give2Physical = () => {
 
         <ul>
           <li>
-            Požiadajte svojho zamestnávateľa o vykonanie ročného zúčtovania
-            zaplatených preddavkov na daň (príloha č. 1 Žiadosť o vykonanie
-            ročného zúčtovania preddavkov).
+            Do 15.02.2023 požiadajte svojho zamestnávateľa o vykonanie ročného
+            zúčtovania zaplatených preddavkov na daň (príloha č. 1 Žiadosť o
+            vykonanie ročného zúčtovania preddavkov).
           </li>
           <li>
             Po vykonaní zúčtovania požiadajte zamestnávateľa, aby Vám vystavil
@@ -56,15 +56,14 @@ const Give2Physical = () => {
             k Vyhláseniu o poukázaní dane).
           </li>
           <li>
-            {' '}
-            Potvrdenia o zaplatení dane zistíte potrebné údaje na vyplnenie
+            Z Potvrdenia o zaplatení dane zistíte potrebné údaje na vyplnenie
             Vyhlásenia o poukázaní dane, t. j. dátum zaplatenia dane a sumu
             zaplatenej dane na výpočet príslušných percent:
             <p>
               1. 2% zo svojej zaplatenej dane - ide o maximálnu sumu, ktorú
               môžete poukázať v prípade, že ste v minulom roku neboli
               dobrovoľníkom, alebo ste dobrovoľnícky odpracovali menej ako 40
-              hodín. Minimálna výška tejto sumy je však 3 €.{' '}
+              hodín. Minimálna výška tejto sumy je však 3 €.
             </p>
             <p>
               2. 3% zo svojej zaplatenej dane – týka sa len osôb, ktoré v
@@ -78,12 +77,12 @@ const Give2Physical = () => {
             Vyplnené Vyhlásenie o poukázaní 2% a tlačivo Potvrdenie o zaplatení
             dane (dobrovoľníci s počtom aspoň 40 odpracovaných hodín za minulý
             rok aj s potvrdením od príslušnej organizácie, resp. organizácií)
-            doručte do 30.04.2022 na Daňový úrad podľa miesta svojho trvalého
+            doručte do 30.04.2023 na Daňový úrad podľa miesta svojho trvalého
             bydliska, nie podľa sídla zamestnávateľa.
           </li>
           <li>
-            Po splnení podmienok majú daňové úrady 90 dní na prevedenie 2% alebo
-            3% v prospech občianskeho združenia Prúd.
+            Po splnení podmienok majú daňové úrady tri mesiace na prevedenie 2%
+            alebo 3% v prospech občianskeho združenia Prúd.
           </li>
         </ul>
         <div className='my-5'>

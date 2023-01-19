@@ -565,7 +565,7 @@ input[type='range']:focus::-ms-fill-upper {
   }
 
   .songname {
-    font-size: 20px;
+    font-size: 16px;
   }
   .songauthors {
     font-size: 15px;

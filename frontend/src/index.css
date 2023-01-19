@@ -519,6 +519,15 @@ h5.prod-to-library {
   justify-content: stretch;
 }
 
+h3.product-name {
+  margin-bottom: 0;
+}
+
+.product-author.list-group-item,
+.product-price.list-group-item {
+  border: none;
+}
+
 i.fa-solid.fa-heart.no-color {
   color: black;
   transform: translateY(-27.5%);
@@ -526,7 +535,7 @@ i.fa-solid.fa-heart.no-color {
 
 i.fa-solid.fa-heart.red {
   color: red;
-  transform: translateY(-27.5%);
+  /* transform: translateY(-27.5%); */
 }
 
 .btn-back {
@@ -542,6 +551,7 @@ i.fa-solid.fa-heart.red {
 
 .btn-blue {
   background-color: #2cb3e6;
+  /* border-radius: 35px; */
 }
 .btn-blue:hover {
   background-color: #fefefe;
@@ -571,6 +581,7 @@ h3.product-home-price.card-text {
 
 /* LOGIN */
 label.form-label {
+  margin-top: 15px;
   font-size: 20px;
 }
 
@@ -597,6 +608,7 @@ input#note.form-control,
 select#rating.form-control,
 textarea#comment.form-control {
   font-size: 23px !important;
+  border-radius: 35px;
 }
 
 input#isadmin.form-check-input {
@@ -687,6 +699,7 @@ sup {
 i.fa-solid.fa-download::before {
   font-size: larger;
   margin-right: 15px !important;
+  color: #555555;
 }
 
 i.fa-solid.fa-download:hover {
@@ -748,6 +761,11 @@ i.fa-solid.fa-download:hover {
 .eshop-category {
   text-transform: uppercase;
   margin-bottom: 30px;
+}
+
+.eshop-link {
+  text-decoration: none;
+  font-weight: 600;
 }
 
 p.eshop-mobile-link {
@@ -832,6 +850,23 @@ p.prod-excerpt-excerpt {
 
 .review-stop {
   overscroll-behavior: contain;
+}
+
+.review-stop.form-control {
+  /* border-radius: 35px; */
+}
+
+h2.review {
+  margin-top: 10px;
+}
+
+h2.review-write {
+  margin-top: 0px;
+}
+
+.review-comment {
+  margin-top: 7.5px;
+  margin-bottom: 25px;
 }
 
 .manage-single-review-title {
@@ -1250,6 +1285,10 @@ footer {
 
   .btn-file {
     width: 100%;
+  }
+
+  .btn-mp3 {
+    margin-right: 20px !important;
   }
 
   .prods-by-year-container {
