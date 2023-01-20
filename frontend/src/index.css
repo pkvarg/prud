@@ -568,7 +568,12 @@ i.fa-solid.fa-heart.red {
   border: 1px solid #2cb3e6;
 }
 
-.btn-red {
+.category-dropdown.rounded,
+.related-dropdown.rounded {
+  border-radius: 35px !important;
+}
+
+.related-dropdown.rounded .btn-red {
   background-color: #8a1c1f;
 }
 
@@ -615,7 +620,34 @@ input#billingICO.form-control,
 input#billingDIC.form-control,
 input#note.form-control,
 select#rating.form-control,
-textarea#comment.form-control {
+textarea#comment.form-control,
+input#audio-title.form-control,
+input#audio-file.form-control,
+input#category.form-control,
+input#video-title.form-control,
+input#code.form-control,
+input#banner-title.form-control,
+input#banner-file.form-control,
+input#product-name.form-control,
+input#price.form-control,
+input#discount.form-control,
+input#discounted-price.form-control,
+input#image.form-control,
+input#author.form-control,
+input#countInStock.form-control,
+input#year.form-control,
+input#catalog.form-control,
+input#weight.form-control,
+input#related.form-control,
+input#tags.form-control,
+input#language.form-control,
+input#binding.form-control,
+input#pages.form-control,
+input#isbn.form-control,
+textarea#description.form-control,
+input#excerpt-image.form-control,
+input#excerpt-part.form-control,
+textarea#excerpt.form-control {
   font-size: 23px !important;
   border-radius: 35px;
 }

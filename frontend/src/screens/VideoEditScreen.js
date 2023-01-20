@@ -100,7 +100,11 @@ const VideoEditScreen = () => {
               medzi '=' a '&', viď príklad z screenshotu nižšie)
             </p>
 
-            <Button className='my-5 btn-blue' type='submit' variant='primary'>
+            <Button
+              className='my-5 btn-blue rounded'
+              type='submit'
+              variant='primary'
+            >
               Uložiť
             </Button>
           </Form>

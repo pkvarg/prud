@@ -94,7 +94,11 @@ const LoginScreen = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Button type='submit' variant='primary' className='my-3 btn-blue'>
+        <Button
+          type='submit'
+          variant='primary'
+          className='my-5 btn-blue rounded'
+        >
           Prihlásiť sa
         </Button>
 

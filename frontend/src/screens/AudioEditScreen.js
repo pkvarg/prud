@@ -106,8 +106,8 @@ const AudioEditScreen = () => {
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='audio-title'>
               <Form.Label>
-                Názov (napr. Boh v liste Rimanom 1 (nie rímske číslice, bez
-                bodiek a čiarok), tak sa to zobrazí v mp3 prehrávači )
+                Názov (napr. Boh v liste Rimanom I (bez bodiek a čiarok), tak sa
+                to zobrazí v mp3 prehrávači )
               </Form.Label>
               <Form.Control
                 type='text'
@@ -119,10 +119,10 @@ const AudioEditScreen = () => {
 
             <Form.Group controlId='audio-file' className='mb-3'>
               <Form.Label>
-                Mp3 súbor (aby bolo možné mp3 súbor stiahnuť, je nutné
-                premenovať podľa riadku vyššie, ale tak, aby neobsahoval žiadne
-                medzery. Teda zachovať veľké písmená, bez medzier. Napr.
-                BohvlisteRimanom1. Až potom súbor nahrať sem.){' '}
+                Mp3 súbor (aby bolo možné mp3 súbor stiahnuť, je nutné NAJPRV
+                SÚBOR premenovať podľa riadku vyššie, zachovať veľké a malé
+                písmená. Napr. Boh v liste Rimanom I. Až potom súbor nahrať
+                sem.){' '}
               </Form.Label>
               <Form.Control
                 type='text'
@@ -144,7 +144,7 @@ const AudioEditScreen = () => {
                 <Dropdown.Toggle
                   variant='success'
                   id='dropdown-basic'
-                  className='category-dropdown'
+                  className='category-dropdown rounded'
                 >
                   Kategória
                 </Dropdown.Toggle>
@@ -510,7 +510,11 @@ const AudioEditScreen = () => {
               </Form.Group>
             )}
 
-            <Button className='my-5 btn-blue' type='submit' variant='primary'>
+            <Button
+              className='my-5 btn-blue rounded'
+              type='submit'
+              variant='primary'
+            >
               Uložiť
             </Button>
           </Form>

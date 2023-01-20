@@ -100,13 +100,17 @@ const UserEditScreen = () => {
               <Form.Check
                 className='my-2'
                 type='checkbox'
-                label='Asistent? (zaškrtnutím sa prístup obmedzí na Audio a Bannery)'
+                label='Asistent? (zaškrtnutím sa prístup obmedzí na Audio, Video a Bannery)'
                 checked={isAssistant}
                 onChange={(e) => setIsAssistant(e.target.checked)}
               ></Form.Check>
             </Form.Group>
 
-            <Button className='my-5 btn-blue' type='submit' variant='primary'>
+            <Button
+              className='my-5 btn-blue rounded'
+              type='submit'
+              variant='primary'
+            >
               Upraviť
             </Button>
           </Form>

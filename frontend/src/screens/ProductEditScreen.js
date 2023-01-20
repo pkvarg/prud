@@ -305,7 +305,7 @@ const ProductEditScreen = () => {
                 <Dropdown.Toggle
                   variant='success'
                   id='dropdown-basic'
-                  className='related-dropdown'
+                  className='related-dropdown rounded'
                 >
                   Kategória
                 </Dropdown.Toggle>
@@ -431,7 +431,7 @@ const ProductEditScreen = () => {
                 <Dropdown.Toggle
                   variant='success'
                   id='dropdown-basic'
-                  className='related-dropdown'
+                  className='related-dropdown rounded'
                 >
                   Súvisiaci titul č.1
                 </Dropdown.Toggle>
@@ -461,7 +461,7 @@ const ProductEditScreen = () => {
                 <Dropdown.Toggle
                   variant='success'
                   id='dropdown-basic'
-                  className='related-dropdown'
+                  className='related-dropdown rounded'
                 >
                   Súvisiaci titul č.2
                 </Dropdown.Toggle>
@@ -491,7 +491,7 @@ const ProductEditScreen = () => {
                 <Dropdown.Toggle
                   variant='success'
                   id='dropdown-basic'
-                  className='related-dropdown'
+                  className='related-dropdown rounded'
                 >
                   Súvisiaci titul č.3
                 </Dropdown.Toggle>
@@ -645,7 +645,11 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Button className='my-5 btn-blue' type='submit' variant='primary'>
+            <Button
+              className='my-5 btn-blue rounded'
+              type='submit'
+              variant='primary'
+            >
               Uložiť
             </Button>
           </Form>
