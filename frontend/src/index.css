@@ -406,8 +406,13 @@ img.slide-img-2.img-fluid {
 /* HOME SCREEN  */
 .new-publications {
   margin-top: 25px;
-  font-weight: 700;
   letter-spacing: normal;
+}
+
+.new-publications,
+.eshop-category {
+  color: #232323 !important;
+  font-weight: 700 !important;
 }
 
 /* PRODUCT */
@@ -800,7 +805,7 @@ i.fa-solid.fa-download:hover {
 .eshop-category {
   text-transform: uppercase;
   margin-bottom: 30px;
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
 .eshop-link {
