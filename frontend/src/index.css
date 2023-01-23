@@ -8,9 +8,7 @@
 }
 
 body {
-  /* font-family: OpenSans, sans-serif; */
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif,
-    sans-serif;
+  font-family: OpenSans, sans-serif;
   /* font-family: Arial, Helvetica, sans-serif; */
   color: #313131;
   font-weight: 200;
@@ -122,7 +120,7 @@ a#adminmenu.dropdown-toggle.nav-link:hover {
 
 p.number-in-cart {
   position: absolute;
-  right: 41px;
+  right: 50px;
   top: -10px;
   display: inline-block;
   border-radius: 50%;
@@ -135,7 +133,7 @@ p.number-in-cart {
 
 p.number-in-cart span {
   font-size: 18px;
-  margin-left: 29%;
+  margin-left: 25%;
   padding-bottom: 10px !important;
 }
 
@@ -181,7 +179,7 @@ img.header-image {
   font-size: 22px;
   font-weight: 400;
   font-style: italic;
-  color: #a07c54;
+  color: #a07c54 !important;
   text-transform: none;
   margin-bottom: 15px;
   padding-bottom: 0;
@@ -408,7 +406,7 @@ img.slide-img-2.img-fluid {
 /* HOME SCREEN  */
 .new-publications {
   margin-top: 25px;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: normal;
 }
 
@@ -802,6 +800,7 @@ i.fa-solid.fa-download:hover {
 .eshop-category {
   text-transform: uppercase;
   margin-bottom: 30px;
+  font-weight: 700;
 }
 
 .eshop-link {
@@ -893,9 +892,9 @@ p.prod-excerpt-excerpt {
   overscroll-behavior: contain;
 }
 
-.review-stop.form-control {
-  /* border-radius: 35px; */
-}
+/* .review-stop.form-control {
+  border-radius: 35px;
+} */
 
 h2.review {
   margin-top: 10px;
@@ -1061,7 +1060,7 @@ footer {
   color: #5e5d5d;
 }
 
-/* MOBILE */
+/* MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE*/
 /* Tablets and smaller */
 @media (min-width: 100px) and (max-width: 1180px) {
   body {
@@ -1285,7 +1284,7 @@ footer {
   }
 
   a.dropdown-item {
-    font-size: 30px;
+    font-size: 20px;
   }
 
   /* MOBILE CAROUSEL */
@@ -1379,6 +1378,11 @@ footer {
     line-height: 35px;
   }
 
+  .new-publications,
+  .eshop-category {
+    color: #232323 !important;
+  }
+
   img.ytcode-png {
     height: 50px;
     width: 100%;
@@ -1404,6 +1408,10 @@ footer {
     flex-direction: column;
     gap: 1px;
     line-height: 20px;
+  }
+
+  .give2-physical p {
+    text-align: left;
   }
 
   /* MOBILE FOOTER*/
