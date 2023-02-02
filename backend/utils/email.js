@@ -44,7 +44,7 @@ class Email {
     // nodejs@pictusweb.sk
     return nodemailer.createTransport({
       pool: true,
-      host: 'email.active24.com',
+      host: 'smtp.titan.email',
       port: 465,
       secure: true, // use TLS
       auth: {
