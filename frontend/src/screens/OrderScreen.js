@@ -156,7 +156,7 @@ const OrderScreen = () => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <>
-      <h1>Objednávka {order._id}</h1>
+      <h1>Objednávka {order.orderNumber}</h1>
       <Row>
         <Col md={8}>
           <ListGroup variant='flush'>
@@ -267,8 +267,10 @@ const OrderScreen = () => {
                           )}
                         </Col>
                         <Col md={4}>
-                          {item.qty} x €{item.price.toFixed(2)} = €
-                          {(item.qty * item.price).toFixed(2)}
+                          {item.qty} x {''}
+                          {item.price.toFixed(2).replace('.', ',')} € ={' '}
+                          {(item.qty * item.price).toFixed(2).replace('.', ',')}{' '}
+                          €
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -285,15 +287,36 @@ const OrderScreen = () => {
                 <h2>Súhrn objednávky</h2>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Row>
-                  <Col>Produkty</Col>
-                  <Col>€ {order.itemsPrice}</Col>
+                <Row className=''>
+                  <div className='cart-box-right'>
+                    Produkty:
+                    <div className='ml-auto'>
+                      {cart.itemsPrice.replace('.', ',')} €
+                    </div>
+                  </div>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Poštovné</Col>
-                  <Col>€ {order.shippingPrice.toFixed(2)}</Col>
+                  <div className='cart-box-right'>
+                    Poštovné:
+                    <div className='ml-auto'>
+                      {' '}
+                      {cart.shippingPrice.replace('.', ',')} €
+                    </div>
+                  </div>
+                </Row>
+              </ListGroup.Item>
+
+              <ListGroup.Item>
+                <Row>
+                  <div className='cart-box-right'>
+                    Celkom:
+                    <div className='ml-auto'>
+                      {' '}
+                      {cart.totalPrice.replace('.', ',')} €
+                    </div>
+                  </div>
                 </Row>
               </ListGroup.Item>
               {/* <ListGroup.Item>
@@ -302,12 +325,6 @@ const OrderScreen = () => {
                   <Col>${order.taxPrice}</Col>
                 </Row>
               </ListGroup.Item> */}
-              <ListGroup.Item>
-                <Row>
-                  <Col>Celkom</Col>
-                  <Col>€ {order.totalPrice.toFixed(2)}</Col>
-                </Row>
-              </ListGroup.Item>
               {!order.isPaid &&
                 order.paymentMethod === 'PayPal alebo karta' && (
                   <ListGroup.Item>

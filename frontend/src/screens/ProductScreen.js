@@ -157,7 +157,7 @@ const ProductScreen = () => {
                         )}
 
                         <h5>Hmotnosť</h5>
-                        <h6>{product.weight}kg</h6>
+                        <h6>{product.weight.replace('.', ',')}kg</h6>
                         <h5>Tagy</h5>
                         <h6>{product.tags}</h6>
                         <h5>Väzba</h5>
@@ -223,7 +223,7 @@ const ProductScreen = () => {
                         </ListGroup.Item>
 
                         <ListGroup.Item className='product-price'>
-                          Cena: €{addDecimals(product.price)}
+                          Cena: {addDecimals(product.price).replace('.', ',')} €
                         </ListGroup.Item>
                         <ListGroup.Item className='product-description'>
                           Popis: {product.description}
@@ -235,35 +235,48 @@ const ProductScreen = () => {
                         <ListGroup variant='flush'>
                           <ListGroup.Item>
                             <Row>
-                              <Col>Cena :</Col>
-                              <Col>
-                                {product.discount ? (
-                                  <h5 className='discounted-price'>
-                                    <span className='discounted-price-span'>
-                                      Zľava {product.discount}%
-                                    </span>
-                                    €{addDecimals(product.discountedPrice)}
-                                  </h5>
-                                ) : (
-                                  <h4>€{addDecimals(product.price)}</h4>
-                                )}
-                              </Col>
+                              <div className='cart-box-right prod-screen'>
+                                Cena :
+                                <div className='ml-auto'>
+                                  {product.discount ? (
+                                    <h5 className='discounted-price'>
+                                      <span className='discounted-price-span'>
+                                        Zľava {product.discount}%
+                                      </span>
+                                      {addDecimals(
+                                        product.discountedPrice
+                                      ).replace('.', ',')}{' '}
+                                      €
+                                    </h5>
+                                  ) : (
+                                    <h4 className='price-box'>
+                                      {addDecimals(product.price).replace(
+                                        '.',
+                                        ','
+                                      )}{' '}
+                                      €
+                                    </h4>
+                                  )}
+                                </div>
+                              </div>
                             </Row>
                           </ListGroup.Item>
                           <ListGroup.Item>
                             <Row>
-                              <Col>Status:</Col>
-                              <Col>
-                                {product.countInStock > 0
-                                  ? 'Na sklade'
-                                  : 'Vypredané'}
-                              </Col>
+                              <div className='cart-box-right'>
+                                Status:
+                                <div className='ml-auto'>
+                                  {product.countInStock > 0
+                                    ? 'Na sklade'
+                                    : 'Vypredané'}
+                                </div>
+                              </div>
                             </Row>
                           </ListGroup.Item>
 
                           {product.countInStock > 0 && (
                             <ListGroup.Item>
-                              <Row>
+                              <Row className='prod-screen-items'>
                                 <Col>Počet:</Col>
                                 <Col>
                                   <Form.Control

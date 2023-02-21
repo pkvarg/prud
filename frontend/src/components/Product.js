@@ -39,7 +39,7 @@ const Product = ({ product }) => {
               €{addDecimals(product.discountedPrice)}
             </h5>
           ) : (
-            <h4>€{addDecimals(product.price)}</h4>
+            <h4>€{addDecimals(product.price).replace('.', ',')}</h4>
           )}
           {/* € {product.price.toFixed(2)} */}
         </div>

@@ -38,10 +38,21 @@ h2 {
 h3 {
   padding: 1rem 0;
   color: inherit !important;
+  font-weight: 500 !important;
 }
 
 h4 {
   color: inherit !important;
+  font-weight: 500 !important;
+}
+
+h5 {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+}
+
+h6 {
+  font-weight: 500 !important;
 }
 
 .rating span {
@@ -317,6 +328,7 @@ a.my-3.favorites-login h5 {
 p.favorites-add {
   transform: translateY(20%);
   text-decoration: underline;
+  /* font-weight: 300 !important; */
 }
 
 .prod-and-button {
@@ -787,6 +799,10 @@ i.fa-solid.fa-download:hover {
   font-size: 17.5px;
 }
 
+.price-box {
+  font-weight: 300;
+}
+
 .prod-by-year-description {
   /* display: inline-block;
   text-align: center; */
@@ -1033,6 +1049,14 @@ a.manage-single-review-link:hover {
 .cart-box-right {
   display: flex;
   flex-direction: row;
+}
+
+.cart-box-right.prod-screen {
+  transform: translateY(25%);
+}
+
+.prod-screen-items {
+  align-items: center;
 }
 .cart-prod-left {
   align-items: center;
@@ -1447,6 +1471,22 @@ footer {
 
   .give2-physical p {
     text-align: left;
+  }
+
+  .cart-mob-img {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cart-three-items-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cart-prod-off {
+    padding-top: 20px !important;
   }
 
   /* MOBILE FOOTER*/

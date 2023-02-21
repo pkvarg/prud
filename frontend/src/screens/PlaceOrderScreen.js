@@ -181,8 +181,10 @@ const PlaceOrderScreen = () => {
                           )}
                         </Col>
                         <Col md={4}>
-                          {item.qty} x €{item.price.toFixed(2)} = €
-                          {(item.qty * item.price).toFixed(2)}
+                          {item.qty} x {''}
+                          {item.price.toFixed(2).replace('.', ',')} € ={''}{' '}
+                          {(item.qty * item.price).toFixed(2).replace('.', ',')}{' '}
+                          €
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -199,28 +201,36 @@ const PlaceOrderScreen = () => {
                 <h2>Súhrn objednávky</h2>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Row>
-                  <Col>Produkty</Col>
-                  <Col>€ {cart.itemsPrice}</Col>
+                <Row className=''>
+                  <div className='cart-box-right'>
+                    Produkty:
+                    <div className='ml-auto'>
+                      {cart.itemsPrice.replace('.', ',')} €
+                    </div>
+                  </div>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Poštovné</Col>
-                  <Col>€ {cart.shippingPrice}</Col>
+                  <div className='cart-box-right'>
+                    Poštovné:
+                    <div className='ml-auto'>
+                      {' '}
+                      {cart.shippingPrice.replace('.', ',')} €
+                    </div>
+                  </div>
                 </Row>
               </ListGroup.Item>
-              {/* Zľava...
+
               <ListGroup.Item>
                 <Row>
-                  <Col>Tax</Col>
-                  <Col>${cart.taxPrice}</Col>
-                </Row>
-              </ListGroup.Item> */}
-              <ListGroup.Item>
-                <Row>
-                  <Col>Celkom</Col>
-                  <Col>€ {cart.totalPrice}</Col>
+                  <div className='cart-box-right'>
+                    Celkom:
+                    <div className='ml-auto'>
+                      {' '}
+                      {cart.totalPrice.replace('.', ',')} €
+                    </div>
+                  </div>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

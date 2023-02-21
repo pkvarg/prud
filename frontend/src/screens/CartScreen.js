@@ -55,44 +55,52 @@ const CartScreen = () => {
             {cartItems.map((item) => (
               <ListGroup.Item key={item.product}>
                 <Row className='cart-prod-left'>
-                  <Col md={2}>
+                  <Col md={2} className='no-mobile'>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
-                  <Col md={3}>
+                  <Col md={2} className='mobile-only cart-mob-img'>
+                    <Image src={item.image} alt={item.name} fluid rounded />
+                  </Col>
+                  <Col md={3} className='cart-prod-off'>
                     <Link
                       to={`/product/${item.product}`}
-                      className='no-underline'
+                      className='no-underline '
                     >
                       {item.name}
                     </Link>
                   </Col>
-                  <Col md={2}> {addDecimals(item.price)} €</Col>
-                  <Col md={2}>
-                    <Form.Control
-                      as='select'
-                      value={item.qty}
-                      onChange={(e) =>
-                        dispatch(
-                          addToCart(item.product, Number(e.target.value))
-                        )
-                      }
-                    >
-                      {[...Array(item.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </Form.Control>
-                  </Col>
-                  <Col md={2}>
-                    <Button
-                      type='button'
-                      variant='light'
-                      onClick={() => removeFromCartHandler(item.product)}
-                    >
-                      <i className='fas fa-trash'></i>
-                    </Button>
-                  </Col>
+                  <div className='cart-three-items-row'>
+                    <Col md={2}>
+                      {' '}
+                      {addDecimals(item.price).replace('.', ',')} €
+                    </Col>
+                    <Col md={2}>
+                      <Form.Control
+                        as='select'
+                        value={item.qty}
+                        onChange={(e) =>
+                          dispatch(
+                            addToCart(item.product, Number(e.target.value))
+                          )
+                        }
+                      >
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </Form.Control>
+                    </Col>
+                    <Col md={2}>
+                      <Button
+                        type='button'
+                        variant='light'
+                        onClick={() => removeFromCartHandler(item.product)}
+                      >
+                        <i className='fas fa-trash'></i>
+                      </Button>
+                    </Col>
+                  </div>
                 </Row>
               </ListGroup.Item>
             ))}
@@ -115,7 +123,8 @@ const CartScreen = () => {
                       (acc, item) => acc + Number(item.qty * item.price),
                       0
                     )
-                    .toFixed(2)}{' '}
+                    .toFixed(2)
+                    .replace('.', ',')}{' '}
                   €
                 </div>
               </div>
@@ -132,9 +141,10 @@ const CartScreen = () => {
                           (acc, item) => acc + Number(item.qty * item.price),
                           0
                         )
-                        .toFixed(2) > 100
+                        .toFixed(2)
+                        .replace('.', ',') > 100
                         ? 0
-                        : addDecimals(3.5)}{' '}
+                        : addDecimals(3.5).replace('.', ',')}{' '}
                       €
                     </div>
                   </div>
@@ -163,7 +173,7 @@ const CartScreen = () => {
                               ? 0
                               : 3.5
                           )
-                      )}{' '}
+                      ).replace('.', ',')}{' '}
                       €
                     </div>
                   </div>
