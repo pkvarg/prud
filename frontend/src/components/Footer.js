@@ -73,7 +73,7 @@ const Footer = () => {
                 rel='noreferrer'
                 className='footer-link'
               >
-                s povolením LIVING STREAM MINISTRY
+                s povolením Living Stream Ministry
               </a>
               <a
                 href='https://www.pictusweb.sk'

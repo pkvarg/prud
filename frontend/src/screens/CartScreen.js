@@ -54,7 +54,7 @@ const CartScreen = () => {
           <ListGroup variant='flush'>
             {cartItems.map((item) => (
               <ListGroup.Item key={item.product}>
-                <Row>
+                <Row className='cart-prod-left'>
                   <Col md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
@@ -66,7 +66,7 @@ const CartScreen = () => {
                       {item.name}
                     </Link>
                   </Col>
-                  <Col md={2}>€ {addDecimals(item.price)}</Col>
+                  <Col md={2}> {addDecimals(item.price)} €</Col>
                   <Col md={2}>
                     <Form.Control
                       as='select'
@@ -107,47 +107,66 @@ const CartScreen = () => {
                 Položiek (
                 {cartItems.reduce((acc, item) => acc + Number(item.qty), 0)})
               </h2>
-              Produkty: €
-              {cartItems
-                .reduce((acc, item) => acc + Number(item.qty * item.price), 0)
-                .toFixed(2)}
-            </ListGroup.Item>
-
-            <ListGroup.Item>
-              <Row>
-                <Col>
-                  Poštovné: €
+              <div className='cart-box-right'>
+                Produkty:{' '}
+                <div className='ml-auto'>
                   {cartItems
                     .reduce(
                       (acc, item) => acc + Number(item.qty * item.price),
                       0
                     )
-                    .toFixed(2) > 100
-                    ? 0
-                    : addDecimals(3.5)}
+                    .toFixed(2)}{' '}
+                  €
+                </div>
+              </div>
+            </ListGroup.Item>
+
+            <ListGroup.Item>
+              <Row>
+                <Col>
+                  <div className='cart-box-right'>
+                    Poštovné:{' '}
+                    <div className='ml-auto'>
+                      {cartItems
+                        .reduce(
+                          (acc, item) => acc + Number(item.qty * item.price),
+                          0
+                        )
+                        .toFixed(2) > 100
+                        ? 0
+                        : addDecimals(3.5)}{' '}
+                      €
+                    </div>
+                  </div>
                 </Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
                 <Col>
-                  Celkom: €
-                  {addDecimals(
-                    Number(
-                      cartItems.reduce(
-                        (acc, item) => acc + Number(item.qty * item.price),
-                        0
-                      )
-                    ) +
-                      Number(
-                        cartItems.reduce(
-                          (acc, item) => acc + Number(item.qty * item.price),
-                          0
-                        ) > 100
-                          ? 0
-                          : 3.5
-                      )
-                  )}
+                  <div className='cart-box-right'>
+                    Celkom:{' '}
+                    <div className='ml-auto'>
+                      {addDecimals(
+                        Number(
+                          cartItems.reduce(
+                            (acc, item) => acc + Number(item.qty * item.price),
+                            0
+                          )
+                        ) +
+                          Number(
+                            cartItems.reduce(
+                              (acc, item) =>
+                                acc + Number(item.qty * item.price),
+                              0
+                            ) > 100
+                              ? 0
+                              : 3.5
+                          )
+                      )}{' '}
+                      €
+                    </div>
+                  </div>
                 </Col>
               </Row>
             </ListGroup.Item>

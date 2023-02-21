@@ -46,11 +46,11 @@ const NewBooks = () => {
                       className='prod-img-year-width'
                     ></Image>
                   </Link>
-                  <h1>{product.name}</h1>
-                  <h4>Jazyk: {product.language}</h4>
-                  <h4>{product.binding}</h4>
-                  <h4>{product.pages} strán</h4>
-                  <h4>{product.isbn}</h4>
+                  <h1 className='prods-name'>{product.name}</h1>
+                  <h4 className='prods-desc'>Jazyk: {product.language}</h4>
+                  <h4 className='prods-desc'>{product.binding}</h4>
+                  <h4 className='prods-desc'>{product.pages} strán</h4>
+                  <h4 className='prods-desc'>{product.isbn}</h4>
                   {product.language === 'SK' ? (
                     <Image
                       src='/images/flag_sk40px_0.png'

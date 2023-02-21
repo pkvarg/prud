@@ -8,8 +8,8 @@
 }
 
 body {
-  font-family: OpenSans, sans-serif;
-  /* font-family: Arial, Helvetica, sans-serif; */
+  /* font-family: OpenSans, sans-serif; */
+  font-family: Calibri, sans-serif;
   color: #313131;
   font-weight: 200;
   font-size: 21px;
@@ -23,6 +23,7 @@ main {
 
 h1 {
   font-size: 23px;
+  font-weight: 500 !important;
   padding: 1rem 0;
   color: inherit !important;
 }
@@ -31,6 +32,7 @@ h2 {
   font-size: 18px;
   padding: 0.5rem 0;
   color: inherit !important;
+  font-weight: 500 !important;
 }
 
 h3 {
@@ -96,7 +98,7 @@ a.grey-navbar-sign-in.nav-link {
 
 a#username.dropdown-toggle.nav-link,
 a#adminmenu.dropdown-toggle.nav-link {
-  color: #5e5d5d;
+  color: #313131;
   font-weight: 200;
   text-transform: none !important;
   font-size: 18px;
@@ -404,6 +406,10 @@ img.slide-img-2.img-fluid {
 }
 
 /* HOME SCREEN  */
+span.page-link {
+  background-color: #8a1c1f !important;
+}
+
 .new-publications {
   margin-top: 25px;
   letter-spacing: normal;
@@ -411,8 +417,8 @@ img.slide-img-2.img-fluid {
 
 .new-publications,
 .eshop-category {
-  color: #232323 !important;
-  font-weight: 700 !important;
+  color: #313131 !important;
+  font-weight: 500 !important;
 }
 
 /* PRODUCT */
@@ -429,8 +435,10 @@ img.slide-img-2.img-fluid {
 }
 
 .product-home-price h4 {
+  color: #828282 !important;
   font-size: 18px;
   margin-top: 7.5px;
+  font-weight: 500 !important;
 }
 
 .product-description {
@@ -651,7 +659,7 @@ textarea#description.form-control,
 input#excerpt-image.form-control,
 input#excerpt-part.form-control,
 textarea#excerpt.form-control {
-  font-size: 23px !important;
+  font-size: 17px !important;
   border-radius: 35px;
 }
 
@@ -674,11 +682,11 @@ sup {
 }
 
 .sign-in-forgot {
-  font-size: 23px;
+  font-size: 20px;
 }
 
 .agree-gdpr {
-  font-size: 25px;
+  font-size: 20px;
   transform: translateY(50%);
 }
 
@@ -767,6 +775,16 @@ i.fa-solid.fa-download:hover {
 .prod-by-year {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.prods-name {
+  font-size: 17.5px;
+}
+
+.prods-desc {
+  color: #828282 !important;
+  font-weight: 500 !important;
+  font-size: 17.5px;
 }
 
 .prod-by-year-description {
@@ -1012,6 +1030,18 @@ a.manage-single-review-link:hover {
   }
 } */
 
+.cart-box-right {
+  display: flex;
+  flex-direction: row;
+}
+.cart-prod-left {
+  align-items: center;
+}
+
+.table-responsive .td {
+  font-size: 20px !important;
+}
+
 /* FOOTER */
 footer {
   background-color: #edeae4;
@@ -1049,9 +1079,9 @@ footer {
 .footer-copyright {
   text-align: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  gap: 11px;
+  gap: 0px;
 }
 .footer-copyright p {
   margin-bottom: 0;
@@ -1059,10 +1089,10 @@ footer {
 
 .footer-link {
   text-decoration: none;
-  margin-left: 25px;
+  margin-left: 10px;
   line-height: 21.5px;
   font-size: 18px;
-  color: #5e5d5d;
+  color: #828282;
 }
 
 /* MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE MOBILE*/
@@ -1383,11 +1413,11 @@ footer {
     line-height: 35px;
   }
 
-  .new-publications,
+  /* .new-publications,
   .eshop-category {
     color: #232323 !important;
   }
-
+ */
   img.ytcode-png {
     height: 50px;
     width: 100%;
@@ -1435,5 +1465,16 @@ footer {
   }
   p.footer-forgot-password {
     line-height: 35px;
+  }
+
+  .footer-copyright {
+    flex-direction: column;
+    justify-content: center;
+    gap: 11px;
+  }
+
+  .footer-link {
+    margin-left: 25px;
+    color: #828282;
   }
 }

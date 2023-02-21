@@ -92,11 +92,8 @@ const ContactScreen = () => {
             ></Form.Control>
           </Form.Group>
           <Form.Group controlId='subject'>
-            <Form.Label>
-              Predmet<sup>*</sup>
-            </Form.Label>
+            <Form.Label>Predmet</Form.Label>
             <Form.Control
-              required
               type='subject'
               placeholder='Predmet'
               value={subject}
