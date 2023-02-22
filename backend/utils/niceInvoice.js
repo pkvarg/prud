@@ -151,9 +151,9 @@ let invoiceTable = (doc, invoice) => {
       position,
       item.name,
       discount,
-      formatCurrency(item.price.toFixed(2), currencySymbol),
+      formatCurrency(currencySymbol, item.price.toFixed(2).replace('.', ',')),
       item.qty,
-      addDecimals(total)
+      formatCurrency(currencySymbol, total.toFixed(2).replace('.', ','))
     ),
       generateHr(doc, position + 20)
   }
@@ -169,7 +169,7 @@ let invoiceTable = (doc, invoice) => {
     doc,
     productsTotalPosition,
     'Produkty',
-    formatCurrency(productsTotalPrice, currencySymbol)
+    formatCurrency(currencySymbol, productsTotalPrice.replace('.', ','))
   )
 
   const shippingPosition = productsTotalPosition + 20
@@ -178,7 +178,7 @@ let invoiceTable = (doc, invoice) => {
     doc,
     shippingPosition,
     'Poštovné',
-    formatCurrency(shippingPrice, currencySymbol)
+    formatCurrency(currencySymbol, shippingPrice.replace('.', ','))
   )
 
   const paidToDatePosition = shippingPosition + 20
@@ -187,7 +187,7 @@ let invoiceTable = (doc, invoice) => {
     doc,
     paidToDatePosition,
     'Celkom',
-    formatCurrency(totalPrice, currencySymbol)
+    formatCurrency(currencySymbol, totalPrice.replace('.', ','))
   )
 }
 

@@ -86,8 +86,9 @@ const addOrderItems = asyncHandler(async (req, res) => {
           item.qty +
           ' x ' +
           item.name +
+          ' ' +
+          item.price.toFixed(2).replace('.', ',') +
           ' €' +
-          item.price.toFixed(2) +
           ' zľava: ' +
           discounts[i].discount +
           ' %'
@@ -97,8 +98,9 @@ const addOrderItems = asyncHandler(async (req, res) => {
           item.qty +
           ' x ' +
           item.name +
+          ' ' +
+          item.price.toFixed(2).replace('.', ',') +
           ' €' +
-          item.price.toFixed(2) +
           '  '
       }
     })
