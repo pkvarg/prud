@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Image } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import PaginateLibrary from '../components/PaginateLibrary'
 import { listProducts } from '../actions/productActions'
 
 const Library = () => {
   const params = useParams()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const keyword = params.keyword
   const pageNumber = params.pageNumber || 1
@@ -22,6 +22,9 @@ const Library = () => {
 
   return (
     <>
+      <Link className='btn btn-back my-3' onClick={() => navigate(-1)}>
+        Naspäť
+      </Link>
       <div className='my-3'>
         <h1>Čitáreň</h1>
         {products.map(

@@ -235,8 +235,14 @@ const ProductScreen = () => {
                         <ListGroup variant='flush'>
                           <ListGroup.Item>
                             <Row>
-                              <div className='cart-box-right prod-screen'>
-                                Cena :
+                              <div
+                                className={
+                                  product.discount
+                                    ? 'cart-box-right prod-screen-items'
+                                    : 'cart-box-right prod-screen-items prod-screen'
+                                }
+                              >
+                                <p>Cena :</p>
                                 <div className='ml-auto'>
                                   {product.discount ? (
                                     <h5 className='discounted-price'>
@@ -249,13 +255,13 @@ const ProductScreen = () => {
                                       €
                                     </h5>
                                   ) : (
-                                    <h4 className='price-box'>
+                                    <p className='price-box'>
                                       {addDecimals(product.price).replace(
                                         '.',
                                         ','
                                       )}{' '}
                                       €
-                                    </h4>
+                                    </p>
                                   )}
                                 </div>
                               </div>

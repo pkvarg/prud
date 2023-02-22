@@ -66,113 +66,127 @@ const ProfileScreen = () => {
   }
 
   return (
-    <Row>
-      <Col md={3}>
-        <h2>Môj profil</h2>
-        {message && <Message variant='danger'>{message}</Message>}
-        {messageSuccess && (
-          <Message variant='success'>{messageSuccess}</Message>
-        )}
+    <>
+      {/* <Link
+        className='btn btn-back my-3'
+        onClick={() => navigate(-1)}
+      >
+        Naspäť
+      </Link> */}
+      <Row>
+        <Col md={3}>
+          <h2>Môj profil</h2>
+          {message && <Message variant='danger'>{message}</Message>}
+          {messageSuccess && (
+            <Message variant='success'>{messageSuccess}</Message>
+          )}
 
-        {error && <Message variant='danger'>{error}</Message>}
-        {success && <Message variant='success'>Profil upravený</Message>}
+          {error && <Message variant='danger'>{error}</Message>}
+          {success && <Message variant='success'>Profil upravený</Message>}
 
-        {loading && <Loader />}
-        <Form onSubmit={submitHandler}>
-          <Form.Group controlId='name'>
-            <Form.Label>Meno a priezvisko</Form.Label>
-            <Form.Control
-              type='name'
-              placeholder='Meno a priezvisko'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId='email'>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type='email'
-              placeholder='Email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
+          {loading && <Loader />}
+          <Form onSubmit={submitHandler}>
+            <Form.Group controlId='name'>
+              <Form.Label>Meno a priezvisko</Form.Label>
+              <Form.Control
+                type='name'
+                placeholder='Meno a priezvisko'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='email'>
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type='email'
+                placeholder='Email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
 
-          <Form.Group controlId='password'>
-            <Form.Label>Heslo</Form.Label>
-            <Form.Control
-              type='password'
-              placeholder='Heslo'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId='confirmPassword'>
-            <Form.Label>Potvrďte heslo</Form.Label>
-            <Form.Control
-              type='password'
-              placeholder='Potvrďte heslo'
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <Button type='submit' className='my-5 btn-blue rounded'>
-            Upraviť profil
-          </Button>
-        </Form>
-      </Col>
-      <Col md={9}>
-        <h2>Moje objednávky</h2>
-        {loadingOrders ? (
-          <Loader />
-        ) : errorOrders ? (
-          <Message variant='danger'>{error.orders}</Message>
-        ) : (
-          <Table striped bordered hover responsive className='table-sm'>
-            <thead>
-              <tr>
-                <th>ČÍSLO</th>
-                <th>DÁTUM</th>
-                <th>CELKOM €</th>
-                <th>ZAPLATENÉ</th>
-                <th>ODOSLANÉ</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice.toFixed(2)}</td>
-                  <td>
-                    {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
-                    ) : (
-                      <i className='fas fa-times' style={{ color: 'red' }}></i>
-                    )}
-                  </td>
-                  <td>
-                    {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
-                    ) : (
-                      <i className='fas fa-times' style={{ color: 'red' }}></i>
-                    )}
-                  </td>
-                  <td>
-                    <LinkContainer to={`/order/${order._id}`}>
-                      <Button className='btn-sm' variant='light'>
-                        Detaily
-                      </Button>
-                    </LinkContainer>
-                  </td>
+            <Form.Group controlId='password'>
+              <Form.Label>Heslo</Form.Label>
+              <Form.Control
+                type='password'
+                placeholder='Heslo'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='confirmPassword'>
+              <Form.Label>Potvrďte heslo</Form.Label>
+              <Form.Control
+                type='password'
+                placeholder='Potvrďte heslo'
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Button type='submit' className='my-5 btn-blue rounded'>
+              Upraviť profil
+            </Button>
+          </Form>
+        </Col>
+        <Col md={9}>
+          <h2>Moje objednávky</h2>
+          {loadingOrders ? (
+            <Loader />
+          ) : errorOrders ? (
+            <Message variant='danger'>{error.orders}</Message>
+          ) : (
+            <Table striped bordered hover responsive className='table-sm'>
+              <thead>
+                <tr>
+                  <th>ČÍSLO</th>
+                  <th>DÁTUM</th>
+                  <th>CELKOM €</th>
+                  <th>ZAPLATENÉ</th>
+                  <th>ODOSLANÉ</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        )}
-      </Col>
-    </Row>
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order._id}>
+                    <td>{order.orderNumber}</td>
+                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>{order.totalPrice.toFixed(2)}</td>
+                    <td>
+                      {order.isPaid ? (
+                        order.paidAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className='fas fa-times'
+                          style={{ color: 'red' }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      {order.isDelivered ? (
+                        order.deliveredAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className='fas fa-times'
+                          style={{ color: 'red' }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      <LinkContainer to={`/order/${order._id}`}>
+                        <Button className='btn-sm' variant='light'>
+                          Detaily
+                        </Button>
+                      </LinkContainer>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
+        </Col>
+      </Row>
+    </>
   )
 }
 

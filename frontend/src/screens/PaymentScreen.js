@@ -57,7 +57,7 @@ const PaymentScreen = () => {
               ></Form.Check>
             </Col>
           </Form.Group>
-          <Button type='submit' className='my-3 btn-blue'>
+          <Button type='submit' className='my-3 btn-blue rounded'>
             Pokračovať
           </Button>
         </Form>
